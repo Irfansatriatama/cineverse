@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%202.3%20Hotfix-blue)
-![Version](https://img.shields.io/badge/Version-0.7.1-orange)
+![Status](https://img.shields.io/badge/Status-Phase%202_2_3%20Bugfix-blue)
+![Version](https://img.shields.io/badge/Version-0.7.2-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -281,10 +281,11 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 - Animasi transisi antar halaman (cinematic slide overlay)
 - Ripple effect pada semua tombol interaktif
 - Bug fix pasca-integrasi (Phase 2.3 Hotfix — v0.7.1)
+- Bug fix lanjutan — halaman Profil & Settings kosong (Phase 2_2_3 — v0.7.2)
 
-**Deliverable:** `cineverse-phase2_3-fixed.zip` + `README.md` updated
+**Deliverable:** `cineverse-phase2_2_3.zip` + `README.md` updated
 
-**Status:** ✅ Selesai (v0.7.1)
+**Status:** ✅ Selesai (v0.7.2)
 
 ---
 
@@ -376,6 +377,7 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 | **Fase 2** | Bug Fix — Navbar link tidak bereaksi | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Bug Fix — Tombol "Info Lainnya" membesar | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Bug Fix — Profil & Settings tidak render | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Bug Fix — Halaman Profil & Settings kosong (.reveal opacity:0) | ✅ Selesai | 2026-02-25 |
 | **Fase 3** | Movie Detail Page | 🔲 Pending | - |
 | **Fase 3** | Video Player | 🔲 Pending | - |
 | **Fase 3** | Search & Filter | 🔲 Pending | - |
@@ -556,6 +558,22 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 - ✅ `data/genres.json` — 14 genre
 - ✅ `data/news.json` — 6 artikel berita mock
 - ✅ `assets/images/poster-placeholder.svg` — Fallback poster
+
+### v0.7.2 — Phase 2_2_3: Bug Fix Halaman Profil & Settings Kosong
+
+**Bug yang ditemukan & diperbaiki:**
+
+**🐛 Bug 4 — Halaman Profil & Settings tampil kosong meskipun sudah login (`app.js`, `settings.html`)**
+- **Root cause 1 — Class mismatch di IntersectionObserver (`app.js`):** Fungsi `initScrollReveal()` menggunakan IntersectionObserver yang menambahkan class `.revealed` dan `.section-visible` ketika elemen masuk viewport. Namun CSS di `animations.css` menggunakan selector `.reveal.visible` (bukan `.reveal.revealed`) untuk menampilkan elemen (`opacity: 1`). Akibatnya, semua elemen dengan class `.reveal` — termasuk `profile-header`, `profile-tabs`, `profile-card`, dan `danger-zone` di `profile.html` — **tetap `opacity: 0`** selamanya karena class `.visible` tidak pernah ditambahkan.
+- **Root cause 2 — Threshold observer terlalu ketat (`app.js`):** IntersectionObserver dikonfigurasi dengan `threshold: 0.08` dan `rootMargin: '0px 0px -40px 0px'`, artinya elemen harus 8% terlihat DAN memotong 40px dari bawah viewport. Pada beberapa kondisi (ukuran layar, posisi scroll awal), elemen langsung terlihat tidak memenuhi threshold ini, sehingga callback tidak pernah fire.
+- **Root cause 3 — Class `.reveal` pada `<section class="settings-section">` (`settings.html`):** Settings sections menggunakan `display:none` untuk non-active dan `display:flex` untuk active (via CSS). Namun sections juga punya class `.reveal` yang memaksa `opacity: 0`. IntersectionObserver tidak bisa trigger untuk elemen `display:none`, sehingga sections yang non-active tidak pernah mendapat `.visible`. Lebih parahnya, bahkan section `.active` yang sudah `display:flex` tetap invisible karena observer mungkin belum fire sebelum user melihat konten.
+- **Fix 1:** Tambahkan `entry.target.classList.add('visible')` di dalam callback IntersectionObserver di `initScrollReveal()` — sehingga CSS `.reveal.visible { opacity: 1 }` dapat diterapkan dengan benar.
+- **Fix 2:** Ubah konfigurasi observer menjadi `threshold: 0` dan `rootMargin: '100px 0px 100px 0px'` untuk memastikan observer trigger lebih awal dan lebih sensitif terhadap elemen yang sudah dalam atau mendekati viewport.
+- **Fix 3:** Hapus class `.reveal` dari semua elemen `<section class="settings-section">` di `settings.html`. Visibility sections settings sudah dikelola sepenuhnya oleh JavaScript via toggle class `.active` dan CSS `display:none/flex` — animasi reveal tambahan tidak diperlukan dan justru menyebabkan konflik.
+
+**File yang diubah:** `assets/js/core/app.js`, `pages/settings.html`
+
+---
 
 ### v0.7.1 — Phase 2.3 Hotfix: Bug Fix Pasca-Integrasi
 

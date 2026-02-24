@@ -235,11 +235,12 @@ const CineApp = (() => {
 
           entry.target.style.transitionDelay = `${delay}s`;
           entry.target.classList.add('revealed');
+          entry.target.classList.add('visible');
           entry.target.classList.add('section-visible');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '100px 0px 100px 0px' });
 
     elements.forEach(el => observer.observe(el));
   }
