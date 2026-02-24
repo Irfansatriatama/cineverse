@@ -207,6 +207,10 @@ const WatchlistStorage = {
   has(userId, movieId) {
     return this.getAll(userId).includes(movieId);
   },
+
+  clear(userId) {
+    lsRemove(this._key(userId));
+  },
 };
 
 /* ─────────────────────────────────────────

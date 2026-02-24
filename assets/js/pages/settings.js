@@ -60,6 +60,10 @@ const SettingsPage = (() => {
      INIT
   ───────────────────────────────────────── */
   async function init() {
+    // Hide page loader early — always
+    const loader = document.getElementById('page-loader');
+    if (loader) setTimeout(() => loader.classList.add('loaded'), 250);
+
     // Auth check
     if (window.CineStorage) {
       currentUser = CineStorage.User.getCurrent();
@@ -68,10 +72,6 @@ const SettingsPage = (() => {
       window.location.replace('auth/login.html');
       return;
     }
-
-    // Hide page loader early
-    const loader = document.getElementById('page-loader');
-    if (loader) setTimeout(() => loader.classList.add('loaded'), 250);
 
     // Load settings
     currentSettings = loadAllSettings();
@@ -493,9 +493,8 @@ const SettingsPage = (() => {
     if (!el || !window.CineStorage) return;
 
     const uid      = currentUser.id;
-    const history  = CineStorage.History.get(uid);
-    const watchlist= CineStorage.Watchlist.get(uid);
-    const reviews  = CineStorage.Review.getAll(uid);
+    const history  = CineStorage.History.getAll(uid);
+    const watchlist= CineStorage.Watchlist.getAll(uid);
 
     el.innerHTML = `
       <div class="data-summary-item">
@@ -505,10 +504,6 @@ const SettingsPage = (() => {
       <div class="data-summary-item">
         <span class="data-summary-item__count">${Array.isArray(watchlist) ? watchlist.length : 0}</span>
         <span class="data-summary-item__label">Watchlist</span>
-      </div>
-      <div class="data-summary-item">
-        <span class="data-summary-item__count">${reviews ? Object.keys(reviews).length : 0}</span>
-        <span class="data-summary-item__label">Ulasan</span>
       </div>
     `;
   }
@@ -551,9 +546,8 @@ const SettingsPage = (() => {
       exportedAt: new Date().toISOString(),
       user:       { ...currentUser, passwordHash: '[REDACTED]' },
       settings:   currentSettings,
-      watchlist:  CineStorage.Watchlist.get(uid),
-      history:    CineStorage.History.get(uid),
-      reviews:    CineStorage.Review.getAll(uid),
+      watchlist:  CineStorage.Watchlist.getAll(uid),
+      history:    CineStorage.History.getAll(uid),
     };
 
     const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
@@ -808,9 +802,7 @@ const SettingsPage = (() => {
 
 })();
 
-// Auto-init
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', SettingsPage.init);
-} else {
-  SettingsPage.init();
-}
+// Auto-init — delay slightly to ensure app.js guard & CineStorage are ready
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => SettingsPage.init(), 80);
+});

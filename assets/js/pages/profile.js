@@ -21,12 +21,12 @@ const ProfilePage = (() => {
      INIT
   ───────────────────────────────────────── */
   async function init() {
-    currentUser = CineStorage.User.getCurrent();
-    if (!currentUser) return; // app.js guard handles redirect
-
-    // Hide page loader
+    // Hide page loader early — always, redirect handled by router guard
     const loader = document.getElementById('page-loader');
     if (loader) setTimeout(() => loader.classList.add('loaded'), 250);
+
+    currentUser = CineStorage.User.getCurrent();
+    if (!currentUser) return; // app.js guard handles redirect
 
     // Load movies data for activity tab
     try {
@@ -316,9 +316,9 @@ const ProfilePage = (() => {
       CineStorage.User.setCurrent(currentUser);
 
       // Update header display
-      qs('#header-name').textContent = currentUser.displayName;
-      qs('#header-bio').textContent  = currentUser.bio || '';
-      qs('#avatar-initials').textContent = getInitials(currentUser.displayName);
+      if (qs('#header-name')) qs('#header-name').textContent = currentUser.displayName;
+      if (qs('#header-bio')) qs('#header-bio').textContent  = currentUser.bio || '';
+      if (qs('#avatar-initials')) qs('#avatar-initials').textContent = getInitials(currentUser.displayName);
 
       if (window.CineApp) CineApp.initNavbarAuth();
 
@@ -608,8 +608,7 @@ const ProfilePage = (() => {
         'Hapus Semua Watchlist',
         'Semua film di watchlist kamu akan dihapus permanen. Tindakan ini tidak dapat dibatalkan.',
         () => {
-          const key = CineStorage.KEYS.WATCHLIST + '_' + currentUser.id;
-          CineStorage.lsRemove(key);
+          CineStorage.Watchlist.clear(currentUser.id);
           qs('#stat-watchlist').textContent = 0;
           const card = qs('#watchlist-card');
           if (card) card.style.display = 'none';

@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%202.3%20Complete-green)
-![Version](https://img.shields.io/badge/Version-0.7.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%202.3%20Hotfix-blue)
+![Version](https://img.shields.io/badge/Version-0.7.1-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -264,11 +264,11 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 
 **Deliverable:** `cineverse-phase1.zip` + `README.md` updated
 
-**Status:** 🔲 Belum Dimulai
+**Status:** ✅ Selesai
 
 ---
 
-### 📦 FASE 2 — Dashboard, Profil & Settings
+### 📦 FASE 2 — Dashboard, Profil & Settings ✅ SELESAI
 **Target:** Halaman utama setelah login + manajemen akun
 
 **Yang dikerjakan:**
@@ -278,12 +278,13 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 - Halaman Settings: toggle dark/light mode, bahasa, preferensi genre, notifikasi
 - Komponen Toast Notification
 - Skeleton Loading untuk setiap section
-- Animasi transisi antar halaman
-- Update struktur folder & CSS components
+- Animasi transisi antar halaman (cinematic slide overlay)
+- Ripple effect pada semua tombol interaktif
+- Bug fix pasca-integrasi (Phase 2.3 Hotfix — v0.7.1)
 
-**Deliverable:** `cineverse-phase2.zip` + `README.md` updated
+**Deliverable:** `cineverse-phase2_3-fixed.zip` + `README.md` updated
 
-**Status:** 🔲 Belum Dimulai
+**Status:** ✅ Selesai (v0.7.1)
 
 ---
 
@@ -365,11 +366,16 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 | **Fase 1** | Router Dasar | ✅ Selesai | 2025-01-10 |
 | **Fase 1.1** | Mock Data JSON (30+ film) | ✅ Selesai | 2025-01-01 |
 | **Fase 2** | Dashboard Hero Slider | ✅ Selesai | 2025-02-25 |
-| **Fase 2** | Trending Section | 🔲 Pending | - |
+| **Fase 2** | Trending Section | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Halaman Profil | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Change Password | ✅ Selesai | 2025-02-25 |
-| **Fase 2** | Settings Page | 🔲 Pending | - |
-| **Fase 2** | Dark/Light Mode | 🔲 Pending | - |
+| **Fase 2** | Settings Page | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Dark/Light Mode | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Skeleton Loading | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Animasi Transisi Antar Halaman | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Bug Fix — Navbar link tidak bereaksi | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Bug Fix — Tombol "Info Lainnya" membesar | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Bug Fix — Profil & Settings tidak render | ✅ Selesai | 2025-02-25 |
 | **Fase 3** | Movie Detail Page | 🔲 Pending | - |
 | **Fase 3** | Video Player | 🔲 Pending | - |
 | **Fase 3** | Search & Filter | 🔲 Pending | - |
@@ -550,6 +556,28 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 - ✅ `data/genres.json` — 14 genre
 - ✅ `data/news.json` — 6 artikel berita mock
 - ✅ `assets/images/poster-placeholder.svg` — Fallback poster
+
+### v0.7.1 — Phase 2.3 Hotfix: Bug Fix Pasca-Integrasi
+
+**Bug yang ditemukan & diperbaiki:**
+
+**🐛 Bug 1 — Navbar link tidak bereaksi setelah klik pertama (`transitions.js`)**
+- **Root cause:** Flag `isTransitioning` di-set `true` saat klik pertama namun tidak pernah di-reset ke `false` setelah navigasi, sehingga semua klik link berikutnya langsung di-skip oleh guard.
+- **Fix:** Tambah `safety timeout` 1200ms yang mereset flag dan memaksa navigasi jika `animationend` tidak fire. Tambah listener `pageshow` untuk reset flag saat kembali via browser back/forward.
+
+**🐛 Bug 2 — Tombol "Info Lainnya" di carousel membesar tiap diklik (`transitions.js`)**
+- **Root cause:** Ripple effect `<span>` terus ditambahkan ke dalam tombol tanpa dibersihkan apabila event `animationend` tidak terpanggil (race condition). Span yang menumpuk memperlebar dimensi tombol.
+- **Fix:** Bersihkan semua stale ripple sebelum menambah ripple baru (`btn.querySelectorAll('.ripple-effect').forEach(r => r.remove())`). Tambah fallback `setTimeout` 700ms sebagai jaring pengaman penghapusan ripple.
+
+**🐛 Bug 3 — Halaman Profil & Settings tidak render (tampil kosong) (`profile.js`, `settings.js`)**
+- **Root cause 1 — Path redirect salah (`settings.js`):** Ketika user tidak login, `settings.js` redirect ke `../pages/auth/login.html` — path yang salah karena `settings.html` sudah berada di `/pages/`. Path yang benar adalah `auth/login.html`.
+- **Root cause 2 — Field name mismatch (`profile.js`, `settings.js`):** User disimpan dengan field `joinedAt` (di `auth.js`), namun `profile.js` dan `settings.js` membaca `createdAt` → selalu `undefined` → potensi error di render.
+- **Root cause 3 — Missing null guards (`profile.js`):** Beberapa `addEventListener` dan `.textContent` assignment tidak dilindungi null check. Jika satu elemen DOM tidak ditemukan, JS melempar error dan seluruh `init()` berhenti di tengah jalan — halaman jadi kosong meski user sudah login.
+- **Fix:** Perbaiki path redirect di `settings.js`. Ubah pembacaan field menjadi `createdAt || joinedAt` di kedua file. Tambahkan optional chaining (`?.`) dan conditional assignment pada semua operasi DOM yang berisiko.
+
+**File yang diubah:** `assets/js/core/transitions.js`, `assets/js/pages/profile.js`, `assets/js/pages/settings.js`
+
+---
 
 ### v0.7.0 — Phase 2.3: Skeleton Loading, Page Transitions & Polish
 
