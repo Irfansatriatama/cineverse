@@ -65,7 +65,7 @@ const SettingsPage = (() => {
       currentUser = CineStorage.User.getCurrent();
     }
     if (!currentUser) {
-      window.location.replace('../pages/auth/login.html');
+      window.location.replace('auth/login.html');
       return;
     }
 
@@ -573,8 +573,8 @@ const SettingsPage = (() => {
     const el = document.getElementById('account-info');
     if (!el || !currentUser) return;
 
-    const joinedDate = currentUser.createdAt
-      ? new Date(currentUser.createdAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })
+    const joinedDate = (currentUser.createdAt || currentUser.joinedAt)
+      ? new Date(currentUser.createdAt || currentUser.joinedAt).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })
       : 'Tidak diketahui';
 
     const avatarContent = currentUser.avatar

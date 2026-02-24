@@ -69,7 +69,14 @@ const CineTransitions = (() => {
     overlay.className = 'entering';
     overlay.style.pointerEvents = 'all';
 
+    // Safety timeout: if animationend never fires, navigate anyway & reset flag
+    const safetyTimer = setTimeout(() => {
+      isTransitioning = false;
+      window.location.href = url;
+    }, 1200);
+
     overlay.addEventListener('animationend', () => {
+      clearTimeout(safetyTimer);
       window.location.href = url;
     }, { once: true });
   }
@@ -99,10 +106,18 @@ const CineTransitions = (() => {
 
       // Skip if same page
       const resolvedUrl = new URL(href, window.location.href);
-      if (resolvedUrl.href === window.location.href) return;
+      if (resolvedUrl.href === window.location.href) {
+        isTransitioning = false; // reset if somehow stuck
+        return;
+      }
 
       e.preventDefault();
       navigateTo(href);
+    });
+
+    // Reset flag on back/forward navigation
+    window.addEventListener('pageshow', () => {
+      isTransitioning = false;
     });
 
     // Handle browser back/forward
@@ -119,6 +134,9 @@ const CineTransitions = (() => {
       const btn = e.target.closest('.btn, .db-genre-chip');
       if (!btn) return;
 
+      // Remove any stale ripples that didn't clean up
+      btn.querySelectorAll('.ripple-effect').forEach(r => r.remove());
+
       const rect = btn.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
       const x = e.clientX - rect.left - size / 2;
@@ -134,7 +152,11 @@ const CineTransitions = (() => {
       `;
 
       btn.appendChild(ripple);
-      ripple.addEventListener('animationend', () => ripple.remove());
+
+      // Primary removal via animationend
+      ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+      // Fallback removal after 700ms in case animationend doesn't fire
+      setTimeout(() => { if (ripple.parentNode) ripple.remove(); }, 700);
     });
   }
 

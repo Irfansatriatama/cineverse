@@ -57,14 +57,14 @@ const ProfilePage = (() => {
   function populateHeader() {
     const u = currentUser;
 
-    qs('#header-name').textContent  = u.displayName || 'Pengguna';
-    qs('#header-email').textContent = u.email || '';
-    qs('#header-bio').textContent   = u.bio || '';
+    qs('#header-name') && (qs('#header-name').textContent  = u.displayName || 'Pengguna');
+    qs('#header-email') && (qs('#header-email').textContent = u.email || '');
+    qs('#header-bio') && (qs('#header-bio').textContent   = u.bio || '');
 
-    const joined = u.createdAt
-      ? new Date(u.createdAt).toLocaleDateString('id-ID', { year:'numeric', month:'long' })
+    const joined = (u.createdAt || u.joinedAt)
+      ? new Date(u.createdAt || u.joinedAt).toLocaleDateString('id-ID', { year:'numeric', month:'long' })
       : '—';
-    qs('#header-joined').textContent = joined;
+    qs('#header-joined') && (qs('#header-joined').textContent = joined);
 
     // Avatar
     renderAvatarDisplay();
@@ -72,8 +72,8 @@ const ProfilePage = (() => {
     // Stats
     const watchlistCount = CineStorage.Watchlist.getAll(u.id).length;
     const historyCount   = CineStorage.History.getAll(u.id).length;
-    qs('#stat-watchlist').textContent = watchlistCount;
-    qs('#stat-watched').textContent   = historyCount;
+    qs('#stat-watchlist') && (qs('#stat-watchlist').textContent = watchlistCount);
+    qs('#stat-watched') && (qs('#stat-watched').textContent   = historyCount);
 
     // Count reviews across movies (simple check)
     let reviewCount = 0;
@@ -81,7 +81,7 @@ const ProfilePage = (() => {
       const r = CineStorage.Review.getUserReview(m.id, u.id);
       if (r) reviewCount++;
     });
-    qs('#stat-reviews').textContent = reviewCount;
+    qs('#stat-reviews') && (qs('#stat-reviews').textContent = reviewCount);
   }
 
   function renderAvatarDisplay() {
@@ -90,16 +90,18 @@ const ProfilePage = (() => {
     const imgEl   = qs('#avatar-img');
     const removeBtn = qs('#remove-avatar-btn');
 
+    if (!imgEl || !initEl) return;
+
     if (u.avatar) {
       imgEl.src = u.avatar;
       imgEl.style.display = 'block';
       initEl.style.display = 'none';
-      removeBtn.style.display = 'flex';
+      if (removeBtn) removeBtn.style.display = 'flex';
     } else {
       imgEl.style.display = 'none';
       initEl.style.display = 'flex';
       initEl.textContent = getInitials(u.displayName);
-      removeBtn.style.display = 'none';
+      if (removeBtn) removeBtn.style.display = 'none';
     }
   }
 
@@ -137,10 +139,10 @@ const ProfilePage = (() => {
     const removeBtn   = qs('#remove-avatar-btn');
 
     // Click avatar or overlay → trigger file
-    avatarEl.addEventListener('click', () => fileInput.click());
-    uploadBtn.addEventListener('click', () => fileInput.click());
+    avatarEl?.addEventListener('click', () => fileInput?.click());
+    uploadBtn?.addEventListener('click', () => fileInput?.click());
 
-    fileInput.addEventListener('change', async (e) => {
+    fileInput?.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
 
@@ -177,7 +179,7 @@ const ProfilePage = (() => {
       fileInput.value = '';
     });
 
-    removeBtn.addEventListener('click', () => {
+    removeBtn?.addEventListener('click', () => {
       showConfirmModal(
         'Hapus Foto Profil',
         'Apakah kamu yakin ingin menghapus foto profil?',
