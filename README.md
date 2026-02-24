@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%201.3%20Complete-green)
-![Version](https://img.shields.io/badge/Version-0.4.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%202.1%20Complete-green)
+![Version](https://img.shields.io/badge/Version-0.5.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -364,10 +364,10 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 | **Fase 1** | Auth Logic (localStorage) | ✅ Selesai | 2025-01-10 |
 | **Fase 1** | Router Dasar | ✅ Selesai | 2025-01-10 |
 | **Fase 1.1** | Mock Data JSON (30+ film) | ✅ Selesai | 2025-01-01 |
-| **Fase 2** | Dashboard Hero Slider | 🔲 Pending | - |
+| **Fase 2** | Dashboard Hero Slider | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Trending Section | 🔲 Pending | - |
-| **Fase 2** | Halaman Profil | 🔲 Pending | - |
-| **Fase 2** | Change Password | 🔲 Pending | - |
+| **Fase 2** | Halaman Profil | ✅ Selesai | 2025-02-25 |
+| **Fase 2** | Change Password | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Settings Page | 🔲 Pending | - |
 | **Fase 2** | Dark/Light Mode | 🔲 Pending | - |
 | **Fase 3** | Movie Detail Page | 🔲 Pending | - |
@@ -550,3 +550,24 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 - ✅ `data/genres.json` — 14 genre
 - ✅ `data/news.json` — 6 artikel berita mock
 - ✅ `assets/images/poster-placeholder.svg` — Fallback poster
+
+### v0.5.0 — Phase 2.1: Halaman Profil & Ganti Password
+
+**Pembagian Phase 2:**
+- **Phase 2.1** — Halaman Profil + Avatar Upload + Ganti Password ✅
+- **Phase 2.2** — Halaman Settings (tema, bahasa, preferensi) — 🔲 Pending
+- **Phase 2.3** — Skeleton Loading, Animasi Transisi, Polish — 🔲 Pending
+
+**Yang dikerjakan di Phase 2.1:**
+- ✅ `pages/profile.html` — Halaman profil lengkap dengan header sinematik, tab navigasi, dan stats
+- ✅ `assets/css/pages/profile.css` — Full styling: profile header dengan backdrop gradient, avatar ring, tab system, form styles, activity list, danger zone, responsive
+- ✅ `assets/js/pages/profile.js` — Logic lengkap:
+  - **Avatar Upload** — Upload foto via file input, resize & compress ke base64 (max 200×200px, 2MB), simpan ke localStorage, hapus foto
+  - **Edit Profil** — Form edit nama tampilan, bio (200 char counter), jenis kelamin, tahun lahir, genre favorit (max 5 chip toggle), validasi real-time
+  - **Ganti Password** — Verifikasi password lama (SHA-256), validasi password baru (min 8 karakter), password strength meter 4 level (Lemah/Cukup/Kuat/Sangat Kuat), toggle show/hide
+  - **Tab Aktivitas** — Riwayat tontonan terbaru (15 item) + preview watchlist grid
+  - **Danger Zone** — Hapus riwayat tontonan & hapus semua watchlist dengan confirm modal
+  - **Quick Stats** — Jumlah watchlist, film ditonton, ulasan ditulis
+  - **Confirm Modal** — Dialog konfirmasi untuk aksi destruktif
+- ✅ `assets/css/animations.css` — Tambah `@keyframes spin` untuk loading state
+- ✅ README + badge diperbarui ke v0.5.0

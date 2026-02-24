@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Profil saya di CineVerse — kelola akun dan preferensi." />
+  <title>Profil Saya — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages/profile.css" />
+</head>
+
+<body>
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <span class="loader-logo">CINEVERSE</span>
+  </div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="../index.html" class="navbar__logo" aria-label="CineVerse Home">
+        <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+      </a>
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="../index.html" class="navbar__nav-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link">Genre</a>
+        <a href="news.html" class="navbar__nav-link">Berita</a>
+      </nav>
+      <div class="navbar__actions" id="navbar-actions"></div>
+      <button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="../index.html" class="navbar__nav-link">Beranda</a>
+      <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
+      <a href="genre.html" class="navbar__nav-link">Genre</a>
+      <a href="news.html" class="navbar__nav-link">Berita</a>
+    </nav>
+  </header>
+
+  <!-- ─── MAIN ─── -->
+  <main class="main-content profile-page" id="main-content">
+    <div class="container">
+
+      <!-- ─── PROFILE HEADER ─── -->
+      <div class="profile-header reveal">
+        <!-- Backdrop -->
+        <div class="profile-header__backdrop">
+          <div class="profile-header__backdrop-overlay"></div>
+        </div>
+
+        <!-- Avatar + Info -->
+        <div class="profile-header__content">
+          <!-- Avatar Upload Area -->
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar" id="profile-avatar">
+              <div class="profile-avatar__initials" id="avatar-initials">?</div>
+              <img id="avatar-img" src="" alt="Foto profil" class="profile-avatar__img" style="display:none;" />
+              <div class="profile-avatar__overlay" id="avatar-overlay">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <span>Ubah Foto</span>
+              </div>
+            </div>
+            <input type="file" id="avatar-input" accept="image/*" class="sr-only" aria-label="Upload foto profil" />
+
+            <!-- Avatar action buttons -->
+            <div class="profile-avatar__actions">
+              <button class="btn btn--ghost btn--sm" id="upload-avatar-btn" title="Upload foto">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                Upload
+              </button>
+              <button class="btn btn--ghost btn--sm" id="remove-avatar-btn" title="Hapus foto" style="display:none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6l-1 14H6L5 6"/>
+                  <path d="M10 11v6M14 11v6"/>
+                </svg>
+                Hapus
+              </button>
+            </div>
+          </div>
+
+          <!-- User Info -->
+          <div class="profile-header__info">
+            <h1 class="profile-header__name" id="header-name">Loading...</h1>
+            <p class="profile-header__email" id="header-email">-</p>
+            <p class="profile-header__bio" id="header-bio"></p>
+            <div class="profile-header__meta">
+              <span class="profile-meta-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Bergabung <span id="header-joined">-</span>
+              </span>
+              <span class="profile-meta-badge profile-meta-badge--gold">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Member CineVerse
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="profile-stats">
+            <div class="profile-stat">
+              <div class="profile-stat__num" id="stat-watchlist">0</div>
+              <div class="profile-stat__label">Watchlist</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-stat__num" id="stat-watched">0</div>
+              <div class="profile-stat__label">Ditonton</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-stat__num" id="stat-reviews">0</div>
+              <div class="profile-stat__label">Ulasan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TABS ─── -->
+      <div class="profile-tabs reveal">
+        <button class="profile-tab active" data-tab="edit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          Edit Profil
+        </button>
+        <button class="profile-tab" data-tab="password">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Ganti Password
+        </button>
+        <button class="profile-tab" data-tab="activity">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+          Aktivitas
+        </button>
+      </div>
+
+      <!-- ─── TAB PANELS ─── -->
+      <div class="profile-panels">
+
+        <!-- ── TAB: EDIT PROFIL ── -->
+        <div class="profile-panel active" id="panel-edit">
+          <div class="profile-card reveal">
+            <div class="profile-card__header">
+              <h2 class="profile-card__title">Informasi Profil</h2>
+              <p class="profile-card__subtitle">Perbarui nama, bio, dan informasi akun kamu.</p>
+            </div>
+
+            <form class="profile-form" id="edit-profile-form" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="input-displayname" class="form-label">Nama Tampilan <span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="input-displayname"
+                    name="displayName"
+                    class="form-input"
+                    placeholder="Nama kamu"
+                    maxlength="50"
+                    autocomplete="name"
+                  />
+                  <div class="form-hint">Nama yang ditampilkan di profil dan komentar kamu.</div>
+                  <div class="form-error" id="err-displayname"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="input-email"
+                    name="email"
+                    class="form-input form-input--readonly"
+                    readonly
+                    autocomplete="email"
+                  />
+                  <div class="form-hint">Email tidak dapat diubah.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-bio" class="form-label">Bio</label>
+                <textarea
+                  id="input-bio"
+                  name="bio"
+                  class="form-input form-textarea"
+                  placeholder="Ceritakan sedikit tentang kamu dan selera film favoritmu..."
+                  maxlength="200"
+                  rows="4"
+                ></textarea>
+                <div class="form-hint form-hint--right">
+                  <span id="bio-char-count">0</span>/200 karakter
+                </div>
+                <div class="form-error" id="err-bio"></div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="input-gender" class="form-label">Jenis Kelamin</label>
+                  <select id="input-gender" name="gender" class="form-input form-select">
+                    <option value="">-- Pilih --</option>
+                    <option value="male">Laki-laki</option>
+                    <option value="female">Perempuan</option>
+                    <option value="other">Lainnya</option>
+                    <option value="prefer-not">Tidak ingin menyebutkan</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-birthyear" class="form-label">Tahun Lahir</label>
+                  <input
+                    type="number"
+                    id="input-birthyear"
+                    name="birthYear"
+                    class="form-input"
+                    placeholder="1990"
+                    min="1920"
+                    max="2010"
+                  />
+                  <div class="form-error" id="err-birthyear"></div>
+                </div>
+              </div>
+
+              <!-- Preferred Genres -->
+              <div class="form-group">
+                <label class="form-label">Genre Favorit</label>
+                <div class="genre-chips-select" id="genre-chips-select">
+                  <!-- Populated by JS -->
+                </div>
+                <div class="form-hint">Pilih genre yang kamu sukai (maks. 5).</div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn--ghost" id="cancel-edit-btn">Batal</button>
+                <button type="submit" class="btn btn--primary" id="save-profile-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                    <polyline points="17 21 17 13 7 13 7 21"/>
+                    <polyline points="7 3 7 8 15 8"/>
+                  </svg>
+                  Simpan Perubahan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── TAB: GANTI PASSWORD ── -->
+        <div class="profile-panel" id="panel-password">
+          <div class="profile-card reveal">
+            <div class="profile-card__header">
+              <h2 class="profile-card__title">Ganti Password</h2>
+              <p class="profile-card__subtitle">Untuk keamanan, pastikan password baru kamu kuat dan unik.</p>
+            </div>
+
+            <!-- Security tip -->
+            <div class="security-tip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <p>Tips keamanan: Gunakan kombinasi huruf besar, huruf kecil, angka, dan simbol. Minimal 8 karakter.</p>
+            </div>
+
+            <form class="profile-form" id="change-password-form" novalidate>
+
+              <div class="form-group">
+                <label for="input-current-pass" class="form-label">Password Saat Ini <span class="required">*</span></label>
+                <div class="form-input-wrap">
+                  <input
+                    type="password"
+                    id="input-current-pass"
+                    name="currentPassword"
+                    class="form-input"
+                    placeholder="Password saat ini"
+                    autocomplete="current-password"
+                  />
+                  <button type="button" class="form-toggle-pass" data-target="input-current-pass" aria-label="Toggle visibility">
+                    <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                  </button>
+                </div>
+                <div class="form-error" id="err-current-pass"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-new-pass" class="form-label">Password Baru <span class="required">*</span></label>
+                <div class="form-input-wrap">
+                  <input
+                    type="password"
+                    id="input-new-pass"
+                    name="newPassword"
+                    class="form-input"
+                    placeholder="Password baru (min. 8 karakter)"
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="form-toggle-pass" data-target="input-new-pass" aria-label="Toggle visibility">
+                    <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                  </button>
+                </div>
+                <!-- Password strength -->
+                <div class="pass-strength" id="pass-strength">
+                  <div class="pass-strength__bars">
+                    <div class="pass-strength__bar" id="ps-bar-1"></div>
+                    <div class="pass-strength__bar" id="ps-bar-2"></div>
+                    <div class="pass-strength__bar" id="ps-bar-3"></div>
+                    <div class="pass-strength__bar" id="ps-bar-4"></div>
+                  </div>
+                  <span class="pass-strength__label" id="ps-label">—</span>
+                </div>
+                <div class="form-error" id="err-new-pass"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-confirm-pass" class="form-label">Konfirmasi Password Baru <span class="required">*</span></label>
+                <div class="form-input-wrap">
+                  <input
+                    type="password"
+                    id="input-confirm-pass"
+                    name="confirmPassword"
+                    class="form-input"
+                    placeholder="Ulangi password baru"
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="form-toggle-pass" data-target="input-confirm-pass" aria-label="Toggle visibility">
+                    <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                  </button>
+                </div>
+                <div class="form-error" id="err-confirm-pass"></div>
+              </div>
+
+              <div class="form-actions">
+                <button type="reset" class="btn btn--ghost">Reset</button>
+                <button type="submit" class="btn btn--primary" id="save-password-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                  Ganti Password
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── TAB: AKTIVITAS ── -->
+        <div class="profile-panel" id="panel-activity">
+          <div class="profile-card reveal">
+            <div class="profile-card__header">
+              <h2 class="profile-card__title">Riwayat Aktivitas</h2>
+              <p class="profile-card__subtitle">Film-film yang terakhir kamu tonton.</p>
+            </div>
+
+            <div id="activity-content">
+              <!-- Populated by JS -->
+              <div class="activity-empty" id="activity-empty">
+                <div class="activity-empty__icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                </div>
+                <h3>Belum Ada Aktivitas</h3>
+                <p>Mulai tonton film untuk melihat riwayat aktivitas kamu di sini.</p>
+                <a href="dashboard.html" class="btn btn--primary">Jelajahi Film</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Watchlist Preview -->
+          <div class="profile-card reveal" id="watchlist-card" style="display:none;">
+            <div class="profile-card__header">
+              <h2 class="profile-card__title">Watchlist Saya</h2>
+              <a href="dashboard.html" class="profile-card__action">Lihat Semua →</a>
+            </div>
+            <div class="watchlist-grid" id="watchlist-preview">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /profile-panels -->
+
+      <!-- ─── DANGER ZONE ─── -->
+      <div class="danger-zone reveal">
+        <div class="danger-zone__header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          Zona Berbahaya
+        </div>
+        <p class="danger-zone__desc">Tindakan di bawah ini tidak dapat dibatalkan. Lanjutkan dengan hati-hati.</p>
+        <div class="danger-zone__actions">
+          <button class="btn btn--ghost danger-btn" id="clear-history-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6l-1 14H6L5 6"/>
+            </svg>
+            Hapus Riwayat Tontonan
+          </button>
+          <button class="btn btn--ghost danger-btn" id="clear-watchlist-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6l-1 14H6L5 6"/>
+            </svg>
+            Hapus Semua Watchlist
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+          <p>Platform film favorit kamu.</p>
+        </div>
+        <div class="footer__links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="genre.html">Genre</a>
+          <a href="news.html">Berita</a>
+          <a href="settings.html">Pengaturan</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 CineVerse. Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── CONFIRM MODAL ─── -->
+  <div class="modal-overlay" id="confirm-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+      <div class="modal__header">
+        <h3 class="modal__title" id="confirm-modal-title">Konfirmasi</h3>
+      </div>
+      <div class="modal__body">
+        <p id="confirm-modal-text">Apakah kamu yakin?</p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--ghost" id="confirm-cancel">Batal</button>
+        <button class="btn btn--primary danger-btn-confirm" id="confirm-ok">Ya, Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="../assets/js/utils/hash.js"></script>
+  <script src="../assets/js/utils/helpers.js"></script>
+  <script src="../assets/js/utils/validators.js"></script>
+  <script src="../assets/js/core/storage.js"></script>
+  <script src="../assets/js/core/router.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/pages/profile.js"></script>
+</body>
+</html>
