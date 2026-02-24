@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%202.1%20Complete-green)
-![Version](https://img.shields.io/badge/Version-0.5.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%202.2%20Complete-green)
+![Version](https://img.shields.io/badge/Version-0.6.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -551,11 +551,29 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 - ✅ `data/news.json` — 6 artikel berita mock
 - ✅ `assets/images/poster-placeholder.svg` — Fallback poster
 
+### v0.6.0 — Phase 2.2: Halaman Settings
+
+**Yang dikerjakan di Phase 2.2:**
+- ✅ `pages/settings.html` — Halaman pengaturan lengkap dengan sidebar navigasi 6 seksi dan layout responsif
+- ✅ `assets/css/pages/settings.css` — Full styling: sidebar sticky nav, theme cards preview, language selector, quality options, toggle switches, drag-sort list, notif block, data summary, danger zone, confirm modal, light theme overrides, responsive mobile
+- ✅ `assets/js/pages/settings.js` — Logic lengkap:
+  - **Tampilan** — Toggle Tema (Gelap/Terang/Sistem dengan preview visual), pilih Bahasa (ID/EN) dengan simpan real-time
+  - **Pemutaran** — Pilih kualitas video (Auto/4K/1080p/720p/480p), 4 toggle opsi putar (autoplay, hover preview, simpan posisi, mute default)
+  - **Preferensi Konten** — Genre favorit multi-select chip (max 5, counter dinamis, warna per genre), 3 toggle filter konten, drag-sort visibilitas seksi dashboard
+  - **Notifikasi** — Deteksi & request izin notifikasi browser (default/granted/denied state), 3 toggle notif browser, 2 toggle toast in-app
+  - **Privasi & Data** — 2 toggle riwayat, ringkasan data tersimpan (film ditonton/watchlist/ulasan), ekspor data JSON, hapus riwayat, kosongkan watchlist
+  - **Akun** — Tampilkan info user (avatar/nama/email/tanggal bergabung), link ke profil & ganti password, reset settings, hapus akun (dengan cascade localStorage cleanup)
+  - **Confirm Modal** — Dialog konfirmasi untuk semua aksi destruktif
+  - **Auto-save** — Setiap perubahan tersimpan otomatis dengan badge "Tersimpan"
+  - **Hash Navigation** — Buka seksi tertentu via URL hash (settings.html#notifications)
+  - **Drag & Drop** — Urutan seksi dashboard bisa diubah via drag
+- ✅ README + badge diperbarui ke v0.6.0
+
 ### v0.5.0 — Phase 2.1: Halaman Profil & Ganti Password
 
 **Pembagian Phase 2:**
 - **Phase 2.1** — Halaman Profil + Avatar Upload + Ganti Password ✅
-- **Phase 2.2** — Halaman Settings (tema, bahasa, preferensi) — 🔲 Pending
+- **Phase 2.2** — Halaman Settings (tema, bahasa, preferensi) — ✅ Selesai
 - **Phase 2.3** — Skeleton Loading, Animasi Transisi, Polish — 🔲 Pending
 
 **Yang dikerjakan di Phase 2.1:**

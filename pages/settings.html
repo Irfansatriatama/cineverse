@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pengaturan aplikasi CineVerse — sesuaikan tema, bahasa, dan preferensi konten." />
+  <title>Pengaturan — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages/settings.css" />
+</head>
+
+<body>
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <span class="loader-logo">CINEVERSE</span>
+  </div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="../index.html" class="navbar__logo" aria-label="CineVerse Home">
+        <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+      </a>
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="../index.html" class="navbar__nav-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link">Genre</a>
+        <a href="news.html" class="navbar__nav-link">Berita</a>
+      </nav>
+      <div class="navbar__actions" id="navbar-actions"></div>
+      <button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="../index.html" class="navbar__nav-link">Beranda</a>
+      <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
+      <a href="genre.html" class="navbar__nav-link">Genre</a>
+      <a href="news.html" class="navbar__nav-link">Berita</a>
+    </nav>
+  </header>
+
+  <!-- ─── MAIN ─── -->
+  <main class="main-content settings-page" id="main-content">
+    <div class="container">
+
+      <!-- ─── PAGE HEADER ─── -->
+      <div class="settings-header reveal">
+        <div class="settings-header__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <div class="settings-header__text">
+          <h1 class="settings-header__title">Pengaturan</h1>
+          <p class="settings-header__subtitle">Sesuaikan pengalaman menonton filmmu</p>
+        </div>
+        <div class="settings-header__save">
+          <span class="settings-saved-badge" id="saved-badge" aria-live="polite">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Tersimpan
+          </span>
+        </div>
+      </div>
+
+      <!-- ─── SETTINGS LAYOUT ─── -->
+      <div class="settings-layout">
+
+        <!-- ─── SIDEBAR NAV ─── -->
+        <aside class="settings-sidebar reveal">
+          <nav class="settings-nav" aria-label="Settings navigation">
+            <button class="settings-nav__item active" data-section="appearance">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+              Tampilan
+            </button>
+            <button class="settings-nav__item" data-section="playback">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Pemutaran
+            </button>
+            <button class="settings-nav__item" data-section="content">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>
+              Preferensi Konten
+            </button>
+            <button class="settings-nav__item" data-section="notifications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              Notifikasi
+            </button>
+            <button class="settings-nav__item" data-section="privacy">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Privasi & Data
+            </button>
+            <button class="settings-nav__item" data-section="account">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Akun
+            </button>
+          </nav>
+        </aside>
+
+        <!-- ─── SETTINGS CONTENT ─── -->
+        <div class="settings-content">
+
+          <!-- ══════════════════════════════════════
+               SECTION: TAMPILAN
+          ══════════════════════════════════════ -->
+          <section class="settings-section active reveal" id="section-appearance" aria-labelledby="appearance-heading">
+
+            <!-- TEMA -->
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title" id="appearance-heading">Tema Aplikasi</h2>
+                <p class="settings-card__desc">Pilih tampilan visual yang nyaman untuk mata kamu</p>
+              </div>
+              <div class="theme-options" role="radiogroup" aria-labelledby="appearance-heading">
+                <label class="theme-option" data-theme-value="dark">
+                  <input type="radio" name="theme" value="dark" class="sr-only" />
+                  <div class="theme-option__preview theme-option__preview--dark">
+                    <div class="theme-preview-bar"></div>
+                    <div class="theme-preview-cards">
+                      <div class="theme-preview-card"></div>
+                      <div class="theme-preview-card"></div>
+                      <div class="theme-preview-card"></div>
+                    </div>
+                  </div>
+                  <div class="theme-option__info">
+                    <span class="theme-option__name">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                      Gelap
+                    </span>
+                    <span class="theme-option__badge theme-option__badge--recommended">Disarankan</span>
+                  </div>
+                  <div class="theme-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+
+                <label class="theme-option" data-theme-value="light">
+                  <input type="radio" name="theme" value="light" class="sr-only" />
+                  <div class="theme-option__preview theme-option__preview--light">
+                    <div class="theme-preview-bar"></div>
+                    <div class="theme-preview-cards">
+                      <div class="theme-preview-card"></div>
+                      <div class="theme-preview-card"></div>
+                      <div class="theme-preview-card"></div>
+                    </div>
+                  </div>
+                  <div class="theme-option__info">
+                    <span class="theme-option__name">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                      Terang
+                    </span>
+                  </div>
+                  <div class="theme-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+
+                <label class="theme-option" data-theme-value="system">
+                  <input type="radio" name="theme" value="system" class="sr-only" />
+                  <div class="theme-option__preview theme-option__preview--system">
+                    <div class="theme-preview-bar"></div>
+                    <div class="theme-preview-cards">
+                      <div class="theme-preview-card"></div>
+                      <div class="theme-preview-card"></div>
+                      <div class="theme-preview-card"></div>
+                    </div>
+                  </div>
+                  <div class="theme-option__info">
+                    <span class="theme-option__name">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                      Ikuti Sistem
+                    </span>
+                  </div>
+                  <div class="theme-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- BAHASA -->
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title">Bahasa</h2>
+                <p class="settings-card__desc">Pilih bahasa antarmuka aplikasi</p>
+              </div>
+              <div class="language-options" role="radiogroup" aria-label="Pilih bahasa">
+                <label class="language-option" data-lang-value="id">
+                  <input type="radio" name="language" value="id" class="sr-only" />
+                  <span class="language-option__flag">🇮🇩</span>
+                  <div class="language-option__info">
+                    <span class="language-option__name">Bahasa Indonesia</span>
+                    <span class="language-option__native">Indonesia</span>
+                  </div>
+                  <div class="language-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+                <label class="language-option" data-lang-value="en">
+                  <input type="radio" name="language" value="en" class="sr-only" />
+                  <span class="language-option__flag">🇺🇸</span>
+                  <div class="language-option__info">
+                    <span class="language-option__name">English</span>
+                    <span class="language-option__native">English (US)</span>
+                  </div>
+                  <div class="language-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+              </div>
+              <p class="settings-note">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Dukungan multi-bahasa penuh akan hadir di Phase 5.
+              </p>
+            </div>
+
+          </section>
+
+          <!-- ══════════════════════════════════════
+               SECTION: PEMUTARAN
+          ══════════════════════════════════════ -->
+          <section class="settings-section reveal" id="section-playback" aria-labelledby="playback-heading">
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title" id="playback-heading">Kualitas Video</h2>
+                <p class="settings-card__desc">Atur kualitas pemutaran video secara default</p>
+              </div>
+              <div class="quality-options" role="radiogroup" aria-label="Pilih kualitas video">
+                <label class="quality-option" data-quality-value="auto">
+                  <input type="radio" name="quality" value="auto" class="sr-only" />
+                  <div class="quality-option__main">
+                    <span class="quality-option__label">
+                      <span class="quality-badge quality-badge--auto">AUTO</span>
+                      Otomatis
+                    </span>
+                    <span class="quality-option__desc">Sesuaikan kualitas berdasarkan kecepatan internet</span>
+                  </div>
+                  <div class="quality-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+                <label class="quality-option" data-quality-value="4k">
+                  <input type="radio" name="quality" value="4k" class="sr-only" />
+                  <div class="quality-option__main">
+                    <span class="quality-option__label">
+                      <span class="quality-badge quality-badge--4k">4K</span>
+                      Ultra HD
+                    </span>
+                    <span class="quality-option__desc">2160p • Membutuhkan koneksi cepat (≥25 Mbps)</span>
+                  </div>
+                  <div class="quality-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+                <label class="quality-option" data-quality-value="1080p">
+                  <input type="radio" name="quality" value="1080p" class="sr-only" />
+                  <div class="quality-option__main">
+                    <span class="quality-option__label">
+                      <span class="quality-badge quality-badge--hd">HD</span>
+                      Full HD
+                    </span>
+                    <span class="quality-option__desc">1080p • Direkomendasikan untuk jaringan normal</span>
+                  </div>
+                  <div class="quality-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+                <label class="quality-option" data-quality-value="720p">
+                  <input type="radio" name="quality" value="720p" class="sr-only" />
+                  <div class="quality-option__main">
+                    <span class="quality-option__label">
+                      <span class="quality-badge quality-badge--sd">SD</span>
+                      HD
+                    </span>
+                    <span class="quality-option__desc">720p • Hemat data, cocok untuk mobile</span>
+                  </div>
+                  <div class="quality-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+                <label class="quality-option" data-quality-value="480p">
+                  <input type="radio" name="quality" value="480p" class="sr-only" />
+                  <div class="quality-option__main">
+                    <span class="quality-option__label">
+                      <span class="quality-badge quality-badge--low">LOW</span>
+                      Standar
+                    </span>
+                    <span class="quality-option__desc">480p • Paling hemat data</span>
+                  </div>
+                  <div class="quality-option__check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title">Opsi Pemutaran</h2>
+                <p class="settings-card__desc">Konfigurasi perilaku pemutaran video</p>
+              </div>
+              <div class="settings-toggles">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Putar Otomatis</span>
+                    <span class="settings-toggle-row__desc">Lanjutkan film berikutnya secara otomatis</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-autoplay" role="switch" aria-checked="true" aria-label="Putar otomatis">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Preview saat Hover</span>
+                    <span class="settings-toggle-row__desc">Tampilkan cuplikan film saat kursor berada di poster</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-hover-preview" role="switch" aria-checked="true" aria-label="Preview hover">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Simpan Posisi Menonton</span>
+                    <span class="settings-toggle-row__desc">Lanjutkan dari titik terakhir saat kamu berhenti</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-save-progress" role="switch" aria-checked="true" aria-label="Simpan posisi">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Suara Dimatikan (Mute Default)</span>
+                    <span class="settings-toggle-row__desc">Mulai pemutaran dalam kondisi senyap secara default</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-mute-default" role="switch" aria-checked="false" aria-label="Mute default">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ══════════════════════════════════════
+               SECTION: PREFERENSI KONTEN
+          ══════════════════════════════════════ -->
+          <section class="settings-section reveal" id="section-content" aria-labelledby="content-heading">
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title" id="content-heading">Genre Favorit</h2>
+                <p class="settings-card__desc">Pilih genre film yang kamu sukai untuk rekomendasi yang lebih personal <span class="settings-counter" id="genre-counter">0/5 dipilih</span></p>
+              </div>
+              <div class="genre-grid" id="genre-grid">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title">Filter Konten</h2>
+                <p class="settings-card__desc">Atur jenis konten yang ingin ditampilkan</p>
+              </div>
+              <div class="settings-toggles">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Tampilkan Film Dewasa</span>
+                    <span class="settings-toggle-row__desc">Konten berperingkat 17+ atau R-rated</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-mature-content" role="switch" aria-checked="false" aria-label="Konten dewasa">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Tampilkan Film Internasional</span>
+                    <span class="settings-toggle-row__desc">Film dari luar Indonesia dengan teks terjemahan</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-international" role="switch" aria-checked="true" aria-label="Film internasional">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Prioritaskan Film Indonesia</span>
+                    <span class="settings-toggle-row__desc">Tampilkan film lokal lebih dulu di rekomendasi</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-local-first" role="switch" aria-checked="false" aria-label="Film Indonesia prioritas">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title">Tampilan Dashboard</h2>
+                <p class="settings-card__desc">Sesuaikan bagian yang muncul di halaman utama kamu</p>
+              </div>
+              <div class="section-visibility-list" id="section-visibility-list">
+                <div class="section-vis-item" draggable="true" data-section-id="hero">
+                  <div class="section-vis-item__drag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                  </div>
+                  <span class="section-vis-item__name">🎬 Hero / Spotlight</span>
+                  <button class="toggle-switch toggle-switch--sm" data-vis-section="hero" role="switch" aria-checked="true">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="section-vis-item" draggable="true" data-section-id="trending">
+                  <div class="section-vis-item__drag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                  </div>
+                  <span class="section-vis-item__name">🔥 Trending</span>
+                  <button class="toggle-switch toggle-switch--sm" data-vis-section="trending" role="switch" aria-checked="true">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="section-vis-item" draggable="true" data-section-id="top10">
+                  <div class="section-vis-item__drag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                  </div>
+                  <span class="section-vis-item__name">🏆 Top 10</span>
+                  <button class="toggle-switch toggle-switch--sm" data-vis-section="top10" role="switch" aria-checked="true">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="section-vis-item" draggable="true" data-section-id="continue">
+                  <div class="section-vis-item__drag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                  </div>
+                  <span class="section-vis-item__name">▶️ Lanjut Nonton</span>
+                  <button class="toggle-switch toggle-switch--sm" data-vis-section="continue" role="switch" aria-checked="true">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="section-vis-item" draggable="true" data-section-id="recommended">
+                  <div class="section-vis-item__drag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                  </div>
+                  <span class="section-vis-item__name">⭐ Rekomendasi</span>
+                  <button class="toggle-switch toggle-switch--sm" data-vis-section="recommended" role="switch" aria-checked="true">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ══════════════════════════════════════
+               SECTION: NOTIFIKASI
+          ══════════════════════════════════════ -->
+          <section class="settings-section reveal" id="section-notifications" aria-labelledby="notif-heading">
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title" id="notif-heading">Notifikasi Browser</h2>
+                <p class="settings-card__desc">Izinkan CineVerse mengirim notifikasi ke browser kamu</p>
+              </div>
+
+              <div class="notif-permission-block" id="notif-permission-block">
+                <!-- Status Permission — diisi JS -->
+              </div>
+
+              <div class="settings-toggles" id="notif-settings-toggles">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Film Baru</span>
+                    <span class="settings-toggle-row__desc">Notifikasi saat film baru ditambahkan ke platform</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-notif-new-movie" role="switch" aria-checked="true" aria-label="Notifikasi film baru">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Reminder Watchlist</span>
+                    <span class="settings-toggle-row__desc">Pengingat film di daftar tontonan yang belum ditonton</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-notif-watchlist" role="switch" aria-checked="false" aria-label="Reminder watchlist">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Berita & Ulasan</span>
+                    <span class="settings-toggle-row__desc">Artikel dan ulasan film terbaru</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-notif-news" role="switch" aria-checked="false" aria-label="Notifikasi berita">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title">Notifikasi Dalam Aplikasi</h2>
+                <p class="settings-card__desc">Pesan toast dan alert di dalam halaman</p>
+              </div>
+              <div class="settings-toggles">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Konfirmasi Watchlist</span>
+                    <span class="settings-toggle-row__desc">Tampilkan pesan saat film ditambah/dihapus dari watchlist</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-toast-watchlist" role="switch" aria-checked="true" aria-label="Toast watchlist">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Konfirmasi Aksi</span>
+                    <span class="settings-toggle-row__desc">Tampilkan pesan konfirmasi untuk aksi penting</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-toast-actions" role="switch" aria-checked="true" aria-label="Toast konfirmasi">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ══════════════════════════════════════
+               SECTION: PRIVASI & DATA
+          ══════════════════════════════════════ -->
+          <section class="settings-section reveal" id="section-privacy" aria-labelledby="privacy-heading">
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title" id="privacy-heading">Riwayat & Aktivitas</h2>
+                <p class="settings-card__desc">Kelola data aktivitas menonton kamu</p>
+              </div>
+              <div class="settings-toggles">
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Simpan Riwayat Tontonan</span>
+                    <span class="settings-toggle-row__desc">Catat film yang sudah kamu tonton</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-save-history" role="switch" aria-checked="true" aria-label="Simpan riwayat">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+                <div class="settings-toggle-row">
+                  <div class="settings-toggle-row__info">
+                    <span class="settings-toggle-row__label">Gunakan Riwayat untuk Rekomendasi</span>
+                    <span class="settings-toggle-row__desc">Analisis tontonan untuk rekomendasi yang lebih baik</span>
+                  </div>
+                  <button class="toggle-switch" id="toggle-history-recommend" role="switch" aria-checked="true" aria-label="Riwayat untuk rekomendasi">
+                    <span class="toggle-switch__thumb"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title">Kelola Data Tersimpan</h2>
+                <p class="settings-card__desc">Lihat dan hapus data yang tersimpan di perangkat kamu</p>
+              </div>
+
+              <div class="data-summary" id="data-summary">
+                <!-- Populated by JS -->
+              </div>
+
+              <div class="privacy-actions">
+                <button class="btn btn--ghost btn--sm" id="btn-export-data">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Ekspor Data Saya
+                </button>
+                <button class="btn btn--ghost btn--sm btn--danger" id="btn-clear-history">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                  Hapus Riwayat
+                </button>
+                <button class="btn btn--ghost btn--sm btn--danger" id="btn-clear-watchlist">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  Kosongkan Watchlist
+                </button>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ══════════════════════════════════════
+               SECTION: AKUN
+          ══════════════════════════════════════ -->
+          <section class="settings-section reveal" id="section-account" aria-labelledby="account-heading">
+
+            <div class="settings-card">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title" id="account-heading">Informasi Akun</h2>
+                <p class="settings-card__desc">Detail akun CineVerse kamu saat ini</p>
+              </div>
+              <div class="account-info" id="account-info">
+                <!-- Populated by JS -->
+              </div>
+              <div class="account-links">
+                <a href="profile.html" class="btn btn--ghost btn--sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Edit Profil
+                </a>
+                <a href="profile.html#change-password" class="btn btn--ghost btn--sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  Ganti Password
+                </a>
+              </div>
+            </div>
+
+            <div class="settings-card settings-card--danger">
+              <div class="settings-card__header">
+                <h2 class="settings-card__title settings-card__title--danger">Zona Berbahaya</h2>
+                <p class="settings-card__desc">Tindakan berikut tidak dapat dibatalkan. Lanjutkan dengan hati-hati.</p>
+              </div>
+              <div class="danger-actions">
+                <div class="danger-action-row">
+                  <div class="danger-action-row__info">
+                    <span class="danger-action-row__label">Reset Semua Pengaturan</span>
+                    <span class="danger-action-row__desc">Kembalikan semua pengaturan ke kondisi awal</span>
+                  </div>
+                  <button class="btn btn--outline-danger btn--sm" id="btn-reset-settings">Reset</button>
+                </div>
+                <div class="danger-action-row">
+                  <div class="danger-action-row__info">
+                    <span class="danger-action-row__label">Hapus Akun</span>
+                    <span class="danger-action-row__desc">Hapus akun dan semua data secara permanen</span>
+                  </div>
+                  <button class="btn btn--outline-danger btn--sm" id="btn-delete-account">Hapus Akun</button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+        <!-- /.settings-content -->
+
+      </div>
+      <!-- /.settings-layout -->
+
+    </div>
+    <!-- /.container -->
+  </main>
+
+  <!-- ─── CONFIRM MODAL ─── -->
+  <div class="modal-overlay" id="confirm-modal" aria-modal="true" role="dialog" aria-labelledby="confirm-modal-title" hidden>
+    <div class="modal-box">
+      <div class="modal-box__icon" id="confirm-modal-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3 class="modal-box__title" id="confirm-modal-title">Konfirmasi</h3>
+      <p class="modal-box__desc" id="confirm-modal-desc">Apakah kamu yakin?</p>
+      <div class="modal-box__actions">
+        <button class="btn btn--ghost btn--sm" id="confirm-cancel-btn">Batal</button>
+        <button class="btn btn--danger btn--sm" id="confirm-ok-btn">Ya, Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST CONTAINER ─── -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="navbar__logo-text" style="font-size:1.1rem;">CINE<span>VERSE</span></span>
+        <p class="footer__tagline">Dunia Film, Satu Layar.</p>
+      </div>
+      <p class="footer__copy">&copy; 2025 CineVerse. Dibuat untuk portofolio.</p>
+    </div>
+  </footer>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="../assets/js/utils/hash.js"></script>
+  <script src="../assets/js/utils/helpers.js"></script>
+  <script src="../assets/js/utils/validators.js"></script>
+  <script src="../assets/js/core/storage.js"></script>
+  <script src="../assets/js/core/router.js"></script>
+  <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/pages/settings.js"></script>
+
+</body>
+</html>
