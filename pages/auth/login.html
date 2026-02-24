@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Masuk ke akun CineVerse kamu." />
+  <title>Masuk — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/animations.css" />
+  <link rel="stylesheet" href="../../assets/css/pages/auth.css" />
+</head>
+
+<body>
+  <!-- Mobile Navbar -->
+  <header class="auth-navbar" id="auth-navbar">
+    <a href="../../index.html" class="navbar__logo" aria-label="CineVerse Home">
+      <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+    </a>
+  </header>
+
+  <div class="auth-page">
+    <!-- ─── LEFT: VISUAL PANEL ─── -->
+    <aside class="auth-visual" aria-hidden="true">
+      <div class="auth-visual__bg"></div>
+      <div class="auth-visual__grid"></div>
+
+      <!-- Floating Posters (populated by JS) -->
+      <div class="auth-visual__posters" id="auth-posters"></div>
+
+      <div class="auth-visual__vignette"></div>
+
+      <div class="auth-visual__content">
+        <a href="../../index.html" class="auth-visual__logo">CINE<span>VERSE</span></a>
+
+        <p class="auth-visual__quote">
+          Setiap film adalah pintu menuju dunia yang belum pernah kamu masuki.
+        </p>
+
+        <span class="auth-visual__tagline">— Platform Film Terlengkap</span>
+
+        <div class="auth-visual__stats">
+          <div class="auth-stat">
+            <span class="auth-stat__number">100+</span>
+            <span class="auth-stat__label">Film</span>
+          </div>
+          <div class="auth-stat">
+            <span class="auth-stat__number">14</span>
+            <span class="auth-stat__label">Genre</span>
+          </div>
+          <div class="auth-stat">
+            <span class="auth-stat__number">100%</span>
+            <span class="auth-stat__label">Gratis</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ─── RIGHT: FORM PANEL ─── -->
+    <main class="auth-form-panel" role="main">
+      <div class="auth-form-panel__inner">
+
+        <a href="../../index.html" class="auth-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Kembali ke Beranda
+        </a>
+
+        <header class="auth-header">
+          <span class="auth-header__eyebrow">Selamat Datang Kembali</span>
+          <h1 class="auth-header__title">Masuk ke Akun</h1>
+          <p class="auth-header__sub">Lanjutkan perjalanan film favoritmu dari mana saja.</p>
+        </header>
+
+        <!-- Alert area -->
+        <div id="auth-alert" role="alert" style="display:none;" class="mb-4"></div>
+
+        <form class="auth-form" id="login-form" novalidate>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">
+              Email
+              <span class="required-dot" aria-hidden="true"></span>
+            </label>
+            <div class="form-input-wrapper">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="nama@email.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+              />
+              <span class="form-input-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="password">
+              Password
+              <span class="required-dot" aria-hidden="true"></span>
+            </label>
+            <div class="form-input-wrapper form-input-wrapper--with-toggle">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                placeholder="Masukkan password"
+                autocomplete="current-password"
+                required
+                aria-required="true"
+              />
+              <span class="form-input-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </span>
+              <button type="button" class="form-input-toggle" id="toggle-password" aria-label="Tampilkan password">
+                <svg id="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Forgot Password -->
+          <div class="auth-forgot">
+            <a href="#" id="forgot-link">Lupa password?</a>
+          </div>
+
+          <!-- Remember Me -->
+          <label class="form-check">
+            <input type="checkbox" class="form-check__input" id="remember-me" name="remember" />
+            <span class="form-check__label">Ingat saya di perangkat ini</span>
+          </label>
+
+          <!-- Submit -->
+          <button type="submit" class="auth-submit" id="submit-btn">
+            <span class="btn-text">Masuk Sekarang</span>
+            <span class="btn-spinner" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </span>
+          </button>
+
+        </form>
+
+        <!-- Demo Account -->
+        <div class="auth-demo">
+          <div class="auth-demo__label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            Akun Demo
+          </div>
+          <div class="auth-demo__creds">
+            <span>Email: demo@cineverse.id</span>
+            <span>Password: Demo@1234</span>
+          </div>
+          <button class="auth-demo__fill" id="fill-demo">Isi Otomatis</button>
+        </div>
+
+        <!-- Switch to Register -->
+        <p class="auth-switch">
+          Belum punya akun?
+          <a href="register.html">Daftar Gratis</a>
+        </p>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast-container" role="alert" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/utils/helpers.js"></script>
+  <script src="../../assets/js/utils/hash.js"></script>
+  <script src="../../assets/js/utils/validators.js"></script>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/router.js"></script>
+  <script src="../../assets/js/core/auth.js"></script>
+  <script src="../../assets/js/components/toast.js"></script>
+  <script src="../../assets/js/pages/auth.js"></script>
+
+</body>
+</html>

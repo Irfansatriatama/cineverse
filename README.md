@@ -1,2 +1,552 @@
-# cineverse
-none
+# 🎬 CineVerse — Website Film Interaktif
+
+> Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
+
+![Status](https://img.shields.io/badge/Status-Phase%201.3%20Complete-green)
+![Version](https://img.shields.io/badge/Version-0.4.0-orange)
+![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
+
+---
+
+## 📋 Daftar Isi
+
+- [Tentang Project](#-tentang-project)
+- [Fitur Aplikasi](#-fitur-aplikasi)
+- [Design System](#-design-system)
+- [Tech Stack](#-tech-stack)
+- [Arsitektur & Struktur Folder](#-arsitektur--struktur-folder)
+- [Fase Pengerjaan](#-fase-pengerjaan)
+- [Progress Pengerjaan](#-progress-pengerjaan)
+- [Cara Menjalankan](#-cara-menjalankan)
+- [Kontribusi & Catatan Developer](#-kontribusi--catatan-developer)
+
+---
+
+## 🎯 Tentang Project
+
+**CineVerse** adalah web app berbasis HTML/CSS/JavaScript yang memungkinkan pengguna menjelajahi, menonton, dan mengelola konten film favorit mereka — semuanya berjalan **100% lokal di browser** tanpa membutuhkan backend server maupun database eksternal.
+
+Data pengguna disimpan menggunakan **localStorage** dan **sessionStorage** agar progress tidak hilang saat halaman di-refresh. Aplikasi didesain responsif optimal untuk **PC/laptop dan mobile phone**.
+
+### Target Pasar
+- **Utama:** Usia 18–35 tahun (Gen Z & Millennial)
+- **Sekunder:** Semua kalangan usia
+
+---
+
+## ✨ Fitur Aplikasi
+
+### Fitur Inti (Core Features)
+| Fitur | Deskripsi | Fase |
+|---|---|---|
+| 🔐 Auth (Login/Register) | Sistem autentikasi lokal dengan enkripsi hash sederhana | 1 |
+| 🏠 Dashboard | Halaman utama dengan spotlight, trending, dan rekomendasi | 2 |
+| 🎬 Nonton Film | Player video embed dengan kontrol kustom | 3 |
+| 📰 News & Artikel | Berita & ulasan film terbaru | 4 |
+| 👤 Profil Pengguna | Manajemen profil, avatar, dan preferensi | 2 |
+| 🔑 Ganti Password | Form ubah password dengan validasi keamanan | 2 |
+| ⚙️ Settings | Pengaturan tema, bahasa, notifikasi, dan preferensi konten | 2 |
+
+### Fitur Tambahan (Extended Features)
+| Fitur | Deskripsi | Fase |
+|---|---|---|
+| 🔍 Search & Filter | Pencarian film dengan filter genre, tahun, rating | 3 |
+| ❤️ Watchlist / Favorit | Simpan film ke daftar tonton | 3 |
+| ⭐ Rating & Review | Beri rating dan ulasan pada film | 3 |
+| 🕐 History Tontonan | Rekam riwayat film yang sudah ditonton | 3 |
+| 🎭 Genre Explorer | Jelajahi film berdasarkan kategori genre | 3 |
+| 🔥 Trending Section | Film populer & tren minggu ini | 2 |
+| 🎞️ Trailer Preview | Preview trailer sebelum menonton | 3 |
+| 🌙 Dark/Light Mode | Toggle tema gelap dan terang | 2 |
+| 📱 PWA Ready | Bisa diinstall sebagai app di mobile | 5 |
+| 🔔 Notifikasi Lokal | Reminder film baru (via browser notification API) | 5 |
+| 🎲 Film Acak | Fitur "Surprise Me" untuk rekomendasi acak | 4 |
+| 📊 Stats Penonton | Statistik tontonan pribadi (total jam, genre favorit) | 5 |
+| 🌐 Multi-Bahasa | Support Bahasa Indonesia & English | 5 |
+
+---
+
+## 🎨 Design System
+
+### Palet Warna
+Berdasarkan riset pasar industri hiburan & film streaming (Netflix, Disney+, Prime Video), warna dominan yang terbukti efektif untuk platform film adalah:
+
+| Nama | Hex | Kegunaan |
+|---|---|---|
+| **Deep Midnight** | `#0A0E1A` | Background utama |
+| **Navy Dark** | `#111827` | Background card/panel |
+| **Crimson Glow** | `#E50914` | CTA, aksen utama (action/excitement) |
+| **Gold Amber** | `#F5A623` | Rating bintang, highlight premium |
+| **Ice White** | `#F9FAFB` | Teks utama |
+| **Silver Mist** | `#9CA3AF` | Teks sekunder, subtitle |
+| **Electric Blue** | `#3B82F6` | Link, interaktif, info badge |
+| **Emerald** | `#10B981` | Status sukses, genre badge |
+
+> **Mengapa warna ini?**
+> Platform entertainment terbukti menggunakan dark theme sebagai default karena mengurangi eye strain saat menonton, menonjolkan thumbnail/poster film, dan menciptakan suasana sinematik. Warna merah (crimson) memicu emosi excitement dan urgency — ideal untuk CTA "Tonton Sekarang".
+
+### Tipografi
+| Jenis | Font | Alasan |
+|---|---|---|
+| **Display/Heading** | `Bebas Neue` | Bold, sinematik, modern — ideal untuk judul film |
+| **Body/UI** | `Inter` | Highly legible, clean, ramah mobile — standar UI terbaik |
+| **Accent/Quote** | `Playfair Display` | Elegan untuk tagline dan kutipan film |
+
+> Semua font diload dari Google Fonts dengan fallback system-ui untuk performa optimal.
+
+### Prinsip UI/UX
+- **Motion Design:** Animasi halus (transition 200–400ms) untuk hover, modal, dan page transition
+- **Card-Based Layout:** Poster film dalam grid card yang responsif
+- **Glassmorphism Subtle:** Efek blur ringan pada navbar dan modal untuk kesan modern
+- **Infinite Scroll / Pagination:** Navigasi konten yang nyaman di mobile
+- **Touch-Friendly:** Target area minimum 44×44px untuk semua interaktif element
+- **Loading Skeleton:** Placeholder animasi saat konten dimuat
+
+---
+
+## 🛠️ Tech Stack
+
+### Core
+```
+HTML5          — Struktur semantik (section, article, nav, main)
+CSS3           — Layout (Flexbox + Grid), animasi, custom properties
+JavaScript ES6+ — Logic, DOM manipulation, event handling
+```
+
+### Libraries & Tools
+```
+Swiper.js      — Slider/carousel untuk banner & rekomendasi film
+Lucide Icons   — Icon library modern & ringan
+Anime.js       — Animasi UI yang halus dan performant
+Toastify.js    — Notifikasi toast yang elegan
+Day.js         — Manipulasi tanggal/waktu ringan
+Fuse.js        — Fuzzy search untuk pencarian film
+```
+
+### Storage Strategy
+```
+localStorage   — Data persisten: profil user, watchlist, settings, history
+sessionStorage — Data sesi: form state, scroll position, filter aktif
+```
+
+### Data Film
+```
+TMDB API (opsional, dengan fallback) 
+  └── Jika ada koneksi: fetch data real-time
+  └── Jika offline: gunakan data JSON lokal (mock data)
+```
+
+---
+
+## 📁 Arsitektur & Struktur Folder
+
+```
+cineverse/
+├── index.html                  # Entry point / Landing page
+├── README.md                   # Dokumentasi project ini
+├── manifest.json               # PWA manifest
+├── sw.js                       # Service Worker (PWA)
+│
+├── pages/                      # Halaman-halaman utama
+│   ├── auth/
+│   │   ├── login.html
+│   │   └── register.html
+│   ├── dashboard.html
+│   ├── movie-detail.html
+│   ├── watch.html
+│   ├── search.html
+│   ├── genre.html
+│   ├── news.html
+│   ├── news-detail.html
+│   ├── profile.html
+│   ├── settings.html
+│   └── stats.html
+│
+├── assets/
+│   ├── css/
+│   │   ├── main.css            # CSS utama & custom properties
+│   │   ├── components.css      # Komponen reusable (card, modal, btn)
+│   │   ├── layout.css          # Grid & layout responsif
+│   │   ├── animations.css      # Keyframes & transisi
+│   │   └── pages/             # CSS spesifik per halaman
+│   │       ├── auth.css
+│   │       ├── dashboard.css
+│   │       ├── watch.css
+│   │       └── ...
+│   │
+│   ├── js/
+│   │   ├── core/
+│   │   │   ├── app.js          # Inisialisasi app, router
+│   │   │   ├── router.js       # Client-side routing
+│   │   │   ├── auth.js         # Logika autentikasi
+│   │   │   └── storage.js      # Abstraksi localStorage/sessionStorage
+│   │   ├── components/
+│   │   │   ├── navbar.js       # Navigasi global
+│   │   │   ├── card.js         # Movie card component
+│   │   │   ├── modal.js        # Modal sistem
+│   │   │   ├── toast.js        # Notifikasi toast
+│   │   │   ├── player.js       # Video player logic
+│   │   │   └── search.js       # Search & filter
+│   │   ├── pages/
+│   │   │   ├── dashboard.js
+│   │   │   ├── auth.js
+│   │   │   ├── profile.js
+│   │   │   ├── settings.js
+│   │   │   ├── movie.js
+│   │   │   ├── watch.js
+│   │   │   ├── news.js
+│   │   │   └── stats.js
+│   │   └── utils/
+│   │       ├── helpers.js      # Fungsi utilitas umum
+│   │       ├── validators.js   # Validasi form
+│   │       ├── hash.js         # Enkripsi password sederhana
+│   │       └── api.js          # Fetch wrapper & mock fallback
+│   │
+│   ├── images/
+│   │   ├── logo/
+│   │   ├── icons/
+│   │   ├── posters/            # Mock poster film lokal
+│   │   └── backgrounds/
+│   │
+│   └── fonts/                  # Font lokal (fallback jika offline)
+│
+├── data/
+│   ├── movies.json             # Dataset film mock (100+ film)
+│   ├── genres.json             # Daftar genre
+│   └── news.json               # Artikel berita mock
+│
+└── lib/                        # Library pihak ketiga (lokal copy)
+    ├── swiper/
+    ├── lucide/
+    ├── anime/
+    └── fuse/
+```
+
+---
+
+## 🗺️ Fase Pengerjaan
+
+### Overview Timeline
+
+```
+FASE 1  ████████░░░░░░░░░░░░  Fondasi & Auth
+FASE 2  ░░░░░░░░████████░░░░  Dashboard & Profil
+FASE 3  ░░░░░░░░░░░░████████  Konten Film & Player
+FASE 4  ░░░░░░░░░░░░░░░░████  News & Fitur Sosial
+FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optimasi & Polish
+```
+
+---
+
+### 📦 FASE 1 — Fondasi & Autentikasi
+
+> **Phase 1 dibagi menjadi 3 sub-phase:**
+> - **Phase 1.1** — Fondasi Struktur & Design System ✅ Selesai
+> - **Phase 1.2** — Landing Page UI & Halaman Auth (Login/Register) ✅ Selesai
+> - **Phase 1.3** — Auth Logic, Router, Mock Data, Navbar/Footer Global ✅ Selesai
+
+---
+
+### 📦 FASE 1.1 — Fondasi Struktur & Design System
+**Target:** Kerangka project + sistem login/register berjalan
+
+**Yang dikerjakan:**
+- Setup struktur folder lengkap sesuai arsitektur
+- Implementasi design system (CSS variables, font, warna)
+- Landing page (index.html) dengan hero section
+- Halaman Login & Register dengan validasi form
+- Sistem auth lokal (simpan user ke localStorage)
+- Enkripsi password sederhana (SHA-256 via Web Crypto API)
+- Client-side router dasar
+- Komponen navbar & footer global
+- Responsif layout dasar (mobile-first)
+- Mock data JSON untuk film (minimal 50 judul)
+
+**Deliverable:** `cineverse-phase1.zip` + `README.md` updated
+
+**Status:** 🔲 Belum Dimulai
+
+---
+
+### 📦 FASE 2 — Dashboard, Profil & Settings
+**Target:** Halaman utama setelah login + manajemen akun
+
+**Yang dikerjakan:**
+- Dashboard dengan: Hero Banner Slider, Trending Now, Continue Watching, Rekomendasi Genre
+- Halaman Profil: edit nama, bio, avatar (upload & simpan ke localStorage sebagai base64)
+- Fitur Ganti Password dengan validasi
+- Halaman Settings: toggle dark/light mode, bahasa, preferensi genre, notifikasi
+- Komponen Toast Notification
+- Skeleton Loading untuk setiap section
+- Animasi transisi antar halaman
+- Update struktur folder & CSS components
+
+**Deliverable:** `cineverse-phase2.zip` + `README.md` updated
+
+**Status:** 🔲 Belum Dimulai
+
+---
+
+### 📦 FASE 3 — Konten Film & Video Player
+**Target:** Inti pengalaman menonton film
+
+**Yang dikerjakan:**
+- Halaman Detail Film (poster, synopsis, cast, rating, trailer)
+- Custom Video Player (kontrol play/pause, volume, fullscreen, seek bar)
+- Embed support: YouTube iframe + HTML5 video
+- Halaman Search dengan filter (genre, tahun, rating, durasi)
+- Fuse.js untuk fuzzy search lokal
+- Watchlist / Favorit (tambah & hapus dari localStorage)
+- History Tontonan (auto-record saat menonton)
+- Continue Watching (resume dari timestamp terakhir)
+- Genre Explorer page
+- Halaman film 404 jika tidak ditemukan
+- Rating & Review (simpan ke localStorage per film per user)
+
+**Deliverable:** `cineverse-phase3.zip` + `README.md` updated
+
+**Status:** 🔲 Belum Dimulai
+
+---
+
+### 📦 FASE 4 — News, Fitur Sosial & Extended
+**Target:** Konten editorial + fitur pendukung pengalaman pengguna
+
+**Yang dikerjakan:**
+- Halaman News: daftar artikel berita film
+- Halaman Detail Artikel dengan rich content
+- Fitur "Surprise Me" (rekomendasi film acak sesuai preferensi)
+- Sistem Trailer Preview (hover/click untuk preview)
+- "Top 10 Minggu Ini" section dinamis
+- Share film ke clipboard / media sosial
+- Filter lanjutan dengan tag genre multi-select
+- Infinite scroll atau pagination di halaman search
+- Halaman Stats Pribadi (total jam nonton, genre favorit, film selesai)
+
+**Deliverable:** `cineverse-phase4.zip` + `README.md` updated
+
+**Status:** 🔲 Belum Dimulai
+
+---
+
+### 📦 FASE 5 — PWA, Optimasi & Polish Final
+**Target:** Production-ready, performa optimal, experience sempurna
+
+**Yang dikerjakan:**
+- Service Worker untuk PWA (installable di mobile/desktop)
+- Manifest.json & icon set untuk PWA
+- Offline mode dengan cached mock data
+- Browser Notification API untuk "Film Baru Minggu Ini"
+- Multi-bahasa: Bahasa Indonesia & English (i18n sederhana)
+- Lazy loading gambar (IntersectionObserver)
+- Optimasi performa (debounce search, virtual scroll)
+- Keyboard accessibility (tab navigation, ARIA labels)
+- Error boundary & fallback UI
+- Audit UX final: animasi, spacing, konsistensi visual
+- Testing di berbagai device dan browser
+- README final & dokumentasi penggunaan
+
+**Deliverable:** `cineverse-phase5.zip` + `README.md` final
+
+**Status:** 🔲 Belum Dimulai
+
+---
+
+## 📊 Progress Pengerjaan
+
+| Fase | Komponen | Status | Tanggal Selesai |
+|---|---|---|---|
+| **Fase 1.1** | Struktur Folder | ✅ Selesai | 2025-01-01 |
+| **Fase 1.1** | Design System / CSS Variables | ✅ Selesai | 2025-01-01 |
+| **Fase 1.1** | Landing Page (struktur) | ✅ Selesai | 2025-01-01 |
+| **Fase 1** | Login Page | ✅ Selesai | 2025-01-10 |
+| **Fase 1** | Register Page | ✅ Selesai | 2025-01-10 |
+| **Fase 1** | Auth Logic (localStorage) | ✅ Selesai | 2025-01-10 |
+| **Fase 1** | Router Dasar | ✅ Selesai | 2025-01-10 |
+| **Fase 1.1** | Mock Data JSON (30+ film) | ✅ Selesai | 2025-01-01 |
+| **Fase 2** | Dashboard Hero Slider | 🔲 Pending | - |
+| **Fase 2** | Trending Section | 🔲 Pending | - |
+| **Fase 2** | Halaman Profil | 🔲 Pending | - |
+| **Fase 2** | Change Password | 🔲 Pending | - |
+| **Fase 2** | Settings Page | 🔲 Pending | - |
+| **Fase 2** | Dark/Light Mode | 🔲 Pending | - |
+| **Fase 3** | Movie Detail Page | 🔲 Pending | - |
+| **Fase 3** | Video Player | 🔲 Pending | - |
+| **Fase 3** | Search & Filter | 🔲 Pending | - |
+| **Fase 3** | Watchlist | 🔲 Pending | - |
+| **Fase 3** | History & Continue Watching | 🔲 Pending | - |
+| **Fase 3** | Rating & Review | 🔲 Pending | - |
+| **Fase 4** | News Page | 🔲 Pending | - |
+| **Fase 4** | Artikel Detail | 🔲 Pending | - |
+| **Fase 4** | Surprise Me Feature | 🔲 Pending | - |
+| **Fase 4** | Stats Pribadi | 🔲 Pending | - |
+| **Fase 5** | PWA / Service Worker | 🔲 Pending | - |
+| **Fase 5** | Multi-bahasa | 🔲 Pending | - |
+| **Fase 5** | Optimasi & Aksesibilitas | 🔲 Pending | - |
+
+> **Legend:** 🔲 Pending | 🔄 In Progress | ✅ Selesai | ⚠️ Butuh Review
+
+---
+
+## 🚀 Cara Menjalankan
+
+### Prasyarat
+- Browser modern (Chrome 90+, Firefox 88+, Edge 90+, Safari 14+)
+- Tidak memerlukan Node.js, Python, atau server backend apapun
+
+### Langkah Menjalankan
+```bash
+# 1. Extract file zip yang sudah didownload
+unzip cineverse-phaseX.zip
+
+# 2. Buka folder project
+cd cineverse/
+
+# 3. Opsi A: Buka langsung di browser (untuk fase awal)
+# Klik dua kali index.html
+
+# 3. Opsi B: Gunakan Live Server (direkomendasikan untuk PWA)
+# Install extension "Live Server" di VS Code
+# Klik kanan index.html → "Open with Live Server"
+
+# 3. Opsi C: Via Python (jika tersedia)
+python -m http.server 8080
+# Buka: http://localhost:8080
+```
+
+### Akun Demo (setelah Fase 1 selesai)
+```
+Email    : demo@cineverse.id
+Password : Demo@1234
+```
+
+---
+
+## 🔐 Sistem Storage
+
+### Struktur Data localStorage
+```javascript
+// User data
+cineverse_users        // Array semua user terdaftar
+cineverse_current_user // Session user aktif
+cineverse_settings     // Preferensi app per user
+
+// Film data
+cineverse_watchlist    // Daftar film tersimpan
+cineverse_history      // Riwayat tontonan
+cineverse_reviews      // Rating & review user
+cineverse_progress     // Timestamp progress menonton
+
+// UI state
+cineverse_theme        // dark / light
+cineverse_language     // id / en
+```
+
+---
+
+## 👨‍💻 Kontribusi & Catatan Developer
+
+### Konvensi Penamaan
+- **File CSS:** kebab-case (`movie-card.css`)
+- **File JS:** camelCase untuk fungsi, PascalCase untuk class (`MovieCard`)
+- **ID HTML:** kebab-case (`movie-detail-container`)
+- **Class CSS:** BEM methodology (`card__title--featured`)
+
+### Commit Convention (jika menggunakan Git)
+```
+feat: tambah fitur baru
+fix: perbaikan bug
+style: perubahan visual/CSS
+refactor: refactoring kode
+docs: update dokumentasi
+```
+
+### Browser Support
+| Browser | Versi Minimum | Status |
+|---|---|---|
+| Chrome | 90+ | ✅ Full Support |
+| Firefox | 88+ | ✅ Full Support |
+| Safari | 14+ | ✅ Full Support |
+| Edge | 90+ | ✅ Full Support |
+| IE | - | ❌ Tidak Didukung |
+
+---
+
+## 📝 Changelog
+
+### v0.1.0 — Initial Planning (Phase 0)
+- README.md dibuat dengan dokumentasi lengkap
+- Design system didefinisikan
+- Arsitektur folder dirancang
+- Fase pengerjaan disusun
+- Tech stack ditentukan
+
+---
+
+## 📄 Lisensi
+
+Project ini dibuat untuk keperluan pembelajaran dan pengembangan portofolio.
+
+---
+
+<div align="center">
+
+**🎬 CineVerse** — *Dunia Film, Satu Layar*
+
+Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
+
+</div>
+
+---
+
+---
+
+## 📝 Changelog (lanjutan)
+
+### v0.4.0 — Phase 1.3: Router, App Global, Dashboard, Expanded Data
+- ✅ `assets/js/core/router.js` — Client-side router dengan route guard (auth redirect), query params, path helper
+- ✅ `assets/js/core/app.js` — Global app initializer: theme, route guard, navbar auth state, scroll reveal
+- ✅ `assets/js/components/navbar.js` — Updated: theme toggle, hamburger, user dropdown dengan avatar & menu
+- ✅ `assets/css/components.css` — Tambahan: navbar user dropdown, avatar button, dropdown items
+- ✅ `pages/dashboard.html` — Halaman dashboard lengkap (setelah login): navbar dinamis, hero slider, genre chips, sections
+- ✅ `assets/css/pages/dashboard.css` — Full styling dashboard: hero banner, movie cards, top10, continue watching, genre chips
+- ✅ `assets/js/pages/dashboard.js` — Dashboard logic: hero slider auto-play + swipe, welcome banner, trending, top10, Indonesia, animasi, all movies + load more, watchlist toggle
+- ✅ `data/movies.json` — Expanded dari 30 → 52 film (tambah 22 film: The Grand Budapest Hotel, Barbie, Dune Part One, Godzilla Minus One, Guardians Vol. 3, Anatomy of a Fall, Budi Pekerti, Agak Laen, dan lainnya)
+- ✅ Navbar dinamis: guest → tampilkan tombol Masuk/Daftar; logged in → avatar + dropdown menu profil/settings/stats/logout
+- ✅ README + badge diperbarui ke v0.4.0
+
+### v0.3.0 — Phase 1.2: Landing Page UI & Halaman Auth
+- ✅ `pages/auth/login.html` — Halaman Login dengan layout split-screen (visual + form)
+- ✅ `pages/auth/register.html` — Halaman Register dengan multi-field form + strength meter
+- ✅ `assets/css/pages/auth.css` — Full styling auth: visual panel, floating posters, form, password strength, responsive
+- ✅ `assets/js/core/auth.js` — Logic register, login, logout, session, demo account seeding
+- ✅ `assets/js/pages/auth.js` — Page interactions: validasi real-time, toggle password, demo fill, alert, redirect
+- ✅ Password Strength Meter (4-level bar)
+- ✅ Show/Hide password toggle
+- ✅ Demo account auto-fill button
+- ✅ Remember me checkbox
+- ✅ Error/success alert inline
+- ✅ Floating animated film posters di visual panel
+- ✅ Responsive: mobile (single column), desktop (split screen)
+- ✅ README + badge diperbarui ke v0.3.0
+
+### v0.2.0 — Phase 1.1: Fondasi Struktur & Design System
+- ✅ Struktur folder lengkap dibuat sesuai arsitektur
+- ✅ Design System CSS: Custom Properties (warna, tipografi, spacing, shadow, radius, z-index, transition)
+- ✅ `main.css` — Reset, base styles, utility classes, scrollbar, selection
+- ✅ `components.css` — Button variants, MovieCard, Form inputs, Modal, Skeleton, Toast, Dropdown, Avatar, Progress
+- ✅ `layout.css` — Navbar, Footer, Grid systems, Hero, Responsive breakpoints
+- ✅ `animations.css` — Keyframes, utility animation classes, scroll reveal, reduced motion
+- ✅ `landing.css` — Hero section, Features grid, Genre chips, CTA section
+- ✅ `storage.js` — Abstraksi localStorage & sessionStorage (User, Watchlist, History, Progress, Review, Settings, Theme)
+- ✅ `hash.js` — SHA-256 Web Crypto API untuk password hashing
+- ✅ `helpers.js` — Utility functions (string, number, date, DOM, event, array, URL)
+- ✅ `validators.js` — Form validation + password strength
+- ✅ `toast.js` — Toast notification component
+- ✅ `navbar.js` — Navbar scroll + mobile hamburger
+- ✅ `landing.js` — Landing page: trending movies, genres, floating posters, particles, scroll effects
+- ✅ `index.html` — Landing page HTML structure lengkap
+- ✅ `data/movies.json` — 30 film mock (akan ditambah ke 50+ di Phase 1.3)
+- ✅ `data/genres.json` — 14 genre
+- ✅ `data/news.json` — 6 artikel berita mock
+- ✅ `assets/images/poster-placeholder.svg` — Fallback poster

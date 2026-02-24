@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dashboard CineVerse — Temukan film terbaik untukmu." />
+  <title>Dashboard — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages/dashboard.css" />
+</head>
+
+<body>
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <span class="loader-logo">CINEVERSE</span>
+  </div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <!-- Logo -->
+      <a href="../index.html" class="navbar__logo" aria-label="CineVerse Home">
+        <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="../index.html" class="navbar__nav-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link active">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link">Genre</a>
+        <a href="news.html" class="navbar__nav-link">Berita</a>
+      </nav>
+
+      <!-- Actions — populated by app.js -->
+      <div class="navbar__actions" id="navbar-actions"></div>
+
+      <!-- Hamburger -->
+      <button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav class="navbar__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="../index.html" class="navbar__nav-link">Beranda</a>
+      <a href="dashboard.html" class="navbar__nav-link active">Jelajahi</a>
+      <a href="genre.html" class="navbar__nav-link">Genre</a>
+      <a href="news.html" class="navbar__nav-link">Berita</a>
+      <!-- Auth section populated by app.js -->
+    </nav>
+  </header>
+
+  <!-- ─── MAIN ─── -->
+  <main class="main-content" id="main-content">
+
+    <!-- ─── HERO BANNER SLIDER ─── -->
+    <section class="db-hero" id="hero-banner" aria-label="Film Pilihan">
+      <!-- Slides populated by JS -->
+
+      <!-- Nav arrows -->
+      <button class="db-hero__nav db-hero__nav--prev" id="hero-prev" aria-label="Film sebelumnya">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+      <button class="db-hero__nav db-hero__nav--next" id="hero-next" aria-label="Film berikutnya">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="db-hero__indicators" id="hero-dots" aria-label="Slide indicators"></div>
+    </section>
+
+    <div class="container">
+
+      <!-- ─── WELCOME BANNER ─── -->
+      <div id="welcome-banner" class="db-welcome" style="display:none;">
+        <div class="db-welcome__avatar" id="welcome-avatar"></div>
+        <div class="db-welcome__text">
+          <h2 id="welcome-name">Halo, !</h2>
+          <p>Mau nonton apa hari ini?</p>
+        </div>
+      </div>
+
+      <!-- ─── GENRE CHIPS ─── -->
+      <div class="db-section" style="padding-bottom: 0;">
+        <div class="db-genre-chips" id="genre-chips" aria-label="Filter genre">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- ─── CONTINUE WATCHING ─── -->
+      <section class="db-section" id="continue-section" style="display:none;" aria-labelledby="continue-title">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="continue-title">
+            <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Lanjutkan Menonton
+          </h2>
+          <a href="#" class="db-section__link" id="clear-history-btn">
+            Hapus Semua
+          </a>
+        </div>
+        <div class="db-movies-row" id="continue-row">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- ─── TRENDING NOW ─── -->
+      <section class="db-section" aria-labelledby="trending-title">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="trending-title">
+            <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13.5 0.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/>
+            </svg>
+            Trending Sekarang
+          </h2>
+          <a href="search.html?sort=trending" class="db-section__link">
+            Lihat Semua
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="db-movies-row" id="trending-row">
+          <!-- Skeleton -->
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div><div class="skeleton db-skeleton-text db-skeleton-text--short"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div><div class="skeleton db-skeleton-text db-skeleton-text--short"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div><div class="skeleton db-skeleton-text db-skeleton-text--short"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div><div class="skeleton db-skeleton-text db-skeleton-text--short"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div><div class="skeleton db-skeleton-text db-skeleton-text--short"></div></div>
+        </div>
+      </section>
+
+      <!-- ─── TOP 10 THIS WEEK ─── -->
+      <section class="db-section" aria-labelledby="top10-title">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="top10-title">
+            <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            Top 10 Minggu Ini
+          </h2>
+          <a href="search.html?sort=rating" class="db-section__link">
+            Lihat Semua
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="db-top10-row" id="top10-row">
+          <!-- Skeleton -->
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div></div>
+        </div>
+      </section>
+
+      <!-- ─── FILM INDONESIA ─── -->
+      <section class="db-section" aria-labelledby="indonesia-title">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="indonesia-title">
+            🇮🇩 Film Indonesia
+          </h2>
+          <a href="genre.html?country=Indonesia" class="db-section__link">
+            Lihat Semua
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="db-movies-row" id="indonesia-row">
+          <!-- Skeleton -->
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div></div>
+        </div>
+      </section>
+
+      <!-- ─── FILM ANIMASI / FAMILY ─── -->
+      <section class="db-section" aria-labelledby="anim-title">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="anim-title">
+            <svg class="db-section__title-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            Animasi & Keluarga
+          </h2>
+          <a href="genre.html?genre=Animasi" class="db-section__link">
+            Lihat Semua
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="db-movies-row" id="animation-row">
+          <!-- Skeleton -->
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div></div>
+          <div class="db-skeleton-card"><div class="skeleton db-skeleton-poster"></div><div class="skeleton db-skeleton-text"></div></div>
+        </div>
+      </section>
+
+      <!-- ─── SEMUA FILM ─── -->
+      <section class="db-section" aria-labelledby="all-title" id="all-movies-section">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="all-title">
+            <svg class="db-section__title-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            Semua Film
+          </h2>
+          <a href="search.html" class="db-section__link">
+            Cari Film
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="movies-grid" id="all-movies-grid">
+          <!-- Populated by JS -->
+        </div>
+        <div style="text-align:center; margin-top: var(--space-6);">
+          <button class="btn btn--ghost" id="load-more-btn" style="display:none;">
+            Tampilkan Lebih Banyak
+          </button>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">CINE<span>VERSE</span></div>
+          <p class="footer__tagline">"Dunia Film, Satu Layar"</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer__social-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Film</h3>
+          <ul class="footer__links">
+            <li><a href="search.html" class="footer__link">Semua Film</a></li>
+            <li><a href="genre.html" class="footer__link">Genre</a></li>
+            <li><a href="search.html" class="footer__link">Cari Film</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Akun</h3>
+          <ul class="footer__links">
+            <li><a href="profile.html" class="footer__link">Profil Saya</a></li>
+            <li><a href="settings.html" class="footer__link">Pengaturan</a></li>
+            <li><a href="stats.html" class="footer__link">Statistik</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Lainnya</h3>
+          <ul class="footer__links">
+            <li><a href="news.html" class="footer__link">Berita Film</a></li>
+            <li><a href="#" class="footer__link">Tentang Kami</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2025 CineVerse. Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── TOAST ─── -->
+  <div id="toast-container" role="alert" aria-live="polite"></div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="../assets/js/utils/helpers.js"></script>
+  <script src="../assets/js/utils/hash.js"></script>
+  <script src="../assets/js/utils/validators.js"></script>
+  <script src="../assets/js/core/storage.js"></script>
+  <script src="../assets/js/core/router.js"></script>
+  <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/pages/dashboard.js"></script>
+
+</body>
+</html>

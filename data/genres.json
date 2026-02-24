@@ -1,0 +1,18 @@
+{
+  "genres": [
+    { "id": "action",      "name": "Action",      "icon": "⚔️",  "color": "#E50914", "count": 12 },
+    { "id": "drama",       "name": "Drama",       "icon": "🎭",  "color": "#3B82F6", "count": 18 },
+    { "id": "horror",      "name": "Horor",       "icon": "👻",  "color": "#7C3AED", "count": 8  },
+    { "id": "comedy",      "name": "Komedi",      "icon": "😂",  "color": "#F5A623", "count": 6  },
+    { "id": "sci-fi",      "name": "Sci-Fi",      "icon": "🚀",  "color": "#10B981", "count": 9  },
+    { "id": "romance",     "name": "Romance",     "icon": "❤️",  "color": "#EC4899", "count": 7  },
+    { "id": "thriller",    "name": "Thriller",    "icon": "🔍",  "color": "#8B5CF6", "count": 10 },
+    { "id": "animation",   "name": "Animasi",     "icon": "🎨",  "color": "#06B6D4", "count": 5  },
+    { "id": "adventure",   "name": "Petualangan", "icon": "🗺️",  "color": "#84CC16", "count": 11 },
+    { "id": "biography",   "name": "Biografi",    "icon": "📖",  "color": "#F97316", "count": 4  },
+    { "id": "history",     "name": "Sejarah",     "icon": "🏛️",  "color": "#A78BFA", "count": 3  },
+    { "id": "fantasy",     "name": "Fantasi",     "icon": "🧙",  "color": "#34D399", "count": 6  },
+    { "id": "crime",       "name": "Kriminal",    "icon": "🔫",  "color": "#6B7280", "count": 7  },
+    { "id": "mystery",     "name": "Misteri",     "icon": "🕵️",  "color": "#60A5FA", "count": 5  }
+  ]
+}

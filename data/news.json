@@ -1,0 +1,76 @@
+{
+  "articles": [
+    {
+      "id": "n001",
+      "title": "Dune: Part Two Catat Rekor Box Office Rp 1,4 Triliun di Pembukaan Global",
+      "slug": "dune-part-two-rekor-box-office",
+      "excerpt": "Film garapan Denis Villeneuve berhasil meraih pendapatan luar biasa di pekan pertama penayangan global.",
+      "category": "Box Office",
+      "author": "Redaksi CineVerse",
+      "publishedAt": "2024-03-05",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
+      "tags": ["dune", "box-office", "record"],
+      "readTime": 3
+    },
+    {
+      "id": "n002",
+      "title": "Christopher Nolan Umumkan Proyek Film Berikutnya Setelah Oppenheimer",
+      "slug": "nolan-proyek-baru-setelah-oppenheimer",
+      "excerpt": "Sutradara legendaris ini membeberkan sedikit bocoran tentang film terbarunya yang sudah dinantikan jutaan penggemar.",
+      "category": "Berita Film",
+      "author": "Redaksi CineVerse",
+      "publishedAt": "2024-02-20",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "tags": ["nolan", "upcoming", "director"],
+      "readTime": 4
+    },
+    {
+      "id": "n003",
+      "title": "10 Film Indonesia Terbaik 2023 Versi Kritikus Film Nasional",
+      "slug": "10-film-indonesia-terbaik-2023",
+      "excerpt": "Para kritikus film Indonesia memilih karya-karya terbaik yang mewarnai layar lebar sepanjang tahun 2023.",
+      "category": "Listicle",
+      "author": "Kritikus Film",
+      "publishedAt": "2024-01-15",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/eYjHXLBjRBGRSN0eSWNnEoQkpGO.jpg",
+      "tags": ["indonesia", "best-of", "2023"],
+      "readTime": 6
+    },
+    {
+      "id": "n004",
+      "title": "Review: 'Poor Things' — Yorgos Lanthimos Kembali Hadirkan Dunia yang Absurd dan Memukau",
+      "slug": "review-poor-things-yorgos-lanthimos",
+      "excerpt": "Emma Stone memberikan penampilan karier terbaiknya dalam film surealis penuh warna dari sang sutradara eksentrik.",
+      "category": "Review",
+      "author": "Penulis Senior",
+      "publishedAt": "2024-02-10",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXIf6Xv83ggftZE.jpg",
+      "tags": ["review", "poor-things", "emma-stone"],
+      "readTime": 5
+    },
+    {
+      "id": "n005",
+      "title": "Marvel Ungkap Jadwal Rilis 6 Film MCU untuk 2025–2026",
+      "slug": "marvel-jadwal-film-2025-2026",
+      "excerpt": "Kevin Feige mengkonfirmasi jadwal resmi peluncuran fase berikutnya dari Marvel Cinematic Universe.",
+      "category": "Berita Film",
+      "author": "Redaksi CineVerse",
+      "publishedAt": "2024-03-01",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+      "tags": ["marvel", "mcu", "upcoming"],
+      "readTime": 3
+    },
+    {
+      "id": "n006",
+      "title": "Sineas Muda Indonesia Menangkan Penghargaan di Festival Film Internasional",
+      "slug": "sineas-muda-indonesia-festival-internasional",
+      "excerpt": "Keberhasilan sineas muda kita di kancah internasional menjadi bukti kebangkitan perfilman Indonesia.",
+      "category": "Penghargaan",
+      "author": "Redaksi CineVerse",
+      "publishedAt": "2024-01-28",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/dHnceHPeA5g0HT1bK8gUEPFPGEZ.jpg",
+      "tags": ["indonesia", "award", "young-director"],
+      "readTime": 4
+    }
+  ]
+}

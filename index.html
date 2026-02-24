@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CineVerse — Platform streaming & informasi film modern. Temukan, tonton, dan simpan film favorit kamu." />
+  <meta name="theme-color" content="#0A0E1A" />
+
+  <title>CineVerse — Dunia Film, Satu Layar</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CineVerse" />
+  <meta property="og:description" content="Platform streaming & informasi film modern." />
+  <meta property="og:type" content="website" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages/landing.css" />
+</head>
+
+<body>
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <span class="loader-logo">CINEVERSE</span>
+  </div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <!-- Logo -->
+      <a href="index.html" class="navbar__logo" aria-label="CineVerse Home">
+        <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="index.html" class="navbar__nav-link active">Beranda</a>
+        <a href="pages/dashboard.html" class="navbar__nav-link">Jelajahi</a>
+        <a href="pages/genre.html" class="navbar__nav-link">Genre</a>
+        <a href="pages/news.html" class="navbar__nav-link">Berita</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="navbar__actions" id="navbar-actions">
+        <a href="pages/auth/login.html" class="btn btn--ghost btn--sm">Masuk</a>
+        <a href="pages/auth/register.html" class="btn btn--primary btn--sm">Daftar Gratis</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav class="navbar__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html" class="navbar__nav-link active">Beranda</a>
+      <a href="pages/dashboard.html" class="navbar__nav-link">Jelajahi</a>
+      <a href="pages/genre.html" class="navbar__nav-link">Genre</a>
+      <a href="pages/news.html" class="navbar__nav-link">Berita</a>
+      <div class="divider" style="margin: 0.5rem 0;"></div>
+      <a href="pages/auth/login.html" class="btn btn--ghost btn--sm">Masuk</a>
+      <a href="pages/auth/register.html" class="btn btn--primary btn--sm">Daftar Gratis</a>
+    </nav>
+  </header>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main class="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="landing-hero" aria-label="Hero">
+      <!-- Background Cinematic -->
+      <div class="landing-hero__bg">
+        <div class="landing-hero__gradient"></div>
+        <div class="landing-hero__particles" id="particles" aria-hidden="true"></div>
+        <!-- Film Strip decoration -->
+        <div class="landing-hero__filmstrip" aria-hidden="true">
+          <div class="filmstrip-top"></div>
+          <div class="filmstrip-bottom"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="landing-hero__content stagger-children">
+          <div class="landing-hero__badge">
+            <span class="badge badge--crimson">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/></svg>
+              Platform Film Terlengkap
+            </span>
+          </div>
+
+          <h1 class="landing-hero__title text-display">
+            Dunia Film,<br/>
+            <span class="landing-hero__title-accent">Satu Layar</span>
+          </h1>
+
+          <p class="landing-hero__subtitle">
+            Temukan, tonton, dan simpan ribuan film favorit kamu — dari Hollywood hingga perfilman Indonesia terbaik. Gratis, tanpa iklan, berjalan langsung di browser kamu.
+          </p>
+
+          <div class="landing-hero__actions">
+            <a href="pages/auth/register.html" class="btn btn--primary btn--xl pulse-glow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mulai Sekarang
+            </a>
+            <a href="pages/auth/login.html" class="btn btn--ghost btn--xl">
+              Sudah punya akun?
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="landing-hero__stats">
+            <div class="landing-stat">
+              <span class="landing-stat__number">100+</span>
+              <span class="landing-stat__label">Film Tersedia</span>
+            </div>
+            <div class="landing-stat__divider"></div>
+            <div class="landing-stat">
+              <span class="landing-stat__number">14</span>
+              <span class="landing-stat__label">Genre</span>
+            </div>
+            <div class="landing-stat__divider"></div>
+            <div class="landing-stat">
+              <span class="landing-stat__number">100%</span>
+              <span class="landing-stat__label">Gratis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Movie Posters (visual) -->
+        <div class="landing-hero__posters" aria-hidden="true" id="hero-posters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Scroll Hint -->
+      <div class="landing-scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </section>
+
+    <!-- TRENDING MOVIES -->
+    <section class="section container" aria-labelledby="trending-title">
+      <div class="section-header reveal">
+        <h2 class="section-title" id="trending-title">Film Trending</h2>
+        <a href="pages/dashboard.html" class="section-link">
+          Lihat Semua
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="movies-row reveal" id="trending-row">
+        <!-- Skeleton while loading -->
+        <div class="skeleton skeleton--card" style="width:160px; min-width:160px;"></div>
+        <div class="skeleton skeleton--card" style="width:160px; min-width:160px;"></div>
+        <div class="skeleton skeleton--card" style="width:160px; min-width:160px;"></div>
+        <div class="skeleton skeleton--card" style="width:160px; min-width:160px;"></div>
+        <div class="skeleton skeleton--card" style="width:160px; min-width:160px;"></div>
+        <div class="skeleton skeleton--card" style="width:160px; min-width:160px;"></div>
+      </div>
+    </section>
+
+    <!-- FEATURES / VALUE PROPOSITIONS -->
+    <section class="section container landing-features" aria-labelledby="features-title">
+      <div class="section-header reveal">
+        <h2 class="section-title" id="features-title">Kenapa CineVerse?</h2>
+      </div>
+
+      <div class="landing-features__grid stagger-children">
+        <div class="feature-card reveal">
+          <div class="feature-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <h3 class="feature-card__title">Tonton Langsung</h3>
+          <p class="feature-card__desc">Streaming film langsung di browser tanpa perlu install apapun. Support YouTube embed dan HTML5 video.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-card__icon feature-card__icon--gold">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="feature-card__title">Watchlist Pribadi</h3>
+          <p class="feature-card__desc">Simpan film favorit ke watchlist-mu. Semua data tersimpan di browsermu — privasi terjaga, akses cepat.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-card__icon feature-card__icon--blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="feature-card__title">Cari & Filter</h3>
+          <p class="feature-card__desc">Cari film apapun dengan fuzzy search yang cerdas. Filter berdasarkan genre, tahun, rating, dan durasi.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-card__icon feature-card__icon--emerald">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 class="feature-card__title">Rating & Review</h3>
+          <p class="feature-card__desc">Beri rating dan tuliskan ulasan film favoritmu. Lihat rata-rata rating dari semua penonton.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-card__icon feature-card__icon--purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="feature-card__title">History & Resume</h3>
+          <p class="feature-card__desc">Rekam semua film yang sudah kamu tonton. Lanjutkan dari waktu terakhir berhenti secara otomatis.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-card__icon feature-card__icon--crimson">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="feature-card__title">Responsif & Offline</h3>
+          <p class="feature-card__desc">Tampilan optimal di HP maupun laptop. Berjalan 100% lokal — tidak perlu koneksi internet terus-menerus.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GENRES SECTION -->
+    <section class="section container landing-genres" aria-labelledby="genres-title">
+      <div class="section-header reveal">
+        <h2 class="section-title" id="genres-title">Jelajahi Genre</h2>
+        <a href="pages/genre.html" class="section-link">
+          Semua Genre
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="genres-grid reveal" id="genres-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="landing-cta reveal" aria-labelledby="cta-title">
+      <div class="container landing-cta__content">
+        <div class="landing-cta__badge">
+          <span class="badge badge--gold">✨ Mulai Gratis</span>
+        </div>
+        <h2 class="landing-cta__title text-display" id="cta-title">
+          Siap Menonton Film<br/>Favoritmu?
+        </h2>
+        <p class="landing-cta__desc">
+          Bergabunglah dan nikmati ribuan film pilihan. Buat akun gratis sekarang dalam hitungan detik.
+        </p>
+        <div class="landing-cta__actions">
+          <a href="pages/auth/register.html" class="btn btn--primary btn--xl">
+            Daftar Gratis Sekarang
+          </a>
+          <p class="landing-cta__note">Tidak diperlukan kartu kredit 💳</p>
+        </div>
+      </div>
+
+      <!-- Decorative cinema reel -->
+      <div class="landing-cta__deco" aria-hidden="true">
+        <div class="cta-reel"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand -->
+        <div>
+          <div class="footer__brand-logo">CINE<span>VERSE</span></div>
+          <p class="footer__tagline">"Dunia Film, Satu Layar"</p>
+          <div class="footer__social" aria-label="Social media links">
+            <!-- Instagram -->
+            <a href="#" class="footer__social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <!-- Twitter -->
+            <a href="#" class="footer__social-btn" aria-label="Twitter/X">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" class="footer__social-btn" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Film -->
+        <div>
+          <h3 class="footer__col-title">Film</h3>
+          <ul class="footer__links">
+            <li><a href="pages/dashboard.html" class="footer__link">Semua Film</a></li>
+            <li><a href="pages/genre.html" class="footer__link">Jelajahi Genre</a></li>
+            <li><a href="pages/search.html" class="footer__link">Cari Film</a></li>
+            <li><a href="pages/dashboard.html#trending" class="footer__link">Film Trending</a></li>
+          </ul>
+        </div>
+
+        <!-- Akun -->
+        <div>
+          <h3 class="footer__col-title">Akun</h3>
+          <ul class="footer__links">
+            <li><a href="pages/auth/login.html" class="footer__link">Masuk</a></li>
+            <li><a href="pages/auth/register.html" class="footer__link">Daftar</a></li>
+            <li><a href="pages/profile.html" class="footer__link">Profil Saya</a></li>
+            <li><a href="pages/settings.html" class="footer__link">Pengaturan</a></li>
+          </ul>
+        </div>
+
+        <!-- Lainnya -->
+        <div>
+          <h3 class="footer__col-title">Lainnya</h3>
+          <ul class="footer__links">
+            <li><a href="pages/news.html" class="footer__link">Berita Film</a></li>
+            <li><a href="pages/stats.html" class="footer__link">Statistik Saya</a></li>
+            <li><a href="#" class="footer__link">Tentang Kami</a></li>
+            <li><a href="#" class="footer__link">Kebijakan Privasi</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2025 CineVerse. Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript.
+        </p>
+        <p class="footer__copyright">
+          Data film dari <a href="https://www.themoviedb.org" target="_blank" rel="noopener" style="color: var(--color-blue)">TMDB</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── TOAST CONTAINER ─── -->
+  <div id="toast-container" role="alert" aria-live="polite"></div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <!-- Utils (load first) -->
+  <script src="assets/js/utils/helpers.js"></script>
+  <script src="assets/js/utils/hash.js"></script>
+  <script src="assets/js/utils/validators.js"></script>
+
+  <!-- Core -->
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/router.js"></script>
+  <script src="assets/js/core/app.js"></script>
+
+  <!-- Components -->
+  <script src="assets/js/components/toast.js"></script>
+  <script src="assets/js/components/navbar.js"></script>
+
+  <!-- Page Script -->
+  <script src="assets/js/pages/landing.js"></script>
+
+</body>
+</html>
