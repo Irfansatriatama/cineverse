@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%202.2%20Complete-green)
-![Version](https://img.shields.io/badge/Version-0.6.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%202.3%20Complete-green)
+![Version](https://img.shields.io/badge/Version-0.7.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -551,6 +551,50 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 - ✅ `data/news.json` — 6 artikel berita mock
 - ✅ `assets/images/poster-placeholder.svg` — Fallback poster
 
+### v0.7.0 — Phase 2.3: Skeleton Loading, Page Transitions & Polish
+
+**Yang dikerjakan di Phase 2.3:**
+- ✅ `assets/js/core/skeleton.js` — Skeleton loading system lengkap:
+  - `initDashboard()` — render semua skeleton sekaligus sebelum data dimuat
+  - `clearDashboard()` — hapus skeleton & animate content masuk setelah data siap
+  - Skeleton variants: hero, movie row, top10 row, genre chips, welcome banner, all-movies grid, profile header
+  - Helper: `showMovieRow()`, `showTop10()`, `showGrid()`, `showHero()`, `clearRow()`, `clearGrid()`
+- ✅ `assets/js/core/transitions.js` — Page transition system:
+  - Cinematic slide overlay antar halaman (translateX in/out, 350ms)
+  - Ripple effect pada semua `.btn` dan `.db-genre-chip` (click feedback)
+  - `animateCards()` — stagger card entrance per row
+  - `animateProgressBars()` — progress bar fill animation untuk continue watching
+  - `heartbeat()` — heart animation saat tambah ke watchlist
+  - `initSectionReveal()` — intersection observer untuk section side-entrance
+- ✅ `assets/css/animations.css` — Animasi baru:
+  - `#page-transition-overlay` — slide overlay dengan `ptOverlayEnter/Leave` keyframes
+  - `pageContentReveal` — main content reveal setelah transisi
+  - `loader-brand` shimmer gradient + `loader-film-strip` frameFlash
+  - 13 skeleton CSS classes (hero, row, grid, chips, welcome, profile)
+  - Micro-interactions: `heartAdd`, `numberPop`, `chipPress`, `badgePulse`, `cardEntrance`, `progressFill`
+  - `section-reveal-left/right` + `section-visible` untuk slide entrance sections
+  - Ripple button effect class `.ripple-effect`
+- ✅ Page Loader upgrade — cinematic film-strip style (CINEVERSE brand shimmer + 7 frame animasi)
+  - Update di: `index.html`, `dashboard.html`, `profile.html`, `settings.html`
+- ✅ `assets/js/pages/dashboard.js` — Integrasi skeleton:
+  - Skeleton tampil segera saat page load (sebelum fetch)
+  - Page loader dismiss lebih awal (250ms), skeleton yang mengisi gap
+  - `heartbeat()` pada watchlist toggle
+  - Integrasi `CineTransitions.initSectionReveal()`
+- ✅ `assets/js/core/app.js` — Scroll reveal diperluas:
+  - Support `.section-reveal-left`, `.section-reveal-right`, `.reveal-left`, `.reveal-right`
+  - Stagger delay berdasarkan sibling index
+- ✅ `pages/dashboard.html` — Tambah `section-reveal-left/right` pada 6 sections
+- ✅ `assets/css/pages/dashboard.css` — Phase 2.3 polish:
+  - `heroContentReveal` keyframe untuk hero slide content
+  - `db-genre-chip.active` state
+  - `.db-top10-card` hover scale spring
+  - Welcome banner entrance animation
+  - Progress bar transition CSS
+- ✅ Auth pages (login/register) — transitions.js terintegrasi
+- ✅ Profile & Settings pages — early page loader dismiss + transitions init
+- ✅ README + badge diperbarui ke v0.7.0
+
 ### v0.6.0 — Phase 2.2: Halaman Settings
 
 **Yang dikerjakan di Phase 2.2:**
@@ -574,7 +618,7 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 **Pembagian Phase 2:**
 - **Phase 2.1** — Halaman Profil + Avatar Upload + Ganti Password ✅
 - **Phase 2.2** — Halaman Settings (tema, bahasa, preferensi) — ✅ Selesai
-- **Phase 2.3** — Skeleton Loading, Animasi Transisi, Polish — 🔲 Pending
+- **Phase 2.3** — Skeleton Loading, Animasi Transisi, Polish — ✅ Selesai
 
 **Yang dikerjakan di Phase 2.1:**
 - ✅ `pages/profile.html` — Halaman profil lengkap dengan header sinematik, tab navigasi, dan stats

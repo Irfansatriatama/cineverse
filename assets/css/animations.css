@@ -270,3 +270,414 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
+/* ─────────────────────────────────────────
+   10. PAGE TRANSITIONS SYSTEM
+   Cinematic slide transitions between pages
+───────────────────────────────────────── */
+
+/* Page transition overlay — slides in/out */
+#page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  background: var(--color-bg-primary);
+  transform: translateX(100%);
+  will-change: transform;
+}
+
+#page-transition-overlay.entering {
+  animation: ptOverlayEnter 0.35s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+#page-transition-overlay.leaving {
+  animation: ptOverlayLeave 0.35s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes ptOverlayEnter {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0%); }
+}
+
+@keyframes ptOverlayLeave {
+  from { transform: translateX(0%); }
+  to   { transform: translateX(-100%); }
+}
+
+/* Page content reveal after transition */
+.page-transition-ready {
+  opacity: 0;
+}
+
+.page-transition-ready.page-visible {
+  animation: pageContentReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageContentReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────
+   11. ENHANCED PAGE LOADER
+   Cinematic film-strip loader
+───────────────────────────────────────── */
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loader-brand {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  color: transparent;
+  background: linear-gradient(90deg,
+    var(--color-crimson) 0%,
+    #ff6b6b 40%,
+    var(--color-crimson) 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: brandShine 2s linear infinite;
+}
+
+@keyframes brandShine {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+.loader-film-strip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.loader-film-frame {
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--color-crimson);
+  opacity: 0.3;
+  animation: filmFrameFlash 1.2s ease-in-out infinite;
+}
+
+.loader-film-frame:nth-child(1) { animation-delay: 0s; }
+.loader-film-frame:nth-child(2) { animation-delay: 0.1s; }
+.loader-film-frame:nth-child(3) { animation-delay: 0.2s; }
+.loader-film-frame:nth-child(4) { animation-delay: 0.3s; }
+.loader-film-frame:nth-child(5) { animation-delay: 0.4s; }
+.loader-film-frame:nth-child(6) { animation-delay: 0.5s; }
+.loader-film-frame:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes filmFrameFlash {
+  0%, 100% { opacity: 0.2; transform: scaleY(0.7); }
+  50%       { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─────────────────────────────────────────
+   12. SKELETON SECTION PLACEHOLDERS
+───────────────────────────────────────── */
+
+/* Hero skeleton */
+.skeleton-hero {
+  width: 100%;
+  height: clamp(400px, 60vh, 600px);
+  background: var(--color-bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.04) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Movie card skeleton row */
+.skeleton-row {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  overflow: hidden;
+}
+
+.skeleton-movie-card {
+  flex: 0 0 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .skeleton-movie-card { flex: 0 0 160px; }
+}
+
+.skeleton-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: var(--radius-lg);
+}
+
+.skeleton-title {
+  height: 14px;
+  border-radius: var(--radius-sm);
+  width: 80%;
+}
+
+.skeleton-subtitle {
+  height: 12px;
+  border-radius: var(--radius-sm);
+  width: 50%;
+}
+
+/* Section heading skeleton */
+.skeleton-section-title {
+  height: 24px;
+  width: 200px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+}
+
+/* Top10 skeleton */
+.skeleton-top10-row {
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.skeleton-top10-card {
+  flex: 0 0 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeleton-top10-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: var(--radius-md);
+}
+
+/* Genre chip skeleton */
+.skeleton-chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.skeleton-chip {
+  height: 32px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* All movies grid skeleton */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .skeleton-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.skeleton-grid-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Profile skeleton */
+.skeleton-profile-header {
+  height: 200px;
+  border-radius: var(--radius-xl);
+  margin-bottom: 24px;
+}
+
+.skeleton-avatar-lg {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+
+/* Welcome banner skeleton */
+.skeleton-welcome {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  margin-bottom: 24px;
+}
+
+.skeleton-welcome-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-welcome-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-welcome-title {
+  height: 20px;
+  width: 60%;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-welcome-sub {
+  height: 14px;
+  width: 40%;
+  border-radius: var(--radius-sm);
+}
+
+/* ─────────────────────────────────────────
+   13. MICRO-INTERACTIONS & POLISH
+───────────────────────────────────────── */
+
+/* Ripple effect for buttons */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transform: scale(0);
+  animation: rippleExpand 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleExpand {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Movie card shimmer on hover */
+.db-movie-card:hover .db-movie-card__poster::after,
+.movie-card:hover .movie-card__poster::after {
+  opacity: 1;
+}
+
+/* Number pop on top10 hover */
+.db-top10-card:hover .db-top10-card__number {
+  animation: numberPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes numberPop {
+  from { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  to   { transform: scale(1.15); }
+}
+
+/* Genre chip pulse on click */
+.db-genre-chip:active {
+  animation: chipPress 0.15s ease;
+}
+
+@keyframes chipPress {
+  0%  { transform: scale(1); }
+  50% { transform: scale(0.93); }
+  100% { transform: scale(1); }
+}
+
+/* Watchlist heart beat on add */
+@keyframes heartAdd {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.4); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.db-movie-card__watchlist.just-added,
+.movie-card__watchlist-btn.just-added {
+  animation: heartAdd 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Section slide-in from sides */
+.section-reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-reveal-left.section-visible,
+.section-reveal-right.section-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Card stagger entrance */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-animate {
+  animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Progress bar fill animation */
+@keyframes progressFill {
+  from { width: 0 !important; }
+}
+
+.progress-bar-animated {
+  animation: progressFill 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Notification badge pulse */
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(229,9,20,0); }
+}
+
+.badge-pulse {
+  animation: badgePulse 1.5s ease infinite;
+}
+
+/* Smooth content reveal for sections */
+.db-section.section-loaded > *:not(.db-section__header) {
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Typewriter effect for hero title */
+@keyframes cursorBlink {
+  0%, 100% { border-right-color: var(--color-crimson); }
+  50%       { border-right-color: transparent; }
+}

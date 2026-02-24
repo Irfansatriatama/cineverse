@@ -219,17 +219,27 @@ const CineApp = (() => {
      SCROLL REVEAL
   ───────────────────────────────────────── */
   function initScrollReveal() {
-    const elements = document.querySelectorAll('.reveal');
+    const elements = document.querySelectorAll(
+      '.reveal, .reveal-left, .reveal-right, .section-reveal-left, .section-reveal-right'
+    );
     if (!elements.length) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Stagger delay for siblings
+          const parent = entry.target.parentElement;
+          const siblings = parent ? Array.from(parent.children) : [];
+          const idx = siblings.indexOf(entry.target);
+          const delay = idx * 0.06;
+
+          entry.target.style.transitionDelay = `${delay}s`;
           entry.target.classList.add('revealed');
+          entry.target.classList.add('section-visible');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     elements.forEach(el => observer.observe(el));
   }

@@ -374,7 +374,7 @@ p {
 }
 
 /* ─────────────────────────────────────────
-   8. PAGE LOADER
+   8. PAGE LOADER — Cinematic Film Strip
 ───────────────────────────────────────── */
 #page-loader {
   position: fixed;
@@ -384,20 +384,21 @@ p {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 #page-loader.loaded {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
+/* Legacy support */
 .loader-logo {
   font-family: var(--font-display);
   font-size: var(--font-size-4xl);
   color: var(--color-crimson);
   letter-spacing: 0.1em;
-  animation: loaderPulse 1.5s ease-in-out infinite;
 }
 
 @keyframes loaderPulse {

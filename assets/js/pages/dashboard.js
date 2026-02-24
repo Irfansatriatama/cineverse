@@ -25,7 +25,16 @@
     user = window.CineStorage ? CineStorage.User.getCurrent() : null;
     if (!user) return; // router will redirect
 
-    // Load data
+    // Show skeletons immediately before data loads
+    if (window.CineSkeleton) {
+      CineSkeleton.initDashboard();
+    }
+
+    // Hide page loader early — skeleton takes over
+    const loader = document.getElementById('page-loader');
+    if (loader) setTimeout(() => loader.classList.add('loaded'), 250);
+
+    // Load data in parallel
     await Promise.all([loadMovies(), loadGenres()]);
 
     // Render all sections
@@ -39,9 +48,15 @@
     renderAnimationFilms();
     renderAllMovies();
 
-    // Hide page loader
-    const loader = document.getElementById('page-loader');
-    if (loader) setTimeout(() => loader.classList.add('loaded'), 300);
+    // Clear skeletons and animate content in
+    if (window.CineSkeleton) {
+      CineSkeleton.clearDashboard();
+    }
+
+    // Init section reveal animations
+    if (window.CineTransitions) {
+      CineTransitions.initSectionReveal();
+    }
   }
 
   /* ─────────────────────────────────────────
@@ -540,6 +555,11 @@
 
         btn.classList.toggle('saved', added);
         if (svgPath) svgPath.setAttribute('fill', added ? 'currentColor' : 'none');
+
+        // Heartbeat animation
+        if (added && window.CineTransitions) {
+          CineTransitions.heartbeat(btn);
+        }
 
         if (window.Toast) {
           added

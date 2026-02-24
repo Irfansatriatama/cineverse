@@ -69,6 +69,10 @@ const SettingsPage = (() => {
       return;
     }
 
+    // Hide page loader early
+    const loader = document.getElementById('page-loader');
+    if (loader) setTimeout(() => loader.classList.add('loaded'), 250);
+
     // Load settings
     currentSettings = loadAllSettings();
 
@@ -94,6 +98,11 @@ const SettingsPage = (() => {
 
     // Hash-based section activation (e.g. settings.html#notifications)
     activateSectionFromHash();
+
+    // Init transitions
+    if (window.CineTransitions) {
+      CineTransitions.initSectionReveal();
+    }
   }
 
   /* ─────────────────────────────────────────

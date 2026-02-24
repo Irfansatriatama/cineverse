@@ -24,6 +24,10 @@ const ProfilePage = (() => {
     currentUser = CineStorage.User.getCurrent();
     if (!currentUser) return; // app.js guard handles redirect
 
+    // Hide page loader
+    const loader = document.getElementById('page-loader');
+    if (loader) setTimeout(() => loader.classList.add('loaded'), 250);
+
     // Load movies data for activity tab
     try {
       const resp = await fetch('../data/movies.json');
@@ -40,6 +44,11 @@ const ProfilePage = (() => {
     initActivity();
     initDangerZone();
     initConfirmModal();
+
+    // Init section reveal
+    if (window.CineTransitions) {
+      CineTransitions.initSectionReveal();
+    }
   }
 
   /* ─────────────────────────────────────────

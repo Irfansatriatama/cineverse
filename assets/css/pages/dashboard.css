@@ -635,3 +635,92 @@
   width: 60%;
   margin-top: 6px;
 }
+
+/* ─────────────────────────────────────────
+   PHASE 2.3 POLISH — Dashboard Enhancements
+───────────────────────────────────────── */
+
+/* Skeleton row inherits horizontal scroll */
+.skeleton-row {
+  overflow-x: hidden;
+  flex-wrap: nowrap;
+}
+
+/* Section reveal transitions */
+.db-section {
+  transition: opacity 0.3s ease;
+}
+
+/* Card entrance — smooth */
+.db-movie-card {
+  will-change: transform;
+}
+
+/* Continue watching progress bar animation */
+.db-continue-card__progress-bar {
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover glow on rating badge */
+.db-hero__rating {
+  transition: color 0.2s ease;
+}
+
+.db-hero__slide.active .db-hero__content {
+  animation: heroContentReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes heroContentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero title highlight shimmer */
+.db-hero__title {
+  position: relative;
+}
+
+/* Genre chip active state */
+.db-genre-chip.active {
+  background: var(--color-crimson);
+  color: white;
+  border-color: var(--color-crimson);
+}
+
+/* Top10 card — smooth scale on hover */
+.db-top10-card {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.db-top10-card:hover {
+  transform: scale(1.06);
+  z-index: 2;
+}
+
+/* Welcome banner subtle entrance */
+.db-welcome {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.1s;
+}
+
+/* Load more button pulse */
+#load-more-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Smooth skeleton→content transition */
+#all-movies-grid .movie-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Section header smooth entrance */
+.db-section__header {
+  animation: fadeIn 0.4s ease both;
+}

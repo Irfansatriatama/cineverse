@@ -17,8 +17,19 @@
 <body>
 
   <!-- ─── PAGE LOADER ─── -->
-  <div id="page-loader">
-    <span class="loader-logo">CINEVERSE</span>
+    <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-brand">CINEVERSE</span>
+      <div class="loader-film-strip">
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+      </div>
+    </div>
   </div>
 
   <!-- ─── NAVBAR ─── -->
@@ -98,7 +109,7 @@
       </div>
 
       <!-- ─── CONTINUE WATCHING ─── -->
-      <section class="db-section" id="continue-section" style="display:none;" aria-labelledby="continue-title">
+      <section class="db-section section-reveal-left" id="continue-section" style="display:none;" aria-labelledby="continue-title">
         <div class="db-section__header">
           <h2 class="db-section__title" id="continue-title">
             <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -116,7 +127,7 @@
       </section>
 
       <!-- ─── TRENDING NOW ─── -->
-      <section class="db-section" aria-labelledby="trending-title">
+      <section class="db-section section-reveal-right" aria-labelledby="trending-title">
         <div class="db-section__header">
           <h2 class="db-section__title" id="trending-title">
             <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -140,7 +151,7 @@
       </section>
 
       <!-- ─── TOP 10 THIS WEEK ─── -->
-      <section class="db-section" aria-labelledby="top10-title">
+      <section class="db-section section-reveal-left" aria-labelledby="top10-title">
         <div class="db-section__header">
           <h2 class="db-section__title" id="top10-title">
             <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -164,7 +175,7 @@
       </section>
 
       <!-- ─── FILM INDONESIA ─── -->
-      <section class="db-section" aria-labelledby="indonesia-title">
+      <section class="db-section section-reveal-right" aria-labelledby="indonesia-title">
         <div class="db-section__header">
           <h2 class="db-section__title" id="indonesia-title">
             🇮🇩 Film Indonesia
@@ -283,6 +294,8 @@
   <script src="../assets/js/core/storage.js"></script>
   <script src="../assets/js/core/router.js"></script>
   <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/core/skeleton.js"></script>
+  <script src="../assets/js/core/transitions.js"></script>
   <script src="../assets/js/components/toast.js"></script>
   <script src="../assets/js/components/navbar.js"></script>
   <script src="../assets/js/pages/dashboard.js"></script>
