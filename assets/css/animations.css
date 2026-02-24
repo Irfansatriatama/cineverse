@@ -206,7 +206,8 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.visible {
+.reveal.visible,
+.reveal.revealed {
   opacity: 1;
   transform: translateY(0);
 }
@@ -217,7 +218,8 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal-left.visible {
+.reveal-left.visible,
+.reveal-left.revealed {
   opacity: 1;
   transform: translateX(0);
 }
@@ -228,7 +230,8 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal-right.visible {
+.reveal-right.visible,
+.reveal-right.revealed {
   opacity: 1;
   transform: translateX(0);
 }

@@ -49,6 +49,33 @@ const ProfilePage = (() => {
     if (window.CineTransitions) {
       CineTransitions.initSectionReveal();
     }
+
+    // ── Force reveal all .reveal elements ──
+    // IntersectionObserver kadang tidak trigger karena:
+    //   1. Race condition dengan page-transition-ready (opacity:0 di parent)
+    //   2. Observer sudah fire sebelum page menjadi visible
+    //   3. Element sudah di viewport saat init tapi threshold tidak terpenuhi
+    // Solusi: paksa semua .reveal visible setelah page transition selesai (500ms+)
+    forceRevealElements();
+  }
+
+  /**
+   * Paksa semua elemen .reveal menjadi visible dengan stagger animasi halus.
+   * Dipanggil setelah seluruh init selesai sebagai fallback aman.
+   */
+  function forceRevealElements() {
+    // Delay cukup untuk page-transition-ready animation selesai (~650ms total)
+    setTimeout(() => {
+      const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      revealEls.forEach((el, idx) => {
+        // Stagger ringan agar tidak langsung semua muncul sekaligus
+        setTimeout(() => {
+          el.classList.add('visible');
+          el.classList.add('revealed');
+          el.classList.add('section-visible');
+        }, idx * 60);
+      });
+    }, 600);
   }
 
   /* ─────────────────────────────────────────

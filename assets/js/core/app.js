@@ -243,6 +243,21 @@ const CineApp = (() => {
     }, { threshold: 0, rootMargin: '100px 0px 100px 0px' });
 
     elements.forEach(el => observer.observe(el));
+
+    // ── Fallback: paksa semua reveal elements visible setelah page transition ──
+    // Jika IntersectionObserver gagal trigger (race condition dengan page-transition-ready
+    // yang set opacity:0 di parent #main-content), pastikan semua elemen tampil.
+    setTimeout(() => {
+      elements.forEach((el, idx) => {
+        if (!el.classList.contains('visible')) {
+          setTimeout(() => {
+            el.classList.add('visible');
+            el.classList.add('revealed');
+            el.classList.add('section-visible');
+          }, idx * 50);
+        }
+      });
+    }, 700);
   }
 
   /* ─────────────────────────────────────────

@@ -3,7 +3,7 @@
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
 ![Status](https://img.shields.io/badge/Status-Phase%202_2_3%20Bugfix-blue)
-![Version](https://img.shields.io/badge/Version-0.7.2-orange)
+![Version](https://img.shields.io/badge/Version-0.7.3-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -282,10 +282,11 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 - Ripple effect pada semua tombol interaktif
 - Bug fix pasca-integrasi (Phase 2.3 Hotfix — v0.7.1)
 - Bug fix lanjutan — halaman Profil & Settings kosong (Phase 2_2_3 — v0.7.2)
+- Bug fix halaman Profil masih kosong — race condition reveal + CSS class mismatch (Phase 2_3_4 — v0.7.3)
 
-**Deliverable:** `cineverse-phase2_2_3.zip` + `README.md` updated
+**Deliverable:** `cineverse-phase2_3_4.zip` + `README.md` updated
 
-**Status:** ✅ Selesai (v0.7.2)
+**Status:** ✅ Selesai (v0.7.3)
 
 ---
 
@@ -378,6 +379,7 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 | **Fase 2** | Bug Fix — Tombol "Info Lainnya" membesar | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Bug Fix — Profil & Settings tidak render | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Bug Fix — Halaman Profil & Settings kosong (.reveal opacity:0) | ✅ Selesai | 2026-02-25 |
+| **Fase 2** | Bug Fix — Halaman Profil masih kosong (race condition reveal + CSS class mismatch) | ✅ Selesai | 2026-02-25 |
 | **Fase 3** | Movie Detail Page | 🔲 Pending | - |
 | **Fase 3** | Video Player | 🔲 Pending | - |
 | **Fase 3** | Search & Filter | 🔲 Pending | - |
@@ -558,6 +560,31 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
 - ✅ `data/genres.json` — 14 genre
 - ✅ `data/news.json` — 6 artikel berita mock
 - ✅ `assets/images/poster-placeholder.svg` — Fallback poster
+
+### v0.7.3 — Phase 2_3_4: Bug Fix Halaman Profil Masih Kosong (Race Condition)
+
+**Bug yang ditemukan & diperbaiki:**
+
+**🐛 Bug 5 — Halaman Profil masih tampil kosong meski fix v0.7.2 sudah diaplikasikan (`app.js`, `profile.js`, `animations.css`)**
+
+- **Root cause 1 — Race condition: IntersectionObserver vs `page-transition-ready` (`app.js`, `transitions.js`):**
+  `transitions.js` menambahkan class `page-transition-ready` ke `#main-content` yang mem-set `opacity: 0` pada seluruh main content area. `app.js` `initScrollReveal()` memanggil IntersectionObserver saat DOMContentLoaded — observer dapat fire **sebelum atau bersamaan** dengan transisi halaman. Saat observer fire dan elemen `.reveal` di dalam `#main-content` sudah punya class `visible`, parent (`#main-content`) masih `opacity: 0` sehingga elemen tidak terlihat. Setelah `page-visible` ditambah (150ms) dan animasi 500ms selesai, observer sudah `unobserve` elemen, jadi tidak ada trigger ulang. Elemen yang sudah mendapat `visible` tampak ok, tapi elemen yang **belum** di-observe ulang (karena sudah di-unobserve) tetap `opacity: 0`.
+
+- **Root cause 2 — CSS class mismatch: `.revealed` vs `.visible` (`animations.css`):**
+  `app.js` `initScrollReveal()` menambahkan class `revealed`, `visible`, dan `section-visible` ke elemen. Namun CSS di `animations.css` hanya mendefinisikan selector `.reveal.visible { opacity: 1 }` — tidak ada selector untuk `.reveal.revealed`. Pada kasus tertentu dimana hanya `revealed` yang ter-apply (bukan `visible`), elemen tetap `opacity: 0`.
+
+- **Root cause 3 — Tidak ada fallback garantee di `profile.js`:**
+  `profile.js` memanggil `CineTransitions.initSectionReveal()` di akhir `init()`, tapi `initSectionReveal()` hanya handle class `.section-reveal-left` dan `.section-reveal-right` — **bukan** class `.reveal`. Elemen-elemen utama di `profile.html` (`profile-header`, `profile-tabs`, `profile-card`, `danger-zone`) menggunakan class `.reveal`, sehingga tidak pernah ditangani oleh `initSectionReveal()` milik profile.
+
+- **Fix 1 — Tambah fallback force-reveal di `app.js`:** Setelah IntersectionObserver di-set, tambahkan `setTimeout` 700ms yang memeriksa semua elemen `.reveal*` dan memaksa class `visible` pada elemen yang belum mendapatkannya — setelah page transition (500ms) dipastikan selesai.
+
+- **Fix 2 — Tambah `forceRevealElements()` di `profile.js`:** Fungsi baru yang dipanggil di akhir `ProfilePage.init()` — memaksa semua `.reveal`, `.reveal-left`, `.reveal-right` elements mendapat class `visible` dengan stagger delay 60ms per elemen. Delay 600ms memastikan page transition selesai sebelum reveal dipaksa.
+
+- **Fix 3 — Tambah selector `.revealed` di `animations.css`:** Tambah class `.reveal.revealed`, `.reveal-left.revealed`, `.reveal-right.revealed` dengan style yang sama dengan `.visible` — sehingga elemen visible terlepas dari class mana yang di-apply oleh berbagai fungsi JS.
+
+**File yang diubah:** `assets/js/core/app.js`, `assets/js/pages/profile.js`, `assets/css/animations.css`
+
+---
 
 ### v0.7.2 — Phase 2_2_3: Bug Fix Halaman Profil & Settings Kosong
 
