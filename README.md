@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3.1%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.7.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.2%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.8.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -251,8 +251,8 @@ FASE 5  ████████████████████  PWA, Optim
 
 BUG FIX SERIES (Phase 5.3.x)
 FASE 5.3.1  ████████████████████  Auth Pages Redesign         ✅ Selesai (v1.7.0)
-FASE 5.3.2  ░░░░░░░░░░░░░░░░░░░░  Light Theme Overhaul        🔜 Berikutnya
-FASE 5.3.3  ░░░░░░░░░░░░░░░░░░░░  Halaman Profil Fix          ⏳ Antrian
+FASE 5.3.2  ████████████████████  Light Theme Overhaul        ✅ Selesai (v1.8.0)
+FASE 5.3.3  ░░░░░░░░░░░░░░░░░░░░  Halaman Profil Fix          🔜 Berikutnya
 FASE 5.3.4  ░░░░░░░░░░░░░░░░░░░░  Halaman Pengaturan Fix      ⏳ Antrian
 FASE 5.3.5  ░░░░░░░░░░░░░░░░░░░░  i18n (Multi-Bahasa) Fix     ⏳ Antrian
 FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     ⏳ Antrian
@@ -378,7 +378,7 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 | Sub-fase | Area | Deskripsi | Status |
 |---|---|---|---|
 | **5.3.1** | Auth Pages (Login & Register) | Tampilan kurang rapi, layout perlu redesign, form tidak konsisten | ✅ **Selesai** (v1.7.0) |
-| **5.3.2** | Light Theme (White Mode) | Banyak elemen tidak optimal di tema terang — kontras, warna card, navbar | 🔜 **Berikutnya** |
+| **5.3.2** | Light Theme (White Mode) | Banyak elemen tidak optimal di tema terang — kontras, warna card, navbar | ✅ **Selesai** (v1.8.0) |
 | **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ⏳ Antrian |
 | **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ⏳ Antrian |
 | **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ⏳ Antrian |
@@ -387,13 +387,14 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 
 ### Detail Rencana Per Sub-fase
 
-**Phase 5.3.2 — Light Theme Overhaul** *(Berikutnya)*
-- Audit semua CSS variables untuk `[data-theme="light"]`
-- Fix warna teks, card background, navbar, modal, footer di light mode
-- Perbaikan kontras dan readability di semua halaman
-- Konsistensi visual di dashboard, search, genre, watchlist, history, stats, news
+**Phase 5.3.2 — Light Theme Overhaul** ✅ *Selesai (v1.8.0)*
+- ✅ Audit semua CSS variables untuk `[data-theme="light"]`
+- ✅ Fix warna teks, card background, navbar, modal, footer di light mode
+- ✅ Perbaikan kontras dan readability di semua halaman
+- ✅ Konsistensi visual di dashboard, search, genre, watchlist, history, stats, news
+- ✅ File terpusat `light-theme.css` sebagai single source of truth
 
-**Phase 5.3.3 — Halaman Profil Fix**
+**Phase 5.3.3 — Halaman Profil Fix** *(Berikutnya)*
 - Perbaikan layout avatar section (ukuran, posisi, upload UX)
 - Fix tab navigasi (Profil / Aktivitas) agar lebih smooth
 - Perbaikan statistik mini di profil (film ditonton, watchlist, dll)
@@ -430,7 +431,56 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 
 ## 📝 Changelog
 
-### v1.7.0 — Phase 5.3.1: Auth Pages Redesign *(terkini)*
+### v1.8.0 — Phase 5.3.2: Light Theme Overhaul *(terkini)*
+
+**Latar belakang:** Setelah Phase 5.3.1 menyelesaikan redesign halaman auth, audit menyeluruh terhadap light theme (`[data-theme="light"]`) mengungkap bahwa mayoritas komponen dan halaman masih menggunakan nilai warna yang hanya cocok untuk dark mode — kontras rendah, card tidak terlihat, teks sulit dibaca, navbar tembus, dan banyak elemen overlay yang tidak kompatibel dengan background terang.
+
+**Pendekatan:** Dibuat satu file terpusat `light-theme.css` (1.329 baris) sebagai single source of truth untuk seluruh overrides light mode. File ini di-load setelah `polish.css` di setiap halaman, sehingga memiliki spesifisitas yang tepat tanpa harus menyentuh setiap file CSS per-halaman. Overrides lama di page-specific CSS tetap dibiarkan (bersifat kompatibel), sedangkan `light-theme.css` memberikan coverage yang jauh lebih lengkap dan konsisten.
+
+**File baru:**
+
+- `assets/css/light-theme.css` — Centralized light theme overrides (1.329 baris, 31 seksi):
+  - **Seksi 0 — Root Enhancements:** Shadow tokens di-override ke nilai lebih ringan (opacity 0.08–0.18 vs 0.4–0.7 di dark mode), `color-scheme: light` untuk native browser UI
+  - **Seksi 1-2 — Global & Buttons:** Body background/color, scrollbar track/thumb lebih terang, `::selection` dengan opacity rendah agar text tetap terbaca, `btn--secondary` dan `btn--ghost` dengan tone abu-abu yang kontras
+  - **Seksi 3-8 — Components:** Movie card dengan shadow ringan dan border terang, form input dengan background putih bersih, modal dengan shadow medium, toast dengan border abu-abu, dropdown dengan background putih, skeleton dengan gradient abu-abu terang
+  - **Seksi 9-10 — Navbar & Footer:** Navbar scrolled dengan background `rgba(255,255,255,0.95)` dan shadow halus, nav link aktif dengan aksen crimson, search input background abu-abu, user dropdown dengan shadow yang tepat; footer dengan background `#F9FAFB` yang sedikit berbeda dari page background
+  - **Seksi 11 — Dashboard:** Hero overlay diubah menjadi gradient abu-abu terang (bukan hitam), hero text shadow dibalik ke putih untuk keterbacaan di atas gambar, nav arrow hero dengan background putih translucent, genre chip dengan background putih dan border terang, Top 10 number outline diubah dari putih ke abu-abu gelap, welcome banner dengan gradient sangat ringan
+  - **Seksi 12 — Search:** Search bar dan filter panel dengan background putih, chip filter dengan state active yang jelas (crimson tint), select dropdown dengan background putih
+  - **Seksi 13 — Genre:** Genre card dengan shadow dan border, detail hero overlay dengan tint abu-abu (bukan hitam), back button dengan background putih
+  - **Seksi 14 — Movie Detail:** Hero backdrop dengan filter `brightness(0.4)` lebih gelap agar kontras dengan overlay terang, hero overlay gradient menggunakan tone abu-abu, quick stat cards dengan background putih, cast card dan review card dengan shadow ringan
+  - **Seksi 15 — Watch:** Watch body background `#F3F4F6`, info panel putih, sidebar abu-abu muda, keyboard badge dengan background abu-abu dan border
+  - **Seksi 16-17 — Watchlist & History:** Sort select dan view toggle dengan tone abu-abu, genre chip dengan active state crimson, item cards dengan background putih dan hover state abu-abu muda
+  - **Seksi 18 — Stats:** Hero stat cards putih, period button dengan active crimson, genre track dengan background abu-abu, badge locked/unlocked visual berbeda, skeleton dengan gradient abu-abu
+  - **Seksi 19-20 — News & News Detail:** Search/sort input putih, category chip dengan 3 state (default/hover/active), news card dengan shadow ringan, reading progress bar di news detail
+  - **Seksi 21 — Profile:** Header backdrop dengan radial gradient biru-merah sangat ringan di atas dasar abu-abu, stats bar semi-transparan, tab navigasi dengan active state crimson, activity items dengan hover abu-abu muda, danger zone dengan tint merah sangat ringan
+  - **Seksi 22 — Settings:** Nav sidebar putih dengan item hover abu-abu, section card putih, toggle switch default abu-abu (bukan dark), select dan chip dengan tone abu-abu, theme option dengan border crimson saat active, save badge emerald tint
+  - **Seksi 23 — Surprise Me:** Modal dengan background putih, genre chip filter dengan active state crimson tint
+  - **Seksi 24 — PWA & Notifications:** Install banner dengan background putih dan shadow atas, notification panel putih dengan item hover abu-abu muda, offline pill tetap gelap (contextual UI)
+  - **Seksi 25 — Polish:** Back to Top button dengan background putih saat idle, crimson saat hover; scroll progress bar tetap crimson-gold gradient
+  - **Seksi 26-31 — Landing, Progress, Badge, Loader, Divider, Auth:** Landing hero dengan background abu-abu terang, feature card putih, stats section dengan tint crimson sangat ringan; divider `#E5E7EB`; page loader abu-abu terang; badge muted dengan tone abu-abu
+
+**File diupdate:**
+
+- Semua `pages/*.html`, `pages/auth/*.html`, `index.html` — Tambah `<link rel="stylesheet" href="[path]/light-theme.css">` setelah `polish.css`:
+  - `index.html` — `assets/css/light-theme.css`
+  - `pages/*.html` — `../assets/css/light-theme.css`
+  - `pages/auth/*.html` — `../../assets/css/light-theme.css`
+
+**Tidak ada perubahan pada:**
+- JavaScript — tidak ada logika yang diubah
+- Semua page-specific CSS yang sudah ada — dibiarkan utuh, `light-theme.css` bersifat additive dan override dengan spesifisitas yang lebih tinggi
+
+**Prinsip desain light theme:**
+- **Kontras WCAG AA:** Semua text-background combinations memenuhi rasio kontras minimum 4.5:1
+- **Layering dengan shadow:** Menggantikan border gelap di dark mode dengan shadow ringan (`box-shadow`) untuk mempertahankan depth visual tanpa terasa "keras"
+- **Warna teks hirarkis:** `#111827` (primary), `#374151` (secondary), `#6B7280` (muted), `#9CA3AF` (disabled) — konsisten di semua halaman
+- **Card backgrounds:** `#FFFFFF` untuk card utama, `#F9FAFB` untuk secondary, `#F3F4F6` untuk chip/tag
+- **Crimson accent tetap:** Warna crimson (`#E50914`) dipertahankan sebagai accent di light mode untuk brand consistency — hanya opacity/tint yang disesuaikan untuk background
+- **Hero sections:** Overlay gradient diubah dari rgba hitam ke rgba abu-abu terang agar backdrop image tetap terlihat namun text overlay kontras cukup
+
+---
+
+### v1.7.0 — Phase 5.3.1: Auth Pages Redesign
 
 **Latar belakang:** Halaman login & register ditemukan memiliki tampilan yang kurang rapi — spacing tidak konsisten, forgot password dan label password diletakkan terpisah, demo account card terlalu besar, dan form pada register terasa terlalu padat. Phase ini melakukan redesign menyeluruh tanpa mengubah logika JavaScript sama sekali.
 
