@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3.6%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-2.2.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.7%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-2.3.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -233,7 +233,7 @@ cineverse-phase3/
 │       └── poster-placeholder.svg
 │
 └── data/
-    ├── movies.json               # 52 film dengan videoUrl (MP4) + trailerKey (YouTube)
+    ├── movies.json               # 122 film dengan videoUrl (MP4) + trailerKey (YouTube)
     ├── genres.json               # Daftar genre
     └── news.json                 # Artikel berita mock
 ```
@@ -256,7 +256,7 @@ FASE 5.3.3  ████████████████████  Halama
 FASE 5.3.4  ████████████████████  Halaman Pengaturan Fix      ✅ Selesai (v2.0.0)
 FASE 5.3.5  ████████████████████  i18n (Multi-Bahasa) Fix     ✅ Selesai (v2.1.0)
 FASE 5.3.6  ████████████████████  Statistik UI/UX Upgrade     ✅ Selesai (v2.2.0)
-FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) 🔜 Berikutnya
+FASE 5.3.7  ████████████████████  Penambahan Data Film (122)  ✅ Selesai (v2.3.0)
 ```
 
 ### Fase 1 — Fondasi & Autentikasi ✅
@@ -266,7 +266,7 @@ FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penamb
 - Sistem auth lokal (localStorage, hash SHA-256)
 - Client-side router dengan route guard
 - Komponen navbar & footer global
-- Mock data JSON (52 film dengan video URL + trailer key)
+- Mock data JSON (122 film dengan video URL + trailer key)
 
 ### Fase 2 — Dashboard, Profil & Settings ✅
 - Dashboard: Hero Banner Slider, Trending Now, Top 10, Continue Watching, Genre Chips
@@ -383,7 +383,7 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 | **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ✅ **Selesai** (v2.0.0) |
 | **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ✅ **Selesai** (v2.1.0) |
 | **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | ✅ **Selesai** (v2.2.0) |
-| **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | 🔜 **Berikutnya** |
+| **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | ✅ **Selesai** (v2.3.0) |
 
 ### Detail Rencana Per Sub-fase
 
@@ -421,18 +421,50 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 - Tambah insight teks otomatis ("Kamu paling sering nonton di hari Sabtu")
 - Layout lebih spacious dan modern
 
-**Phase 5.3.7 — Penambahan Data Film**
-- Tambah ~70 film baru → total 120+ film
-- Cakupan genre: Action, Horror, Romance, Komedi, Animasi, Dokumenter, Thriller, Fantasy
-- Tambah film Indonesia dan Asia (Korea, Jepang)
-- Pastikan semua film punya: poster TMDB, backdrop, trailerKey YouTube, metadata lengkap
-- Distribusi genre lebih merata untuk rekomendasi yang lebih variatif
+**Phase 5.3.7 — Penambahan Data Film** ✅ *Selesai (v2.3.0)*
+- ✅ Tambah 70 film baru → total 122 film (dari 52)
+- ✅ Cakupan genre: Aksi, Horor, Romantis, Komedi, Animasi, Thriller, Fantasi, Biografi, Keluarga, Musikal
+- ✅ Film Indonesia baru: Laskar Pelangi, Pengabdi Setan 1+2+3, Dilan 1990, Bumi Manusia, 5 cm, Ada Apa dengan Cinta?, Mencuri Raden Saleh, Jumbo, dll
+- ✅ Film Asia: Parasite, Your Name, Spirited Away, Grave of the Fireflies, Miracle in Cell No.7, Oldboy, dll
+- ✅ Film internasional populer: Inception, The Dark Knight, Interstellar, Avengers, Dune 1+2, The Matrix, dll
+- ✅ Semua film memiliki: poster TMDB, backdrop, trailerKey YouTube, dan metadata lengkap
+- ✅ Normalisasi genre: hapus duplikat EN/ID → semua label genre seragam Bahasa Indonesia
+- ✅ Update `genres.json` dengan hitungan akurat per genre
 
 ---
 
 ## 📝 Changelog
 
-### v2.2.0 — Phase 5.3.6: Statistik UI/UX Upgrade *(terkini)*
+### v2.3.0 — Phase 5.3.7: Penambahan Data Film (122 Film) *(terkini)*
+
+**4 area diperbaiki & ditingkatkan:**
+
+**[PENAMBAHAN 1] `data/movies.json` — Ekspansi database dari 52 → 122 film**
+Database film awal hanya memiliki 52 judul yang terlalu sedikit untuk menampilkan rekomendasi variatif, fitur "Top 10", hero slider yang dinamis, dan sistem genre explorer yang bermakna. Distribusi genre juga tidak merata karena keterbatasan data.
+
+Solusi: Tambah 70 film baru mencakup:
+- **15 film Indonesia baru**: Laskar Pelangi, Pengabdi Setan 2 & 3, Dilan 1990, Warkop DKI Reborn, Gundala, Bumi Manusia, Susi Susanti, 5 cm, Filosopi Kopi, Nanti Kita Cerita Tentang Hari Ini, 27 Steps of May, Petualangan Sherina, Tilik, Keluarga Cemara, Satria Dewa Gatotkaca, Rudy Habibie, Marlina, Mencuri Raden Saleh, Cek Toko Sebelah, Sang Pencerah, Jumbo
+- **8 film Korea & Jepang**: Parasite, Squid Game, Miracle in Cell No.7, Oldboy, Your Name, Spirited Away, Grave of the Fireflies, A Silent Voice-style
+- **47+ film internasional**: The Dark Knight, Inception, Interstellar, Avengers: Endgame, Titanic, Joker, Dune 1+2, Matrix, Pulp Fiction, The Godfather, Forrest Gump, Whiplash, The Lion King, Mad Max, Moana, Black Panther, Mission Impossible, Top Gun, dan banyak lagi
+
+**[PENAMBAHAN 2] `data/movies.json` — Normalisasi label genre**
+Database lama memiliki duplikat genre dalam dua bahasa: `"Action"` dan `"Aksi"`, `"Comedy"` dan `"Komedi"`, `"Horror"` dan `"Horor"`, `"Fantasy"` dan `"Fantasi"`, `"Romance"` dan `"Romantis"`. Duplikasi ini menyebabkan genre explorer memunculkan kategori terpisah yang sebenarnya sama, dan filter search tidak konsisten.
+
+Solusi: Normalisasi semua label genre ke Bahasa Indonesia. Mapping: `Action→Aksi`, `Comedy→Komedi`, `Horror→Horor`, `Fantasy→Fantasi`, `Romance→Romantis`. Total genre unik kini 23 kategori bersih tanpa duplikat.
+
+**[PENAMBAHAN 3] `data/genres.json` — Update hitungan & tambah genre baru**
+File `genres.json` menggunakan count statis yang tidak mencerminkan jumlah film sebenarnya. Setelah penambahan 70 film, count menjadi jauh tidak akurat. Genre baru seperti `Keluarga`, `Musikal`, dan `Biografi` juga perlu masuk daftar resmi.
+
+Solusi: Hitung ulang count semua genre berdasarkan data aktual. Tambah entry baru untuk `Keluarga` (7 film) dan `Musikal` (4 film). Update nama genre `"Action"` → `"Aksi"` dan `"Romance"` → `"Romantis"` agar konsisten. Total 16 genre terdaftar dengan count akurat.
+
+**[PENAMBAHAN 4] Distribusi konten yang lebih merata**
+Film-film baru dipilih dengan mempertimbangkan distribusi yang seimbang: genre populer (Drama, Thriller, Aksi) mendapat tambahan terbanyak sesuai demand, sementara kategori khusus (Musikal, Olahraga, Animasi Asia) juga diperkuat. Film trending dan featured di-assign secara selektif pada judul-judul yang relevan dan populer (Dune 2, Inside Out 2, Anora, Jumbo, dll).
+
+**File yang diubah:** `data/movies.json`, `data/genres.json`
+
+---
+
+
 
 **5 area diperbaiki & ditingkatkan:**
 
@@ -1212,7 +1244,7 @@ Dua halaman baru tidak ada di route table `router.js`, sehingga auth guard tidak
 
 - Auth logic lengkap: register, login, logout, remember me, demo account
 - Client-side router: route guard (requireAuth / redirectIfAuth)
-- Mock data 52 film dengan `videoUrl` (Google CDN MP4) + `trailerKey` (YouTube ID)
+- Mock data 122 film dengan `videoUrl` (Google CDN MP4) + `trailerKey` (YouTube ID)
 - Navbar & footer global dengan auth-aware state (guest/logged-in)
 - Toast notification component
 

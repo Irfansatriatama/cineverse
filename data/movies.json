@@ -122,7 +122,7 @@
       "genres": [
         "Sci-Fi",
         "Petualangan",
-        "Action"
+        "Aksi"
       ],
       "rating": 8.5,
       "votes": 410000,
@@ -158,7 +158,7 @@
       "originalTitle": "Avengers: Endgame",
       "year": 2019,
       "genres": [
-        "Action",
+        "Aksi",
         "Petualangan",
         "Sci-Fi"
       ],
@@ -196,7 +196,7 @@
       "originalTitle": "The Dark Knight",
       "year": 2008,
       "genres": [
-        "Action",
+        "Aksi",
         "Kriminal",
         "Drama"
       ],
@@ -236,8 +236,8 @@
       "genres": [
         "Animasi",
         "Petualangan",
-        "Fantasy",
-        "Romance"
+        "Fantasi",
+        "Romantis"
       ],
       "rating": 7.8,
       "votes": 98000,
@@ -347,7 +347,7 @@
       "originalTitle": "Inception",
       "year": 2010,
       "genres": [
-        "Action",
+        "Aksi",
         "Sci-Fi",
         "Thriller"
       ],
@@ -387,7 +387,7 @@
       "genres": [
         "Animasi",
         "Petualangan",
-        "Fantasy",
+        "Fantasi",
         "Drama"
       ],
       "rating": 9.3,
@@ -463,8 +463,8 @@
       "genres": [
         "Animasi",
         "Drama",
-        "Romance",
-        "Fantasy"
+        "Romantis",
+        "Fantasi"
       ],
       "rating": 8.4,
       "votes": 320000,
@@ -534,7 +534,7 @@
       "originalTitle": "Black Panther: Wakanda Forever",
       "year": 2022,
       "genres": [
-        "Action",
+        "Aksi",
         "Petualangan",
         "Drama"
       ],
@@ -611,7 +611,7 @@
       "year": 2019,
       "genres": [
         "Drama",
-        "Romance",
+        "Romantis",
         "Sejarah"
       ],
       "rating": 7.4,
@@ -647,9 +647,9 @@
       "originalTitle": "Everything Everywhere All at Once",
       "year": 2022,
       "genres": [
-        "Action",
+        "Aksi",
         "Petualangan",
-        "Comedy",
+        "Komedi",
         "Sci-Fi"
       ],
       "rating": 7.8,
@@ -688,7 +688,7 @@
       "genres": [
         "Sci-Fi",
         "Horor",
-        "Action"
+        "Aksi"
       ],
       "rating": 7.3,
       "votes": 189000,
@@ -724,7 +724,7 @@
       "originalTitle": "Sri Asih",
       "year": 2022,
       "genres": [
-        "Action",
+        "Aksi",
         "Fantasi",
         "Drama"
       ],
@@ -761,7 +761,7 @@
       "originalTitle": "The Batman",
       "year": 2022,
       "genres": [
-        "Action",
+        "Aksi",
         "Kriminal",
         "Drama"
       ],
@@ -837,7 +837,7 @@
       "originalTitle": "Tenet",
       "year": 2020,
       "genres": [
-        "Action",
+        "Aksi",
         "Sci-Fi",
         "Thriller"
       ],
@@ -987,7 +987,7 @@
       "year": 2023,
       "genres": [
         "Drama",
-        "Romance"
+        "Romantis"
       ],
       "rating": 7.8,
       "votes": 126000,
@@ -1023,9 +1023,9 @@
       "year": 2023,
       "genres": [
         "Drama",
-        "Comedy",
+        "Komedi",
         "Sci-Fi",
-        "Romance"
+        "Romantis"
       ],
       "rating": 8.0,
       "votes": 298000,
@@ -1061,7 +1061,7 @@
       "originalTitle": "Avatar: The Way of Water",
       "year": 2022,
       "genres": [
-        "Action",
+        "Aksi",
         "Petualangan",
         "Sci-Fi"
       ],
@@ -1471,7 +1471,7 @@
       "originalTitle": "Cobweb",
       "year": 2023,
       "genres": [
-        "Horror",
+        "Horor",
         "Thriller",
         "Misteri"
       ],
@@ -1582,7 +1582,7 @@
       "originalTitle": "Five Nights at Freddy's",
       "year": 2023,
       "genres": [
-        "Horror",
+        "Horor",
         "Misteri",
         "Thriller"
       ],
@@ -1766,7 +1766,7 @@
       "originalTitle": "Suitable Flesh",
       "year": 2023,
       "genres": [
-        "Horror",
+        "Horor",
         "Thriller"
       ],
       "rating": 5.9,
@@ -1803,7 +1803,7 @@
       "year": 2024,
       "genres": [
         "Komedi",
-        "Horror"
+        "Horor"
       ],
       "rating": 7.2,
       "votes": 22000,
@@ -1943,6 +1943,2648 @@
       "featured": false,
       "trending": true,
       "createdAt": "2024-02-22"
+    },
+    {
+      "id": "m053",
+      "title": "Laskar Pelangi",
+      "originalTitle": "Laskar Pelangi",
+      "year": 2008,
+      "genres": [
+        "Drama",
+        "Keluarga",
+        "Inspirasi"
+      ],
+      "rating": 8.1,
+      "votes": 220000,
+      "duration": 125,
+      "synopsis": "Kisah sepuluh anak kampung Belitong yang berjuang mendapatkan pendidikan layak di sekolah Muhammadiyah yang hampir rubuh.",
+      "director": "Riri Riza",
+      "cast": [
+        "Cut Mini",
+        "Ikranagara",
+        "Zulfanny",
+        "Ferdian"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/7WKfSBiJoAIjcZYJO9jSqaRBdPw.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/jAHGGJaWaqUDWnLMUCGmjNBF3Ng.jpg",
+      "trailerKey": "sLVkVimcwjQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "inspirasi",
+        "pendidikan",
+        "persahabatan",
+        "indonesia"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-01"
+    },
+    {
+      "id": "m054",
+      "title": "Pengabdi Setan",
+      "originalTitle": "Pengabdi Setan",
+      "year": 2017,
+      "genres": [
+        "Horor",
+        "Thriller",
+        "Misteri"
+      ],
+      "rating": 7.2,
+      "votes": 98000,
+      "duration": 107,
+      "synopsis": "Setelah ibu mereka meninggal, satu keluarga dihantui oleh sosok misterius yang terus-menerus mengganggu kehidupan mereka.",
+      "director": "Joko Anwar",
+      "cast": [
+        "Tara Basro",
+        "Bront Palarae",
+        "Endy Arfian",
+        "Nasar Annuz"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/ixHJYZ4O7XMoLJqeOnFv0YYBFGq.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/dq7pVHXZd2qNIJcD3PGDuUFDKsG.jpg",
+      "trailerKey": "G1OWIFJg7Ps",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "17+",
+      "tags": [
+        "horor",
+        "supernatural",
+        "keluarga",
+        "indonesia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-02"
+    },
+    {
+      "id": "m055",
+      "title": "Dilan 1990",
+      "originalTitle": "Dilan 1990",
+      "year": 2018,
+      "genres": [
+        "Romantis",
+        "Drama",
+        "Remaja"
+      ],
+      "rating": 7.4,
+      "votes": 112000,
+      "duration": 110,
+      "synopsis": "Kisah cinta antara Milea dan Dilan, seorang pemuda bersepeda motor yang menawan hati di Bandung tahun 1990.",
+      "director": "Fajar Bustomi",
+      "cast": [
+        "Iqbaal Ramadhan",
+        "Vanesha Prescilla",
+        "Ira Wibowo",
+        "Adi Kurdi"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/4CQPW3xCYYb5E0pTGFzqCUn9HKa.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/rOvkj6k7gRmikpj6Y4gK8CwdIBQ.jpg",
+      "trailerKey": "4EVKHf0P8RA",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "romance",
+        "remaja",
+        "bandung",
+        "nostalgia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-03"
+    },
+    {
+      "id": "m056",
+      "title": "Warkop DKI Reborn: Jangkrik Boss! Part 1",
+      "originalTitle": "Warkop DKI Reborn",
+      "year": 2016,
+      "genres": [
+        "Komedi",
+        "Aksi"
+      ],
+      "rating": 7.0,
+      "votes": 89000,
+      "duration": 109,
+      "synopsis": "Petualangan seru tiga sahabat Dono, Kasino, dan Indro dalam mengungkap misteri di balik kasus penyelundupan.",
+      "director": "Anggy Umbara",
+      "cast": [
+        "Vino G Bastian",
+        "Abimana Aryasatya",
+        "Tora Sudiro",
+        "Laudya Cynthia Bella"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/bASEeGO8q2VoZALMKl9OGYGUzr2.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/bASEeGO8q2VoZALMKl9OGYGUzr2.jpg",
+      "trailerKey": "o5g18VdFaVo",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "komedi",
+        "aksi",
+        "nostalgia",
+        "reboot"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-04"
+    },
+    {
+      "id": "m057",
+      "title": "Parasite",
+      "originalTitle": "Gisaengchung",
+      "year": 2019,
+      "genres": [
+        "Drama",
+        "Thriller",
+        "Kriminal"
+      ],
+      "rating": 8.5,
+      "votes": 751000,
+      "duration": 132,
+      "synopsis": "Sebuah keluarga miskin Korea Selatan secara perlahan menyusup ke kehidupan keluarga kaya dan menciptakan serangkaian peristiwa yang tak terduga.",
+      "director": "Bong Joon-ho",
+      "cast": [
+        "Song Kang-ho",
+        "Lee Sun-kyun",
+        "Cho Yeo-jeong",
+        "Choi Woo-shik"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg",
+      "trailerKey": "5xH0HfJHsaY",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "ko",
+      "country": "Korea Selatan",
+      "age_rating": "17+",
+      "tags": [
+        "class",
+        "satire",
+        "oscar",
+        "thriller"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-05"
+    },
+    {
+      "id": "m058",
+      "title": "The Dark Knight",
+      "originalTitle": "The Dark Knight",
+      "year": 2008,
+      "genres": [
+        "Aksi",
+        "Kriminal",
+        "Drama"
+      ],
+      "rating": 9.0,
+      "votes": 2700000,
+      "duration": 152,
+      "synopsis": "Batman menghadapi musuh terbesarnya, Joker, seorang kriminal jenius yang bertujuan menghancurkan Gotham City dan mempermalukan Batman.",
+      "director": "Christopher Nolan",
+      "cast": [
+        "Christian Bale",
+        "Heath Ledger",
+        "Aaron Eckhart",
+        "Michael Caine"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/hkBaDkMWbLaf8B1lsWsKX7Ew3Xq.jpg",
+      "trailerKey": "EXeTwQWrcwY",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "batman",
+        "joker",
+        "superhero",
+        "crime"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-06"
+    },
+    {
+      "id": "m059",
+      "title": "Spirited Away",
+      "originalTitle": "Sen to Chihiro no Kamikakushi",
+      "year": 2001,
+      "genres": [
+        "Animasi",
+        "Fantasi",
+        "Petualangan"
+      ],
+      "rating": 8.6,
+      "votes": 780000,
+      "duration": 125,
+      "synopsis": "Seorang gadis 10 tahun yang terperangkap di dunia roh harus bekerja di pemandian roh untuk menyelamatkan orang tuanya.",
+      "director": "Hayao Miyazaki",
+      "cast": [
+        "Daveigh Chase",
+        "Suzanne Pleshette",
+        "Miyu Irino",
+        "Rumi Hiiragi"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/bSXfU4dwZyBA1vMmXvejdRXBvuF.jpg",
+      "trailerKey": "ByXuk9QqQkk",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "ja",
+      "country": "Jepang",
+      "age_rating": "SU",
+      "tags": [
+        "anime",
+        "miyazaki",
+        "fantasy",
+        "oscar"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-07"
+    },
+    {
+      "id": "m060",
+      "title": "Inception",
+      "originalTitle": "Inception",
+      "year": 2010,
+      "genres": [
+        "Sci-Fi",
+        "Aksi",
+        "Thriller"
+      ],
+      "rating": 8.8,
+      "votes": 2400000,
+      "duration": 148,
+      "synopsis": "Seorang pencuri profesional yang mencuri rahasia melalui teknologi mimpi diberikan tugas mustahil: menanamkan sebuah ide ke dalam pikiran seseorang.",
+      "director": "Christopher Nolan",
+      "cast": [
+        "Leonardo DiCaprio",
+        "Joseph Gordon-Levitt",
+        "Elliot Page",
+        "Tom Hardy"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/s3TBrRGB1iav7gFOCNx3H31MoES.jpg",
+      "trailerKey": "YoHD9XEInc0",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "dream",
+        "heist",
+        "mind-bending",
+        "sci-fi"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-08"
+    },
+    {
+      "id": "m061",
+      "title": "Your Name",
+      "originalTitle": "Kimi no Na wa",
+      "year": 2016,
+      "genres": [
+        "Animasi",
+        "Romantis",
+        "Fantasi"
+      ],
+      "rating": 8.4,
+      "votes": 320000,
+      "duration": 106,
+      "synopsis": "Dua remaja—seorang gadis pedesaan dan seorang pria kota—mulai bertukar tubuh secara misterius dan saling mencari satu sama lain.",
+      "director": "Makoto Shinkai",
+      "cast": [
+        "Ryunosuke Kamiki",
+        "Mone Kamishiraishi",
+        "Ryo Narita",
+        "Aoi Yuki"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/mMtUybQ6hL24FXo0F3Z4j2KG7kZ.jpg",
+      "trailerKey": "xU47nhruN-Q",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "ja",
+      "country": "Jepang",
+      "age_rating": "SU",
+      "tags": [
+        "anime",
+        "romance",
+        "shinkai",
+        "body-swap"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-09"
+    },
+    {
+      "id": "m062",
+      "title": "The Shawshank Redemption",
+      "originalTitle": "The Shawshank Redemption",
+      "year": 1994,
+      "genres": [
+        "Drama",
+        "Kriminal"
+      ],
+      "rating": 9.3,
+      "votes": 2800000,
+      "duration": 142,
+      "synopsis": "Seorang bankir divonis bersalah atas pembunuhan istrinya dan dipenjara di Shawshank, di mana ia membentuk persahabatan dengan sesama tahanan.",
+      "director": "Frank Darabont",
+      "cast": [
+        "Tim Robbins",
+        "Morgan Freeman",
+        "Bob Gunton",
+        "William Sadler"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg",
+      "trailerKey": "6hB3S9bIaco",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "prison",
+        "hope",
+        "friendship",
+        "classic"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-10"
+    },
+    {
+      "id": "m063",
+      "title": "Dune: Part One",
+      "originalTitle": "Dune: Part One",
+      "year": 2021,
+      "genres": [
+        "Sci-Fi",
+        "Petualangan",
+        "Drama"
+      ],
+      "rating": 8.0,
+      "votes": 720000,
+      "duration": 155,
+      "synopsis": "Paul Atreides memimpin keluarganya ke planet paling berbahaya di alam semesta untuk memastikan masa depan keluarganya dan rakyatnya.",
+      "director": "Denis Villeneuve",
+      "cast": [
+        "Timothée Chalamet",
+        "Rebecca Ferguson",
+        "Oscar Isaac",
+        "Zendaya"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/d5NXSklpcvksfiwijjdt1e9enFk.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/jYEW5xZkZk2WTrdbMGAPFuBqbDc.jpg",
+      "trailerKey": "8g18jFHCLXk",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "sci-fi",
+        "epic",
+        "desert",
+        "space"
+      ],
+      "featured": true,
+      "trending": true,
+      "createdAt": "2024-03-11"
+    },
+    {
+      "id": "m064",
+      "title": "Pengabdi Setan 2: Communion",
+      "originalTitle": "Pengabdi Setan 2: Communion",
+      "year": 2022,
+      "genres": [
+        "Horor",
+        "Thriller"
+      ],
+      "rating": 7.1,
+      "votes": 76000,
+      "duration": 117,
+      "synopsis": "Rudi dan keluarganya kini tinggal di sebuah flat rusun, namun teror gaib belum juga berhenti menghampiri mereka.",
+      "director": "Joko Anwar",
+      "cast": [
+        "Tara Basro",
+        "Endy Arfian",
+        "Nasar Annuz",
+        "Ratu Felisha"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/3HoFcFP8KTNbhq8uyJAtqGjuNxH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/9Rq14Eyrf7Tg7DeMsMB3E7BOQBO.jpg",
+      "trailerKey": "MlP2QQqEIH8",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "17+",
+      "tags": [
+        "horor",
+        "supernatural",
+        "sequel",
+        "indonesia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-12"
+    },
+    {
+      "id": "m065",
+      "title": "Spider-Man: Into the Spider-Verse",
+      "originalTitle": "Spider-Man: Into the Spider-Verse",
+      "year": 2018,
+      "genres": [
+        "Animasi",
+        "Aksi",
+        "Petualangan"
+      ],
+      "rating": 8.4,
+      "votes": 490000,
+      "duration": 117,
+      "synopsis": "Seorang remaja Brooklyn bernama Miles Morales menjadi Spider-Man dan harus bersatu dengan versi Spider-Man lain dari dimensi paralel.",
+      "director": "Bob Persichetti",
+      "cast": [
+        "Shameik Moore",
+        "Jake Johnson",
+        "Hailee Steinfeld",
+        "Mahershala Ali"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/7du3UAMbO3UaITlKLKeRgAOT0Yl.jpg",
+      "trailerKey": "g4Hbz2jLxvQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "SU",
+      "tags": [
+        "spider-man",
+        "animation",
+        "multiverse",
+        "oscar"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-13"
+    },
+    {
+      "id": "m066",
+      "title": "Squid Game: The Movie",
+      "originalTitle": "오징어게임",
+      "year": 2023,
+      "genres": [
+        "Thriller",
+        "Drama",
+        "Aksi"
+      ],
+      "rating": 7.8,
+      "votes": 210000,
+      "duration": 118,
+      "synopsis": "Sekelompok orang terlilit hutang diundang mengikuti serangkaian permainan anak-anak mematikan demi memenangkan hadiah uang yang besar.",
+      "director": "Hwang Dong-hyuk",
+      "cast": [
+        "Lee Jung-jae",
+        "Park Hae-soo",
+        "Wi Ha-joon",
+        "HoYeon Jung"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/qw3J9cNeLioOLoR68WX7z79aCdK.jpg",
+      "trailerKey": "oqxAJRiHOEA",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "ko",
+      "country": "Korea Selatan",
+      "age_rating": "17+",
+      "tags": [
+        "survival",
+        "game",
+        "korea",
+        "social-commentary"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-03-14"
+    },
+    {
+      "id": "m067",
+      "title": "Titanic",
+      "originalTitle": "Titanic",
+      "year": 1997,
+      "genres": [
+        "Romantis",
+        "Drama",
+        "Sejarah"
+      ],
+      "rating": 7.9,
+      "votes": 1200000,
+      "duration": 194,
+      "synopsis": "Kisah cinta antara seorang pria miskin dan wanita kaya di atas kapal mewah Titanic yang tragis tenggelam saat berlayar perdana.",
+      "director": "James Cameron",
+      "cast": [
+        "Leonardo DiCaprio",
+        "Kate Winslet",
+        "Billy Zane",
+        "Kathy Bates"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/kHXEpyfl6zqn8a6YuozZUujufXf.jpg",
+      "trailerKey": "kVrqfYjkTdQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "romance",
+        "tragedy",
+        "ship",
+        "history"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-15"
+    },
+    {
+      "id": "m068",
+      "title": "Joker",
+      "originalTitle": "Joker",
+      "year": 2019,
+      "genres": [
+        "Drama",
+        "Thriller",
+        "Kriminal"
+      ],
+      "rating": 8.4,
+      "votes": 1100000,
+      "duration": 122,
+      "synopsis": "Seorang pelawak gagal di Gotham City perlahan berubah menjadi penjahat ikonik yang dikenal sebagai Joker.",
+      "director": "Todd Phillips",
+      "cast": [
+        "Joaquin Phoenix",
+        "Robert De Niro",
+        "Zazie Beetz",
+        "Frances Conroy"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/n6bUvigpRFqSwmPp1m2YADwJtia.jpg",
+      "trailerKey": "zAGVQLHvwOY",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "dc",
+        "joker",
+        "psychological",
+        "origin"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-16"
+    },
+    {
+      "id": "m069",
+      "title": "Avengers: Endgame",
+      "originalTitle": "Avengers: Endgame",
+      "year": 2019,
+      "genres": [
+        "Aksi",
+        "Sci-Fi",
+        "Petualangan"
+      ],
+      "rating": 8.4,
+      "votes": 1100000,
+      "duration": 181,
+      "synopsis": "Para Avengers yang tersisa bersatu untuk membalikkan kerusakan yang dilakukan Thanos dan memulihkan tatanan semesta.",
+      "director": "Anthony Russo",
+      "cast": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Mark Ruffalo",
+        "Chris Hemsworth"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+      "trailerKey": "TcMBFSGVi1c",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "marvel",
+        "avengers",
+        "superhero",
+        "epic"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-17"
+    },
+    {
+      "id": "m070",
+      "title": "Gundala",
+      "originalTitle": "Gundala",
+      "year": 2019,
+      "genres": [
+        "Aksi",
+        "Drama",
+        "Superhero"
+      ],
+      "rating": 6.8,
+      "votes": 45000,
+      "duration": 123,
+      "synopsis": "Seorang pria biasa yang memiliki kekuatan petir bertransformasi menjadi superhero Gundala untuk melindungi rakyat dari kejahatan terorganisir.",
+      "director": "Joko Anwar",
+      "cast": [
+        "Abimana Aryasatya",
+        "Tara Basro",
+        "Bront Palarae",
+        "Muzakki Ramdhan"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/hLGHiRKEPobCMbHuQRCuMGBT3Jt.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/oWrpkDfJQgBefPrpkfcFOvx3zyA.jpg",
+      "trailerKey": "sN-pqDdAD9I",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "13+",
+      "tags": [
+        "superhero",
+        "indonesia",
+        "action",
+        "komik"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-18"
+    },
+    {
+      "id": "m071",
+      "title": "Everything Everywhere All at Once",
+      "originalTitle": "Everything Everywhere All at Once",
+      "year": 2022,
+      "genres": [
+        "Sci-Fi",
+        "Petualangan",
+        "Komedi"
+      ],
+      "rating": 7.8,
+      "votes": 430000,
+      "duration": 139,
+      "synopsis": "Seorang wanita paruh baya harus menjelajahi dimensi paralel dan memanfaatkan versi lain dari dirinya untuk menyelamatkan semesta.",
+      "director": "Daniel Kwan",
+      "cast": [
+        "Michelle Yeoh",
+        "Ke Huy Quan",
+        "Jamie Lee Curtis",
+        "Stephanie Hsu"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/fRGxZuo7jJUWQsVg9PREb98Aclp.jpg",
+      "trailerKey": "wxN1T1uxQ2g",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "multiverse",
+        "oscar",
+        "action",
+        "comedy"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-19"
+    },
+    {
+      "id": "m072",
+      "title": "Top Gun: Maverick",
+      "originalTitle": "Top Gun: Maverick",
+      "year": 2022,
+      "genres": [
+        "Aksi",
+        "Drama",
+        "Petualangan"
+      ],
+      "rating": 8.3,
+      "votes": 610000,
+      "duration": 130,
+      "synopsis": "Pete 'Maverick' Mitchell kembali bertugas untuk melatih generasi baru pilot Top Gun demi menjalankan misi paling berbahaya yang pernah ada.",
+      "director": "Joseph Kosinski",
+      "cast": [
+        "Tom Cruise",
+        "Miles Teller",
+        "Jennifer Connelly",
+        "Jon Hamm"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg",
+      "trailerKey": "qSqVVswa420",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "military",
+        "aviation",
+        "action",
+        "sequel"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-03-20"
+    },
+    {
+      "id": "m073",
+      "title": "Cinta & Rangga: Look Both Ways",
+      "originalTitle": "Eiffel I'm in Love",
+      "year": 2003,
+      "genres": [
+        "Romantis",
+        "Komedi"
+      ],
+      "rating": 7.0,
+      "votes": 32000,
+      "duration": 91,
+      "synopsis": "Adit jatuh cinta pada Tita, anak dari sahabat ayahnya. Namun, kisah cinta mereka tidak semudah yang dibayangkan.",
+      "director": "Nasry Chepy",
+      "cast": [
+        "Samuel Rizal",
+        "Shandy Aulia",
+        "Chris Lie",
+        "Nirina Zubir"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/6rrQ0g24HiOe3CrJrJGEMneSqJF.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/6rrQ0g24HiOe3CrJrJGEMneSqJF.jpg",
+      "trailerKey": "DLzqxBkuMUU",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "romance",
+        "comedy",
+        "indonesia",
+        "paris"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-21"
+    },
+    {
+      "id": "m074",
+      "title": "The Godfather",
+      "originalTitle": "The Godfather",
+      "year": 1972,
+      "genres": [
+        "Drama",
+        "Kriminal"
+      ],
+      "rating": 9.2,
+      "votes": 1900000,
+      "duration": 175,
+      "synopsis": "Kisah kekuasaan, kehormatan, dan pengkhianatan dalam dinasti kejahatan Corleone yang diwariskan dari ayah ke anak.",
+      "director": "Francis Ford Coppola",
+      "cast": [
+        "Marlon Brando",
+        "Al Pacino",
+        "James Caan",
+        "Robert De Niro"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsLeMLogjEDyI.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/tmU7GeKVybMWFbGe2QxpzUE4oSp.jpg",
+      "trailerKey": "sY1S34973zA",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "mafia",
+        "classic",
+        "crime",
+        "epic"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-22"
+    },
+    {
+      "id": "m075",
+      "title": "Forrest Gump",
+      "originalTitle": "Forrest Gump",
+      "year": 1994,
+      "genres": [
+        "Drama",
+        "Romantis",
+        "Komedi"
+      ],
+      "rating": 8.8,
+      "votes": 2100000,
+      "duration": 142,
+      "synopsis": "Perjalanan hidup seorang pria Alabama dengan IQ rendah yang secara tak terduga menjadi saksi berbagai momen penting dalam sejarah Amerika.",
+      "director": "Robert Zemeckis",
+      "cast": [
+        "Tom Hanks",
+        "Robin Wright",
+        "Gary Sinise",
+        "Sally Field"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/qdIMHd4sEfJSckfVJfKQvisL02a.jpg",
+      "trailerKey": "bLvqoHBptjg",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "classic",
+        "drama",
+        "comedy",
+        "life"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-23"
+    },
+    {
+      "id": "m076",
+      "title": "Guardians of the Galaxy Vol. 3",
+      "originalTitle": "Guardians of the Galaxy Vol. 3",
+      "year": 2023,
+      "genres": [
+        "Aksi",
+        "Sci-Fi",
+        "Komedi"
+      ],
+      "rating": 7.9,
+      "votes": 450000,
+      "duration": 150,
+      "synopsis": "Tim Guardians of the Galaxy memulai misi berisiko untuk melindungi Rocket dari masa lalunya yang misterius.",
+      "director": "James Gunn",
+      "cast": [
+        "Chris Pratt",
+        "Zoe Saldana",
+        "Bradley Cooper",
+        "Vin Diesel"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGkVA.jpg",
+      "trailerKey": "u5CJRlCkFMo",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "marvel",
+        "space",
+        "comedy",
+        "action"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-03-24"
+    },
+    {
+      "id": "m077",
+      "title": "Bumi Manusia",
+      "originalTitle": "Bumi Manusia",
+      "year": 2019,
+      "genres": [
+        "Drama",
+        "Romantis",
+        "Sejarah"
+      ],
+      "rating": 7.3,
+      "votes": 52000,
+      "duration": 181,
+      "synopsis": "Kisah Minke, pemuda Jawa yang menjalin hubungan dengan Annelies di masa kolonial Belanda dan perjuangannya melawan ketidakadilan.",
+      "director": "Hanung Bramantyo",
+      "cast": [
+        "Iqbaal Ramadhan",
+        "Mawar Eva De Jongh",
+        "Sha Ine Febriyanti",
+        "Donny Damara"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/7e6fLhWNIZy5BoItv9SJE9IKMo4.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/lDp2iJuBSs6qJZ6R0D5M9GGaicV.jpg",
+      "trailerKey": "xwnRsFBjz9A",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "sejarah",
+        "colonial",
+        "romance",
+        "pramoedya"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-25"
+    },
+    {
+      "id": "m078",
+      "title": "Whiplash",
+      "originalTitle": "Whiplash",
+      "year": 2014,
+      "genres": [
+        "Drama",
+        "Musikal"
+      ],
+      "rating": 8.5,
+      "votes": 780000,
+      "duration": 107,
+      "synopsis": "Seorang mahasiswa musik berbakat menghadapi instruktur paling kejam yang mendorongnya ke batas kemampuannya untuk menjadi pemain jazz terbaik.",
+      "director": "Damien Chazelle",
+      "cast": [
+        "Miles Teller",
+        "J.K. Simmons",
+        "Melissa Benoist",
+        "Paul Reiser"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/fRGxZuo7jJUWQsVg9PREb98Aclp.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/6bbZ6XyvgfjhQwbplnUh1LSj1ky.jpg",
+      "trailerKey": "7d_jQycdQGo",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "music",
+        "jazz",
+        "drama",
+        "intense"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-26"
+    },
+    {
+      "id": "m079",
+      "title": "The Lion King",
+      "originalTitle": "The Lion King",
+      "year": 1994,
+      "genres": [
+        "Animasi",
+        "Petualangan",
+        "Drama"
+      ],
+      "rating": 8.5,
+      "votes": 1000000,
+      "duration": 88,
+      "synopsis": "Simba, seekor singa muda, melarikan diri setelah ayahnya terbunuh oleh pamannya dan tumbuh dewasa sebelum akhirnya mengklaim tahtanya.",
+      "director": "Roger Allers",
+      "cast": [
+        "Matthew Broderick",
+        "James Earl Jones",
+        "Jeremy Irons",
+        "Jonathan Taylor Thomas"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
+      "trailerKey": "4sj1MT05lAA",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "SU",
+      "tags": [
+        "disney",
+        "animation",
+        "classic",
+        "family"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-27"
+    },
+    {
+      "id": "m080",
+      "title": "Susi Susanti: Love All",
+      "originalTitle": "Susi Susanti: Love All",
+      "year": 2019,
+      "genres": [
+        "Biografi",
+        "Drama",
+        "Olahraga"
+      ],
+      "rating": 7.5,
+      "votes": 22000,
+      "duration": 119,
+      "synopsis": "Kisah perjuangan Susi Susanti menjadi atlet bulutangkis kelas dunia dan meraih medali emas Olimpiade Barcelona 1992.",
+      "director": "Sim F",
+      "cast": [
+        "Laura Basuki",
+        "Dion Wiyoko",
+        "Tutie Kirana",
+        "Marsha Timothy"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/bpPPrT0OHqDL0tr5h8zPIj1GRBe.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/bpPPrT0OHqDL0tr5h8zPIj1GRBe.jpg",
+      "trailerKey": "tgRyTTi_9mk",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "biografi",
+        "olahraga",
+        "inspirasi",
+        "olimpiade"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-28"
+    },
+    {
+      "id": "m081",
+      "title": "Mad Max: Fury Road",
+      "originalTitle": "Mad Max: Fury Road",
+      "year": 2015,
+      "genres": [
+        "Aksi",
+        "Sci-Fi",
+        "Petualangan"
+      ],
+      "rating": 8.1,
+      "votes": 940000,
+      "duration": 120,
+      "synopsis": "Di gurun post-apokaliptik, Max bersekutu dengan Furiosa untuk melarikan diri dari tiran brutal Immortan Joe.",
+      "director": "George Miller",
+      "cast": [
+        "Tom Hardy",
+        "Charlize Theron",
+        "Nicholas Hoult",
+        "Hugh Keays-Byrne"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/phszHPFBMeGqTj2wkUDHBCRzsng.jpg",
+      "trailerKey": "hEJnMQG9ev8",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "en",
+      "country": "Australia",
+      "age_rating": "17+",
+      "tags": [
+        "action",
+        "post-apocalyptic",
+        "desert",
+        "chase"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-29"
+    },
+    {
+      "id": "m082",
+      "title": "Grave of the Fireflies",
+      "originalTitle": "Hotaru no Haka",
+      "year": 1988,
+      "genres": [
+        "Animasi",
+        "Drama",
+        "Perang"
+      ],
+      "rating": 8.5,
+      "votes": 310000,
+      "duration": 89,
+      "synopsis": "Dua saudara, Seita dan Setsuko, berjuang untuk bertahan hidup di Jepang selama Perang Dunia II setelah kehilangan rumah dan keluarga mereka.",
+      "director": "Isao Takahata",
+      "cast": [
+        "Tsutomu Tatsumi",
+        "Ayano Shiraishi",
+        "Yoshiko Shinohara",
+        "Akemi Yamaguchi"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/qG3RYlIVpTYclR9TYIsy8p7m7AT.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/xR8dxNfmePFR7KN9kCwHrHLGl7r.jpg",
+      "trailerKey": "4vPeTSRd580",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "ja",
+      "country": "Jepang",
+      "age_rating": "SU",
+      "tags": [
+        "anime",
+        "war",
+        "tragedy",
+        "ghibli"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-03-30"
+    },
+    {
+      "id": "m083",
+      "title": "Black Panther",
+      "originalTitle": "Black Panther",
+      "year": 2018,
+      "genres": [
+        "Aksi",
+        "Sci-Fi",
+        "Petualangan"
+      ],
+      "rating": 7.3,
+      "votes": 740000,
+      "duration": 134,
+      "synopsis": "T'Challa kembali ke kerajaan teknologi canggih Wakanda untuk mengklaim tahtanya namun menghadapi pemberontakan dari dalam.",
+      "director": "Ryan Coogler",
+      "cast": [
+        "Chadwick Boseman",
+        "Michael B. Jordan",
+        "Lupita Nyong'o",
+        "Danai Gurira"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/6ELJEzQJ3Y45HczvreqO2YYTU3P.jpg",
+      "trailerKey": "xjDjIWPwcPU",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "marvel",
+        "wakanda",
+        "superhero",
+        "africa"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-01"
+    },
+    {
+      "id": "m084",
+      "title": "Perempuan Tanah Jahanam",
+      "originalTitle": "Perempuan Tanah Jahanam",
+      "year": 2019,
+      "genres": [
+        "Horor",
+        "Thriller",
+        "Misteri"
+      ],
+      "rating": 7.3,
+      "votes": 28000,
+      "duration": 103,
+      "synopsis": "Maya dan Dini mengunjungi desa asal Maya untuk mencari warisan, namun disambut oleh rahasia gelap dan ritual gaib yang mengancam jiwa mereka.",
+      "director": "Joko Anwar",
+      "cast": [
+        "Tara Basro",
+        "Marissa Anita",
+        "Christine Hakim",
+        "Asmara Abigail"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/w1DspVFpnqoVbGy2wnY3cpGCn0H.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/dq3rPWbvH1MjEnGbH48lPTSXGqq.jpg",
+      "trailerKey": "TiZvW6oKxNQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "17+",
+      "tags": [
+        "horor",
+        "indonesia",
+        "supernatural",
+        "desa"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-02"
+    },
+    {
+      "id": "m085",
+      "title": "A Beautiful Mind",
+      "originalTitle": "A Beautiful Mind",
+      "year": 2001,
+      "genres": [
+        "Biografi",
+        "Drama"
+      ],
+      "rating": 8.2,
+      "votes": 880000,
+      "duration": 135,
+      "synopsis": "Kisah nyata John Nash, seorang matematikawan jenius yang mengalami skizofrenia dan perjuangannya meraih Nobel Prize.",
+      "director": "Ron Howard",
+      "cast": [
+        "Russell Crowe",
+        "Ed Harris",
+        "Jennifer Connelly",
+        "Paul Bettany"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/2WXopACfnXmiLovwHqX39Vm6U3P.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/wBhIiz3naInxgU7QD3wgiIQrMKK.jpg",
+      "trailerKey": "YWwAOutgWBQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "biografi",
+        "matematika",
+        "penyakit-mental",
+        "oscar"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-03"
+    },
+    {
+      "id": "m086",
+      "title": "Petualangan Sherina",
+      "originalTitle": "Petualangan Sherina",
+      "year": 2000,
+      "genres": [
+        "Petualangan",
+        "Musikal",
+        "Keluarga"
+      ],
+      "rating": 7.8,
+      "votes": 48000,
+      "duration": 116,
+      "synopsis": "Sherina dan Sadam, dua anak yang awalnya bermusuhan, akhirnya harus bekerja sama saat diculik oleh penjahat.",
+      "director": "Riri Riza",
+      "cast": [
+        "Sherina Munaf",
+        "Derby Romero",
+        "Mathias Muchus",
+        "Upi Avianto"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/uo4yoXUtskNr9GSiLFBzlwjJCXx.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/uo4yoXUtskNr9GSiLFBzlwjJCXx.jpg",
+      "trailerKey": "qcKLMQUxJBo",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "keluarga",
+        "petualangan",
+        "musik",
+        "nostalgia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-04"
+    },
+    {
+      "id": "m087",
+      "title": "John Wick: Chapter 4",
+      "originalTitle": "John Wick: Chapter 4",
+      "year": 2023,
+      "genres": [
+        "Aksi",
+        "Thriller",
+        "Kriminal"
+      ],
+      "rating": 7.7,
+      "votes": 390000,
+      "duration": 169,
+      "synopsis": "John Wick menemukan cara untuk mengalahkan High Table, namun sebelum mendapat kebebasannya, ia harus menghadapi musuh paling mematikan.",
+      "director": "Chad Stahelski",
+      "cast": [
+        "Keanu Reeves",
+        "Donnie Yen",
+        "Bill Skarsgård",
+        "Laurence Fishburne"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/l3Cqrt9yvP0oCDjWaRSQaZdJnO.jpg",
+      "trailerKey": "qEVUtrk8_B4",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "action",
+        "assassin",
+        "martial-arts",
+        "keanu"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-04-05"
+    },
+    {
+      "id": "m088",
+      "title": "Miracle in Cell No. 7",
+      "originalTitle": "7-beon-bang-eui seon-mul",
+      "year": 2013,
+      "genres": [
+        "Drama",
+        "Komedi"
+      ],
+      "rating": 8.1,
+      "votes": 130000,
+      "duration": 127,
+      "synopsis": "Seorang pria cacat mental yang dituduh membunuh anak seorang polisi berjuang membuktikan kecintaannya pada putri kecilnya dari balik jeruji penjara.",
+      "director": "Lee Hwan-kyung",
+      "cast": [
+        "Ryu Seung-ryong",
+        "Kal So-won",
+        "Oh Dal-su",
+        "Park Shin-hye"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/c55KNt2MH04iWEuJqkBYxuEJqGY.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/Aidq5Nl0v8AYqxBBNXe9I8tALAg.jpg",
+      "trailerKey": "4mInEerqOE8",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "ko",
+      "country": "Korea Selatan",
+      "age_rating": "SU",
+      "tags": [
+        "drama",
+        "keluarga",
+        "mengharukan",
+        "korea"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-06"
+    },
+    {
+      "id": "m089",
+      "title": "Nanti Kita Cerita Tentang Hari Ini",
+      "originalTitle": "Nanti Kita Cerita Tentang Hari Ini",
+      "year": 2020,
+      "genres": [
+        "Drama",
+        "Keluarga"
+      ],
+      "rating": 7.2,
+      "votes": 38000,
+      "duration": 113,
+      "synopsis": "Tiga bersaudara tumbuh dalam keluarga yang dijaga dengan protektif oleh sang ayah, namun rahasia masa lalu perlahan mengungkap luka yang tersembunyi.",
+      "director": "Angga Dwimas Sasongko",
+      "cast": [
+        "Rachel Amanda",
+        "Jourdy Pranata",
+        "Rio Dewanto",
+        "Nina Tamam"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/kSG4QiyCIHMXuqLmOFOTPi0cHDW.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/kSG4QiyCIHMXuqLmOFOTPi0cHDW.jpg",
+      "trailerKey": "Fg3XFAUMqbw",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "keluarga",
+        "drama",
+        "millennial",
+        "indonesia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-07"
+    },
+    {
+      "id": "m090",
+      "title": "Pulp Fiction",
+      "originalTitle": "Pulp Fiction",
+      "year": 1994,
+      "genres": [
+        "Kriminal",
+        "Drama",
+        "Thriller"
+      ],
+      "rating": 8.9,
+      "votes": 2000000,
+      "duration": 154,
+      "synopsis": "Kisah saling terkait tentang dua pembunuh bayaran, seorang petinju, gangster, dan pasangan pencuri yang berpotongan dalam serangkaian peristiwa tak terduga.",
+      "director": "Quentin Tarantino",
+      "cast": [
+        "John Travolta",
+        "Uma Thurman",
+        "Samuel L. Jackson",
+        "Bruce Willis"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg",
+      "trailerKey": "s7EdQ4FqbhY",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "tarantino",
+        "crime",
+        "classic",
+        "non-linear"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-08"
+    },
+    {
+      "id": "m091",
+      "title": "Moana",
+      "originalTitle": "Moana",
+      "year": 2016,
+      "genres": [
+        "Animasi",
+        "Petualangan",
+        "Musikal"
+      ],
+      "rating": 7.6,
+      "votes": 310000,
+      "duration": 103,
+      "synopsis": "Putri kepala suku Polinesia berlayar melintasi samudra untuk menyelamatkan pulau desanya dengan bantuan setengah dewa Maui.",
+      "director": "Ron Clements",
+      "cast": [
+        "Auli'i Cravalho",
+        "Dwayne Johnson",
+        "Rachel House",
+        "Temuera Morrison"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/pqzoiSAnMbMUOV8DQWQOQ8IYV3S.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/1AgKF2s39IuCVB0g2i0kzEyJPrz.jpg",
+      "trailerKey": "LKFuXETZUsI",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "SU",
+      "tags": [
+        "disney",
+        "animation",
+        "ocean",
+        "family"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-09"
+    },
+    {
+      "id": "m092",
+      "title": "Alien: Romulus",
+      "originalTitle": "Alien: Romulus",
+      "year": 2024,
+      "genres": [
+        "Sci-Fi",
+        "Horor",
+        "Thriller"
+      ],
+      "rating": 7.3,
+      "votes": 185000,
+      "duration": 119,
+      "synopsis": "Sekelompok penjelajah luar angkasa muda menemukan stasiun ditinggalkan dan bertemu dengan salah satu bentuk kehidupan paling mengerikan di alam semesta.",
+      "director": "Fede Álvarez",
+      "cast": [
+        "Cailee Spaeny",
+        "David Jonsson",
+        "Archie Renaux",
+        "Isabela Merced"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/9SSEUrSqhljBMzRe4aBTh17LP9H.jpg",
+      "trailerKey": "M1e3uYTRzio",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "alien",
+        "horror",
+        "sci-fi",
+        "space"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-04-10"
+    },
+    {
+      "id": "m093",
+      "title": "5 cm",
+      "originalTitle": "5 cm",
+      "year": 2012,
+      "genres": [
+        "Petualangan",
+        "Drama",
+        "Romantis"
+      ],
+      "rating": 7.1,
+      "votes": 35000,
+      "duration": 125,
+      "synopsis": "Lima sahabat memutuskan berpisah selama tiga bulan dan akhirnya bertemu kembali untuk mendaki Gunung Semeru bersama.",
+      "director": "Rizal Mantovani",
+      "cast": [
+        "Herjunot Ali",
+        "Fedi Nuril",
+        "Igor Saykoji",
+        "Raline Shah"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/tTXLvThxQ4TPl9ZbTNNEjjzHEbE.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/tTXLvThxQ4TPl9ZbTNNEjjzHEbE.jpg",
+      "trailerKey": "JijxQaZSTqU",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "petualangan",
+        "pendakian",
+        "persahabatan",
+        "indonesia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-11"
+    },
+    {
+      "id": "m094",
+      "title": "Mission: Impossible — Dead Reckoning Part One",
+      "originalTitle": "Mission: Impossible — Dead Reckoning Part One",
+      "year": 2023,
+      "genres": [
+        "Aksi",
+        "Thriller",
+        "Petualangan"
+      ],
+      "rating": 7.7,
+      "votes": 310000,
+      "duration": 163,
+      "synopsis": "Ethan Hunt dan timnya harus melacak senjata berbahaya sebelum jatuh ke tangan kelompok yang akan menggunakan AI jahat untuk menguasai dunia.",
+      "director": "Christopher McQuarrie",
+      "cast": [
+        "Tom Cruise",
+        "Hayley Atwell",
+        "Ving Rhames",
+        "Simon Pegg"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/1hYE3IIAy5SRmBXjLDZvnWZUMhW.jpg",
+      "trailerKey": "avz-2MBQ24Y",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "action",
+        "spy",
+        "tom-cruise",
+        "thriller"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-12"
+    },
+    {
+      "id": "m095",
+      "title": "Triangle of Sadness",
+      "originalTitle": "Triangle of Sadness",
+      "year": 2022,
+      "genres": [
+        "Komedi",
+        "Drama",
+        "Satire"
+      ],
+      "rating": 7.3,
+      "votes": 135000,
+      "duration": 147,
+      "synopsis": "Pasangan selebriti influencer terdampar di pulau dengan beberapa penumpang kapal pesiar kaya yang selamat, menyebabkan pergantian kelas sosial yang satiris.",
+      "director": "Ruben Östlund",
+      "cast": [
+        "Harris Dickinson",
+        "Charlbi Dean",
+        "Dolly De Leon",
+        "Zlatko Burić"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/rFRHN9aCkTWYEaKbj0ZPF8pHoS2.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/kNh0dBP4ldq8NRKC2Yx1gGSzSrc.jpg",
+      "trailerKey": "VDvfFIZQIuQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "en",
+      "country": "Swedia",
+      "age_rating": "17+",
+      "tags": [
+        "satire",
+        "dark-comedy",
+        "class",
+        "palme-d-or"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-13"
+    },
+    {
+      "id": "m096",
+      "title": "Filosofi Kopi",
+      "originalTitle": "Filosofi Kopi",
+      "year": 2015,
+      "genres": [
+        "Drama",
+        "Romantis"
+      ],
+      "rating": 7.0,
+      "votes": 28000,
+      "duration": 113,
+      "synopsis": "Ben dan Jody, dua sahabat yang memiliki kedai kopi, berjuang untuk mempertahankan bisnis mereka sembari menghadapi ujian persahabatan.",
+      "director": "Angga Dwimas Sasongko",
+      "cast": [
+        "Rio Dewanto",
+        "Chico Jericho",
+        "Julie Estelle",
+        "Sigi Wimala"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/vABVsklBVdBbRpEyDHexYRJMHuS.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/vABVsklBVdBbRpEyDHexYRJMHuS.jpg",
+      "trailerKey": "9t1CQJZG2gw",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "kopi",
+        "persahabatan",
+        "drama",
+        "indonesia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-14"
+    },
+    {
+      "id": "m097",
+      "title": "Dune: Part Two",
+      "originalTitle": "Dune: Part Two",
+      "year": 2024,
+      "genres": [
+        "Sci-Fi",
+        "Aksi",
+        "Petualangan"
+      ],
+      "rating": 8.5,
+      "votes": 520000,
+      "duration": 166,
+      "synopsis": "Paul Atreides bersatu dengan suku Fremen dalam perjalanan membalas dendam terhadap para penyerang yang menghancurkan keluarganya.",
+      "director": "Denis Villeneuve",
+      "cast": [
+        "Timothée Chalamet",
+        "Zendaya",
+        "Rebecca Ferguson",
+        "Austin Butler"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
+      "trailerKey": "Way9Dexny3w",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "sci-fi",
+        "epic",
+        "sequel",
+        "dune"
+      ],
+      "featured": true,
+      "trending": true,
+      "createdAt": "2024-04-15"
+    },
+    {
+      "id": "m098",
+      "title": "Tilik",
+      "originalTitle": "Tilik",
+      "year": 2018,
+      "genres": [
+        "Komedi",
+        "Drama"
+      ],
+      "rating": 7.5,
+      "votes": 18000,
+      "duration": 32,
+      "synopsis": "Sekelompok ibu-ibu naik truk untuk menjenguk bu Lurah yang sakit di rumah sakit, namun perjalanan diwarnai gosip tak ada habisnya tentang Dian.",
+      "director": "Wahyu Agung Prasetyo",
+      "cast": [
+        "Siti Fauziah",
+        "Brilliana Desy",
+        "Uli Herdinansyah"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/lFRHN9aCkTWYEaKbj0ZPF8pHoS2.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/lFRHN9aCkTWYEaKbj0ZPF8pHoS2.jpg",
+      "trailerKey": "GAn4IwOH2uQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "komedi",
+        "sosial",
+        "viral",
+        "short-film"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-16"
+    },
+    {
+      "id": "m099",
+      "title": "The Menu",
+      "originalTitle": "The Menu",
+      "year": 2022,
+      "genres": [
+        "Thriller",
+        "Horor",
+        "Komedi"
+      ],
+      "rating": 7.2,
+      "votes": 290000,
+      "duration": 107,
+      "synopsis": "Sepasang kekasih mengunjungi restoran eksklusif di pulau terpencil namun menemukan bahwa menu sang chef jauh lebih gelap dari yang dibayangkan.",
+      "director": "Mark Mylod",
+      "cast": [
+        "Ralph Fiennes",
+        "Anya Taylor-Joy",
+        "Nicholas Hoult",
+        "Hong Chau"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/v1UgKnpBjyLdBCehplNPJDkNsI5.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/b9tchOGrfQfbv1mQAHsaXJgm5hC.jpg",
+      "trailerKey": "VjFL_e1NsGQ",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "dark-comedy",
+        "thriller",
+        "food",
+        "satire"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-17"
+    },
+    {
+      "id": "m100",
+      "title": "Ada Apa dengan Cinta?",
+      "originalTitle": "Ada Apa dengan Cinta?",
+      "year": 2002,
+      "genres": [
+        "Romantis",
+        "Drama",
+        "Remaja"
+      ],
+      "rating": 7.7,
+      "votes": 65000,
+      "duration": 112,
+      "synopsis": "Cinta, gadis populer dan ketua kelompok puisi, jatuh hati pada Rangga, pemuda misterius penyendiri, menghadapi dilema cinta dan persahabatan.",
+      "director": "Rudy Soedjarwo",
+      "cast": [
+        "Dian Sastrowardoyo",
+        "Nicholas Saputra",
+        "Sissy Priscillia",
+        "Ladya Cheryl"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/3jkVWRRmAz6P8VtJLiSyFZ0oe7S.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/3jkVWRRmAz6P8VtJLiSyFZ0oe7S.jpg",
+      "trailerKey": "jlvnWtVFBCg",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "romance",
+        "remaja",
+        "klasik",
+        "indonesia"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-04-18"
+    },
+    {
+      "id": "m101",
+      "title": "Oldboy",
+      "originalTitle": "Oldeuboi",
+      "year": 2003,
+      "genres": [
+        "Thriller",
+        "Misteri",
+        "Kriminal"
+      ],
+      "rating": 8.4,
+      "votes": 610000,
+      "duration": 120,
+      "synopsis": "Seorang pria tiba-tiba diculik dan dipenjara selama 15 tahun tanpa alasan jelas, lalu dibebaskan untuk memecahkan misteri dibalik pemenjaraannya.",
+      "director": "Park Chan-wook",
+      "cast": [
+        "Choi Min-sik",
+        "Yoo Ji-tae",
+        "Kang Hye-jung",
+        "Kim Byeong-ok"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/3VUucBn4tqiPlDGp08VVxkrxQTr.jpg",
+      "trailerKey": "2SoJi7swAMI",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "ko",
+      "country": "Korea Selatan",
+      "age_rating": "17+",
+      "tags": [
+        "revenge",
+        "mystery",
+        "korea",
+        "dark"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-19"
+    },
+    {
+      "id": "m102",
+      "title": "Pengabdi Setan 3",
+      "originalTitle": "Iblis Dalam Diri",
+      "year": 2024,
+      "genres": [
+        "Horor",
+        "Thriller"
+      ],
+      "rating": 6.9,
+      "votes": 38000,
+      "duration": 114,
+      "synopsis": "Teror iblis kembali hadir dengan kekuatan yang jauh lebih gelap, memaksa keluarga yang sama menghadapi ancaman yang tidak lagi dapat mereka hindari.",
+      "director": "Joko Anwar",
+      "cast": [
+        "Tara Basro",
+        "Endy Arfian",
+        "Nasar Annuz"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/4EfVRFEDBlh8H6ux0KyauvP1wIH.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
+      "trailerKey": "vHsaFqt4bWI",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "17+",
+      "tags": [
+        "horor",
+        "indonesia",
+        "supernatural",
+        "trilogi"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-04-20"
+    },
+    {
+      "id": "m103",
+      "title": "The Revenant",
+      "originalTitle": "The Revenant",
+      "year": 2015,
+      "genres": [
+        "Drama",
+        "Petualangan",
+        "Thriller"
+      ],
+      "rating": 8.0,
+      "votes": 790000,
+      "duration": 156,
+      "synopsis": "Seorang penjelajah yang hampir tewas akibat serangan beruang berjuang untuk bertahan hidup dan membalas dendam di alam liar Amerika abad ke-19.",
+      "director": "Alejandro González Iñárritu",
+      "cast": [
+        "Leonardo DiCaprio",
+        "Tom Hardy",
+        "Will Poulter",
+        "Domhnall Gleeson"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/ji3ecJphATlVgWNY0B0RVXZizR2.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/dvBCdCohwWbsP5qAaglOXagDMtk.jpg",
+      "trailerKey": "LoebZZ8K5N0",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "survival",
+        "revenge",
+        "oscar",
+        "nature"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-21"
+    },
+    {
+      "id": "m104",
+      "title": "Cek Toko Sebelah",
+      "originalTitle": "Cek Toko Sebelah",
+      "year": 2016,
+      "genres": [
+        "Komedi",
+        "Drama",
+        "Keluarga"
+      ],
+      "rating": 7.6,
+      "votes": 41000,
+      "duration": 98,
+      "synopsis": "Setelah kepergian sang ayah, dua bersaudara harus berdamai dengan masa lalu dan menjalankan toko keluarga yang mulai terancam.",
+      "director": "Ernest Prakasa",
+      "cast": [
+        "Ernest Prakasa",
+        "Dion Wiyoko",
+        "Gisella Anastasia",
+        "Adinia Wirasti"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/pHkKbIRoCe7zIFvqan9LqSo9cXt.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/pHkKbIRoCe7zIFvqan9LqSo9cXt.jpg",
+      "trailerKey": "gPjxCT5VzI8",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "komedi",
+        "keluarga",
+        "ernest-prakasa",
+        "tionghoa"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-22"
+    },
+    {
+      "id": "m105",
+      "title": "Tenet",
+      "originalTitle": "Tenet",
+      "year": 2020,
+      "genres": [
+        "Aksi",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "rating": 7.4,
+      "votes": 560000,
+      "duration": 150,
+      "synopsis": "Seorang agen rahasia menjalankan misi untuk mencegah Perang Dunia III dengan memanipulasi waktu dalam operasi yang membingungkan bernama Tenet.",
+      "director": "Christopher Nolan",
+      "cast": [
+        "John David Washington",
+        "Robert Pattinson",
+        "Elizabeth Debicki",
+        "Kenneth Branagh"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/k68nPLbIST6NP96JmTxmZijZchr.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg",
+      "trailerKey": "L3pk_TBkihU",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "time",
+        "action",
+        "nolan",
+        "mind-bending"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-23"
+    },
+    {
+      "id": "m106",
+      "title": "27 Steps of May",
+      "originalTitle": "27 Steps of May",
+      "year": 2018,
+      "genres": [
+        "Drama",
+        "Misteri"
+      ],
+      "rating": 7.8,
+      "votes": 14000,
+      "duration": 103,
+      "synopsis": "May, penyintas kekerasan yang menutup diri dari dunia, perlahan menemukan kembali dirinya ketika seorang penyulap tua hadir dalam hidupnya.",
+      "director": "Ravi Bharwani",
+      "cast": [
+        "Raihaanun",
+        "Lukman Sardi",
+        "Ario Bayu"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/hJdNGMcKBZq3F88hGKBP94LGLhN.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/hJdNGMcKBZq3F88hGKBP94LGLhN.jpg",
+      "trailerKey": "gDmEnIJVJi4",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "17+",
+      "tags": [
+        "drama",
+        "trauma",
+        "healing",
+        "indie"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-24"
+    },
+    {
+      "id": "m107",
+      "title": "Hereditary",
+      "originalTitle": "Hereditary",
+      "year": 2018,
+      "genres": [
+        "Horor",
+        "Misteri",
+        "Drama"
+      ],
+      "rating": 7.3,
+      "votes": 340000,
+      "duration": 127,
+      "synopsis": "Setelah kematian nenek mereka, sebuah keluarga mulai mengungkap rahasia gelap tentang warisan mereka yang mengarah pada nasib yang tak terbayangkan.",
+      "director": "Ari Aster",
+      "cast": [
+        "Toni Collette",
+        "Alex Wolff",
+        "Milly Shapiro",
+        "Gabriel Byrne"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/p91nZRNk6GKZN8UzNyHaIWIJJJk.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/rSjR9RaS1IcBNT3QHm7MLnbBfNY.jpg",
+      "trailerKey": "V6wWKNij_1M",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "horror",
+        "family",
+        "occult",
+        "psychological"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-25"
+    },
+    {
+      "id": "m108",
+      "title": "The Grand Budapest Hotel",
+      "originalTitle": "The Grand Budapest Hotel",
+      "year": 2014,
+      "genres": [
+        "Komedi",
+        "Drama",
+        "Misteri"
+      ],
+      "rating": 8.1,
+      "votes": 740000,
+      "duration": 99,
+      "synopsis": "Petualangan seorang concierge hotel legendaris yang dituduh membunuh dan warisannya bersama lobby boy muda yang jadi sahabatnya.",
+      "director": "Wes Anderson",
+      "cast": [
+        "Ralph Fiennes",
+        "Tony Revolori",
+        "Saoirse Ronan",
+        "F. Murray Abraham"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/2DouNNz2nE8PxuJf1ZFhKqCJHpR.jpg",
+      "trailerKey": "1Fg9QXdXGMg",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "13+",
+      "tags": [
+        "wes-anderson",
+        "comedy",
+        "europe",
+        "mystery"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-26"
+    },
+    {
+      "id": "m109",
+      "title": "Satria Dewa: Gatotkaca",
+      "originalTitle": "Satria Dewa: Gatotkaca",
+      "year": 2022,
+      "genres": [
+        "Aksi",
+        "Fantasi",
+        "Petualangan"
+      ],
+      "rating": 6.5,
+      "votes": 19000,
+      "duration": 127,
+      "synopsis": "Yudha, seorang pemuda biasa, menemukan bahwa ia adalah reinkarnasi dari Gatotkaca dan harus melindungi dunia dari ancaman kekuatan jahat.",
+      "director": "Hanung Bramantyo",
+      "cast": [
+        "Rizky Nazar",
+        "Yasmin Napper",
+        "Yayan Ruhian",
+        "Cecep Arif Rahman"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/r9YBBOKkN0n3b9hmHHrj4Rv0l8r.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/r9YBBOKkN0n3b9hmHHrj4Rv0l8r.jpg",
+      "trailerKey": "7DP6mGlhzVE",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "superhero",
+        "wayang",
+        "indonesia",
+        "mitologi"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-27"
+    },
+    {
+      "id": "m110",
+      "title": "The Matrix",
+      "originalTitle": "The Matrix",
+      "year": 1999,
+      "genres": [
+        "Sci-Fi",
+        "Aksi",
+        "Thriller"
+      ],
+      "rating": 8.7,
+      "votes": 1900000,
+      "duration": 136,
+      "synopsis": "Seorang hacker menemukan bahwa realitas yang ia jalani hanyalah simulasi komputer dan bergabung dengan pemberontakan melawan mesin yang mengendalikannya.",
+      "director": "Lana Wachowski",
+      "cast": [
+        "Keanu Reeves",
+        "Laurence Fishburne",
+        "Carrie-Anne Moss",
+        "Hugo Weaving"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/fNG7i7RqMErkcqhohV2a6cV1Ehy.jpg",
+      "trailerKey": "vKQi3bBA1y8",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "sci-fi",
+        "simulation",
+        "cyberpunk",
+        "classic"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-04-28"
+    },
+    {
+      "id": "m111",
+      "title": "Hanung Bramantyo: Sang Pencerah",
+      "originalTitle": "Sang Pencerah",
+      "year": 2010,
+      "genres": [
+        "Biografi",
+        "Drama",
+        "Sejarah"
+      ],
+      "rating": 7.5,
+      "votes": 21000,
+      "duration": 110,
+      "synopsis": "Kisah perjuangan KH Ahmad Dahlan mendirikan Muhammadiyah dan memperjuangkan pembaruan Islam di tengah tantangan masyarakat Jawa awal abad ke-20.",
+      "director": "Hanung Bramantyo",
+      "cast": [
+        "Lukman Sardi",
+        "Slamet Rahardjo",
+        "Zaskia Adya Mecca",
+        "Ihsan Tarore"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/dqepTBHPyBM24sXu7bMJJnQlYh5.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/dqepTBHPyBM24sXu7bMJJnQlYh5.jpg",
+      "trailerKey": "uCVzDlCOHRY",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "biografi",
+        "sejarah",
+        "islam",
+        "inspirasi"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-29"
+    },
+    {
+      "id": "m112",
+      "title": "Prisoners",
+      "originalTitle": "Prisoners",
+      "year": 2013,
+      "genres": [
+        "Drama",
+        "Misteri",
+        "Thriller"
+      ],
+      "rating": 8.1,
+      "votes": 730000,
+      "duration": 153,
+      "synopsis": "Seorang ayah mengambil tindakan sendiri setelah putrinya menghilang dan polisi tidak menemukan tersangka yang cukup bukti untuk ditahan.",
+      "director": "Denis Villeneuve",
+      "cast": [
+        "Hugh Jackman",
+        "Jake Gyllenhaal",
+        "Viola Davis",
+        "Maria Bello"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/iLBOLErDOlwpF1FBNjH8eTDexJD.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/fQhVs8g7wGLJdWQmA7uSGnfgRSp.jpg",
+      "trailerKey": "5Korgj3GGvE",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "mystery",
+        "thriller",
+        "kidnapping",
+        "dark"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-04-30"
+    },
+    {
+      "id": "m113",
+      "title": "Marlina Si Pembunuh dalam Empat Babak",
+      "originalTitle": "Marlina Si Pembunuh dalam Empat Babak",
+      "year": 2017,
+      "genres": [
+        "Drama",
+        "Thriller",
+        "Western"
+      ],
+      "rating": 7.6,
+      "votes": 9000,
+      "duration": 93,
+      "synopsis": "Marlina, seorang janda di Sumba, terpaksa membunuh kawanan perampok yang menyerangnya dan memulai perjalanan panjang mencari keadilan.",
+      "director": "Mouly Surya",
+      "cast": [
+        "Marsha Timothy",
+        "Dea Panendra",
+        "Yoga Pratama",
+        "Egi Fedly"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/g1eqFzNNGQIFTr4MwaTbV1TBN8Y.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/g1eqFzNNGQIFTr4MwaTbV1TBN8Y.jpg",
+      "trailerKey": "9JqF3jBHNuI",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "17+",
+      "tags": [
+        "western",
+        "feminist",
+        "sumba",
+        "indie"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-05-01"
+    },
+    {
+      "id": "m114",
+      "title": "Inside Out 2",
+      "originalTitle": "Inside Out 2",
+      "year": 2024,
+      "genres": [
+        "Animasi",
+        "Keluarga",
+        "Komedi"
+      ],
+      "rating": 7.8,
+      "votes": 490000,
+      "duration": 100,
+      "synopsis": "Riley memasuki masa remaja dan emosi-emosi barunya — Kecemasan, Rasa Malu, Bosan, dan Iri — mengacaukan pengendali perasaannya.",
+      "director": "Kelsey Mann",
+      "cast": [
+        "Amy Poehler",
+        "Maya Hawke",
+        "Kensington Tallman",
+        "Liza Lapira"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg",
+      "trailerKey": "LEjhY15eCx0",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "SU",
+      "tags": [
+        "pixar",
+        "animation",
+        "family",
+        "emotion"
+      ],
+      "featured": true,
+      "trending": true,
+      "createdAt": "2024-05-02"
+    },
+    {
+      "id": "m115",
+      "title": "The Substance",
+      "originalTitle": "The Substance",
+      "year": 2024,
+      "genres": [
+        "Horor",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "rating": 7.3,
+      "votes": 230000,
+      "duration": 141,
+      "synopsis": "Seorang bintang fitness TV yang terbuang menggunakan obat eksperimental untuk menciptakan versi dirinya yang lebih muda dan sempurna, namun dengan konsekuensi gelap.",
+      "director": "Coralie Fargeat",
+      "cast": [
+        "Demi Moore",
+        "Margaret Qualley",
+        "Dennis Quaid"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/7y9sqHHKz8Fkpu52W0UeHiEz5zy.jpg",
+      "trailerKey": "so3fPkY-xQs",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "language": "en",
+      "country": "Prancis",
+      "age_rating": "17+",
+      "tags": [
+        "body-horror",
+        "feminist",
+        "satire",
+        "cannes"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-05-03"
+    },
+    {
+      "id": "m116",
+      "title": "Keluarga Cemara",
+      "originalTitle": "Keluarga Cemara",
+      "year": 2019,
+      "genres": [
+        "Drama",
+        "Keluarga"
+      ],
+      "rating": 7.6,
+      "votes": 31000,
+      "duration": 110,
+      "synopsis": "Sebuah keluarga kaya terpaksa pindah ke desa setelah sang ayah jatuh bangkrut, namun perlahan menemukan makna hidup yang sebenarnya.",
+      "director": "Yandy Laurens",
+      "cast": [
+        "Ringgo Agus Rahman",
+        "Nirina Zubir",
+        "Adhisty Zara",
+        "Widuri Puteri"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/eXm5iuO5Ru0hSqiNdvyXXqk4A3a.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/eXm5iuO5Ru0hSqiNdvyXXqk4A3a.jpg",
+      "trailerKey": "m1sioaxYovc",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "keluarga",
+        "inspirasi",
+        "desa",
+        "indonesia"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-05-04"
+    },
+    {
+      "id": "m117",
+      "title": "Conclave",
+      "originalTitle": "Conclave",
+      "year": 2024,
+      "genres": [
+        "Drama",
+        "Misteri",
+        "Thriller"
+      ],
+      "rating": 7.4,
+      "votes": 195000,
+      "duration": 120,
+      "synopsis": "Para kardinal berkumpul di Vatikan untuk memilih Paus baru, namun intrik politik dan rahasia tersembunyi mengancam kelangsungan prosesi suci tersebut.",
+      "director": "Edward Berger",
+      "cast": [
+        "Ralph Fiennes",
+        "Stanley Tucci",
+        "John Lithgow",
+        "Isabella Rossellini"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/m3l2o5CKn2iNJHKO90VUOWaefcA.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/xVDijIeJLCVLr4kvN1gLi1vH5aS.jpg",
+      "trailerKey": "jPW9MmMnIWM",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunLoosely.mp4",
+      "language": "en",
+      "country": "UK",
+      "age_rating": "13+",
+      "tags": [
+        "religion",
+        "mystery",
+        "vatican",
+        "drama"
+      ],
+      "featured": false,
+      "trending": true,
+      "createdAt": "2024-05-05"
+    },
+    {
+      "id": "m118",
+      "title": "Rudy Habibie",
+      "originalTitle": "Rudy Habibie",
+      "year": 2016,
+      "genres": [
+        "Biografi",
+        "Drama",
+        "Sejarah"
+      ],
+      "rating": 7.3,
+      "votes": 24000,
+      "duration": 141,
+      "synopsis": "Kisah masa muda B.J. Habibie saat menempuh studi di Jerman, perjuangannya membuktikan diri, dan cinta pertamanya yang tertinggal di tanah air.",
+      "director": "Hanung Bramantyo",
+      "cast": [
+        "Reza Rahadian",
+        "Chelsea Islan",
+        "Boris Bokir",
+        "Ernest Prakasa"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/5U4YkEi0hhSwfMWTolzUidKg6qA.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/5U4YkEi0hhSwfMWTolzUidKg6qA.jpg",
+      "trailerKey": "YTkTIBtJJIk",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "biografi",
+        "habibie",
+        "jerman",
+        "inspirasi"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-05-06"
+    },
+    {
+      "id": "m119",
+      "title": "Anora",
+      "originalTitle": "Anora",
+      "year": 2024,
+      "genres": [
+        "Drama",
+        "Romantis",
+        "Komedi"
+      ],
+      "rating": 7.7,
+      "votes": 175000,
+      "duration": 139,
+      "synopsis": "Seorang penari eksotis New York menikah impulsif dengan putra oligarki Rusia, namun keluarga sang suami datang mengacaukan segalanya.",
+      "director": "Sean Baker",
+      "cast": [
+        "Mikey Madison",
+        "Yura Borisov",
+        "Karren Karagulian",
+        "Vache Tovmasyan"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/95S7MHQnnb1oS6bfpUU1xVmXfzP.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/3QF8HCXX5JIMRpZNyBz65sN2Ylj.jpg",
+      "trailerKey": "NqSo5L7qDLA",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "language": "en",
+      "country": "USA",
+      "age_rating": "17+",
+      "tags": [
+        "palme-d-or",
+        "romance",
+        "comedy",
+        "drama"
+      ],
+      "featured": true,
+      "trending": true,
+      "createdAt": "2024-05-07"
+    },
+    {
+      "id": "m120",
+      "title": "Mencuri Raden Saleh",
+      "originalTitle": "Mencuri Raden Saleh",
+      "year": 2022,
+      "genres": [
+        "Aksi",
+        "Thriller",
+        "Kriminal"
+      ],
+      "rating": 7.9,
+      "votes": 47000,
+      "duration": 155,
+      "synopsis": "Pemberani dan rekan-rekannya merancang rencana pencurian lukisan Raden Saleh yang tersimpan di Istana Negara demi membebaskan ayah Pemberani dari penjara.",
+      "director": "Angga Dwimas Sasongko",
+      "cast": [
+        "Iqbaal Ramadhan",
+        "Angga Yunanda",
+        "Rachel Amanda",
+        "Umay Shahab"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/8fN9GfBPxXlYlwFxJGMJ0Xt38Hq.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/8fN9GfBPxXlYlwFxJGMJ0Xt38Hq.jpg",
+      "trailerKey": "L8aHFzEdTMk",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "13+",
+      "tags": [
+        "heist",
+        "indonesia",
+        "aksi",
+        "seni"
+      ],
+      "featured": true,
+      "trending": false,
+      "createdAt": "2024-05-08"
+    },
+    {
+      "id": "m121",
+      "title": "Poor Things",
+      "originalTitle": "Poor Things",
+      "year": 2023,
+      "genres": [
+        "Drama",
+        "Komedi",
+        "Fantasi"
+      ],
+      "rating": 7.8,
+      "votes": 320000,
+      "duration": 141,
+      "synopsis": "Seorang wanita dihidupkan kembali oleh seorang ilmuwan eksentrik dan memulai perjalanan liar melintasi Eropa yang mengubah cara pandangnya tentang dunia.",
+      "director": "Yorgos Lanthimos",
+      "cast": [
+        "Emma Stone",
+        "Mark Ruffalo",
+        "Willem Dafoe",
+        "Ramy Youssef"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXNbZ0oJSuuIbAF.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/7u8ISKEHpYIFiLHMVyaqtVb1QMH.jpg",
+      "trailerKey": "RlbR5N6veqw",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+      "language": "en",
+      "country": "UK",
+      "age_rating": "17+",
+      "tags": [
+        "oscar",
+        "surreal",
+        "comedy",
+        "feminist"
+      ],
+      "featured": false,
+      "trending": false,
+      "createdAt": "2024-05-09"
+    },
+    {
+      "id": "m122",
+      "title": "Jumbo",
+      "originalTitle": "Jumbo",
+      "year": 2025,
+      "genres": [
+        "Animasi",
+        "Keluarga",
+        "Petualangan"
+      ],
+      "rating": 7.5,
+      "votes": 28000,
+      "duration": 100,
+      "synopsis": "Jumbo, anak laki-laki berbadan gemuk yang merasa tidak diterima di lingkungannya, memulai petualangan magis yang mengajarinya arti persahabatan sejati.",
+      "director": "Ryan Adriandhy",
+      "cast": [
+        "Angga Yunanda",
+        "Prilly Latuconsina",
+        "Keanu Angelo",
+        "Aysha Hendini"
+      ],
+      "posterUrl": "https://image.tmdb.org/t/p/w500/jMbZUABhT7pUH6RDFVn0BVcXuLh.jpg",
+      "backdropUrl": "https://image.tmdb.org/t/p/original/jMbZUABhT7pUH6RDFVn0BVcXuLh.jpg",
+      "trailerKey": "ZNInvMnfpCk",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "language": "id",
+      "country": "Indonesia",
+      "age_rating": "SU",
+      "tags": [
+        "animasi",
+        "keluarga",
+        "indonesia",
+        "persahabatan"
+      ],
+      "featured": true,
+      "trending": true,
+      "createdAt": "2024-05-10"
     }
   ]
 }
