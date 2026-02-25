@@ -148,7 +148,7 @@ function showFeedback(html) {
 
 async function initWatchPage() {
   // Auth guard
-  const user = window.CineAuth ? CineAuth.getCurrentUser() : null;
+  const user = window.CineStorage ? CineStorage.User.getCurrent() : null;
   if (!user) {
     window.location.href = 'auth/login.html';
     return;
@@ -276,11 +276,11 @@ function initWatchlistBtn(movie) {
   if (!btn) return;
 
   const user = WatchState.currentUser;
-  const isIn = Storage.Watchlist.has(user.id, movie.id);
+  const isIn = CineStorage.Watchlist.has(user.id, movie.id);
   updateWatchlistUI(isIn, icon, label);
 
   btn.addEventListener('click', () => {
-    const added = Storage.Watchlist.toggle(user.id, movie.id);
+    const added = CineStorage.Watchlist.toggle(user.id, movie.id);
     updateWatchlistUI(added, icon, label);
     if (window.CineToast) {
       CineToast.show(added ? `"${movie.title}" ditambah ke watchlist` : `"${movie.title}" dihapus dari watchlist`, added ? 'success' : 'info');
@@ -460,7 +460,7 @@ function onVideoEnded() {
   setPlayingState(false);
   // Clear saved progress on completion
   if (WatchState.currentUser && WatchState.movie) {
-    Storage.Progress.clear(WatchState.currentUser.id, WatchState.movie.id);
+    CineStorage.Progress.clear(WatchState.currentUser.id, WatchState.movie.id);
   }
   // Ensure history is recorded
   if (!WatchState.historyRecorded) recordHistory();
@@ -845,7 +845,7 @@ function saveProgress() {
   if (video.currentTime < 5) return;
   if (WatchState.duration > 0 && (WatchState.duration - video.currentTime) < 30) return;
 
-  Storage.Progress.save(user.id, movie.id, video.currentTime);
+  CineStorage.Progress.save(user.id, movie.id, video.currentTime);
 }
 
 /* ─────────────────────────────────────────
@@ -856,7 +856,7 @@ function checkResumePrompt(movie) {
   const user = WatchState.currentUser;
   if (!user) return;
 
-  const progress = Storage.Progress.get(user.id, movie.id);
+  const progress = CineStorage.Progress.get(user.id, movie.id);
   if (!progress || progress.seconds < 10) return;
 
   const prompt    = DOM.resumePrompt();
@@ -882,7 +882,7 @@ function checkResumePrompt(movie) {
   if (btnNo) {
     btnNo.addEventListener('click', () => {
       prompt.style.display = 'none';
-      Storage.Progress.clear(user.id, movie.id);
+      CineStorage.Progress.clear(user.id, movie.id);
       startPlay();
     });
   }
@@ -898,7 +898,7 @@ function recordHistory() {
   const movie = WatchState.movie;
   if (!user || !movie) return;
 
-  Storage.History.add(user.id, movie.id);
+  CineStorage.History.add(user.id, movie.id);
   WatchState.historyRecorded = true;
 }
 
@@ -968,8 +968,8 @@ function buildSidebarCard(movie, isActive = false) {
 ───────────────────────────────────────── */
 
 function ensureStorageHas() {
-  if (window.Storage && Storage.Watchlist && !Storage.Watchlist.has) {
-    Storage.Watchlist.has = function(userId, movieId) {
+  if (window.CineStorage && CineStorage.Watchlist && !CineStorage.Watchlist.has) {
+    CineStorage.Watchlist.has = function(userId, movieId) {
       return this.getAll(userId).includes(movieId);
     };
   }
@@ -990,8 +990,8 @@ window.addEventListener('beforeunload', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Apply saved theme
-  if (window.Storage && Storage.Theme) {
-    const theme = Storage.Theme.get();
+  if (window.CineStorage && CineStorage.Theme) {
+    const theme = CineStorage.Theme.get();
     document.documentElement.setAttribute('data-theme', theme || 'dark');
   }
 

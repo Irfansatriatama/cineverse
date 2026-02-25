@@ -27,6 +27,8 @@ const CineRouter = (() => {
     '/pages/genre.html':         { requireAuth: false },
     '/pages/news.html':          { requireAuth: false },
     '/pages/news-detail.html':   { requireAuth: false },
+    '/pages/watchlist.html':     { requireAuth: true },
+    '/pages/history.html':       { requireAuth: true },
 
     // Landing page — public
     '/index.html':               { requireAuth: false },
