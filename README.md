@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.1-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.2%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.2-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -241,7 +241,7 @@ cineverse-phase3/
 ```
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
-FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai
+FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.2)
 FASE 4  ░░░░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔲 Belum Dimulai
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
@@ -286,6 +286,33 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 ---
 
 ## 📝 Changelog
+
+---
+
+### v1.0.2 — Phase 3.3.2: Bug Fix — Trailer, Film Serupa & Back Navigation *(terkini)*
+
+**3 bug diperbaiki:**
+
+**[BUG 1] `movie-detail.js` — Trailer modal error saat dibuka lebih dari sekali**
+Event listener `backdrop` dan `closeBtn` menggunakan `{ once: true }` di dalam fungsi `openTrailer()`, sehingga setiap kali modal dibuka, listener baru didaftarkan. Listener lama yang sudah di-consume tidak dibersihkan dengan benar, menyebabkan modal tidak bisa ditutup atau ESC tidak berfungsi pada pembukaan ke-2 dan seterusnya.
+
+Solusi: Refactor dengan flag `trailerListenersBound` agar listener hanya didaftarkan **satu kali** saat pertama kali modal dibuka. Modal kini juga force-reflow sebelum animasi agar `is-open` class selalu trigger animation dengan benar.
+
+**[BUG 2] `movie-detail.html` + `movie-detail.css` — Section "Film Serupa" tampilan jelek & gambar kegedean**
+Section film serupa menggunakan `db-movies-row` (flex horizontal scroll) dengan `movie-card` tanpa fixed width. Karena `movie-card` tidak punya constraint ukuran di context ini, gambar poster membesar tidak terkontrol.
+
+Solusi: Ganti container dari `db-movies-row` menjadi `md-related-grid` dengan CSS grid responsif (`repeat(4, 1fr)` mobile → `repeat(6, 1fr)` desktop). Card kini mengisi kolom grid secara proporsional dengan aspect ratio poster yang terjaga.
+
+**[BUG 3] `transitions.js` — Halaman stuck setelah klik Back browser, harus reload**
+`isTransitioning = true` di-set saat navigasi keluar. Saat user menekan tombol Back, `pageshow` event tidak selalu ter-fire (terutama di halaman yang tidak di-cache browser/bfcache), sehingga `isTransitioning` tetap `true` dan semua link di halaman menjadi tidak bisa diklik.
+
+Solusi: Tambah 3 lapisan reset:
+1. `pageshow` — reset flag + reset overlay visual + re-animate entrance jika dari bfcache (`e.persisted`)
+2. `popstate` — reset flag saat history API berubah  
+3. `visibilitychange` — reset flag saat tab kembali aktif
+4. Safety timeout dikurangi dari 1200ms → 800ms + reset overlay CSS agar tidak ada sisa visual
+
+**File yang diubah:** `assets/js/pages/movie-detail.js`, `pages/movie-detail.html`, `assets/css/pages/movie-detail.css`, `assets/js/core/transitions.js`
 
 ---
 

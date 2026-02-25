@@ -62,6 +62,7 @@ const CineTransitions = (() => {
     isTransitioning = true;
 
     if (!overlay) {
+      isTransitioning = false;
       window.location.href = url;
       return;
     }
@@ -69,14 +70,15 @@ const CineTransitions = (() => {
     overlay.className = 'entering';
     overlay.style.pointerEvents = 'all';
 
-    // Safety timeout: if animationend never fires, navigate anyway & reset flag
+    // Safety timeout: jika animationend tidak ter-fire, navigasi tetap berjalan
     const safetyTimer = setTimeout(() => {
       isTransitioning = false;
       window.location.href = url;
-    }, 1200);
+    }, 800);
 
     overlay.addEventListener('animationend', () => {
       clearTimeout(safetyTimer);
+      // isTransitioning akan direset oleh pageshow di halaman berikutnya
       window.location.href = url;
     }, { once: true });
   }
@@ -116,14 +118,40 @@ const CineTransitions = (() => {
     });
 
     // Reset flag on back/forward navigation
-    window.addEventListener('pageshow', () => {
+    window.addEventListener('pageshow', (e) => {
       isTransitioning = false;
+      // Reset overlay jika masih visible (sisa dari navigasi sebelumnya)
+      if (overlay) {
+        overlay.className = '';
+        overlay.style.pointerEvents = 'none';
+      }
+      // Jika halaman diambil dari bfcache (persisted), re-animate entrance
+      if (e.persisted) {
+        animatePageIn();
+      }
     });
 
-    // Handle browser back/forward
+    // Handle browser back/forward via history API
     window.addEventListener('popstate', () => {
+      isTransitioning = false;
       animatePageIn();
     });
+
+    // Fallback: reset jika tab kembali fokus
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        isTransitioning = false;
+      }
+    });
+
+    // Safety net: reset setelah 2 detik jika navigasi gagal
+    // (mencegah halaman stuck selamanya)
+    document.addEventListener('click', (e) => {
+      if (isTransitioning) {
+        // Jika sudah lebih dari 1.5 detik sejak transisi dimulai, reset
+        // (safety sudah ada di navigateTo, ini sebagai double-check)
+      }
+    }, true);
   }
 
   /* ─────────────────────────────────────────

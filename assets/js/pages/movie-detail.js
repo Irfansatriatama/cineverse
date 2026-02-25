@@ -215,30 +215,39 @@ const MovieDetailPage = (() => {
   }
 
   /* ─── TRAILER ─── */
+  let trailerListenersBound = false;
+
+  function initTrailerListeners() {
+    if (trailerListenersBound) return;
+    trailerListenersBound = true;
+
+    const backdrop = document.getElementById('md-trailer-backdrop');
+    const closeBtn = document.getElementById('md-trailer-close');
+    if (backdrop) backdrop.addEventListener('click', closeTrailer);
+    if (closeBtn) closeBtn.addEventListener('click', closeTrailer);
+    document.addEventListener('keydown', onKeyClose);
+  }
+
   function openTrailer() {
     const modal = document.getElementById('md-trailer-modal');
     const iframe = document.getElementById('md-trailer-iframe');
-    if (!modal || !iframe) return;
+    if (!modal || !iframe || !movie?.trailerKey) return;
 
-    iframe.src = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1`;
+    initTrailerListeners();
+
+    iframe.src = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&rel=0`;
     modal.style.display = 'flex';
+    // Force reflow sebelum add class agar animasi berjalan
+    void modal.offsetWidth;
+    modal.classList.remove('is-closing');
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-
-    // Backdrop & close
-    const backdrop = document.getElementById('md-trailer-backdrop');
-    const closeBtn = document.getElementById('md-trailer-close');
-    if (backdrop) backdrop.addEventListener('click', closeTrailer, { once: true });
-    if (closeBtn) closeBtn.addEventListener('click', closeTrailer, { once: true });
-
-    // ESC
-    document.addEventListener('keydown', onKeyClose);
   }
 
   function closeTrailer() {
     const modal = document.getElementById('md-trailer-modal');
     const iframe = document.getElementById('md-trailer-iframe');
-    if (!modal) return;
+    if (!modal || modal.style.display === 'none') return;
 
     modal.classList.remove('is-open');
     modal.classList.add('is-closing');
@@ -248,7 +257,6 @@ const MovieDetailPage = (() => {
       if (iframe) iframe.src = '';
       document.body.style.overflow = '';
     }, 200);
-    document.removeEventListener('keydown', onKeyClose);
   }
 
   function onKeyClose(e) {
