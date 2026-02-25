@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3.2%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.2-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.3%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.3-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -241,7 +241,7 @@ cineverse-phase3/
 ```
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
-FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.2)
+FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.3)
 FASE 4  ░░░░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔲 Belum Dimulai
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
@@ -289,7 +289,29 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.0.2 — Phase 3.3.2: Bug Fix — Trailer, Film Serupa & Back Navigation *(terkini)*
+### v1.0.3 — Phase 3.3.3: Bug Fix — Trailer Video Tidak Tampil *(terkini)*
+
+**1 bug diperbaiki:**
+
+**[BUG 1] `movie-detail.css` + `movie-detail.html` + `movie-detail.js` — Trailer modal: audio berjalan tapi video tidak terlihat**
+
+Saat tombol "Tonton Trailer" diklik, layar menjadi buram (backdrop blur aktif) dan audio YouTube berjalan, namun frame video tidak ter-render secara visual.
+
+**Root cause:**
+1. `.md-trailer-modal__player` menggunakan teknik `padding-top: 56.25%` dengan iframe `position: absolute; inset: 0` untuk aspect ratio 16:9. Teknik ini bergantung pada width parent yang sudah terkalkulasi — ketika modal baru muncul dan browser belum sempat menghitung layout, iframe height menjadi 0 secara visual. Audio tetap berjalan karena iframe exist di DOM, hanya video tidak ter-render karena height = 0 px dari perspektif rendering engine.
+2. Urutan operasi di `openTrailer()` salah: `iframe.src` di-set **sebelum** modal visible, sehingga YouTube player mulai load di dalam container yang belum memiliki dimensi final.
+3. `allow` attribute iframe tidak menyertakan `web-share` yang dibutuhkan YouTube embed modern.
+
+**Solusi (3 file):**
+1. `movie-detail.css` — Ganti `padding-top: 56.25%` + `position: absolute` trick dengan `aspect-ratio: 16 / 9` yang lebih reliable dan tidak bergantung pada urutan layout paint. Ubah iframe dari `position: absolute` ke `display: block` standar.
+2. `movie-detail.html` — Tambahkan `web-share` pada `allow` attribute iframe dan tambahkan `title="Trailer"` untuk aksesibilitas.
+3. `movie-detail.js` — Pindahkan assignment `iframe.src` ke **setelah** modal `display: flex` dan `void modal.offsetWidth` (force reflow), sehingga iframe mulai load ketika dimensi container sudah final. Tambahkan `enablejsapi=1` dan parameter `origin` agar YouTube player API bekerja penuh.
+
+**File yang diubah:** `assets/css/pages/movie-detail.css`, `pages/movie-detail.html`, `assets/js/pages/movie-detail.js`
+
+---
+
+### v1.0.2 — Phase 3.3.2: Bug Fix — Trailer, Film Serupa & Back Navigation
 
 **3 bug diperbaiki:**
 
