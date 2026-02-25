@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tonton Film — CineVerse" />
+  <title>Tonton — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages/watch.css" />
+</head>
+
+<body class="watch-body">
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-brand">CINEVERSE</span>
+      <div class="loader-film-strip">
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+      </div>
+      <span class="loader-subtitle">Memuat film...</span>
+    </div>
+  </div>
+
+  <!-- ─── PAGE TRANSITION OVERLAY ─── -->
+  <div id="page-transition-overlay"></div>
+
+  <!-- ─── WATCH HEADER (minimal navbar) ─── -->
+  <header class="watch-header" id="watch-header">
+    <div class="watch-header__left">
+      <a href="../index.html" class="watch-header__logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+        CINEVERSE
+      </a>
+    </div>
+    <div class="watch-header__center" id="watch-header-title">
+      <!-- Movie title will be injected -->
+    </div>
+    <div class="watch-header__right">
+      <button class="watch-header__btn" id="btn-back-detail" title="Kembali ke Detail Film">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Detail Film
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── MAIN WATCH LAYOUT ─── -->
+  <main class="watch-main" id="watch-main">
+
+    <!-- ─── VIDEO SECTION ─── -->
+    <section class="watch-player-section">
+
+      <!-- Player Container -->
+      <div class="watch-player-wrap" id="player-wrap">
+
+        <!-- HTML5 VIDEO PLAYER -->
+        <div class="player-container" id="player-container" data-mode="html5">
+
+          <!-- Video Element -->
+          <video
+            id="cv-video"
+            class="cv-video"
+            preload="metadata"
+            playsinline
+          ></video>
+
+          <!-- YouTube Iframe (hidden by default) -->
+          <div class="yt-container" id="yt-container" style="display:none;">
+            <iframe
+              id="yt-iframe"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- Poster / Thumbnail Overlay -->
+          <div class="player-poster" id="player-poster">
+            <img id="player-poster-img" src="" alt="Poster Film" />
+            <div class="player-poster__overlay">
+              <button class="player-big-play" id="btn-big-play">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </button>
+              <div class="player-poster__info">
+                <span class="player-poster__genre" id="poster-genre"></span>
+                <h2 class="player-poster__title" id="poster-title"></h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading spinner -->
+          <div class="player-spinner" id="player-spinner" style="display:none;">
+            <div class="player-spinner__ring"></div>
+          </div>
+
+          <!-- Error state -->
+          <div class="player-error" id="player-error" style="display:none;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p>Gagal memuat video</p>
+            <button class="btn btn--outline btn--sm" id="btn-retry">Coba Lagi</button>
+          </div>
+
+          <!-- Skip Intro Button -->
+          <button class="player-skip-btn" id="btn-skip-intro" style="display:none;">
+            Lewati Intro →
+          </button>
+
+          <!-- Continue Watching Prompt -->
+          <div class="player-resume-prompt" id="player-resume-prompt" style="display:none;">
+            <span id="resume-prompt-text">Lanjutkan dari <strong id="resume-timestamp">00:00</strong>?</span>
+            <div class="player-resume-prompt__actions">
+              <button class="btn btn--primary btn--sm" id="btn-resume-yes">Lanjutkan</button>
+              <button class="btn btn--ghost btn--sm" id="btn-resume-no">Dari Awal</button>
+            </div>
+          </div>
+
+          <!-- ─── CUSTOM CONTROLS ─── -->
+          <div class="player-controls" id="player-controls">
+
+            <!-- Progress Bar -->
+            <div class="player-progress" id="player-progress">
+              <div class="player-progress__buffered" id="progress-buffered"></div>
+              <div class="player-progress__played" id="progress-played"></div>
+              <div class="player-progress__thumb" id="progress-thumb"></div>
+              <input type="range" class="player-progress__input" id="progress-input"
+                min="0" max="100" value="0" step="0.1" aria-label="Progres video" />
+            </div>
+
+            <!-- Controls Row -->
+            <div class="player-controls__row">
+
+              <!-- Left Controls -->
+              <div class="player-controls__left">
+                <!-- Play/Pause -->
+                <button class="ctrl-btn ctrl-btn--play" id="btn-play-pause" title="Putar/Jeda (Space)">
+                  <svg class="icon-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <svg class="icon-pause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+
+                <!-- Rewind 10s -->
+                <button class="ctrl-btn" id="btn-rewind" title="Mundur 10 detik (←)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="8.5" y="14" font-size="7" fill="currentColor" font-weight="bold">10</text></svg>
+                </button>
+
+                <!-- Forward 10s -->
+                <button class="ctrl-btn" id="btn-forward" title="Maju 10 detik (→)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="7" y="14" font-size="7" fill="currentColor" font-weight="bold">10</text></svg>
+                </button>
+
+                <!-- Volume -->
+                <div class="ctrl-volume" id="ctrl-volume">
+                  <button class="ctrl-btn" id="btn-mute" title="Bisu/Suara (M)">
+                    <svg class="icon-vol-high" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    <svg class="icon-vol-low" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    <svg class="icon-vol-mute" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  </button>
+                  <input type="range" class="ctrl-volume__slider" id="volume-slider"
+                    min="0" max="1" step="0.05" value="1" aria-label="Volume" />
+                </div>
+
+                <!-- Time Display -->
+                <div class="ctrl-time">
+                  <span id="time-current">0:00</span>
+                  <span class="ctrl-time__sep">/</span>
+                  <span id="time-total">0:00</span>
+                </div>
+              </div>
+
+              <!-- Right Controls -->
+              <div class="player-controls__right">
+
+                <!-- Playback Speed -->
+                <div class="ctrl-speed" id="ctrl-speed">
+                  <button class="ctrl-btn ctrl-btn--text" id="btn-speed">1×</button>
+                  <div class="ctrl-speed__menu" id="speed-menu" style="display:none;">
+                    <button class="speed-option" data-speed="0.5">0.5×</button>
+                    <button class="speed-option" data-speed="0.75">0.75×</button>
+                    <button class="speed-option active" data-speed="1">1×</button>
+                    <button class="speed-option" data-speed="1.25">1.25×</button>
+                    <button class="speed-option" data-speed="1.5">1.5×</button>
+                    <button class="speed-option" data-speed="2">2×</button>
+                  </div>
+                </div>
+
+                <!-- Subtitles -->
+                <button class="ctrl-btn" id="btn-subtitle" title="Subtitle (C)" style="display:none;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>
+                </button>
+
+                <!-- Picture in Picture -->
+                <button class="ctrl-btn" id="btn-pip" title="Picture in Picture">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><rect x="12" y="9" width="9" height="7" rx="1" fill="currentColor" stroke="none"/></svg>
+                </button>
+
+                <!-- Fullscreen -->
+                <button class="ctrl-btn" id="btn-fullscreen" title="Layar Penuh (F)">
+                  <svg class="icon-expand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                  <svg class="icon-compress" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="10" y1="14" x2="3" y2="21"/><line x1="21" y1="3" x2="14" y2="10"/></svg>
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Keyboard shortcut overlay feedback -->
+          <div class="player-feedback" id="player-feedback"></div>
+
+        </div><!-- /player-container -->
+      </div><!-- /watch-player-wrap -->
+
+      <!-- ─── MOVIE INFO (below player) ─── -->
+      <div class="watch-info" id="watch-info">
+        <!-- Skeleton -->
+        <div class="watch-info-skeleton" id="watch-info-skeleton">
+          <div class="sk sk--line sk--w60 sk--h32 mb-2"></div>
+          <div class="sk sk--line sk--w40 sk--h16"></div>
+        </div>
+
+        <div class="watch-info__content" id="watch-info-content" style="display:none;">
+          <div class="watch-info__meta">
+            <span class="watch-info__badge watch-info__badge--rating" id="wi-rating"></span>
+            <span class="watch-info__badge" id="wi-year"></span>
+            <span class="watch-info__badge" id="wi-duration"></span>
+            <span class="watch-info__badge" id="wi-lang"></span>
+          </div>
+          <h1 class="watch-info__title" id="wi-title"></h1>
+          <p class="watch-info__synopsis" id="wi-synopsis"></p>
+          <div class="watch-info__actions">
+            <button class="btn btn--outline btn--sm" id="wi-btn-watchlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="wi-watchlist-icon"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <span id="wi-watchlist-label">Tambah ke Watchlist</span>
+            </button>
+            <a href="#" class="btn btn--ghost btn--sm" id="wi-btn-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Info Film
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── SIDEBAR: Up Next & Related ─── -->
+    <aside class="watch-sidebar" id="watch-sidebar">
+      <div class="watch-sidebar__section">
+        <h3 class="watch-sidebar__heading">Film Lainnya</h3>
+        <div id="sidebar-related" class="sidebar-related-list">
+          <!-- Skeleton -->
+          <div class="sidebar-skeleton">
+            <div class="sk sk--card-h"></div>
+            <div class="sk sk--card-h"></div>
+            <div class="sk sk--card-h"></div>
+            <div class="sk sk--card-h"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ─── KEYBOARD SHORTCUTS PANEL ─── -->
+  <div class="shortcuts-panel" id="shortcuts-panel" style="display:none;">
+    <div class="shortcuts-panel__inner">
+      <div class="shortcuts-panel__header">
+        <h4>Pintasan Keyboard</h4>
+        <button id="btn-close-shortcuts">✕</button>
+      </div>
+      <div class="shortcuts-grid">
+        <div class="shortcut-item"><kbd>Space</kbd><span>Putar / Jeda</span></div>
+        <div class="shortcut-item"><kbd>M</kbd><span>Bisu</span></div>
+        <div class="shortcut-item"><kbd>F</kbd><span>Layar Penuh</span></div>
+        <div class="shortcut-item"><kbd>←</kbd><span>Mundur 10 detik</span></div>
+        <div class="shortcut-item"><kbd>→</kbd><span>Maju 10 detik</span></div>
+        <div class="shortcut-item"><kbd>↑</kbd><span>Volume +10%</span></div>
+        <div class="shortcut-item"><kbd>↓</kbd><span>Volume -10%</span></div>
+        <div class="shortcut-item"><kbd>0–9</kbd><span>Loncat ke %</span></div>
+        <div class="shortcut-item"><kbd>?</kbd><span>Pintasan ini</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="../assets/js/utils/helpers.js"></script>
+  <script src="../assets/js/utils/hash.js"></script>
+  <script src="../assets/js/core/storage.js"></script>
+  <script src="../assets/js/core/auth.js"></script>
+  <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/core/transitions.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/pages/watch.js"></script>
+</body>
+</html>

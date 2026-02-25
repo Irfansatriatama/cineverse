@@ -46,6 +46,7 @@
     renderTop10();
     renderIndonesiaFilms();
     renderAnimationFilms();
+    renderRecommended();
     renderAllMovies();
 
     // Clear skeletons and animate content in
@@ -454,6 +455,77 @@
       allMoviesPage++;
       renderPage();
     });
+  }
+
+  /* ─────────────────────────────────────────
+     REKOMENDASI BERDASARKAN PREFERENSI GENRE
+  ───────────────────────────────────────── */
+  function renderRecommended() {
+    if (!user) return;
+
+    const section  = document.getElementById('recommended-section');
+    const row      = document.getElementById('recommended-row');
+    const hintEl   = document.getElementById('recommended-hint');
+    if (!section || !row) return;
+
+    // 1. Collect preferred genres: from settings > history genres > watchlist genres
+    let preferredGenres = [];
+    const settings = window.CineStorage ? CineStorage.Settings.get(user.id) : {};
+    if (settings.preferredGenres && settings.preferredGenres.length) {
+      preferredGenres = settings.preferredGenres;
+    } else {
+      // Derive from history
+      const history = CineStorage.History.getAll(user.id);
+      const genreCount = {};
+      history.slice(0, 30).forEach(h => {
+        const m = movies.find(mv => mv.id === h.movieId);
+        (m?.genres || []).forEach(g => {
+          genreCount[g] = (genreCount[g] || 0) + 1;
+        });
+      });
+      // Derive from watchlist
+      const watchlistIds = CineStorage.Watchlist.getAll(user.id);
+      watchlistIds.forEach(id => {
+        const m = movies.find(mv => mv.id === id);
+        (m?.genres || []).forEach(g => {
+          genreCount[g] = (genreCount[g] || 0) + 0.5;
+        });
+      });
+      preferredGenres = Object.entries(genreCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([g]) => g);
+    }
+
+    if (!preferredGenres.length) return;
+
+    // 2. Exclude films already in watchlist/history
+    const excludeIds = new Set([
+      ...CineStorage.Watchlist.getAll(user.id),
+      ...CineStorage.History.getAll(user.id).map(h => h.movieId),
+    ]);
+
+    // 3. Score films by genre match
+    const scored = movies
+      .filter(m => !excludeIds.has(m.id))
+      .map(m => {
+        const matchCount = (m.genres || []).filter(g => preferredGenres.includes(g)).length;
+        return { movie: m, score: matchCount * 10 + m.rating };
+      })
+      .filter(s => s.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10)
+      .map(s => s.movie);
+
+    if (!scored.length) return;
+
+    section.style.display = 'block';
+    if (hintEl) {
+      hintEl.textContent = `Berdasarkan genre favoritmu: ${preferredGenres.slice(0,3).join(', ')}`;
+    }
+
+    row.innerHTML = scored.map(m => buildMovieCard(m)).join('');
+    bindWatchlistButtons(row);
   }
 
   /* ─────────────────────────────────────────

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jelajahi Film per Genre — CineVerse" />
+  <title>Genre — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages/genre.css" />
+</head>
+
+<body>
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-brand">CINEVERSE</span>
+      <div class="loader-film-strip">
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PAGE TRANSITION ─── -->
+  <div id="page-transition-overlay" aria-hidden="true"></div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="../index.html" class="navbar__logo" aria-label="CineVerse Home">
+        <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+      </a>
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="../index.html" class="navbar__nav-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link active">Genre</a>
+        <a href="news.html" class="navbar__nav-link">Berita</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="search.html" class="navbar__icon-btn" aria-label="Cari Film">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </a>
+        <div class="navbar__user-wrap" id="navbar-user-wrap" style="display:none;">
+          <button class="navbar__avatar-btn" id="navbar-avatar-btn" aria-expanded="false" aria-haspopup="true">
+            <img src="" alt="Avatar" class="navbar__avatar-img" id="navbar-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <span class="navbar__avatar-fallback" id="navbar-avatar-fallback">U</span>
+          </button>
+          <div class="navbar__dropdown" id="navbar-dropdown" role="menu" aria-hidden="true">
+            <div class="navbar__dropdown-header">
+              <span class="navbar__dropdown-name" id="navbar-user-name">User</span>
+              <span class="navbar__dropdown-email" id="navbar-user-email">user@email.com</span>
+            </div>
+            <a href="profile.html" class="navbar__dropdown-item" role="menuitem">Profil Saya</a>
+            <a href="settings.html" class="navbar__dropdown-item" role="menuitem">Pengaturan</a>
+            <button class="navbar__dropdown-item navbar__dropdown-item--logout" id="navbar-logout-btn" role="menuitem">Keluar</button>
+          </div>
+        </div>
+        <div class="navbar__guest-actions" id="navbar-guest-actions">
+          <a href="auth/login.html" class="btn btn--ghost btn--sm">Masuk</a>
+          <a href="auth/register.html" class="btn btn--primary btn--sm">Daftar</a>
+        </div>
+        <button class="navbar__hamburger" id="navbar-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu" id="navbar-mobile-menu" aria-hidden="true">
+      <nav class="navbar__mobile-nav">
+        <a href="../index.html" class="navbar__mobile-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__mobile-link">Jelajahi</a>
+        <a href="genre.html" class="navbar__mobile-link active">Genre</a>
+        <a href="news.html" class="navbar__mobile-link">Berita</a>
+        <a href="search.html" class="navbar__mobile-link">Cari Film</a>
+        <a href="profile.html" class="navbar__mobile-link" id="mobile-profile-link">Profil</a>
+        <button class="navbar__mobile-link navbar__mobile-logout" id="mobile-logout-btn" style="display:none;">Keluar</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── MAIN ─── -->
+  <main id="main-content" class="page-transition-ready">
+    <div class="container">
+
+      <!-- ─── HERO ─── -->
+      <div class="genre-hero reveal">
+        <h1 class="genre-hero__title">Jelajahi Genre</h1>
+        <p class="genre-hero__desc">Temukan film favorit berdasarkan genre kesukaan kamu</p>
+      </div>
+
+      <!-- ─── MODE: All Genres Overview ─── -->
+      <div id="genre-overview" class="genre-overview">
+
+        <!-- Genre Cards Grid -->
+        <div class="genre-cards-grid" id="genre-cards-grid">
+          <!-- Skeleton -->
+          <div class="genre-card-skeleton skeleton"></div>
+          <div class="genre-card-skeleton skeleton"></div>
+          <div class="genre-card-skeleton skeleton"></div>
+          <div class="genre-card-skeleton skeleton"></div>
+          <div class="genre-card-skeleton skeleton"></div>
+          <div class="genre-card-skeleton skeleton"></div>
+        </div>
+
+      </div><!-- /genre-overview -->
+
+      <!-- ─── MODE: Single Genre Detail ─── -->
+      <div id="genre-detail" style="display:none;">
+
+        <!-- Back button -->
+        <div class="genre-detail-nav reveal">
+          <button class="genre-back-btn" id="genre-back-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Semua Genre
+          </button>
+          <div class="genre-detail-breadcrumb">
+            <span id="genre-detail-name">—</span>
+            <span class="genre-detail-count" id="genre-detail-count"></span>
+          </div>
+        </div>
+
+        <!-- Genre hero banner (top movie backdrop) -->
+        <div class="genre-detail-banner reveal" id="genre-detail-banner">
+          <div class="genre-detail-banner__bg" id="genre-banner-bg"></div>
+          <div class="genre-detail-banner__content">
+            <div class="genre-detail-banner__emoji" id="genre-banner-emoji"></div>
+            <h2 class="genre-detail-banner__title" id="genre-banner-title"></h2>
+            <p class="genre-detail-banner__desc" id="genre-banner-desc"></p>
+          </div>
+        </div>
+
+        <!-- Sort & filters mini -->
+        <div class="genre-detail-toolbar reveal">
+          <div class="genre-detail-toolbar__left">
+            <span class="genre-detail-toolbar__label">Urutkan:</span>
+            <select class="srch-select" id="genre-sort" aria-label="Urutan">
+              <option value="rating-desc">Rating Tertinggi</option>
+              <option value="year-desc">Terbaru</option>
+              <option value="year-asc">Terlama</option>
+              <option value="title-asc">A–Z</option>
+            </select>
+          </div>
+          <a class="btn btn--ghost btn--sm genre-search-link" id="genre-search-link" href="search.html">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            Filter Lanjutan
+          </a>
+        </div>
+
+        <!-- Movies grid -->
+        <div class="movies-grid genre-movies-grid" id="genre-movies-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Load more -->
+        <div class="srch-pagination" id="genre-pagination" style="display:none;">
+          <button class="btn btn--ghost btn--lg" id="genre-load-more">
+            Tampilkan Lebih Banyak
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <span class="srch-pagination__info" id="genre-pagination-info"></span>
+        </div>
+
+      </div><!-- /genre-detail -->
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">CINE<span>VERSE</span></div>
+          <p class="footer__tagline">"Dunia Film, Satu Layar"</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Film</h3>
+          <ul class="footer__links">
+            <li><a href="search.html" class="footer__link">Semua Film</a></li>
+            <li><a href="genre.html" class="footer__link">Genre</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Akun</h3>
+          <ul class="footer__links">
+            <li><a href="profile.html" class="footer__link">Profil Saya</a></li>
+            <li><a href="settings.html" class="footer__link">Pengaturan</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Lainnya</h3>
+          <ul class="footer__links">
+            <li><a href="news.html" class="footer__link">Berita Film</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2025 CineVerse. Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── TOAST ─── -->
+  <div id="toast-container" role="alert" aria-live="polite"></div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="../assets/js/utils/helpers.js"></script>
+  <script src="../assets/js/utils/hash.js"></script>
+  <script src="../assets/js/utils/validators.js"></script>
+  <script src="../assets/js/core/storage.js"></script>
+  <script src="../assets/js/core/router.js"></script>
+  <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/core/skeleton.js"></script>
+  <script src="../assets/js/core/transitions.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/pages/genre.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cari Film — CineVerse" />
+  <title>Cari Film — CineVerse</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages/search.css" />
+</head>
+
+<body>
+
+  <!-- ─── PAGE LOADER ─── -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-brand">CINEVERSE</span>
+      <div class="loader-film-strip">
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+        <div class="loader-film-frame"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PAGE TRANSITION OVERLAY ─── -->
+  <div id="page-transition-overlay" aria-hidden="true"></div>
+
+  <!-- ─── NAVBAR ─── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="../index.html" class="navbar__logo" aria-label="CineVerse Home">
+        <span class="navbar__logo-text">CINE<span>VERSE</span></span>
+      </a>
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="../index.html" class="navbar__nav-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link">Genre</a>
+        <a href="news.html" class="navbar__nav-link">Berita</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="search.html" class="navbar__icon-btn active" aria-label="Cari Film">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </a>
+        <div class="navbar__user-wrap" id="navbar-user-wrap" style="display:none;">
+          <button class="navbar__avatar-btn" id="navbar-avatar-btn" aria-expanded="false" aria-haspopup="true">
+            <img src="" alt="Avatar" class="navbar__avatar-img" id="navbar-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <span class="navbar__avatar-fallback" id="navbar-avatar-fallback">U</span>
+          </button>
+          <div class="navbar__dropdown" id="navbar-dropdown" role="menu" aria-hidden="true">
+            <div class="navbar__dropdown-header">
+              <span class="navbar__dropdown-name" id="navbar-user-name">User</span>
+              <span class="navbar__dropdown-email" id="navbar-user-email">user@email.com</span>
+            </div>
+            <a href="profile.html" class="navbar__dropdown-item" role="menuitem">Profil Saya</a>
+            <a href="settings.html" class="navbar__dropdown-item" role="menuitem">Pengaturan</a>
+            <button class="navbar__dropdown-item navbar__dropdown-item--logout" id="navbar-logout-btn" role="menuitem">Keluar</button>
+          </div>
+        </div>
+        <div class="navbar__guest-actions" id="navbar-guest-actions">
+          <a href="auth/login.html" class="btn btn--ghost btn--sm">Masuk</a>
+          <a href="auth/register.html" class="btn btn--primary btn--sm">Daftar</a>
+        </div>
+        <button class="navbar__hamburger" id="navbar-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu" id="navbar-mobile-menu" aria-hidden="true">
+      <nav class="navbar__mobile-nav">
+        <a href="../index.html" class="navbar__mobile-link">Beranda</a>
+        <a href="dashboard.html" class="navbar__mobile-link">Jelajahi</a>
+        <a href="genre.html" class="navbar__mobile-link">Genre</a>
+        <a href="news.html" class="navbar__mobile-link">Berita</a>
+        <a href="search.html" class="navbar__mobile-link active">Cari Film</a>
+        <a href="profile.html" class="navbar__mobile-link" id="mobile-profile-link">Profil</a>
+        <button class="navbar__mobile-link navbar__mobile-logout" id="mobile-logout-btn" style="display:none;">Keluar</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── MAIN ─── -->
+  <main id="main-content" class="page-transition-ready">
+    <div class="container">
+
+      <!-- HEADER -->
+      <div class="srch-header reveal">
+        <h1 class="srch-title">Cari Film</h1>
+
+        <!-- Search Bar -->
+        <div class="srch-bar-wrap">
+          <div class="srch-bar">
+            <svg class="srch-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input
+              type="search"
+              class="srch-bar__input"
+              id="srch-input"
+              placeholder="Cari judul, sutradara, pemeran..."
+              autocomplete="off"
+              autofocus
+              aria-label="Cari film"
+            />
+            <button class="srch-bar__clear" id="srch-clear" aria-label="Hapus pencarian" style="display:none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="srch-filters reveal" id="srch-filters">
+        <div class="srch-filters__row">
+          <!-- Genre filter -->
+          <div class="srch-filter-group">
+            <label class="srch-filter-label">Genre</label>
+            <div class="srch-chips-wrap" id="srch-genre-chips">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="srch-filters__row">
+          <!-- Year range -->
+          <div class="srch-filter-group srch-filter-group--inline">
+            <label class="srch-filter-label">Tahun</label>
+            <select class="srch-select" id="srch-year-from" aria-label="Dari tahun">
+              <option value="">Dari</option>
+            </select>
+            <span class="srch-filter-sep">—</span>
+            <select class="srch-select" id="srch-year-to" aria-label="Sampai tahun">
+              <option value="">Sampai</option>
+            </select>
+          </div>
+
+          <!-- Rating filter -->
+          <div class="srch-filter-group srch-filter-group--inline">
+            <label class="srch-filter-label">Rating min.</label>
+            <div class="srch-rating-slider-wrap">
+              <input type="range" class="srch-rating-slider" id="srch-rating-min" min="0" max="10" step="0.5" value="0" aria-label="Rating minimum" />
+              <span class="srch-rating-slider__value" id="srch-rating-display">Semua</span>
+            </div>
+          </div>
+
+          <!-- Sort -->
+          <div class="srch-filter-group srch-filter-group--inline">
+            <label class="srch-filter-label">Urutkan</label>
+            <select class="srch-select" id="srch-sort" aria-label="Urutan">
+              <option value="relevance">Relevansi</option>
+              <option value="rating-desc">Rating Tertinggi</option>
+              <option value="year-desc">Terbaru</option>
+              <option value="year-asc">Terlama</option>
+              <option value="title-asc">A–Z</option>
+              <option value="title-desc">Z–A</option>
+            </select>
+          </div>
+
+          <!-- Language filter -->
+          <div class="srch-filter-group srch-filter-group--inline">
+            <label class="srch-filter-label">Bahasa</label>
+            <select class="srch-select" id="srch-language" aria-label="Bahasa">
+              <option value="">Semua</option>
+              <option value="id">Indonesia</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="srch-filters__footer">
+          <span class="srch-result-count" id="srch-result-count">Memuat...</span>
+          <button class="btn btn--ghost btn--sm" id="srch-reset-filters">Reset Filter</button>
+        </div>
+      </div>
+
+      <!-- ACTIVE FILTER TAGS -->
+      <div class="srch-active-filters" id="srch-active-filters" style="display:none;"></div>
+
+      <!-- RESULTS -->
+      <div class="srch-results" id="srch-results">
+        <!-- Skeleton -->
+        <div class="srch-skeleton" id="srch-skeleton">
+          <div class="srch-skeleton__card skeleton"></div>
+          <div class="srch-skeleton__card skeleton"></div>
+          <div class="srch-skeleton__card skeleton"></div>
+          <div class="srch-skeleton__card skeleton"></div>
+          <div class="srch-skeleton__card skeleton"></div>
+          <div class="srch-skeleton__card skeleton"></div>
+        </div>
+
+        <!-- Grid -->
+        <div class="movies-grid srch-grid" id="srch-grid" style="display:none;">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Empty state -->
+        <div class="srch-empty" id="srch-empty" style="display:none;">
+          <div class="srch-empty__icon">🔍</div>
+          <h2 class="srch-empty__title">Film Tidak Ditemukan</h2>
+          <p class="srch-empty__desc" id="srch-empty-desc">Coba kata kunci lain atau ubah filter pencarian.</p>
+          <button class="btn btn--ghost" id="srch-empty-reset">Reset Semua Filter</button>
+        </div>
+      </div>
+
+      <!-- LOAD MORE -->
+      <div class="srch-pagination" id="srch-pagination" style="display:none;">
+        <button class="btn btn--ghost btn--lg" id="srch-load-more">
+          Tampilkan Lebih Banyak
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <span class="srch-pagination__info" id="srch-pagination-info"></span>
+      </div>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">CINE<span>VERSE</span></div>
+          <p class="footer__tagline">"Dunia Film, Satu Layar"</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Film</h3>
+          <ul class="footer__links">
+            <li><a href="search.html" class="footer__link">Semua Film</a></li>
+            <li><a href="genre.html" class="footer__link">Genre</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Akun</h3>
+          <ul class="footer__links">
+            <li><a href="profile.html" class="footer__link">Profil Saya</a></li>
+            <li><a href="settings.html" class="footer__link">Pengaturan</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Lainnya</h3>
+          <ul class="footer__links">
+            <li><a href="news.html" class="footer__link">Berita Film</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2025 CineVerse. Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── TOAST ─── -->
+  <div id="toast-container" role="alert" aria-live="polite"></div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="../assets/js/utils/helpers.js"></script>
+  <script src="../assets/js/utils/hash.js"></script>
+  <script src="../assets/js/utils/validators.js"></script>
+  <script src="../assets/js/core/storage.js"></script>
+  <script src="../assets/js/core/router.js"></script>
+  <script src="../assets/js/core/app.js"></script>
+  <script src="../assets/js/core/skeleton.js"></script>
+  <script src="../assets/js/core/transitions.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/pages/search.js"></script>
+
+</body>
+</html>

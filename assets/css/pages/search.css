@@ -1,0 +1,365 @@
+/* ============================================================
+   CineVerse — search.css
+   Halaman Pencarian & Filter Film
+   ============================================================ */
+
+/* ─── HEADER ─── */
+.srch-header {
+  padding-top: calc(var(--navbar-height, 72px) + var(--space-8));
+  margin-bottom: var(--space-8);
+}
+
+.srch-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+
+/* ─── SEARCH BAR ─── */
+.srch-bar-wrap {
+  position: relative;
+}
+
+.srch-bar {
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-5);
+  gap: var(--space-3);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.srch-bar:focus-within {
+  border-color: var(--color-crimson);
+  box-shadow: 0 0 0 4px var(--color-crimson-glow);
+}
+
+.srch-bar__icon {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.srch-bar__input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  min-width: 0;
+}
+
+.srch-bar__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.srch-bar__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.srch-bar__clear {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.srch-bar__clear:hover {
+  color: var(--color-text-primary);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ─── FILTERS ─── */
+.srch-filters {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.srch-filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+  align-items: flex-start;
+}
+
+.srch-filters__row:last-child {
+  margin-bottom: 0;
+}
+
+.srch-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.srch-filter-group--inline {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.srch-filter-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Genre chips */
+.srch-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.srch-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.srch-chip:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+
+.srch-chip.active {
+  background: var(--color-crimson);
+  border-color: var(--color-crimson);
+  color: #fff;
+}
+
+/* Select */
+.srch-select {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  padding: 7px 12px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.srch-select:focus {
+  border-color: var(--color-crimson);
+}
+
+.srch-filter-sep {
+  color: var(--color-text-muted);
+  padding: 0 var(--space-1);
+}
+
+/* Rating slider */
+.srch-rating-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.srch-rating-slider {
+  width: 140px;
+  accent-color: var(--color-crimson);
+  cursor: pointer;
+}
+
+.srch-rating-slider__value {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-gold);
+  white-space: nowrap;
+  min-width: 40px;
+}
+
+/* Filters footer */
+.srch-filters__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-2);
+}
+
+.srch-result-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ─── ACTIVE FILTER TAGS ─── */
+.srch-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.srch-active-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 10px;
+  background: rgba(229,9,20,0.15);
+  border: 1px solid rgba(229,9,20,0.3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--color-crimson);
+}
+
+.srch-active-tag__remove {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  line-height: 1;
+}
+
+.srch-active-tag__remove:hover {
+  color: #fff;
+}
+
+/* ─── SKELETON ─── */
+.srch-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
+
+.srch-skeleton__card {
+  aspect-ratio: 2/3;
+  border-radius: var(--radius-md);
+}
+
+/* ─── RESULTS GRID ─── */
+.srch-grid {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+/* ─── EMPTY STATE ─── */
+.srch-empty {
+  text-align: center;
+  padding: var(--space-20) 0;
+}
+
+.srch-empty__icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+}
+
+.srch-empty__title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.srch-empty__desc {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  font-size: var(--font-size-base);
+}
+
+/* ─── PAGINATION ─── */
+.srch-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) 0 var(--space-16);
+}
+
+.srch-pagination__info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ─── MOVIE CARD hover focus states for search page ─── */
+.srch-grid .movie-card {
+  animation: cardEntrance 0.3s ease forwards;
+}
+
+/* ─── LIGHT THEME ─── */
+[data-theme="light"] .srch-bar {
+  background: #fff;
+  border-color: #e5e7eb;
+}
+
+[data-theme="light"] .srch-filters {
+  background: #fff;
+  border-color: #e5e7eb;
+}
+
+[data-theme="light"] .srch-chip {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #374151;
+}
+
+[data-theme="light"] .srch-select {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .srch-header {
+    padding-top: calc(var(--navbar-height, 72px) + var(--space-5));
+  }
+
+  .srch-filters {
+    padding: var(--space-4);
+  }
+
+  .srch-filters__row {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .srch-filter-group--inline {
+    flex-wrap: wrap;
+  }
+
+  .srch-rating-slider {
+    width: 100px;
+  }
+
+  .srch-skeleton {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .srch-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}

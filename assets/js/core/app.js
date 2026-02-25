@@ -51,6 +51,8 @@ const CineApp = (() => {
       if (user) {
         actionsEl.innerHTML = buildUserMenu(user, base);
         bindUserMenuEvents(actionsEl, base);
+        // Update watchlist badge after DOM is injected
+        setTimeout(() => updateWatchlistBadge(user), 0);
       } else {
         actionsEl.innerHTML = buildGuestMenu(base);
       }
@@ -112,6 +114,21 @@ const CineApp = (() => {
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </a>
+      <a href="${base}pages/watchlist.html" class="navbar__icon-btn navbar__icon-btn--watchlist" aria-label="Watchlist" title="Watchlist Saya" style="position:relative;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <span id="watchlist-badge" style="
+          position:absolute;top:-4px;right:-4px;
+          min-width:17px;height:17px;
+          background:var(--color-crimson);
+          border-radius:var(--radius-full);
+          border:2px solid var(--color-bg-primary);
+          font-size:0.6rem;font-weight:700;color:#fff;
+          display:none;align-items:center;justify-content:center;
+          padding:0 3px;line-height:1;
+        ">0</span>
+      </a>
       <div class="navbar__user-menu" id="user-menu">
         <button class="navbar__avatar-btn" id="avatar-btn" aria-label="Menu akun" aria-expanded="false">
           ${user.avatar
@@ -133,6 +150,14 @@ const CineApp = (() => {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             Profil Saya
           </a>
+          <a href="${base}pages/watchlist.html" class="navbar__dropdown-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Watchlist Saya
+          </a>
+          <a href="${base}pages/history.html" class="navbar__dropdown-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Riwayat Tontonan
+          </a>
           <a href="${base}pages/settings.html" class="navbar__dropdown-item">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             Pengaturan
@@ -151,6 +176,20 @@ const CineApp = (() => {
     `;
   }
 
+  /* ─────────────────────────────────────────
+     WATCHLIST BADGE
+  ───────────────────────────────────────── */
+  function updateWatchlistBadge(user) {
+    const badge = document.getElementById('watchlist-badge');
+    if (!badge || !user || !window.CineStorage) return;
+    const count = CineStorage.Watchlist.getAll(user.id).length;
+    badge.textContent   = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+  }
+
+  /* ─────────────────────────────────────────
+     USER MENU EVENTS
+  ───────────────────────────────────────── */
   function bindUserMenuEvents(container, base) {
     const avatarBtn   = container.querySelector('#avatar-btn');
     const dropdown    = container.querySelector('#user-dropdown');
@@ -288,6 +327,7 @@ const CineApp = (() => {
     initNavbarAuth,
     updateActiveNavLink,
     getInitials,
+    updateWatchlistBadge,
   };
 })();
 

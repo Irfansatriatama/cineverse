@@ -214,7 +214,28 @@
       </section>
 
       <!-- ─── SEMUA FILM ─── -->
-      <section class="db-section" aria-labelledby="all-title" id="all-movies-section">
+      
+      <!-- ─── REKOMENDASI UNTUK KAMU ─── -->
+      <section class="db-section section-reveal-left" id="recommended-section" style="display:none;" aria-labelledby="recommended-title">
+        <div class="db-section__header">
+          <h2 class="db-section__title" id="recommended-title">
+            <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Rekomendasi Untuk Kamu
+          </h2>
+          <a href="search.html" class="db-section__link">
+            Jelajahi Semua
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <p class="db-recommended-hint" id="recommended-hint" style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-4);"></p>
+        <div class="db-movies-row" id="recommended-row">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+<section class="db-section" aria-labelledby="all-title" id="all-movies-section">
         <div class="db-section__header">
           <h2 class="db-section__title" id="all-title">
             <svg class="db-section__title-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
@@ -267,6 +288,8 @@
           <ul class="footer__links">
             <li><a href="profile.html" class="footer__link">Profil Saya</a></li>
             <li><a href="settings.html" class="footer__link">Pengaturan</a></li>
+            <li><a href="watchlist.html" class="footer__link">Watchlist</a></li>
+            <li><a href="history.html" class="footer__link">Riwayat</a></li>
             <li><a href="stats.html" class="footer__link">Statistik</a></li>
           </ul>
         </div>

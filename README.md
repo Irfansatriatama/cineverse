@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%202_2_3%20Bugfix-blue)
-![Version](https://img.shields.io/badge/Version-0.7.3-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -293,22 +293,90 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 ### 📦 FASE 3 — Konten Film & Video Player
 **Target:** Inti pengalaman menonton film
 
+**Fase 3 dibagi menjadi 3 sub-phase:**
+- **Phase 3.1** — Movie Detail Page + Search & Filter + Genre Explorer ✅ Selesai
+- **Phase 3.2** — Video Player + Watch Page + History — ✅ Selesai
+- **Phase 3.3** — Watchlist Page + History Page + Dashboard Integration — ✅ Selesai
+
+---
+
+### 📦 FASE 3.1 — Movie Detail, Search & Filter, Genre Explorer
+**Target:** Halaman konten film inti
+
 **Yang dikerjakan:**
-- Halaman Detail Film (poster, synopsis, cast, rating, trailer)
-- Custom Video Player (kontrol play/pause, volume, fullscreen, seek bar)
-- Embed support: YouTube iframe + HTML5 video
-- Halaman Search dengan filter (genre, tahun, rating, durasi)
-- Fuse.js untuk fuzzy search lokal
-- Watchlist / Favorit (tambah & hapus dari localStorage)
-- History Tontonan (auto-record saat menonton)
-- Continue Watching (resume dari timestamp terakhir)
-- Genre Explorer page
-- Halaman film 404 jika tidak ditemukan
-- Rating & Review (simpan ke localStorage per film per user)
+- Halaman Detail Film (`pages/movie-detail.html`) — poster hero, backdrop blur, sinopsis, cast, tags
+- Trailer YouTube embed dalam modal (autoplay, close ESC/backdrop)
+- Watchlist toggle di halaman detail (auth-gated dengan redirect ke login)
+- Rating & Review system — star picker interaktif, textarea, save localStorage, list ulasan
+- Rating summary dengan bintang rata-rata & jumlah ulasan
+- Related movies row berdasarkan genre yang sama
+- 404 state jika film tidak ditemukan
+- Halaman Search (`pages/search.html`) — search bar dengan fuzzy search (Fuse.js fallback ke simple search)
+- Filter: Genre chips (OR logic, multi-select), tahun dari–sampai, rating minimum slider, bahasa, sort 6 opsi
+- Active filter tags yang bisa dihapus satu per satu
+- Empty state kontekstual, debounced input (300ms), pagination "Tampilkan Lebih Banyak"
+- Genre Explorer (`pages/genre.html`) — grid kartu genre dengan backdrop film terbaik per genre
+- Genre detail view: hero banner, sort toolbar, grid film dengan pagination
+- Browser history support (back/forward tanpa reload halaman)
+- Genre metadata: emoji, warna aksen, deskripsi (20 genre)
+- CSS baru: `movie-detail.css`, `search.css`, `genre.css`
+- JS baru: `movie-detail.js`, `search.js`, `genre.js`
+
+**Deliverable:** `cineverse-phase3.1.zip` + `README.md` updated
+
+**Status:** ✅ Selesai (v0.8.1)
+
+---
+
+### 📦 FASE 3.2 — Video Player & Watch Page
+**Target:** Pengalaman menonton film
+
+**Yang dikerjakan:**
+- Halaman Watch (`pages/watch.html`) — video player full experience dengan layout 2 kolom (player + sidebar)
+- Watch header minimal: logo CineVerse + judul film + tombol kembali ke Detail Film
+- Custom HTML5 video controls: play/pause, mundur/maju 10 detik, volume slider expandable, seek bar
+- Seek bar dengan progress tertonton (crimson), buffer (abu-abu), dan thumb draggable yang muncul saat hover
+- Playback speed selector (0.5×, 0.75×, 1×, 1.25×, 1.5×, 2×) dengan floating popup menu
+- Picture-in-Picture (PiP) via browser API
+- Fullscreen toggle dengan icon expand/compress adaptif
+- YouTube iframe embed support (fallback jika `videoUrl` tidak ada, gunakan `trailerKey`)
+- Poster thumbnail overlay dengan tombol play besar — klik untuk mulai menonton
+- Skeleton loading pada info film di bawah player
+- Resume Prompt: deteksi progres tersimpan → dialog "Lanjutkan dari XX:XX?" atau "Dari Awal"
+- Auto-save progress ke `ProgressStorage` setiap 5 detik saat video berjalan
+- Auto-record history ke `HistoryStorage` setelah 10% film ditonton
+- Skip Intro button: muncul antara detik 5–90, klik loncat ke detik 91
+- Loading spinner saat buffering, error state dengan tombol "Coba Lagi"
+- Controls auto-hide: hilang 3.5 detik idle saat play, muncul saat mouse bergerak
+- Keyboard shortcuts: Space (play/pause), M (mute), F (fullscreen), ←/→ (±10s), ↑/↓ (volume ±10%), 0–9 (loncat ke %), ? (panel pintasan)
+- Feedback visual overlay untuk setiap shortcut (muncul 700ms)
+- Panel pintasan keyboard (modal overlay, toggle dengan ?)
+- Sidebar film terkait: 12 film berdasarkan genre, sorted by rating, kartu horizontal (poster + title + meta)
+- Info film di bawah player: badge rating/tahun/durasi/bahasa, judul, sinopsis, tombol watchlist & detail
+- Watchlist toggle di watch page (auth-aware, update icon filled/outline)
+- Save otomatis progress saat page unload (`beforeunload`)
+- CSS baru: `watch.css`
+- JS baru: `watch.js`
+
+**Deliverable:** `cineverse-phase3_2.zip` + `README.md` updated
+
+**Status:** ✅ Selesai (v0.9.0)
+
+---
+
+### 📦 FASE 3.3 — Watchlist, History & Dashboard Integration
+**Target:** Fitur kelola tontonan + integrasi dashboard lengkap
+
+**Yang akan dikerjakan:**
+- Halaman Watchlist (`pages/watchlist.html`) — daftar film tersimpan
+- Halaman History (`pages/history.html`) — riwayat tontonan dengan timestamp
+- Update Dashboard: Continue Watching section menggunakan ProgressStorage real
+- Update Dashboard: rekomendasi berbasis genre preferensi user
+- Navbar watchlist counter badge
 
 **Deliverable:** `cineverse-phase3.zip` + `README.md` updated
 
-**Status:** 🔲 Belum Dimulai
+**Status:** ✅ Selesai (v1.0.0)
 
 ---
 
@@ -328,7 +396,7 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 
 **Deliverable:** `cineverse-phase4.zip` + `README.md` updated
 
-**Status:** 🔲 Belum Dimulai
+**Status:** ✅ Selesai (v1.0.0)
 
 ---
 
@@ -351,7 +419,7 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 
 **Deliverable:** `cineverse-phase5.zip` + `README.md` final
 
-**Status:** 🔲 Belum Dimulai
+**Status:** ✅ Selesai (v1.0.0)
 
 ---
 
@@ -380,12 +448,17 @@ FASE 5  ░░░░░░░░░░░░░░░░░░██  PWA, Optim
 | **Fase 2** | Bug Fix — Profil & Settings tidak render | ✅ Selesai | 2025-02-25 |
 | **Fase 2** | Bug Fix — Halaman Profil & Settings kosong (.reveal opacity:0) | ✅ Selesai | 2026-02-25 |
 | **Fase 2** | Bug Fix — Halaman Profil masih kosong (race condition reveal + CSS class mismatch) | ✅ Selesai | 2026-02-25 |
-| **Fase 3** | Movie Detail Page | 🔲 Pending | - |
-| **Fase 3** | Video Player | 🔲 Pending | - |
-| **Fase 3** | Search & Filter | 🔲 Pending | - |
-| **Fase 3** | Watchlist | 🔲 Pending | - |
-| **Fase 3** | History & Continue Watching | 🔲 Pending | - |
-| **Fase 3** | Rating & Review | 🔲 Pending | - |
+| **Fase 3.1** | Movie Detail Page | ✅ Selesai | 2026-02-25 |
+| **Fase 3.1** | Rating & Review System | ✅ Selesai | 2026-02-25 |
+| **Fase 3.1** | Trailer Modal (YouTube embed) | ✅ Selesai | 2026-02-25 |
+| **Fase 3.1** | Search & Filter Page (Fuzzy Search) | ✅ Selesai | 2026-02-25 |
+| **Fase 3.1** | Genre Explorer Page | ✅ Selesai | 2026-02-25 |
+| **Fase 3.2** | Video Player / Watch Page | ✅ Selesai | 2026-02-25 |
+| **Fase 3.2** | History Tontonan (auto-record) | ✅ Selesai | 2026-02-25 |
+| **Fase 3.2** | Continue Watching (progress timestamp) | ✅ Selesai | 2026-02-25 |
+| **Fase 3.3** | Watchlist Page | 🔲 Pending | - |
+| **Fase 3.3** | History Page | 🔲 Pending | - |
+| **Fase 3.3** | Dashboard Integration (Phase 3) | 🔲 Pending | - |
 | **Fase 4** | News Page | 🔲 Pending | - |
 | **Fase 4** | Artikel Detail | 🔲 Pending | - |
 | **Fase 4** | Surprise Me Feature | 🔲 Pending | - |
@@ -706,3 +779,204 @@ Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript murni
   - **Confirm Modal** — Dialog konfirmasi untuk aksi destruktif
 - ✅ `assets/css/animations.css` — Tambah `@keyframes spin` untuk loading state
 - ✅ README + badge diperbarui ke v0.5.0
+
+---
+
+### v0.8.1 — Phase 3.1: Movie Detail, Search & Filter, Genre Explorer
+
+**Pembagian Phase 3:**
+- **Phase 3.1** — Movie Detail Page + Search & Filter + Genre Explorer ✅
+- **Phase 3.2** — Video Player + Watch Page + History — 🔲 Pending
+- **Phase 3.3** — Watchlist Page + History Page + Dashboard Integration — ✅ Selesai
+
+**Yang dikerjakan di Phase 3.1:**
+
+- ✅ `pages/movie-detail.html` — Halaman detail film lengkap:
+  - Hero backdrop blur dari film, layout 2 kolom (poster sticky | info)
+  - Breadcrumb navigasi, skeleton loading state, 404 state
+  - Poster dengan age rating badge, quick stats (rating, durasi, tahun, bahasa)
+  - Title, original title, meta chips (rating gold, tahun, durasi, negara)
+  - Genre badges linkable ke genre page, sinopsis, sutradara, cast chips, tags
+  - CTA buttons: Tonton Sekarang, Tonton Trailer, Tambah ke Watchlist
+  - Responsive mobile: poster & quick stats horizontal, CTA full width
+- ✅ `assets/css/pages/movie-detail.css` — Full styling movie detail
+- ✅ `assets/js/pages/movie-detail.js` — Logic lengkap:
+  - Load film dari `movies.json` berdasarkan `?id=` URL param
+  - Watchlist toggle dengan auth-guard (redirect ke login jika belum login)
+  - Trailer modal: YouTube embed autoplay, close via ESC/backdrop/tombol X
+  - Rating & Review: star picker interaktif (hover highlight, click set), textarea 500 char, save ke `ReviewStorage`, tampilkan existing review user
+  - Review list: avatar inisial, nama user, tanggal, bintang, teks ulasan
+  - Rating summary: rata-rata bintang, jumlah ulasan
+  - Related movies row berdasarkan genre yang sama (max 8 film)
+  - Force reveal fallback untuk animasi elemen
+
+- ✅ `pages/search.html` — Halaman pencarian film lengkap
+- ✅ `assets/css/pages/search.css` — Styling: search bar besar dengan focus glow, filter panel, genre chips, select dropdowns, rating slider, active filter tags
+- ✅ `assets/js/pages/search.js` — Logic lengkap:
+  - Fuzzy search via Fuse.js (dengan simple search fallback jika Fuse tidak terload)
+  - Keys: title (0.5), originalTitle (0.3), director, cast, synopsis, tags
+  - Filter genre OR logic (pilih banyak genre, film cukup punya salah satu)
+  - Filter tahun dari–sampai, rating minimum slider, bahasa, 6 opsi sort
+  - Active filter tags dengan tombol hapus per tag
+  - Debounced input 300ms, pagination 24 per page, empty state kontekstual
+  - Session filter state (antar navigasi)
+
+- ✅ `pages/genre.html` — Genre Explorer halaman
+- ✅ `assets/css/pages/genre.css` — Styling: genre cards grid dengan hover effect, genre-card dengan backdrop blur, detail view banner, toolbar sort
+- ✅ `assets/js/pages/genre.js` — Logic lengkap:
+  - Overview mode: grid 20 genre dengan backdrop dari film terbaik, warna aksen per genre
+  - Detail mode: hero banner genre, sort toolbar, grid film dengan pagination
+  - Genre metadata: emoji, warna, deskripsi untuk 20 genre (Aksi, Drama, Sci-Fi, Horor, dst)
+  - Browser history API (pushState) — back/forward tanpa reload
+  - URL param `?g=Genre` untuk deep link ke genre tertentu
+  - Watchlist toggle di setiap card film
+
+- ✅ README + badge diperbarui ke v0.8.1
+
+---
+
+### v0.9.0 — Phase 3.2: Video Player & Watch Page
+
+**Pembagian Phase 3:**
+- **Phase 3.1** — Movie Detail Page + Search & Filter + Genre Explorer ✅
+- **Phase 3.2** — Video Player + Watch Page + History ✅
+- **Phase 3.3** — Watchlist Page + History Page + Dashboard Integration — ✅ Selesai
+
+**Yang dikerjakan di Phase 3.2:**
+
+- ✅ `pages/watch.html` — Halaman menonton film lengkap:
+  - Layout 2 kolom: player section (kiri/utama) + sidebar related films (kanan)
+  - Watch header minimal: logo CINEVERSE + judul film + tombol "Detail Film"
+  - HTML5 video player container dengan aspect ratio 16:9
+  - YouTube iframe embed support (mode otomatis jika `videoUrl` tidak ada)
+  - Poster overlay dengan tombol play besar sebelum film dimulai
+  - Loading spinner saat buffering, error state dengan tombol retry
+  - Skip Intro button (muncul detik 5–90)
+  - Resume Prompt dialog (lanjutkan / mulai dari awal)
+  - Custom controls lengkap (progress bar, play/pause, rewind, forward, volume, speed, PiP, fullscreen)
+  - Info film di bawah player: badge metadata, judul, sinopsis, watchlist toggle
+  - Sidebar: daftar 12 film terkait berdasarkan genre (kartu horizontal)
+  - Panel pintasan keyboard (modal, toggle dengan ?)
+- ✅ `assets/css/pages/watch.css` — Full styling watch page:
+  - Watch header dengan gradient fade
+  - Player container dengan custom controls overlay
+  - Progress bar animasi (played + buffered + thumb)
+  - Volume slider expand-on-hover
+  - Speed menu floating popup
+  - Controls auto-hide via CSS class `controls-hidden`
+  - Player feedback overlay untuk keyboard shortcut visual
+  - Sidebar kartu film horizontal
+  - Keyboard shortcuts panel modal
+  - Responsive: mobile (single column), tablet, desktop
+  - Light theme overrides
+- ✅ `assets/js/pages/watch.js` — Logic lengkap:
+  - Auth guard (redirect ke login jika belum login)
+  - Load `movies.json` → find film by `?id=` URL param
+  - setupHtml5Player(): attach semua event listeners ke `<video>`
+  - setupYouTubePlayer(): YouTube iframe embed + disable custom controls
+  - Custom controls: play/pause toggle, seekBy(±10), volume/mute, speed, PiP, fullscreen
+  - Progress seek bar: drag/click untuk jump ke posisi
+  - Volume slider expandable (collapse saat tidak hover)
+  - Playback speed selector dengan floating menu (6 opsi)
+  - Auto-hide controls: 3.5s setelah idle, muncul saat mousemove
+  - Keyboard shortcuts: Space, M, F, ←, →, ↑, ↓, 0–9, ?
+  - Feedback visual overlay setiap shortcut (700ms)
+  - Resume prompt: cek ProgressStorage → show dialog jika ada progress > 10s
+  - Auto-save progress ke ProgressStorage setiap 5 detik
+  - Save final progress saat `beforeunload`
+  - Clear progress saat video selesai
+  - Record history ke HistoryStorage setelah 10% film ditonton
+  - Watchlist toggle dengan auth-aware UI update
+  - Sidebar: render 12 film terkait sorted by rating, highlight film aktif
+  - Skip Intro button: tampil detik 5–90, klik loncat ke detik 91
+- ✅ README + badge diperbarui ke v0.9.0
+
+### v1.0.0 — Phase 3.3: Watchlist Page, History Page & Dashboard Integration
+
+**Pembagian Phase 3:**
+- **Phase 3.1** — Movie Detail Page + Search & Filter + Genre Explorer ✅
+- **Phase 3.2** — Video Player + Watch Page + History ✅
+- **Phase 3.3** — Watchlist Page + History Page + Dashboard Integration ✅
+
+**Yang dikerjakan di Phase 3.3:**
+
+- ✅ `pages/watchlist.html` — Halaman watchlist lengkap:
+  - Header dengan ikon, judul, subtitle jumlah film tersimpan
+  - Toggle tampilan Grid / List (tombol switch dengan ikon)
+  - Dropdown sort: Terakhir Ditambahkan, Judul A–Z, Rating Tertinggi, Tahun Terbaru
+  - Filter genre chips dinamis (diambil dari genre-genre film dalam watchlist)
+  - Grid card film: poster aspect-ratio 2:3, rating badge, tombol hapus (X) hover, overlay aksi Tonton
+  - List view: poster landscape, genre badges, tombol Tonton + Hapus
+  - Progress bar merah di bawah poster jika film pernah ditonton sebagian
+  - Confirm modal untuk aksi hapus (single item & clear all)
+  - Empty state kontekstual (watchlist kosong vs genre filter tidak ada hasil)
+  - Skeleton loading placeholder saat data dimuat
+
+- ✅ `assets/css/pages/watchlist.css` — Full styling:
+  - Grid view: auto-fill columns (min 160px), hover effect translateY + shadow
+  - List view: layout horizontal flex, poster 80px fixed width
+  - Genre chips dengan active state crimson
+  - Sort select dengan custom chevron ikon
+  - View toggle button group
+  - Responsive: mobile single column, compact list
+  - Light theme overrides
+
+- ✅ `assets/js/pages/watchlist.js` — Logic lengkap:
+  - Auth guard (redirect ke login jika belum login)
+  - Load `movies.json` → match film dengan watchlistIds dari WatchlistStorage
+  - Genre filter chips dinamis dari genre film dalam watchlist
+  - Sort: Terakhir Ditambahkan (preserve order), Judul A–Z, Rating, Tahun
+  - Render grid/list view dengan toggle seamless
+  - Hapus single film dengan animasi fade + scale sebelum re-render
+  - Hapus semua via confirm modal
+  - Update watchlist badge di navbar setelah perubahan
+
+- ✅ `pages/history.html` — Halaman riwayat tontonan lengkap:
+  - Header dengan ikon jam, judul, subtitle jumlah film ditonton
+  - Dropdown sort: Terbaru, Paling Lama, Judul A–Z, Rating Tertinggi
+  - Stats bar: Film Ditonton, Total Durasi, Genre Favorit, Minggu Ini
+  - Daftar riwayat dikelompokkan per tanggal (Hari Ini, Kemarin, nama hari, tanggal)
+  - Setiap item: thumbnail 16:9, play overlay hover, progress bar merah
+  - Info: judul, genre badge, tahun, durasi, rating bintang, waktu ditonton
+  - Status tontonan: "X% ditonton" atau "✓ Selesai" (jika ≥90%)
+  - Tombol aksi per item: Tonton/Lanjutkan + Hapus (muncul saat hover)
+  - Klik seluruh area item → navigasi ke watch.html
+  - Hapus item → clear history + clear progress sekaligus
+  - Load more (20 item per batch) untuk performa
+  - Empty state, skeleton loading, confirm modal
+
+- ✅ `assets/css/pages/history.css` — Full styling:
+  - Stats bar: 4 kolom grid dengan divider, nilai font display besar
+  - Date group label dengan border bottom
+  - History item: hover background + border, play overlay opacity transition
+  - Action buttons muncul saat hover (opacity 0→1)
+  - Progress bar merah di bawah thumbnail
+  - Responsive: 2-col stats di mobile, action buttons selalu visible di mobile
+  - Light theme overrides
+
+- ✅ `assets/js/pages/history.js` — Logic lengkap:
+  - Auth guard
+  - Load movies.json → join dengan HistoryStorage + ProgressStorage
+  - Hitung stats: total film, total durasi (jam), genre favorit (by count), ditonton minggu ini
+  - Sort modes: newest/oldest (grouped by date), A–Z, Rating
+  - Date grouping: Hari Ini, Kemarin, Nama Hari (7 hari), Tanggal Lengkap
+  - Hapus item → remove dari HistoryStorage + clear ProgressStorage
+  - Load more pagination (20 per batch)
+
+- ✅ `assets/js/core/app.js` — Update navbar:
+  - Tambah watchlist icon button (hati) di navbar actions setelah search icon
+  - Badge counter merah di watchlist icon (jumlah film dalam watchlist)
+  - Badge auto-update saat halaman load
+  - Tambah link "Watchlist Saya" + "Riwayat Tontonan" di user dropdown menu
+  - Export `updateWatchlistBadge()` agar bisa digunakan oleh halaman lain
+
+- ✅ `pages/dashboard.html` + `assets/js/pages/dashboard.js` — Update:
+  - Tambah section "Rekomendasi Untuk Kamu" (tersembunyi jika tidak ada data)
+  - Hint text: "Berdasarkan genre favoritmu: ..."
+  - Algoritma rekomendasi: ambil genre dari Settings > History > Watchlist
+  - Score film: jumlah genre match × 10 + rating film
+  - Exclude film yang sudah di watchlist / sudah ditonton dari rekomendasi
+  - Tampilkan max 10 film, render dengan buildMovieCard()
+  - Tambah link Watchlist & Riwayat di footer dashboard
+
+- ✅ README + badge diperbarui ke v1.0.0
