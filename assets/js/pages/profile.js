@@ -41,9 +41,10 @@ const ProfilePage = (() => {
     initAvatarUpload();
     initEditForm();
     initPasswordForm();
-    initActivity();
+    initActivity();   // Called after allMovies is ready
     initDangerZone();
     initConfirmModal();
+    initTabHash();    // Support URL hash navigation (#tab-activity etc)
 
     // Init section reveal
     if (window.CineTransitions) {
@@ -99,16 +100,38 @@ const ProfilePage = (() => {
     // Stats
     const watchlistCount = CineStorage.Watchlist.getAll(u.id).length;
     const historyCount   = CineStorage.History.getAll(u.id).length;
-    qs('#stat-watchlist') && (qs('#stat-watchlist').textContent = watchlistCount);
-    qs('#stat-watched') && (qs('#stat-watched').textContent   = historyCount);
 
-    // Count reviews across movies (simple check)
+    // Animate stat numbers in with a pop effect
+    function setStatNum(el, value) {
+      if (!el) return;
+      el.textContent = value;
+      el.classList.remove('counting');
+      // Force reflow to restart animation
+      void el.offsetWidth;
+      el.classList.add('counting');
+    }
+
+    setStatNum(qs('#stat-watchlist'), watchlistCount);
+    setStatNum(qs('#stat-watched'), historyCount);
+
+    // Count reviews: scan all review keys in localStorage efficiently
+    // Avoids iterating all movies just to count — reads only keys with review prefix
     let reviewCount = 0;
-    allMovies.forEach(m => {
-      const r = CineStorage.Review.getUserReview(m.id, u.id);
-      if (r) reviewCount++;
-    });
-    qs('#stat-reviews') && (qs('#stat-reviews').textContent = reviewCount);
+    try {
+      const REVIEW_PREFIX = 'cv_reviews_';
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(REVIEW_PREFIX)) {
+          try {
+            const reviews = JSON.parse(localStorage.getItem(key) || '[]');
+            if (Array.isArray(reviews) && reviews.some(r => r.userId === u.id)) {
+              reviewCount++;
+            }
+          } catch (_) {}
+        }
+      }
+    } catch (_) {}
+    qs('#stat-reviews') && setStatNum(qs('#stat-reviews'), reviewCount);
   }
 
   function renderAvatarDisplay() {
@@ -152,8 +175,26 @@ const ProfilePage = (() => {
         panels.forEach(p => p.classList.remove('active'));
         tab.classList.add('active');
         qs(`#panel-${target}`)?.classList.add('active');
+        // Update URL hash for direct linking & back/forward support
+        history.replaceState(null, '', `#tab-${target}`);
       });
     });
+  }
+
+  /* ─────────────────────────────────────────
+     TAB HASH NAVIGATION
+  ───────────────────────────────────────── */
+  function initTabHash() {
+    // Parse URL hash to activate the correct tab on load
+    // Supports: #tab-edit, #tab-password, #tab-activity
+    const hash = window.location.hash; // e.g. "#tab-activity"
+    if (hash && hash.startsWith('#tab-')) {
+      const tabName = hash.replace('#tab-', '');
+      const targetTab = qs(`.profile-tab[data-tab="${tabName}"]`);
+      if (targetTab) {
+        targetTab.click();
+      }
+    }
   }
 
   /* ─────────────────────────────────────────

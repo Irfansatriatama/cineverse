@@ -203,6 +203,18 @@
   font-size: 2rem;
   color: var(--color-crimson);
   line-height: 1;
+  transition: color var(--transition-normal);
+}
+
+/* Animate count in on reveal */
+.profile-stat__num.counting {
+  animation: statPop 0.4s var(--ease-out) both;
+}
+
+@keyframes statPop {
+  0%   { transform: scale(0.8); opacity: 0; }
+  60%  { transform: scale(1.12); }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .profile-stat__label {
@@ -871,9 +883,11 @@
     flex-direction: row;
     justify-content: space-around;
     border-left: none;
+    border-right: none;
     border-top: 1px solid var(--color-border);
     border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     padding: var(--space-4) var(--space-6);
+    min-width: unset; /* Fix: remove min-width that caused overflow */
   }
 }
 
@@ -889,6 +903,16 @@
     gap: var(--space-4);
   }
 
+  /* Fix: avatar smaller on mobile so header doesn't overflow */
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-avatar__initials {
+    font-size: 2rem;
+  }
+
   .profile-avatar-wrap {
     margin: 0 auto;
   }
@@ -899,6 +923,7 @@
 
   .profile-stats {
     grid-column: 1;
+    min-width: unset;
   }
 
   .form-row {
@@ -945,5 +970,20 @@
 
   .profile-header__name {
     font-size: 1.8rem;
+  }
+
+  /* Fix: avatar even smaller on very small screens */
+  .profile-avatar {
+    width: 76px;
+    height: 76px;
+  }
+
+  .profile-avatar__initials {
+    font-size: 1.6rem;
+  }
+
+  /* Fix: stat number smaller on very small screens */
+  .profile-stat__num {
+    font-size: 1.5rem;
   }
 }

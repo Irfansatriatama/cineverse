@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3.2%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.8.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.3%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.9.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -252,8 +252,8 @@ FASE 5  ████████████████████  PWA, Optim
 BUG FIX SERIES (Phase 5.3.x)
 FASE 5.3.1  ████████████████████  Auth Pages Redesign         ✅ Selesai (v1.7.0)
 FASE 5.3.2  ████████████████████  Light Theme Overhaul        ✅ Selesai (v1.8.0)
-FASE 5.3.3  ░░░░░░░░░░░░░░░░░░░░  Halaman Profil Fix          🔜 Berikutnya
-FASE 5.3.4  ░░░░░░░░░░░░░░░░░░░░  Halaman Pengaturan Fix      ⏳ Antrian
+FASE 5.3.3  ████████████████████  Halaman Profil Fix          ✅ Selesai (v1.9.0)
+FASE 5.3.4  ░░░░░░░░░░░░░░░░░░░░  Halaman Pengaturan Fix      🔜 Berikutnya
 FASE 5.3.5  ░░░░░░░░░░░░░░░░░░░░  i18n (Multi-Bahasa) Fix     ⏳ Antrian
 FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     ⏳ Antrian
 FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) ⏳ Antrian
@@ -379,8 +379,8 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 |---|---|---|---|
 | **5.3.1** | Auth Pages (Login & Register) | Tampilan kurang rapi, layout perlu redesign, form tidak konsisten | ✅ **Selesai** (v1.7.0) |
 | **5.3.2** | Light Theme (White Mode) | Banyak elemen tidak optimal di tema terang — kontras, warna card, navbar | ✅ **Selesai** (v1.8.0) |
-| **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ⏳ Antrian |
-| **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ⏳ Antrian |
+| **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ✅ **Selesai** (v1.9.0) |
+| **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | 🔜 **Berikutnya** |
 | **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ⏳ Antrian |
 | **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | ⏳ Antrian |
 | **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | ⏳ Antrian |
@@ -394,12 +394,13 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 - ✅ Konsistensi visual di dashboard, search, genre, watchlist, history, stats, news
 - ✅ File terpusat `light-theme.css` sebagai single source of truth
 
-**Phase 5.3.3 — Halaman Profil Fix** *(Berikutnya)*
-- Perbaikan layout avatar section (ukuran, posisi, upload UX)
-- Fix tab navigasi (Profil / Aktivitas) agar lebih smooth
-- Perbaikan statistik mini di profil (film ditonton, watchlist, dll)
-- Polish spacing, typography, dan card sections
-- Responsive mobile yang lebih baik
+**Phase 5.3.3 — Halaman Profil Fix** ✅ *Selesai (v1.9.0)*
+- ✅ Fix review count inefficiency (iterasi O(n) seluruh film → scan localStorage keys O(k))
+- ✅ Fix link "Lihat Semua" di Watchlist Preview (dashboard.html → watchlist.html)
+- ✅ Fix responsive mobile: avatar terlalu besar, stats section overflow, `min-width` conflict
+- ✅ Tambah stat counter pop animation (`.counting` + `@keyframes statPop`)
+- ✅ Tab hash navigation: URL update saat tab diklik, direct link `#tab-activity` support
+- ✅ Fix `initTabHash()` dipanggil setelah semua init selesai (order yang benar)
 
 **Phase 5.3.4 — Halaman Pengaturan Fix**
 - Redesign sidebar navigasi settings agar lebih clean
@@ -431,7 +432,42 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 
 ## 📝 Changelog
 
-### v1.8.0 — Phase 5.3.2: Light Theme Overhaul *(terkini)*
+### v1.9.0 — Phase 5.3.3: Halaman Profil Fix *(terkini)*
+
+**5 bug diperbaiki:**
+
+**[BUG 1] `profile.js` — Review count O(n) iterasi seluruh film (ineffisien & rentan race condition)**
+`populateHeader()` memanggil `CineStorage.Review.getUserReview(m.id, u.id)` untuk setiap dari 52+ film — meskipun `allMovies` sudah terisi karena `await fetch` selesai lebih dulu, pendekatan ini tetap O(n) dan akan makin lambat seiring penambahan film (Phase 5.3.7 target 120+ film).
+
+Solusi: Ganti dengan scan langsung pada `localStorage` keys yang memiliki prefix `cv_reviews_`. Hanya keys yang benar-benar ada yang di-parse, sehingga kompleksitas turun menjadi O(k) di mana k = jumlah film yang pernah di-review (biasanya jauh lebih kecil dari total film).
+
+**[BUG 2] `profile.html` — Link "Lihat Semua →" di Watchlist Preview mengarah ke halaman salah**
+`<a href="dashboard.html" class="profile-card__action">Lihat Semua →</a>` di dalam tab Aktivitas → kartu Watchlist Saya mengarahkan user ke Dashboard, bukan ke halaman Watchlist yang sebenarnya.
+
+Solusi: Ubah `href="dashboard.html"` menjadi `href="watchlist.html"`.
+
+**[BUG 3] `profile.css` — Avatar overflow di mobile, stats section `min-width` conflict**
+Di breakpoint ≤768px, `.profile-avatar` tetap 120×120px menyebabkan header section terlalu tinggi di layar sempit. `.profile-stats` memiliki `min-width: 140px` yang tidak di-reset di breakpoint ≤1024px, menyebabkan overflow horizontal pada beberapa device. Border-left juga tidak di-reset lengkap.
+
+Solusi: Avatar dikecilkan ke 90px (768px) dan 76px (480px). `min-width: unset` ditambahkan di kedua responsive breakpoints. `border-right: none` ditambahkan saat stats jadi horizontal row.
+
+**[BUG 4] `profile.css` — Statistik profil tidak ada animasi, terasa statis**
+Angka watchlist, ditonton, dan ulasan muncul langsung tanpa transisi apapun — kurang memberikan kesan visual "hidup".
+
+Solusi: Tambah class `.counting` dengan `@keyframes statPop` (scale 0.8→1.12→1 dengan fade in). Class di-trigger via JS setiap kali `setStatNum()` dipanggil menggunakan `void el.offsetWidth` untuk force reflow sehingga animasi selalu restart dengan benar.
+
+**[BUG 5] `profile.js` — Tab navigasi tidak update URL, tidak support direct link**
+Mengklik tab Edit/Password/Aktivitas tidak mengubah URL hash, sehingga:
+- Refresh halaman selalu kembali ke tab Edit (tidak ingat posisi tab)
+- Tidak bisa share/bookmark link langsung ke tab tertentu
+
+Solusi: Tambah `history.replaceState(null, '', '#tab-{name}')` di event listener tab. Tambah fungsi `initTabHash()` yang membaca `window.location.hash` saat init dan mengklik tab yang sesuai — mendukung URL seperti `profile.html#tab-activity` dan `profile.html#tab-password`.
+
+**File yang diubah:** `assets/js/pages/profile.js`, `pages/profile.html`, `assets/css/pages/profile.css`
+
+---
+
+### v1.8.0 — Phase 5.3.2: Light Theme Overhaul *(sebelumnya terkini)*
 
 **Latar belakang:** Setelah Phase 5.3.1 menyelesaikan redesign halaman auth, audit menyeluruh terhadap light theme (`[data-theme="light"]`) mengungkap bahwa mayoritas komponen dan halaman masih menggunakan nilai warna yang hanya cocok untuk dark mode — kontras rendah, card tidak terlihat, teks sulit dibaca, navbar tembus, dan banyak elemen overlay yang tidak kompatibel dengan background terang.
 
