@@ -243,10 +243,15 @@ const MovieDetailPage = (() => {
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
 
-    // Set iframe src setelah modal visible untuk memastikan video ter-render dengan benar
+    // Set iframe src setelah layout ter-paint agar video ter-render dengan benar
+    // Gunakan double rAF untuk memastikan browser sudah selesai layout + paint
     const origin = window.location.origin !== 'null' ? window.location.origin : '';
     const originParam = origin ? `&origin=${encodeURIComponent(origin)}` : '';
-    iframe.src = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&rel=0&enablejsapi=1${originParam}`;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        iframe.src = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&rel=0&enablejsapi=1${originParam}`;
+      });
+    });
   }
 
   function closeTrailer() {

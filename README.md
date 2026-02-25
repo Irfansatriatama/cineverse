@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3.3%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.3-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.4%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.4-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -289,7 +289,27 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.0.3 — Phase 3.3.3: Bug Fix — Trailer Video Tidak Tampil *(terkini)*
+### v1.0.4 — Phase 3.3.4: Bug Fix — Trailer Video Masih Tidak Tampil (Lanjutan) *(terkini)*
+
+**1 bug diperbaiki:**
+
+**[BUG 1] `movie-detail.css` + `movie-detail.js` — Trailer: audio berjalan tapi video tetap tidak muncul secara visual**
+
+Meskipun perbaikan v1.0.3 sudah menggunakan `aspect-ratio: 16/9` dan menunda `iframe.src` sampai modal visible, video masih tidak ter-render — hanya audio yang berjalan. Investigasi lebih lanjut mengungkap dua root cause residual:
+
+**Root cause:**
+1. **CSS:** Iframe menggunakan `display: block; width: 100%; height: 100%` di dalam container yang hanya punya `aspect-ratio` (bukan `min-height` eksplisit). Di beberapa browser/engine, `height: 100%` tidak terkalkulasi dengan benar dari parent yang hanya memiliki `aspect-ratio` tanpa explicit height — browser merender iframe dengan computed height = 0. Audio tetap berjalan karena elemen ada di DOM, tapi frame video tidak di-paint.
+2. **JS:** `iframe.src` di-set langsung setelah `void modal.offsetWidth` (force reflow), namun force reflow hanya memastikan layout telah dihitung — bukan bahwa browser telah menyelesaikan **paint cycle** penuh. YouTube player mulai load di dalam container yang secara teknis sudah ada dimensi, tapi rendering engine belum menyelesaikan paint, sehingga player tidak bisa "melihat" dimensi container dan tidak me-render frame video.
+
+**Solusi (2 file):**
+1. `movie-detail.css` — Ubah iframe dari `display: block; height: 100%` ke `position: absolute; inset: 0; width: 100%; height: 100%`. Teknik `position: absolute; inset: 0` dalam parent `position: relative` + `aspect-ratio` adalah cara paling kompatibel lintas browser — iframe mengikuti bounding box parent secara langsung tanpa bergantung pada kalkulasi `height: 100%`. Tambahkan `min-height: 0` pada parent untuk memastikan flex/grid context tidak menghalangi kalkulasi.
+2. `movie-detail.js` — Ganti set `iframe.src` langsung dengan **double `requestAnimationFrame`** pattern. rAF pertama memastikan browser telah menyelesaikan layout pass. rAF kedua memastikan browser telah menyelesaikan paint cycle penuh. Dengan demikian, YouTube player dijamin load setelah container memiliki dimensi final yang sudah ter-paint.
+
+**File yang diubah:** `assets/css/pages/movie-detail.css`, `assets/js/pages/movie-detail.js`
+
+---
+
+### v1.0.3 — Phase 3.3.3: Bug Fix — Trailer Video Tidak Tampil
 
 **1 bug diperbaiki:**
 

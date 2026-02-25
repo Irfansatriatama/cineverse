@@ -389,13 +389,17 @@
   background: #000;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  /* Pastikan container memiliki computed height agar iframe bisa mengisi */
+  min-height: 0;
 }
 
 .md-trailer-modal__player iframe {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: none;
+  display: block;
 }
 
 /* Modal enter/exit animation */
