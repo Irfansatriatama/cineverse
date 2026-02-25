@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3.3%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.9.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.4%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-2.0.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -253,8 +253,8 @@ BUG FIX SERIES (Phase 5.3.x)
 FASE 5.3.1  ████████████████████  Auth Pages Redesign         ✅ Selesai (v1.7.0)
 FASE 5.3.2  ████████████████████  Light Theme Overhaul        ✅ Selesai (v1.8.0)
 FASE 5.3.3  ████████████████████  Halaman Profil Fix          ✅ Selesai (v1.9.0)
-FASE 5.3.4  ░░░░░░░░░░░░░░░░░░░░  Halaman Pengaturan Fix      🔜 Berikutnya
-FASE 5.3.5  ░░░░░░░░░░░░░░░░░░░░  i18n (Multi-Bahasa) Fix     ⏳ Antrian
+FASE 5.3.4  ████████████████████  Halaman Pengaturan Fix      ✅ Selesai (v2.0.0)
+FASE 5.3.5  ░░░░░░░░░░░░░░░░░░░░  i18n (Multi-Bahasa) Fix     🔜 Berikutnya
 FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     ⏳ Antrian
 FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) ⏳ Antrian
 ```
@@ -380,8 +380,8 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 | **5.3.1** | Auth Pages (Login & Register) | Tampilan kurang rapi, layout perlu redesign, form tidak konsisten | ✅ **Selesai** (v1.7.0) |
 | **5.3.2** | Light Theme (White Mode) | Banyak elemen tidak optimal di tema terang — kontras, warna card, navbar | ✅ **Selesai** (v1.8.0) |
 | **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ✅ **Selesai** (v1.9.0) |
-| **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | 🔜 **Berikutnya** |
-| **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ⏳ Antrian |
+| **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ✅ **Selesai** (v2.0.0) |
+| **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | 🔜 **Berikutnya** |
 | **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | ⏳ Antrian |
 | **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | ⏳ Antrian |
 
@@ -432,7 +432,45 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 
 ## 📝 Changelog
 
-### v1.9.0 — Phase 5.3.3: Halaman Profil Fix *(terkini)*
+### v2.0.0 — Phase 5.3.4: Halaman Pengaturan Fix *(terkini)*
+
+**6 bug diperbaiki:**
+
+**[BUG 1] `settings.js` — `renderDataSummary()` hanya render 2 item padahal grid CSS 3 kolom**
+Grid CSS `.data-summary` menggunakan `grid-template-columns: repeat(3, 1fr)` namun fungsi `renderDataSummary()` hanya me-render 2 item: "Film Ditonton" dan "Watchlist". Kolom ketiga kosong menghasilkan layout yang tidak simetris dan tampak belum selesai.
+
+Solusi: Tambah item ketiga "Ulasan" menggunakan pendekatan scan localStorage O(k) (sama dengan profil.js) yang mengiterasi key `cv_reviews_*` dan menghitung review milik user saat ini — konsisten dengan perbaikan Phase 5.3.3.
+
+**[BUG 2] `settings.css` — Toggle switch hampir tidak terlihat di light mode**
+Dalam dark mode, `.toggle-switch` menggunakan `background: var(--color-bg-tertiary)` dan `border: 2px solid rgba(255,255,255,0.12)`. Override di light theme hanya mengubah background ke `#E5E7EB` tapi tidak memperbaiki border. Akibat: border toggle yang semi-transparan di atas background abu-abu terang memberikan kontras yang sangat rendah — toggle sulit dibedakan apakah sedang "on" atau "off".
+
+Solusi: Ganti light theme override toggle: background off menjadi `#D1D5DB` (abu-abu lebih gelap dari sebelumnya), border `rgba(0,0,0,0.12)` yang lebih kontras. State "on" tetap crimson. Tambah hover state `rgba(0,0,0,0.2)`.
+
+**[BUG 3] `settings.js` — Toast ganti bahasa selalu dalam Bahasa Indonesia**
+Saat user mengganti bahasa ke English, toast konfirmasi masih berbunyi "Bahasa diubah ke: English" (campur Indonesia-Inggris). Seharusnya ketika bahasa sudah berganti ke EN, konfirmasi pun berbahasa Inggris.
+
+Solusi: Cek value bahasa yang dipilih sebelum compose pesan toast. Jika `value === 'id'` → pesan Indonesia, jika `value === 'en'` → pesan English: `"Language changed to: English"`.
+
+**[BUG 4] `settings.html` — Link "Ganti Password" mengarah ke hash yang salah**
+Di section Akun, tombol "Ganti Password" mengarah ke `profile.html#change-password`. Namun sejak Phase 5.3.3, sistem navigasi tab di `profile.js` menggunakan hash format `#tab-{name}` — sehingga hash yang benar adalah `#tab-password`. Akibat: klik tombol membuka halaman profil tapi tidak otomatis berpindah ke tab Password.
+
+Solusi: Ubah `href="profile.html#change-password"` menjadi `href="profile.html#tab-password"` agar cocok dengan sistem `initTabHash()` yang sudah diimplementasikan di Phase 5.3.3.
+
+**[BUG 5] `settings.css` — Mobile sidebar nav tidak ada active indicator yang jelas**
+Di viewport ≤768px, sidebar nav berubah menjadi horizontal scroll row. Namun `.settings-nav__item.active` hanya punya `background: rgba(229,9,20,0.08)` — di antara item-item yang terhimpit horizontal, perbedaan background sangat sulit terlihat. Tidak ada visual indicator yang jelas mana section yang sedang aktif.
+
+Solusi: Tambah `border-bottom: 2px solid transparent` pada semua nav item di mobile, dan `border-bottom-color: var(--color-crimson)` pada state `.active`. Garis bawah merah ini memberikan indicator yang jelas dan konsisten dengan pola tab navigation pada umumnya (termasuk di halaman profil). Override yang sama ditambahkan untuk light mode.
+
+**[BUG 6] `settings.css` — Genre chip selected tidak terbaca di light mode**
+Chip genre yang dipilih menggunakan `.genre-chip-toggle.selected { color: white; }` — putih di atas background chip yang hanya sedikit lebih terang dari putih. Di dark mode aman karena background gelap, namun di light mode teks putih di atas background terang menghasilkan kontras yang sangat buruk (rasio kontras < 2:1, jauh di bawah WCAG AA 4.5:1).
+
+Solusi: Tambah override light theme untuk `.genre-chip-toggle.selected` yang menggunakan warna teks gelap `#111827` alih-alih putih. Chip yang tidak dipilih juga mendapat background yang lebih jelas (`#F3F4F6` dengan `border-color: rgba(0,0,0,0.08)`), dan hover state yang lebih dark (`#E5E7EB`).
+
+**File yang diubah:** `assets/js/pages/settings.js`, `pages/settings.html`, `assets/css/pages/settings.css`
+
+---
+
+### v1.9.0 — Phase 5.3.3: Halaman Profil Fix
 
 **5 bug diperbaiki:**
 

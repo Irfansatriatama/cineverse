@@ -255,7 +255,10 @@ const SettingsPage = (() => {
         // Apply i18n globally
         if (window.CineI18n) CineI18n.setLanguage(value);
         const langLabel = value === 'id' ? 'Bahasa Indonesia' : 'English';
-        showToast('info', `Bahasa diubah ke: ${langLabel}`);
+        const toastMsg = value === 'id'
+          ? `Bahasa diubah ke: ${langLabel}`
+          : `Language changed to: ${langLabel}`;
+        showToast('info', toastMsg);
       });
     });
   }
@@ -503,6 +506,20 @@ const SettingsPage = (() => {
     const history  = CineStorage.History.getAll(uid);
     const watchlist= CineStorage.Watchlist.getAll(uid);
 
+    // Count reviews: scan localStorage keys O(k)
+    let reviewCount = 0;
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('cv_reviews_')) {
+          const reviews = JSON.parse(localStorage.getItem(key) || '[]');
+          if (Array.isArray(reviews)) {
+            reviewCount += reviews.filter(r => r.userId === uid).length;
+          }
+        }
+      }
+    } catch {}
+
     el.innerHTML = `
       <div class="data-summary-item">
         <span class="data-summary-item__count">${Array.isArray(history) ? history.length : 0}</span>
@@ -511,6 +528,10 @@ const SettingsPage = (() => {
       <div class="data-summary-item">
         <span class="data-summary-item__count">${Array.isArray(watchlist) ? watchlist.length : 0}</span>
         <span class="data-summary-item__label">Watchlist</span>
+      </div>
+      <div class="data-summary-item">
+        <span class="data-summary-item__count">${reviewCount}</span>
+        <span class="data-summary-item__label">Ulasan</span>
       </div>
     `;
   }

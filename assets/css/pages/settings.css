@@ -1068,6 +1068,11 @@
     font-size: var(--font-size-xs);
     gap: var(--space-2);
     border-radius: var(--radius-md);
+    border-bottom: 2px solid transparent;
+  }
+
+  .settings-nav__item.active {
+    border-bottom-color: var(--color-crimson);
   }
 
   .settings-nav__item svg {
@@ -1119,6 +1124,11 @@
   border-color: rgba(0,0,0,0.08);
 }
 
+[data-theme="light"] .settings-nav {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+}
+
 [data-theme="light"] .settings-nav__item {
   color: #374151;
 }
@@ -1133,6 +1143,14 @@
   color: var(--color-crimson);
 }
 
+/* Mobile nav active indicator di light mode */
+@media (max-width: 768px) {
+  [data-theme="light"] .settings-nav__item.active {
+    background: rgba(229,9,20,0.08);
+    border-bottom: 2px solid var(--color-crimson);
+  }
+}
+
 [data-theme="light"] .language-option,
 [data-theme="light"] .quality-option,
 [data-theme="light"] .section-vis-item,
@@ -1142,7 +1160,52 @@
   border-color: rgba(0,0,0,0.07);
 }
 
+/* BUG 2 fix: toggle visible di light mode */
 [data-theme="light"] .toggle-switch {
+  background: #D1D5DB;
+  border-color: rgba(0,0,0,0.12);
+}
+
+[data-theme="light"] .toggle-switch:hover {
+  border-color: rgba(0,0,0,0.2);
+}
+
+[data-theme="light"] .toggle-switch[aria-checked="true"] {
+  background: var(--color-crimson);
+  border-color: var(--color-crimson);
+}
+
+[data-theme="light"] .settings-toggle-row {
+  border-bottom-color: rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .danger-action-row {
+  border-bottom-color: rgba(229,9,20,0.08);
+}
+
+[data-theme="light"] .settings-note {
+  background: #F3F4F6;
+  color: #6B7280;
+}
+
+[data-theme="light"] .settings-header {
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+/* BUG 7 fix: genre chip selected di light mode — teks gelap agar kontras */
+[data-theme="light"] .genre-chip-toggle.selected {
+  color: var(--chip-color, #111827);
+  background: rgba(0,0,0,0.04);
+}
+
+/* Override: biarkan JS inline style menang untuk warna chip border */
+[data-theme="light"] .genre-chip-toggle:not(.selected) {
+  background: #F3F4F6;
+  border-color: rgba(0,0,0,0.08);
+  color: #374151;
+}
+
+[data-theme="light"] .genre-chip-toggle:not(.selected):hover {
   background: #E5E7EB;
-  border-color: rgba(0,0,0,0.1);
+  color: #111827;
 }
