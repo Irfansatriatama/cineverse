@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3.6%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.6-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.7%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.7-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -241,7 +241,7 @@ cineverse-phase3/
 ```
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
-FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.6)
+FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.7)
 FASE 4  ░░░░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔲 Belum Dimulai
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
@@ -289,7 +289,44 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.0.6 — Phase 3.3.6: Bug Fix — Trailer & UI Enhancement Film Serupa *(terkini)*
+### v1.0.7 — Phase 3.3.7: Bug Fix — Trailer Autoplay & UI Card Film Serupa *(terkini)*
+
+**2 issue diselesaikan:**
+
+---
+
+**[BUG 1] `movie-detail.js` — Trailer: video masih tidak autoplay meski sudah visible di DOM**
+
+Setelah serangkaian patch sebelumnya (v1.0.3 s/d v1.0.6), iframe YouTube sudah ter-render secara visual dengan benar (padding-top 56.25% + position absolute). Namun video **tidak langsung berjalan** saat modal terbuka — audio kadang berjalan tapi frame video frozen, atau tidak ada sama sekali.
+
+**Root cause:**
+1. **Browser Autoplay Policy (Chrome/Edge/Firefox):** Browser modern memblokir autoplay *dengan audio* di iframe yang tidak memiliki prior user interaction yang cukup kuat (klik pada iframe itu sendiri tidak dianggap cukup). Klik pada tombol "Tonton Trailer" dianggap user gesture pada halaman, bukan pada iframe — sehingga `autoplay=1` saja tidak cukup untuk bypass policy audio autoplay.
+2. **`youtube.com` vs `youtube-nocookie.com`:** Embed dari `youtube.com` lebih agresif enforce cookie consent dan autoplay restriction. `youtube-nocookie.com` lebih relaxed dan lebih sering diizinkan browser.
+3. **`trailerListenersBound` tidak di-reset:** Variabel dideklarasikan di scope dalam module, tidak di-reset saat `init()` dipanggil ulang. Jika user navigasi ke film lain tanpa full page reload (bfcache), listeners tidak terikat ulang — close button tidak berfungsi, modal tidak bisa ditutup.
+
+**Solusi:**
+1. `movie-detail.js` — Reset `trailerListenersBound = false` di awal `init()` agar listener selalu terikat ulang pada setiap navigasi.
+2. `movie-detail.js` — Ganti domain embed dari `youtube.com` ke `youtube-nocookie.com` (lebih kompatibel dengan browser policy).
+3. `movie-detail.js` — Tambahkan `mute=1` dan `modestbranding=1` ke URL embed. Parameter `mute=1` adalah **syarat wajib** agar autoplay diizinkan oleh Chrome Autoplay Policy — video mulai muted, user bisa unmute manual. Ini adalah behavior standar semua major streaming site (Netflix preview, YouTube playlist, dll).
+
+**File yang diubah:** `assets/js/pages/movie-detail.js`
+
+---
+
+**[ENHANCEMENT] `movie-detail.css` + `movie-detail.js` — Section "Film Serupa": card terlalu besar, tampilan tidak proporsional**
+
+Card film di section "Film Serupa" terlalu besar karena grid hanya 4 kolom di hampir semua breakpoint, membuat tiap card mendapat width ~280–330px — terlalu lebar untuk konteks "pilihan tambahan". Padding info section dan ukuran font juga tidak di-scale down untuk konteks yang lebih compact.
+
+**Perubahan:**
+1. **Grid lebih padat** — Ubah dari `repeat(4, 1fr)` menjadi `repeat(5, 1fr)` default, `repeat(6, 1fr)` di ≥1400px, `repeat(4, 1fr)` di tablet 768–1199px, `repeat(3, 1fr)` di mobile ≤767px, `repeat(2, 1fr)` di ≤480px. Card jauh lebih proporsional dan section terasa seperti "galeri mini" bukan "daftar besar".
+2. **Card lebih compact** — Override padding `.movie-card__info` dari `space-3/space-4` ke `space-2/space-3`. Font title dari `0.8rem` ke `0.75rem`. Font meta dari `0.72rem` ke `0.68rem`. Play button dari 52px ke 38px. Ditambahkan `min-width: 0` untuk mencegah overflow di grid context.
+3. **Lebih banyak film** — `renderRelated()` di JS diubah dari `.slice(0, 8)` ke `.slice(0, 12)` agar grid 5–6 kolom terisi penuh dan user punya lebih banyak pilihan.
+
+**File yang diubah:** `assets/css/pages/movie-detail.css`, `assets/js/pages/movie-detail.js`
+
+---
+
+
 
 **2 issue diselesaikan:**
 

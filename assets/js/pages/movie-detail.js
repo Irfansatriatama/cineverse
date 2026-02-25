@@ -7,11 +7,14 @@ const MovieDetailPage = (() => {
 
   let movie = null;
   let allMovies = [];
+  let trailerListenersBound = false; // Deklarasi di atas agar bisa di-reset
   let currentUser = null;
   let selectedRating = 0;
 
   /* ─── INIT ─── */
   async function init() {
+    // Reset trailer state setiap kali halaman init ulang
+    trailerListenersBound = false;
     // Hide page loader
     setTimeout(() => {
       const loader = document.getElementById('page-loader');
@@ -215,8 +218,6 @@ const MovieDetailPage = (() => {
   }
 
   /* ─── TRAILER ─── */
-  let trailerListenersBound = false;
-
   function initTrailerListeners() {
     if (trailerListenersBound) return;
     trailerListenersBound = true;
@@ -245,11 +246,13 @@ const MovieDetailPage = (() => {
 
     // Set iframe src setelah layout ter-paint agar video ter-render dengan benar
     // Gunakan double rAF untuk memastikan browser sudah selesai layout + paint
+    // youtube-nocookie.com: lebih privasi, lebih jarang diblokir browser policy
+    // muted=1: wajib untuk autoplay di browser modern (Chrome Autoplay Policy)
     const origin = window.location.origin !== 'null' ? window.location.origin : '';
     const originParam = origin ? `&origin=${encodeURIComponent(origin)}` : '';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        iframe.src = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&rel=0&enablejsapi=1${originParam}`;
+        iframe.src = `https://www.youtube-nocookie.com/embed/${movie.trailerKey}?autoplay=1&mute=1&rel=0&enablejsapi=1&modestbranding=1${originParam}`;
       });
     });
   }
@@ -286,7 +289,7 @@ const MovieDetailPage = (() => {
         matchCount: m.genres?.filter(g => movie.genres?.includes(g)).length || 0
       }))
       .sort((a, b) => b.matchCount - a.matchCount)
-      .slice(0, 8);
+      .slice(0, 12);
 
     if (!related.length) {
       document.getElementById('md-related-section').style.display = 'none';

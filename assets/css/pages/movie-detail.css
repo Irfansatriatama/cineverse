@@ -694,14 +694,14 @@
 /* ── Responsive grid ── */
 .md-related-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
 }
 
 @media (min-width: 1400px) {
   .md-related-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-5);
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-3);
   }
 }
 
@@ -714,8 +714,8 @@
 
 @media (max-width: 767px) {
   .md-related-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
   }
   .md-related-header__title {
     font-size: 1.25rem;
@@ -735,6 +735,7 @@
 /* ── Card overrides for better fit in grid ── */
 .md-related-grid .movie-card {
   width: 100%;
+  min-width: 0; /* prevent overflow in grid */
 }
 
 .md-related-grid .movie-card__poster {
@@ -748,15 +749,31 @@
   object-fit: cover;
 }
 
+.md-related-grid .movie-card__info {
+  padding: var(--space-2) var(--space-2) var(--space-3);
+}
+
 .md-related-grid .movie-card__title {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 2px;
 }
 
 .md-related-grid .movie-card__meta {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+  gap: var(--space-1);
+}
+
+.md-related-grid .movie-card__play-btn {
+  width: 38px;
+  height: 38px;
+}
+
+.md-related-grid .movie-card__play-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* Remove old db-section classes (no longer needed) */
