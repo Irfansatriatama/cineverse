@@ -215,6 +215,10 @@ const MovieDetailPage = (() => {
     if (added && window.CineTransitions?.heartbeat) {
       window.CineTransitions.heartbeat(document.getElementById('md-btn-watchlist'));
     }
+    // Confetti celebration via anime.js
+    if (added && window.CineAnime?.celebrateWatchlist) {
+      CineAnime.celebrateWatchlist(document.getElementById('md-btn-watchlist'));
+    }
   }
 
   /* ─── TRAILER ─── */

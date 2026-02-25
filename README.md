@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.2%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.5.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.6.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -247,7 +247,7 @@ FASE 1  ████████████████████  Fondasi & 
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
 FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
 FASE 4  ████████████████████  News & Fitur Sosial         ✅ Selesai (4.1 ✅ 4.2 ✅ 4.3 ✅)
-FASE 5  ██████████████░░░░░░  PWA, Optimasi & Polish      🔄 In Progress (5.1 ✅ 5.2 ✅ 5.3 🔲)
+FASE 5  ████████████████████  PWA, Optimasi & Polish      ✅ Selesai (5.1 ✅ 5.2 ✅ 5.3 ✅)
 ```
 
 ### Fase 1 — Fondasi & Autentikasi ✅
@@ -315,7 +315,7 @@ FASE 5  ██████████████░░░░░░  PWA, Optim
 - PWA banner & offline pill teks mengikuti bahasa aktif via `CineI18n.t()`
 - Semua `pages/*.html` & auth pages diupdate: tambah `<script>` i18n.js & notifications.js
 
-**Phase 5.3 — Polish & Animasi (Anime.js)** 🔲
+**Phase 5.3 — Polish & Animasi (Anime.js)** ✅
 
 ---
 
@@ -355,7 +355,68 @@ FASE 5  ██████████████░░░░░░  PWA, Optim
 
 ---
 
-### v1.5.0 — Phase 5.2: Notifikasi Lokal & Multi-Bahasa *(terkini)*
+---
+
+### v1.6.0 — Phase 5.3: Polish & Animasi (Anime.js) *(terkini)*
+
+**File baru:**
+
+- `assets/js/core/anime-polish.js` — Module animasi global (`window.CineAnime`) menggunakan Anime.js 3.x (di-load via CDN secara dinamis, graceful fallback jika gagal):
+  - **Auto-init & page detection:** Deteksi halaman otomatis (dashboard, movie-detail, search, stats, watchlist, news, landing) dan jalankan animasi relevan
+  - **Card reveal IntersectionObserver:** Semua `.movie-card`, `.db-movie-card`, `.news-card`, dll masuk viewport dengan stagger translateY+scale+opacity via anime.js
+  - **Back to Top button:** Inject otomatis, muncul/hilang dengan spring animation saat scroll > 400px
+  - **Navbar auto-hide:** Sembunyikan navbar saat scroll cepat ke bawah, tampil kembali saat scroll ke atas (smooth anime.js translateY)
+  - **Navbar compact mode:** Background blur + shadow saat scroll > 80px
+  - **Scroll progress bar:** Bar merah-emas fixed di top of page, lebar proportional terhadap scroll depth dokumen
+  - **Lazy image blur reveal:** `img[data-src]` di-load lazy dengan efek blur→clear transition saat masuk viewport
+  - **Landing page:** Hero title char-by-char entrance, subtitle+CTA stagger, feature cards slide alternating kiri/kanan, floating particles canvas
+  - **Dashboard page:** Hero dots spring entrance, welcome banner slide, section headers reveal, genre chips spring stagger
+  - **Movie Detail page:** Hero metadata stagger, poster spring entrance, cast cards horizontal stagger, parallax hero backdrop, star rating animate
+  - **Search page:** Input focus scale spring, filter chip click spring bounce, result count live animate
+  - **Stats page:** Stat cards spring stagger, milestone badges pop sequence, genre bar width animate on scroll
+  - **Watchlist page:** Empty state float animation, controls slide entrance
+  - **News page:** Featured hero entrance, category chips spring
+  - `countUp(el, endVal, opts)` — Public API untuk count-up animasi di elemen manapun
+  - `animateModalIn(el)` / `animateModalOut(el, cb)` — Spring entrance/exit untuk semua modal
+  - `celebrateWatchlist(btnEl)` — Confetti burst 12 partikel warna-warni + heart scale saat film ditambah ke watchlist
+  - `animateToastIn(el)` / `animateToastOut(el, cb)` — Toast slide dari kanan dengan spring
+  - `revealSection(el, direction)` — Reveal container dari atas/bawah/kiri/kanan
+  - `animateCardRemove(el, cb)` — Fade out card dengan scale saat dihapus
+  - `pulseLoader(el)` — Pulse opacity animasi untuk loading state
+  - `withAnime(fn)` — Helper untuk run animasi setelah anime.js ready
+
+- `assets/css/polish.css` — CSS polish tambahan untuk seluruh aplikasi:
+  - Navbar transition (compact mode, hide/show, backdrop blur)
+  - Back to Top button hover glow & active scale
+  - Movie/news card enhanced hover (translateY + glow border)
+  - Button press scale & shadow
+  - Hero radial gradient pulse animation (`heroGlowPulse`)
+  - Modal backdrop blur enhanced
+  - Input focus glow ring (crimson 20% opacity)
+  - Enhanced shimmer animation (`shimmerEnhanced`) — smoother, 200% background-size
+  - Genre/filter chip hover scale + active ring glow
+  - Scroll progress bar CSS (`#scroll-progress-bar`)
+  - Lazy image blur transition
+  - Stats card hover lift, milestone badge glow
+  - Rating star hover glow filter
+  - `:focus-visible` accessibility outline
+  - `::selection` color (crimson 30%)
+  - `scroll-behavior: smooth` global
+  - `prefers-reduced-motion` overrides untuk semua animasi baru
+
+**File diupdate:**
+
+- Semua `pages/*.html`, `pages/auth/*.html`, `index.html` — Tambah `<link rel="stylesheet" href="polish.css">` dan `<script src="anime-polish.js">` sebelum `pwa.js`
+- `assets/js/pages/movie-detail.js` — `toggleWatchlist()`: tambah call `CineAnime.celebrateWatchlist()` saat film berhasil ditambahkan ke watchlist, berjalan paralel dengan `CineTransitions.heartbeat()`
+
+**Catatan teknis:**
+- Anime.js di-load dinamis dari CDN (`cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js`) menggunakan Promise. Jika CDN gagal (offline), semua animasi gracefully skip tanpa error.
+- Floating particles menggunakan Canvas 2D API murni (bukan anime.js) agar performa optimal.
+- Scroll progress bar dan navbar auto-hide menggunakan `requestAnimationFrame` ticking untuk performa tinggi.
+- Semua IntersectionObserver `unobserve` setelah animasi selesai agar tidak ada memory leak.
+- `prefers-reduced-motion: reduce` direspect di semua animasi CSS baru.
+
+### v1.5.0 — Phase 5.2: Notifikasi Lokal & Multi-Bahasa
 
 **File baru:**
 

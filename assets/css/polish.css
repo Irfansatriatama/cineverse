@@ -1,0 +1,341 @@
+/* ============================================================
+   CineVerse — polish.css
+   Phase 5.3: Polish & Animasi — tambahan CSS untuk efek halus
+   ============================================================ */
+
+/* ─────────────────────────────────────────
+   1. NAVBAR COMPACT MODE (hide on scroll down)
+───────────────────────────────────────── */
+
+.navbar {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              box-shadow 0.3s ease,
+              padding 0.3s ease;
+  will-change: transform;
+}
+
+.navbar--compact {
+  background: rgba(10, 14, 26, 0.97) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.navbar--compact .navbar__logo-text {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  transition: font-size 0.3s ease;
+}
+
+/* ─────────────────────────────────────────
+   2. BACK TO TOP BUTTON POLISH
+───────────────────────────────────────── */
+
+#back-to-top {
+  transition: box-shadow 0.2s ease;
+}
+
+#back-to-top:hover {
+  box-shadow: 0 6px 28px rgba(229,9,20,0.6) !important;
+}
+
+#back-to-top:active {
+  transform: scale(0.92) !important;
+}
+
+/* ─────────────────────────────────────────
+   3. ENHANCED CARD HOVER MICRO-INTERACTIONS
+───────────────────────────────────────── */
+
+/* Glow on card hover */
+.movie-card,
+.db-movie-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
+}
+
+.movie-card:hover,
+.db-movie-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(229,9,20,0.15);
+}
+
+/* News card smooth hover */
+.news-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+}
+
+/* ─────────────────────────────────────────
+   4. BUTTON ENHANCED INTERACTIONS
+───────────────────────────────────────── */
+
+.btn {
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn--primary:hover {
+  box-shadow: 0 6px 24px rgba(229,9,20,0.45);
+}
+
+.btn--primary:active {
+  transform: scale(0.97);
+}
+
+.btn--secondary:hover {
+  box-shadow: 0 4px 16px rgba(255,255,255,0.1);
+}
+
+/* Watchlist button heart glow */
+.movie-card__watchlist-btn:hover,
+.db-movie-card__watchlist:hover {
+  filter: drop-shadow(0 0 8px rgba(229,9,20,0.7));
+}
+
+/* ─────────────────────────────────────────
+   5. HERO GRADIENT OVERLAY POLISH
+───────────────────────────────────────── */
+
+/* Subtle animated gradient on hero */
+.db-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 80%, rgba(229,9,20,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
+  animation: heroGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ─────────────────────────────────────────
+   6. MODAL POLISH
+───────────────────────────────────────── */
+
+/* Backdrop blur enhancement */
+.modal-overlay,
+.md-trailer-modal,
+[id$="-modal"] {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─────────────────────────────────────────
+   7. FORM INPUT POLISH
+───────────────────────────────────────── */
+
+input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(229,9,20,0.2) !important;
+  outline: none;
+}
+
+/* ─────────────────────────────────────────
+   8. LOADING STATE POLISH
+───────────────────────────────────────── */
+
+/* Enhanced shimmer animation */
+.skeleton,
+[class*="skeleton-"] {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-secondary, #111827) 25%,
+    rgba(255,255,255,0.05) 50%,
+    var(--color-bg-secondary, #111827) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerEnhanced 1.8s ease-in-out infinite;
+}
+
+@keyframes shimmerEnhanced {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─────────────────────────────────────────
+   9. GENRE CHIP ENHANCED HOVER
+───────────────────────────────────────── */
+
+.db-genre-chip,
+.genre-chip,
+.filter-chip,
+.category-chip {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.db-genre-chip:hover,
+.genre-chip:hover,
+.filter-chip:hover {
+  transform: scale(1.06);
+}
+
+.db-genre-chip.active,
+.genre-chip.active,
+.filter-chip.active {
+  box-shadow: 0 0 0 2px var(--color-crimson, #E50914),
+              0 4px 12px rgba(229,9,20,0.3);
+}
+
+/* ─────────────────────────────────────────
+   10. SCROLL PROGRESS INDICATOR (TOP OF PAGE)
+───────────────────────────────────────── */
+
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-crimson, #E50914), var(--color-gold, #F5A623));
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(229,9,20,0.5);
+}
+
+/* ─────────────────────────────────────────
+   11. TOAST POLISH
+───────────────────────────────────────── */
+
+.toastify {
+  border-radius: var(--radius-lg, 12px) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* ─────────────────────────────────────────
+   12. IMAGE LAZY LOAD BLUR REVEAL
+───────────────────────────────────────── */
+
+img[data-src],
+img.lazy {
+  filter: blur(8px);
+  transition: filter 0.4s ease;
+}
+
+img.lazy-loaded {
+  filter: blur(0);
+}
+
+/* ─────────────────────────────────────────
+   13. SECTION TITLE ACCENT BAR ANIMATION
+───────────────────────────────────────── */
+
+.db-section__title::before,
+[class*="section__title"]::before {
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─────────────────────────────────────────
+   14. WATCHLIST PAGE EMPTY STATE FLOAT
+───────────────────────────────────────── */
+
+.wl-empty__icon,
+.empty-state__icon {
+  filter: drop-shadow(0 8px 24px rgba(229,9,20,0.2));
+}
+
+/* ─────────────────────────────────────────
+   15. SMOOTH SCROLL BEHAVIOR
+───────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .movie-card:hover,
+  .db-movie-card:hover {
+    transform: none;
+  }
+
+  .navbar {
+    transition: none;
+  }
+
+  img[data-src],
+  img.lazy {
+    filter: none;
+  }
+}
+
+/* ─────────────────────────────────────────
+   16. FOCUS VISIBLE ACCESSIBILITY
+───────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--color-crimson, #E50914);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─────────────────────────────────────────
+   17. SELECTION COLOR
+───────────────────────────────────────── */
+
+::selection {
+  background: rgba(229,9,20,0.3);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────
+   18. STATS CARD ENHANCED HOVER
+───────────────────────────────────────── */
+
+.stat-hero-card,
+.stats-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
+}
+
+.stat-hero-card:hover,
+.stats-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* ─────────────────────────────────────────
+   19. MILESTONE BADGE GLOW (unlocked)
+───────────────────────────────────────── */
+
+.milestone-badge.unlocked,
+.badge-item.unlocked {
+  box-shadow: 0 0 20px rgba(229,9,20,0.2), 0 4px 16px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.milestone-badge.unlocked:hover,
+.badge-item.unlocked:hover {
+  box-shadow: 0 0 32px rgba(229,9,20,0.4), 0 8px 24px rgba(0,0,0,0.4);
+  transform: scale(1.05);
+}
+
+/* ─────────────────────────────────────────
+   20. RATING STAR HOVER GLOW
+───────────────────────────────────────── */
+
+.star:hover,
+.rating-star:hover {
+  filter: drop-shadow(0 0 6px rgba(245,166,35,0.7));
+}
