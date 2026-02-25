@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3.5%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-2.1.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.6%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-2.2.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -255,8 +255,8 @@ FASE 5.3.2  ████████████████████  Light 
 FASE 5.3.3  ████████████████████  Halaman Profil Fix          ✅ Selesai (v1.9.0)
 FASE 5.3.4  ████████████████████  Halaman Pengaturan Fix      ✅ Selesai (v2.0.0)
 FASE 5.3.5  ████████████████████  i18n (Multi-Bahasa) Fix     ✅ Selesai (v2.1.0)
-FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     🔜 Berikutnya
-FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) ⏳ Antrian
+FASE 5.3.6  ████████████████████  Statistik UI/UX Upgrade     ✅ Selesai (v2.2.0)
+FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) 🔜 Berikutnya
 ```
 
 ### Fase 1 — Fondasi & Autentikasi ✅
@@ -382,8 +382,8 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 | **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ✅ **Selesai** (v1.9.0) |
 | **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ✅ **Selesai** (v2.0.0) |
 | **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ✅ **Selesai** (v2.1.0) |
-| **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | 🔜 **Berikutnya** |
-| **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | ⏳ Antrian |
+| **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | ✅ **Selesai** (v2.2.0) |
+| **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | 🔜 **Berikutnya** |
 
 ### Detail Rencana Per Sub-fase
 
@@ -432,7 +432,64 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 
 ## 📝 Changelog
 
-### v2.1.0 — Phase 5.3.5: i18n (Multi-Bahasa) Fix *(terkini)*
+### v2.2.0 — Phase 5.3.6: Statistik UI/UX Upgrade *(terkini)*
+
+**5 area diperbaiki & ditingkatkan:**
+
+**[UPGRADE 1] `stats.css` — Hero stat cards redesign lebih dramatis dan premium**
+Hero cards sebelumnya terasa flat dan kurang berkarakter — border top hanya 3px tanpa aksen, icon terlalu kecil, value font tidak cukup bold, dan tidak ada hover glow. Di dark mode terlihat biasa, di light mode hampir tidak ada kontras.
+
+Solusi: Border top ditingkatkan ke 4px dengan gradient dua warna per aksen (crimson→pink, gold→kuning, blue→lightblue, emerald→mint). Tambah `::after` pseudo-element sebagai ambient glow di pojok kanan atas setiap card. Hover state kini memiliki per-color box-shadow glow. Ukuran value naik ke `2.4rem` dengan `font-weight: 900`. Icon padding diperbesar. Border-radius naik ke `20px`. Card border-radius konsisten dengan keseluruhan desain.
+
+**[UPGRADE 2] `stats.js` + `stats.html` — Auto-Insights: teks insight otomatis berdasarkan data**
+Halaman statistik tidak memiliki narasi personal — hanya angka dan chart yang tidak bercerita. User tidak tahu apa yang menarik dari data mereka sendiri.
+
+Solusi: Tambah section baru `st-insights-section` berisi `st-insights-grid` 2 kolom, dirender sepenuhnya oleh JS fungsi `renderInsights()`. Insight yang di-generate otomatis (hingga 4 card):
+1. **Hari Favorit**: Hari dalam seminggu dengan tontonan terbanyak (analisis `getDay()`)
+2. **Genre Terfavorit**: Genre dengan film terbanyak + persentase dari total tontonan
+3. **Maraton Terpanjang**: Tanggal dengan jumlah film terbanyak dalam 1 hari (hanya muncul jika ≥2 film/hari)
+4. **Sutradara Favorit** (jika ≥2 film sutradara sama) atau **Rata-rata Progress** (fallback dari localStorage `cv_progress_*`)
+
+Setiap insight card memiliki emoji, label kecil uppercase, nilai bold, dan sub-teks kontekstual.
+
+**[UPGRADE 3] `stats.js` + `stats.css` — Activity bar chart lebih visual dan berwarna**
+Chart sebelumnya menggunakan satu warna (crimson→transparan) untuk semua bar, grid lines solid tanpa dash, tidak ada label count di atas bar, dan tinggi chart hanya 180px.
+
+Solusi:
+- Tinggi canvas naik ke 200px
+- Grid lines diubah menjadi `setLineDash([3,3])` (dashed) agar lebih halus
+- Bar warna berganti-ganti (cycling 6 warna: crimson, blue, emerald, gold, purple, pink) per bucket index
+- Label count (angka film) ditampilkan di atas setiap bar yang tidak nol
+- Corner radius bar naik dari 4px ke 6px
+- Label X lebih gelap untuk bar yang ada datanya
+
+**[UPGRADE 4] `stats.js` + `stats.css` — Genre bars + rating bars per-warna dinamis**
+Genre bars sebelumnya semua satu warna (crimson→gold gradient). Rating bars semua sama (gold→kuning). Membuat data sulit dibedakan secara visual.
+
+Solusi:
+- Genre bars: Setiap bar mendapat warna berbeda via `data-rank` attribute (0=merah, 1=gold, 2=biru, 3=hijau, 4=ungu, 5=pink, 6=amber) dengan CSS `[data-rank="N"]` selector
+- Rating bars: Setiap bucket rating mendapat warna berbeda via `data-bucket` attribute (9–10=gold terang, 8–9=orange, 7–8=hijau, 6–7=biru, <6=abu-abu) — secara visual menunjukkan kualitas rating
+- Transition durasi naik dari 0.8s ke 1s
+
+**[UPGRADE 5] `stats.js` + `stats.css` — Milestone badges dengan progress bar, shimmer, dan unlock animation**
+Badges sebelumnya hanya menampilkan teks "X/Y" tanpa visual progress, tidak ada animasi saat badge baru ter-unlock, dan state "locked" terlalu gelap (opacity 0.45) sehingga sulit membaca desc-nya.
+
+Solusi:
+- Tambah `.st-badge__prog-bar` + `.st-badge__prog-fill` di setiap badge: mini progress bar yang animasi fill dari 0% ke target saat halaman dimuat (transition 1.2s)
+- Badge unlocked mendapat `@keyframes badge-shimmer` pada top border — gradient bergerak dari kanan ke kiri secara infinite (3s)
+- Deteksi "baru unlocked": `_prevUnlocked` set dari localStorage `cv_stats_unlocked_badges`; badge yang baru unlock ditambah class `st-badge--just-unlocked` yang trigger `@keyframes badge-unlock` pada icon (scale/rotate entrance)
+- State locked diubah: opacity 0.4 (sedikit lebih terang dari 0.45), `filter: grayscale(0.8)` (bukan grayscale penuh), hover state unlock sedikit lebih terlihat
+- Nama badge unlocked berubah warna ke `var(--color-gold)`
+- `renderBadges()` sekarang menyimpan state badge yang ter-unlock ke localStorage untuk deteksi animasi di sesi berikutnya
+
+**File yang diubah:**
+- `assets/css/pages/stats.css` — Redesign lengkap hero cards, badge system, insight grid, colored bars
+- `assets/js/pages/stats.js` — `renderInsights()` baru, `renderBadges()` upgrade, `drawBarChart()` multi-color, genre/rating bar per-color via data attrs
+- `pages/stats.html` — Tambah section `#st-insights-section` dengan `.st-insights-grid`
+
+---
+
+### v2.1.0 — Phase 5.3.5: i18n (Multi-Bahasa) Fix *(sebelumnya terkini)*
 
 **5 bug & area diperbaiki:**
 

@@ -1,14 +1,15 @@
 /**
- * CineVerse — pages/stats.js
+ * CineVerse — pages/stats.js  (Phase 5.3.6 — Stats UI/UX Upgrade)
  * Personal statistics page:
- * - Hero stat cards (films, hours, genres, avg rating)
- * - Activity bar chart (films per week/day via canvas)
- * - Genre breakdown bars
- * - Donut chart (top genres)
- * - Rating distribution
- * - Top directors
+ * - Hero stat cards (films, hours, genres, avg rating) — premium redesign
+ * - Insights grid — auto-generated text insights
+ * - Activity bar chart (canvas) — colorful, larger
+ * - Genre breakdown bars — per-color, animated
+ * - Donut chart — genre distribution
+ * - Rating distribution histogram — color coded by tier
+ * - Top directors — with hover anim
  * - Top-rated films watched
- * - Milestone badges
+ * - Milestone badges — with progress bar, shimmer, unlock anim
  * - Period filter: all / year / month / week
  *
  * No external chart library — pure Canvas 2D API
@@ -21,9 +22,9 @@
   /* ─── State ─── */
   let movies      = [];
   let user        = null;
-  let historyData = [];  // [{movieId, watchedAt}]
-  let allItems    = [];  // [{movie, watchedAt}]
-  let filtered    = [];  // current period items
+  let historyData = [];
+  let allItems    = [];
+  let filtered    = [];
   let period      = 'all';
 
   /* ─────────────────────────────────────────
@@ -101,6 +102,7 @@
     }
     hideEmpty();
     renderHeroCards();
+    renderInsights();
     renderActivityChart();
     renderGenreBars();
     renderDonut();
@@ -111,11 +113,13 @@
   }
 
   function showEmpty() {
-    const grid  = document.getElementById('st-hero-grid');
-    const layout = document.querySelector('.st-layout');
-    const empty = document.getElementById('st-empty');
+    const grid   = document.getElementById('st-hero-grid');
+    const layout  = document.querySelector('.st-layout');
+    const ins     = document.getElementById('st-insights-section');
+    const empty   = document.getElementById('st-empty');
     if (grid)   grid.classList.add('hidden');
     if (layout) layout.classList.add('hidden');
+    if (ins)    ins.classList.add('hidden');
     if (empty)  empty.classList.remove('hidden');
   }
 
@@ -137,7 +141,7 @@
     const avgRating    = filtered.length
       ? (filtered.reduce((s, i) => s + (i.movie.rating || 0), 0) / filtered.length).toFixed(1)
       : '—';
-    const genreSet = new Set(filtered.flatMap(i => i.movie.genres || []));
+    const genreSet    = new Set(filtered.flatMap(i => i.movie.genres || []));
     const totalGenres = genreSet.size;
 
     grid.innerHTML = `
@@ -198,10 +202,10 @@
   }
 
   function animateCountUp(el) {
-    const target   = parseFloat(el.dataset.count);
-    const isFloat  = el.dataset.float === 'true';
-    const duration = 800;
-    const start    = performance.now();
+    const target  = parseFloat(el.dataset.count);
+    const isFloat = el.dataset.float === 'true';
+    const duration = 900;
+    const start   = performance.now();
 
     if (isNaN(target)) { el.textContent = el.dataset.count; return; }
 
@@ -218,10 +222,137 @@
   }
 
   /* ─────────────────────────────────────────
+     AUTO-INSIGHTS
+  ───────────────────────────────────────── */
+  function renderInsights() {
+    const section = document.getElementById('st-insights-section');
+    if (!section) return;
+
+    if (filtered.length === 0) {
+      section.classList.add('hidden');
+      return;
+    }
+    section.classList.remove('hidden');
+
+    const cards = [];
+
+    /* Insight 1: Favourite day of week */
+    const dayMap = {};
+    filtered.forEach(i => {
+      const d = new Date(i.watchedAt).getDay(); // 0=Sun, 6=Sat
+      dayMap[d] = (dayMap[d] || 0) + 1;
+    });
+    const DAY_NAMES = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    const favDay = Object.entries(dayMap).sort((a,b) => b[1]-a[1])[0];
+    if (favDay) {
+      cards.push({
+        emoji: '📅',
+        label: 'Hari Favorit',
+        value: DAY_NAMES[+favDay[0]],
+        sub: `${favDay[1]} film ditonton hari ${DAY_NAMES[+favDay[0]]}`,
+      });
+    }
+
+    /* Insight 2: Top genre */
+    const genreMap = {};
+    filtered.forEach(i => (i.movie.genres || []).forEach(g => { genreMap[g] = (genreMap[g]||0)+1; }));
+    const topGenre = Object.entries(genreMap).sort((a,b)=>b[1]-a[1])[0];
+    if (topGenre) {
+      const pct = Math.round(topGenre[1]/filtered.length*100);
+      cards.push({
+        emoji: '🎭',
+        label: 'Genre Terfavorit',
+        value: topGenre[0],
+        sub: `${pct}% dari total tontonan`,
+      });
+    }
+
+    /* Insight 3: Longest binge (most films in one day) */
+    const dateMap = {};
+    filtered.forEach(i => {
+      const d = new Date(i.watchedAt).toLocaleDateString('id-ID');
+      dateMap[d] = (dateMap[d]||0)+1;
+    });
+    const binge = Object.entries(dateMap).sort((a,b)=>b[1]-a[1])[0];
+    if (binge && binge[1] >= 2) {
+      cards.push({
+        emoji: '🍿',
+        label: 'Maraton Terpanjang',
+        value: `${binge[1]} film`,
+        sub: `dalam 1 hari (${binge[0]})`,
+      });
+    }
+
+    /* Insight 4: Favourite director */
+    const dirMap = {};
+    filtered.forEach(i => { const d = i.movie.director; if(d) dirMap[d]=(dirMap[d]||0)+1; });
+    const topDir = Object.entries(dirMap).sort((a,b)=>b[1]-a[1])[0];
+    if (topDir && topDir[1] >= 2) {
+      cards.push({
+        emoji: '🎬',
+        label: 'Sutradara Favorit',
+        value: topDir[0].split(' ').slice(-1)[0], // last name
+        sub: `${topDir[1]} film ditonton`,
+      });
+    } else {
+      /* Fallback: completion rate */
+      const progressMap = {};
+      try {
+        Object.keys(localStorage).forEach(k => {
+          if (k.startsWith('cv_progress_')) {
+            try { const v = JSON.parse(localStorage.getItem(k)); if (v?.percent) progressMap[k] = v.percent; } catch(e){}
+          }
+        });
+      } catch(e){}
+      const avgProg = Object.values(progressMap).length
+        ? (Object.values(progressMap).reduce((s,v)=>s+v,0)/Object.values(progressMap).length).toFixed(0)
+        : null;
+      if (avgProg) {
+        cards.push({
+          emoji: '✅',
+          label: 'Rata-rata Progress',
+          value: `${avgProg}%`,
+          sub: 'dari semua film yang ditonton',
+        });
+      }
+    }
+
+    /* Insight 5: Average film year */
+    const avgYear = filtered.length
+      ? Math.round(filtered.reduce((s,i)=>s+(i.movie.year||0),0)/filtered.length)
+      : null;
+    if (avgYear) {
+      const now = new Date().getFullYear();
+      const diff = now - avgYear;
+      const era  = diff <= 3 ? 'Film terbaru' : diff <= 10 ? 'Film modern' : 'Klasik & lama';
+      cards.push({
+        emoji: '🗓️',
+        label: 'Era Tontonan',
+        value: era,
+        sub: `Rata-rata tahun ${avgYear}`,
+      });
+    }
+
+    const grid = section.querySelector('.st-insights-grid');
+    if (!grid) return;
+
+    // Show max 4 cards
+    const shown = cards.slice(0, 4);
+    grid.innerHTML = shown.map(c => `
+      <div class="st-insight-card">
+        <div class="st-insight-card__emoji">${c.emoji}</div>
+        <div class="st-insight-card__label">${c.label}</div>
+        <div class="st-insight-card__value">${c.value}</div>
+        <div class="st-insight-card__sub">${c.sub}</div>
+      </div>
+    `).join('');
+  }
+
+  /* ─────────────────────────────────────────
      ACTIVITY CHART (Canvas bar chart)
   ───────────────────────────────────────── */
   function renderActivityChart() {
-    const canvas = document.getElementById('st-activity-chart');
+    const canvas     = document.getElementById('st-activity-chart');
     const totalBadge = document.getElementById('st-activity-total');
     const emptyEl    = document.getElementById('st-chart-empty');
     if (!canvas) return;
@@ -236,7 +367,6 @@
     canvas.classList.remove('hidden');
     if (emptyEl) emptyEl.classList.add('hidden');
 
-    // Build data buckets: last N days/weeks depending on period
     const buckets = buildActivityBuckets();
     drawBarChart(canvas, buckets);
   }
@@ -247,7 +377,6 @@
     let buckets = [];
 
     if (period === 'week') {
-      // 7 days
       for (let i = 6; i >= 0; i--) {
         const day = new Date(now - i * DAY);
         const label = day.toLocaleDateString('id-ID', { weekday: 'short' });
@@ -256,7 +385,6 @@
         buckets.push({ label, count: filtered.filter(f => f.watchedAt >= start && f.watchedAt < end).length });
       }
     } else if (period === 'month') {
-      // 4 weeks
       for (let i = 3; i >= 0; i--) {
         const start = now - (i + 1) * 7 * DAY;
         const end   = now - i * 7 * DAY;
@@ -264,7 +392,6 @@
         buckets.push({ label, count: filtered.filter(f => f.watchedAt >= start && f.watchedAt < end).length });
       }
     } else if (period === 'year') {
-      // 12 months
       for (let i = 11; i >= 0; i--) {
         const d = new Date(now);
         d.setMonth(d.getMonth() - i);
@@ -278,14 +405,13 @@
         });
       }
     } else {
-      // all time: group by month (last 12 with data)
       const monthMap = {};
       filtered.forEach(f => {
         const d   = new Date(f.watchedAt);
         const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
         monthMap[key] = (monthMap[key] || 0) + 1;
       });
-      const keys = Object.keys(monthMap).sort();
+      const keys   = Object.keys(monthMap).sort();
       const recent = keys.slice(-12);
       buckets = recent.map(k => {
         const [y, m] = k.split('-');
@@ -299,8 +425,8 @@
 
   function drawBarChart(canvas, buckets) {
     const dpr = window.devicePixelRatio || 1;
-    const W   = canvas.offsetWidth  || 600;
-    const H   = 180;
+    const W   = canvas.offsetWidth || 600;
+    const H   = 200;
 
     canvas.width  = W * dpr;
     canvas.height = H * dpr;
@@ -310,56 +436,70 @@
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const paddingL = 28;
-    const paddingR = 10;
-    const paddingT = 10;
-    const paddingB = 30;
+    const paddingL = 30;
+    const paddingR = 12;
+    const paddingT = 12;
+    const paddingB = 32;
     const chartW   = W - paddingL - paddingR;
     const chartH   = H - paddingT - paddingB;
 
     const maxVal = Math.max(...buckets.map(b => b.count), 1);
     const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+    const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
     const textColor = isDark ? '#6B7280' : '#9CA3AF';
+    const activeTextColor = isDark ? '#9CA3AF' : '#6B7280';
 
     ctx.clearRect(0, 0, W, H);
 
-    // Grid lines
+    // Grid lines + Y labels
     const gridLines = 4;
     for (let i = 0; i <= gridLines; i++) {
       const y = paddingT + chartH - (i / gridLines) * chartH;
       ctx.strokeStyle = gridColor;
       ctx.lineWidth   = 1;
+      ctx.setLineDash([3, 3]);
       ctx.beginPath();
       ctx.moveTo(paddingL, y);
       ctx.lineTo(paddingL + chartW, y);
       ctx.stroke();
+      ctx.setLineDash([]);
 
       if (i > 0) {
         ctx.fillStyle = textColor;
         ctx.font      = `10px Inter, sans-serif`;
         ctx.textAlign = 'right';
-        ctx.fillText(Math.round((i / gridLines) * maxVal), paddingL - 4, y + 3);
+        ctx.fillText(Math.round((i / gridLines) * maxVal), paddingL - 5, y + 3);
       }
     }
 
-    // Bars
-    const barGap = 4;
+    // Color palette for bars (cycling)
+    const barColors = [
+      ['#E50914', 'rgba(229,9,20,0.15)'],
+      ['#3B82F6', 'rgba(59,130,246,0.15)'],
+      ['#10B981', 'rgba(16,185,129,0.15)'],
+      ['#F5A623', 'rgba(245,166,35,0.15)'],
+      ['#8B5CF6', 'rgba(139,92,246,0.15)'],
+      ['#EC4899', 'rgba(236,72,153,0.15)'],
+    ];
+
+    const barGap = 5;
     const barW   = (chartW / buckets.length) - barGap;
 
     buckets.forEach((b, i) => {
-      const x       = paddingL + i * (barW + barGap) + barGap / 2;
-      const barH    = b.count > 0 ? (b.count / maxVal) * chartH : 0;
-      const y       = paddingT + chartH - barH;
+      const x     = paddingL + i * (barW + barGap) + barGap / 2;
+      const barH  = b.count > 0 ? (b.count / maxVal) * chartH : 0;
+      const y     = paddingT + chartH - barH;
 
-      // Gradient fill
+      const [topColor, bottomColor] = barColors[i % barColors.length];
+
+      // Bar gradient
       const grad = ctx.createLinearGradient(0, y, 0, paddingT + chartH);
-      grad.addColorStop(0, '#E50914');
-      grad.addColorStop(1, 'rgba(229,9,20,0.2)');
+      grad.addColorStop(0, topColor);
+      grad.addColorStop(1, bottomColor);
 
       ctx.fillStyle = grad;
       ctx.beginPath();
-      const radius = Math.min(4, barW / 2);
+      const radius = Math.min(6, barW / 2);
       if (barH > radius * 2) {
         ctx.moveTo(x + radius, y);
         ctx.lineTo(x + barW - radius, y);
@@ -368,13 +508,21 @@
         ctx.lineTo(x, paddingT + chartH);
         ctx.lineTo(x, y + radius);
         ctx.quadraticCurveTo(x, y, x + radius, y);
-      } else {
+      } else if (barH > 0) {
         ctx.rect(x, paddingT + chartH - 2, barW, 2);
       }
       ctx.fill();
 
-      // Label
-      ctx.fillStyle = textColor;
+      // Count label on top of bar
+      if (b.count > 0) {
+        ctx.fillStyle = isDark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.55)';
+        ctx.font      = `bold 10px Inter, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.fillText(b.count, x + barW / 2, y - 4);
+      }
+
+      // X label
+      ctx.fillStyle = b.count > 0 ? activeTextColor : textColor;
       ctx.font      = `9px Inter, sans-serif`;
       ctx.textAlign = 'center';
       ctx.fillText(b.label, x + barW / 2, H - 8);
@@ -401,14 +549,14 @@
       return;
     }
 
-    el.innerHTML = sorted.map(([name, count]) => `
+    el.innerHTML = sorted.map(([name, count], idx) => `
       <div class="st-genre-row">
         <div class="st-genre-row__top">
           <span class="st-genre-row__name">${name}</span>
           <span class="st-genre-row__count">${count} film</span>
         </div>
         <div class="st-genre-bar-track">
-          <div class="st-genre-bar-fill" data-width="${(count / max * 100).toFixed(1)}%"></div>
+          <div class="st-genre-bar-fill" data-rank="${idx}" data-width="${(count / max * 100).toFixed(1)}%"></div>
         </div>
       </div>
     `).join('');
@@ -430,9 +578,9 @@
   ];
 
   function renderDonut() {
-    const canvas     = document.getElementById('st-donut-chart');
-    const centerVal  = document.getElementById('st-donut-value');
-    const legendEl   = document.getElementById('st-donut-legend');
+    const canvas    = document.getElementById('st-donut-chart');
+    const centerVal = document.getElementById('st-donut-value');
+    const legendEl  = document.getElementById('st-donut-legend');
     if (!canvas) return;
 
     const genreMap = {};
@@ -460,7 +608,7 @@
     ctx.scale(dpr, dpr);
 
     const cx = size / 2, cy = size / 2;
-    const outerR = 90, innerR = 58;
+    const outerR = 92, innerR = 60;
     let startAngle = -Math.PI / 2;
 
     sorted.forEach(([, count], i) => {
@@ -471,6 +619,12 @@
       ctx.closePath();
       ctx.fillStyle = GENRE_COLORS[i % GENRE_COLORS.length];
       ctx.fill();
+
+      // Gap line between slices
+      ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+      ctx.lineWidth   = 2;
+      ctx.stroke();
+
       startAngle += slice;
     });
 
@@ -485,7 +639,7 @@
     if (legendEl) {
       legendEl.innerHTML = sorted.map(([name, count], i) => `
         <div class="st-legend-item">
-          <span class="st-legend-dot" style="background:${GENRE_COLORS[i % GENRE_COLORS.length]}"></span>
+          <span class="st-legend-dot" style="background:${GENRE_COLORS[i % GENRE_COLORS.length]};box-shadow:0 0 5px ${GENRE_COLORS[i % GENRE_COLORS.length]}66"></span>
           <span>${name} (${Math.round(count / total * 100)}%)</span>
         </div>
       `).join('');
@@ -499,7 +653,6 @@
     const el = document.getElementById('st-rating-dist');
     if (!el) return;
 
-    // Buckets: 9–10, 8–9, 7–8, 6–7, <6
     const buckets = [
       { label: '9–10', min: 9,   max: 11 },
       { label: '8–9',  min: 8,   max: 9  },
@@ -518,7 +671,7 @@
       <div class="st-rating-row">
         <span class="st-rating-label">${b.label}</span>
         <div class="st-rating-bar-track">
-          <div class="st-rating-bar-fill" data-width="${(b.count / maxCount * 100).toFixed(1)}%"></div>
+          <div class="st-rating-bar-fill" data-bucket="${b.label}" data-width="${(b.count / maxCount * 100).toFixed(1)}%"></div>
         </div>
         <span class="st-rating-count">${b.count}</span>
       </div>
@@ -553,13 +706,20 @@
 
     const rankColors = ['st-director-rank--gold', 'st-director-rank--silver', 'st-director-rank--bronze'];
 
+    // Assign avatar gradient colors by rank
+    const avatarColors = [
+      ['#E50914','#991B1B'], ['#3B82F6','#1D4ED8'],
+      ['#10B981','#047857'], ['#8B5CF6','#5B21B6'], ['#F5A623','#D97706'],
+    ];
+
     el.innerHTML = sorted.map(([name, count], i) => {
-      const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      const initials  = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
       const rankClass = rankColors[i] || '';
+      const [c1, c2]  = avatarColors[i] || avatarColors[1];
       return `
         <div class="st-director-row">
           <span class="st-director-rank ${rankClass}">${i + 1}</span>
-          <div class="st-director-avatar">${initials}</div>
+          <div class="st-director-avatar" style="background:linear-gradient(135deg,${c1},${c2})">${initials}</div>
           <div class="st-director-info">
             <div class="st-director-name">${name}</div>
             <div class="st-director-count">${count} film ditonton</div>
@@ -609,50 +769,89 @@
   }
 
   /* ─────────────────────────────────────────
-     MILESTONE BADGES
+     MILESTONE BADGES  (Phase 5.3.6: progress bar + unlock anim)
   ───────────────────────────────────────── */
   const BADGES = [
-    { id: 'first',    icon: '🎬', name: 'Pemula',       desc: 'Tonton film pertamamu',  threshold: 1   },
-    { id: 'five',     icon: '🍿', name: 'Penikmat',     desc: 'Tonton 5 film',           threshold: 5   },
-    { id: 'ten',      icon: '🎞️', name: 'Cinephile',    desc: 'Tonton 10 film',          threshold: 10  },
-    { id: 'twenty',   icon: '🏆', name: 'Kritikus',     desc: 'Tonton 20 film',          threshold: 20  },
-    { id: 'fifty',    icon: '🌟', name: 'Maestro',      desc: 'Tonton 50 film',          threshold: 50  },
-    { id: 'hundred',  icon: '👑', name: 'Legenda',      desc: 'Tonton 100 film',         threshold: 100 },
-    { id: 'genre5',   icon: '🎭', name: 'Penjelajah',   desc: 'Tonton 5 genre berbeda',  special: 'genre5' },
-    { id: 'director', icon: '🎥', name: 'Fan Berat',    desc: 'Tonton 3 film 1 sutradara', special: 'director3' },
+    { id: 'first',    icon: '🎬', name: 'Pemula',     desc: 'Tonton film pertamamu',    threshold: 1   },
+    { id: 'five',     icon: '🍿', name: 'Penikmat',   desc: 'Tonton 5 film',            threshold: 5   },
+    { id: 'ten',      icon: '🎞️', name: 'Cinephile',  desc: 'Tonton 10 film',           threshold: 10  },
+    { id: 'twenty',   icon: '🏆', name: 'Kritikus',   desc: 'Tonton 20 film',           threshold: 20  },
+    { id: 'fifty',    icon: '🌟', name: 'Maestro',    desc: 'Tonton 50 film',           threshold: 50  },
+    { id: 'hundred',  icon: '👑', name: 'Legenda',    desc: 'Tonton 100 film',          threshold: 100 },
+    { id: 'genre5',   icon: '🎭', name: 'Penjelajah', desc: 'Tonton 5 genre berbeda',   special: 'genre5' },
+    { id: 'director', icon: '🎥', name: 'Fan Berat',  desc: 'Tonton 3 film 1 sutradara',special: 'director3' },
   ];
+
+  // Track previously unlocked badges to detect new unlocks
+  const _prevUnlocked = new Set(
+    JSON.parse(localStorage.getItem('cv_stats_unlocked_badges') || '[]')
+  );
 
   function renderBadges() {
     const el = document.getElementById('st-badges');
     if (!el) return;
 
-    const totalFilms  = allItems.length; // badges based on all-time
-    const genreCount  = new Set(allItems.flatMap(i => i.movie.genres || [])).size;
-    const dirMap      = {};
-    allItems.forEach(i => { const d = i.movie.director; if (d) dirMap[d] = (dirMap[d] || 0) + 1; });
-    const hasDir3     = Object.values(dirMap).some(c => c >= 3);
+    const totalFilms = allItems.length;
+    const genreCount = new Set(allItems.flatMap(i => i.movie.genres || [])).size;
+    const dirMap     = {};
+    allItems.forEach(i => { const d = i.movie.director; if (d) dirMap[d] = (dirMap[d]||0)+1; });
+    const hasDir3    = Object.values(dirMap).some(c => c >= 3);
+
+    const nowUnlocked = new Set();
 
     el.innerHTML = BADGES.map(b => {
       let unlocked = false;
+      let progressPct = 0;
+      let progressText = '';
 
-      if (b.special === 'genre5')    unlocked = genreCount >= 5;
-      else if (b.special === 'director3') unlocked = hasDir3;
-      else unlocked = totalFilms >= b.threshold;
+      if (b.special === 'genre5') {
+        unlocked    = genreCount >= 5;
+        progressPct = Math.min(genreCount / 5 * 100, 100);
+        progressText = unlocked ? '✓ Terbuka!' : `${genreCount} / 5 genre`;
+      } else if (b.special === 'director3') {
+        unlocked    = hasDir3;
+        const maxDir = Math.max(...Object.values(dirMap), 0);
+        progressPct = Math.min(maxDir / 3 * 100, 100);
+        progressText = unlocked ? '✓ Terbuka!' : `${maxDir} / 3 film`;
+      } else {
+        unlocked    = totalFilms >= b.threshold;
+        progressPct = Math.min(totalFilms / b.threshold * 100, 100);
+        progressText = unlocked ? '✓ Terbuka!' : `${Math.min(totalFilms, b.threshold)} / ${b.threshold}`;
+      }
 
-      const progressText = b.threshold
-        ? `${Math.min(totalFilms, b.threshold)} / ${b.threshold}`
-        : '';
+      if (unlocked) nowUnlocked.add(b.id);
+
+      // Detect newly unlocked
+      const isNew = unlocked && !_prevUnlocked.has(b.id);
+      const extraClass = isNew ? ' st-badge--just-unlocked' : '';
 
       return `
-        <div class="st-badge ${unlocked ? 'st-badge--unlocked' : 'st-badge--locked'}" title="${b.desc}">
+        <div class="st-badge ${unlocked ? 'st-badge--unlocked' : 'st-badge--locked'}${extraClass}" title="${b.desc}">
           <span class="st-badge__icon">${b.icon}</span>
           <span class="st-badge__name">${b.name}</span>
           <span class="st-badge__desc">${b.desc}</span>
-          ${progressText && !unlocked ? `<span class="st-badge__progress">${progressText}</span>` : ''}
-          ${unlocked ? `<span class="st-badge__progress">✓ Terbuka!</span>` : ''}
+          <div class="st-badge__prog-bar">
+            <div class="st-badge__prog-fill" data-width="${progressPct.toFixed(1)}%"></div>
+          </div>
+          <span class="st-badge__progress">${progressText}</span>
         </div>
       `;
     }).join('');
+
+    // Animate progress bars
+    requestAnimationFrame(() => {
+      el.querySelectorAll('.st-badge__prog-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+    });
+
+    // Persist unlocked state
+    try {
+      localStorage.setItem('cv_stats_unlocked_badges', JSON.stringify([...nowUnlocked]));
+    } catch(e) {}
+
+    // Update prev set
+    nowUnlocked.forEach(id => _prevUnlocked.add(id));
   }
 
   /* ─────────────────────────────────────────
@@ -668,7 +867,7 @@
       });
     });
 
-    // Redraw on resize
+    // Redraw chart on resize
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
