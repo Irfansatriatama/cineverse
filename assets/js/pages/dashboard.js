@@ -49,6 +49,14 @@
     renderRecommended();
     renderAllMovies();
 
+    // Bind Surprise Me CTA button
+    const surpriseBtn = document.getElementById('dashboard-surprise-btn');
+    if (surpriseBtn) {
+      surpriseBtn.addEventListener('click', () => {
+        if (window.CineSurprise) CineSurprise.open();
+      });
+    }
+
     // Clear skeletons and animate content in
     if (window.CineSkeleton) {
       CineSkeleton.clearDashboard();

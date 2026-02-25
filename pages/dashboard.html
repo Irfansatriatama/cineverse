@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../assets/css/layout.css" />
   <link rel="stylesheet" href="../assets/css/animations.css" />
   <link rel="stylesheet" href="../assets/css/pages/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/pages/surprise.css" />
 </head>
 
 <body>
@@ -235,7 +236,15 @@
         </div>
       </section>
 
-<section class="db-section" aria-labelledby="all-title" id="all-movies-section">
+<!-- ─── SURPRISE ME CTA ─── -->
+      <div class="surprise-cta-wrap section-reveal-left">
+        <button class="surprise-cta-btn" id="dashboard-surprise-btn" aria-label="Pilihkan film acak untukku">
+          <span class="dice-icon">🎲</span>
+          Surprise Me — Pilihkan Film Untukku!
+        </button>
+      </div>
+
+      <section class="db-section" aria-labelledby="all-title" id="all-movies-section">
         <div class="db-section__header">
           <h2 class="db-section__title" id="all-title">
             <svg class="db-section__title-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
@@ -323,5 +332,6 @@
   <script src="../assets/js/components/navbar.js"></script>
   <script src="../assets/js/pages/dashboard.js"></script>
 
+  <script src="../assets/js/pages/surprise.js"></script>
 </body>
 </html>

@@ -53,6 +53,10 @@ const CineApp = (() => {
         bindUserMenuEvents(actionsEl, base);
         // Update watchlist badge after DOM is injected
         setTimeout(() => updateWatchlistBadge(user), 0);
+        // Inject Surprise Me button
+        setTimeout(() => {
+          if (window.CineSurprise) CineSurprise.injectNavbarButton();
+        }, 0);
       } else {
         actionsEl.innerHTML = buildGuestMenu(base);
       }

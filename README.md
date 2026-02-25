@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%204.2%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.2.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%204.3%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.3.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -92,7 +92,7 @@ npx http-server cineverse-phase3 -p 8080
 |---|---|---|
 | 📰 News & Artikel | Halaman daftar berita, filter kategori, search artikel, featured hero | 4 | ✅ |
 | 📄 News Detail | Halaman detail artikel dengan body lengkap, related articles | 4 | ✅ |
-| 🎲 Surprise Me | Rekomendasi film acak sesuai preferensi | 4 |
+| 🎲 Surprise Me | Rekomendasi film acak sesuai preferensi | 4 | ✅ |
 | 📊 Stats Pribadi | Total jam nonton, genre favorit, grafik aktivitas | 5 |
 | 📱 PWA Ready | Install sebagai app di mobile | 5 |
 | 🔔 Notifikasi Lokal | Reminder film baru via browser notification | 5 |
@@ -243,7 +243,7 @@ cineverse-phase3/
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
 FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
-FASE 4  ███████░░░░░░░░░░░░░  News & Fitur Sosial         🔄 In Progress (4.1 ✅ 4.2 ✅)
+FASE 4  ██████████░░░░░░░░░░  News & Fitur Sosial         🔄 In Progress (4.1 ✅ 4.2 ✅ 4.3 ✅)
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
 
@@ -310,15 +310,43 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 - Error state untuk artikel tidak ditemukan / ID invalid
 - Parsing body cerdas: numbered list otomatis jadi `<ol>`, paragraf dipisah per baris
 
-**Phase 4.3 — Fitur Surprise Me** 🔲
-- Modal rekomendasi film acak berdasarkan preferensi genre user
-- Integrasi ke navbar dan dashboard
+**Phase 4.3 — Fitur Surprise Me** ✅
+- Modal sinematik: hero backdrop film, poster, genre chips, spin animasi
+- Weighted random pick berdasarkan rating; spin history cegah repeat
+- Genre filter chips real-time: derived dari preferensi Settings/History/Watchlist
+- Tombol spin ulang, langsung nonton, dan lihat detail
+- Navbar icon dadu (hanya saat login) + Dashboard CTA button emas
+- Modal di-inject via JS otomatis ke seluruh halaman
 
 ---
 
 ---
 
-### v1.2.0 — Phase 4.2: Halaman Detail Artikel *(terkini)*
+### v1.3.0 — Phase 4.3: Fitur Surprise Me *(terkini)*
+
+**File baru:**
+
+- `assets/css/pages/surprise.css` — Modal sinematik: backdrop hero 220px + poster overlay, genre chips, action buttons, spring animation card masuk, dice loader floating, responsive mobile slide-up
+- `assets/js/pages/surprise.js` — Modul `window.CineSurprise` dengan `open()`, `close()`, `mount()`, `injectNavbarButton()`. Self-contained: inject DOM, load data, derive genre preferences, weighted random, render film
+
+**File diupdate:**
+
+- `assets/js/core/app.js` — Call `CineSurprise.injectNavbarButton()` setelah navbar user-menu diinject
+- `pages/dashboard.html` — Tambah CTA button "Surprise Me" emas di antara section Rekomendasi dan Semua Film
+- `assets/js/pages/dashboard.js` — Bind `#dashboard-surprise-btn` ke `CineSurprise.open()`
+- Semua `pages/*.html` — Include `surprise.css` dan `surprise.js`
+
+**Fitur detail:**
+
+- **Weighted Random:** Probabilitas pick = `rating²`. Film rating 8.5 punya peluang ~1.47× lebih tinggi dari rating 7.0. Bias ke kualitas tanpa eliminasi total film rating rendah
+- **Spin History:** Set ID film yang sudah tampil. Reset saat pool habis atau filter genre berubah
+- **Genre Chips:** Derive preferensi: Settings > History (weight 1) > Watchlist (weight 0.5). Top 5 genre dipilih, semua bisa di-toggle
+- **Navbar Button:** Dadu SVG 5-dot di-inject sebelum icon search, hanya untuk user login
+- **Dashboard CTA:** Button gradient emas, glow shadow, hover scale, dice wobble animation infinite
+
+---
+
+### v1.2.0 — Phase 4.2: Halaman Detail Artikel
 
 **File baru:**
 

@@ -1,0 +1,584 @@
+/**
+ * CineVerse — pages/surprise.css
+ * Modal "Surprise Me" — rekomendasi film acak berdasarkan preferensi genre
+ */
+
+/* ─────────────────────────────────────────
+   OVERLAY / BACKDROP
+───────────────────────────────────────── */
+#surprise-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+#surprise-modal.is-open {
+  display: flex;
+}
+
+.surprise-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: surpriseBackdropIn 0.35s ease forwards;
+}
+
+@keyframes surpriseBackdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─────────────────────────────────────────
+   MODAL CARD
+───────────────────────────────────────── */
+.surprise-modal__card {
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl, 20px);
+  width: 100%;
+  max-width: 520px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255,255,255,0.04);
+  animation: surpriseCardIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes surpriseCardIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────
+   MODAL HEADER FILM (backdrop poster)
+───────────────────────────────────────── */
+.surprise-modal__hero {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: var(--color-bg-tertiary);
+}
+
+.surprise-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.surprise-modal__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2) 0%,
+    rgba(0,0,0,0.1) 40%,
+    rgba(17,24,39,0.98) 100%
+  );
+}
+
+.surprise-modal__poster-wrap {
+  position: absolute;
+  bottom: -40px;
+  left: var(--space-5);
+  z-index: 2;
+}
+
+.surprise-modal__poster {
+  width: 80px;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: var(--radius-md, 10px);
+  border: 3px solid var(--color-bg-secondary);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  transition: opacity 0.4s ease;
+}
+
+/* Spinning animation while loading */
+.surprise-modal__hero.is-spinning .surprise-modal__backdrop {
+  animation: surprisePosterSpin 0.6s ease;
+}
+
+@keyframes surprisePosterSpin {
+  0%   { opacity: 1; transform: scale(1); }
+  40%  { opacity: 0; transform: scale(1.05); }
+  60%  { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ─────────────────────────────────────────
+   MODAL BODY CONTENT
+───────────────────────────────────────── */
+.surprise-modal__body {
+  padding: 56px var(--space-5) var(--space-5);
+}
+
+.surprise-modal__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.surprise-modal__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-crimson);
+  color: #fff;
+}
+
+.surprise-modal__year {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.surprise-modal__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-left: auto;
+}
+
+.surprise-modal__rating svg {
+  flex-shrink: 0;
+}
+
+.surprise-modal__title {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: 1.8rem;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.02em;
+}
+
+.surprise-modal__genres {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.surprise-modal__genre-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.surprise-modal__synopsis {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Duration & language info */
+.surprise-modal__info-row {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.surprise-modal__info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.surprise-modal__info-item svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ─────────────────────────────────────────
+   GENRE FILTER CHIPS (preference selector)
+───────────────────────────────────────── */
+.surprise-modal__filters {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--color-border);
+}
+
+.surprise-modal__filters-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.surprise-modal__genre-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.surprise-modal__chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.surprise-modal__chip:hover {
+  border-color: var(--color-crimson);
+  color: var(--color-crimson);
+}
+
+.surprise-modal__chip.active {
+  background: var(--color-crimson);
+  border-color: var(--color-crimson);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────
+   ACTION BUTTONS
+───────────────────────────────────────── */
+.surprise-modal__actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.surprise-modal__btn-watch {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px var(--space-4);
+  border-radius: var(--radius-md, 10px);
+  background: var(--color-crimson);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.surprise-modal__btn-watch:hover {
+  background: var(--color-crimson-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--color-crimson-glow);
+}
+
+.surprise-modal__btn-detail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px var(--space-3);
+  border-radius: var(--radius-md, 10px);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.surprise-modal__btn-detail:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+
+.surprise-modal__btn-spin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md, 10px);
+  background: var(--color-bg-tertiary);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.surprise-modal__btn-spin:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.surprise-modal__btn-spin.is-spinning svg {
+  animation: spinDice 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes spinDice {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(90deg) scale(0.8); }
+  75%  { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ─────────────────────────────────────────
+   CLOSE BUTTON
+───────────────────────────────────────── */
+.surprise-modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.surprise-modal__close:hover {
+  background: rgba(229, 9, 20, 0.8);
+  border-color: var(--color-crimson);
+}
+
+/* ─────────────────────────────────────────
+   LOADING STATE (skeleton inside modal)
+───────────────────────────────────────── */
+.surprise-modal__loading {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-secondary);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  border-radius: var(--radius-xl, 20px);
+  transition: opacity 0.3s ease;
+}
+
+.surprise-modal__loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.surprise-dice-loader {
+  font-size: 3rem;
+  animation: diceFloat 1.2s ease-in-out infinite;
+}
+
+@keyframes diceFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%       { transform: translateY(-10px) rotate(10deg); }
+  75%       { transform: translateY(-5px) rotate(-8deg); }
+}
+
+.surprise-modal__loading-text {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────
+   NAVBAR TRIGGER BUTTON (Surprise Me icon)
+───────────────────────────────────────── */
+.navbar__surprise-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md, 10px);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar__surprise-btn:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-gold);
+}
+
+.navbar__surprise-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm, 6px);
+  white-space: nowrap;
+  border: 1px solid var(--color-border);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Dashboard Surprise Me button (CTA section) */
+.surprise-cta-wrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-6) 0 var(--space-3);
+}
+
+.surprise-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-gold) 0%, #ff9800 100%);
+  color: #1a1a1a;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(245,166,35,0.35);
+  letter-spacing: 0.02em;
+}
+
+.surprise-cta-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(245,166,35,0.5);
+}
+
+.surprise-cta-btn .dice-icon {
+  font-size: 1.2rem;
+  display: inline-block;
+  animation: gentleWobble 2.5s ease-in-out infinite;
+}
+
+@keyframes gentleWobble {
+  0%, 100% { transform: rotate(0deg); }
+  15%       { transform: rotate(-12deg); }
+  30%       { transform: rotate(10deg); }
+  45%       { transform: rotate(-6deg); }
+  60%       { transform: rotate(0deg); }
+}
+
+/* ─────────────────────────────────────────
+   EMPTY STATE (no matching movies)
+───────────────────────────────────────── */
+.surprise-modal__empty {
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+}
+
+.surprise-modal__empty-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-3);
+}
+
+.surprise-modal__empty h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.surprise-modal__empty p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  #surprise-modal {
+    padding: var(--space-2);
+    align-items: flex-end;
+  }
+
+  .surprise-modal__card {
+    border-radius: var(--radius-xl, 20px) var(--radius-xl, 20px) 0 0;
+    max-width: 100%;
+    animation: surpriseCardInMobile 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes surpriseCardInMobile {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .surprise-modal__hero {
+    height: 180px;
+  }
+
+  .surprise-modal__title {
+    font-size: 1.5rem;
+  }
+
+  .surprise-modal__actions {
+    flex-wrap: wrap;
+  }
+
+  .surprise-modal__btn-watch {
+    order: -1;
+    width: 100%;
+    flex: unset;
+  }
+}
