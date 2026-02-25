@@ -87,16 +87,16 @@ const CineApp = (() => {
               <div style="font-size:0.75rem;color:var(--color-text-muted);">${escSafe(user.email)}</div>
             </div>
           </div>
-          <a href="${base}pages/profile.html" class="btn btn--ghost btn--sm">Profil Saya</a>
-          <button class="btn btn--ghost btn--sm" id="mobile-logout-btn" style="color:var(--color-crimson);">Keluar</button>
+          <a href="${base}pages/profile.html" class="btn btn--ghost btn--sm" data-i18n="nav.profile">${window.CineI18n ? CineI18n.t('nav.profile', 'Profil Saya') : 'Profil Saya'}</a>
+          <button class="btn btn--ghost btn--sm" id="mobile-logout-btn" style="color:var(--color-crimson);" data-i18n="nav.logout">${window.CineI18n ? CineI18n.t('nav.logout', 'Keluar') : 'Keluar'}</button>
         `;
         mobileMenu.appendChild(mobileAuth);
         mobileMenu.querySelector('#mobile-logout-btn')?.addEventListener('click', () => logout(base));
       } else {
         mobileAuth.innerHTML = `
           <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:8px;display:flex;flex-direction:column;gap:8px;">
-            <a href="${base}pages/auth/login.html" class="btn btn--ghost btn--sm">Masuk</a>
-            <a href="${base}pages/auth/register.html" class="btn btn--primary btn--sm">Daftar Gratis</a>
+            <a href="${base}pages/auth/login.html" class="btn btn--ghost btn--sm" data-i18n="nav.login">${window.CineI18n ? CineI18n.t('nav.login', 'Masuk') : 'Masuk'}</a>
+            <a href="${base}pages/auth/register.html" class="btn btn--primary btn--sm" data-i18n="nav.register">${window.CineI18n ? CineI18n.t('nav.register', 'Daftar Gratis') : 'Daftar Gratis'}</a>
           </div>
         `;
         mobileMenu.appendChild(mobileAuth);
@@ -108,9 +108,10 @@ const CineApp = (() => {
   }
 
   function buildGuestMenu(base) {
+    const t = (key, fb) => window.CineI18n ? CineI18n.t(key, fb) : fb;
     return `
-      <a href="${base}pages/auth/login.html" class="btn btn--ghost btn--sm">Masuk</a>
-      <a href="${base}pages/auth/register.html" class="btn btn--primary btn--sm">Daftar Gratis</a>
+      <a href="${base}pages/auth/login.html" class="btn btn--ghost btn--sm" data-i18n="nav.login">${t('nav.login', 'Masuk')}</a>
+      <a href="${base}pages/auth/register.html" class="btn btn--primary btn--sm" data-i18n="nav.register">${t('nav.register', 'Daftar Gratis')}</a>
     `;
   }
 

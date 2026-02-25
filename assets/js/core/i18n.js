@@ -252,6 +252,12 @@ const CineI18n = (() => {
       'settings.fav_genres':      'Genre Favorit',
 
       // ── Notifications
+
+      'notif.panel_title':       'Notifikasi',
+      'notif.mark_all':          'Tandai semua dibaca',
+      'notif.empty':             'Belum ada notifikasi',
+      'notif.clear_all':         'Hapus semua',
+      'notif.enable':            'Aktifkan Notifikasi',
       'notif.permission_default':  'Aktifkan notifikasi dari CineVerse',
       'notif.permission_granted':  'Notifikasi aktif',
       'notif.permission_denied':   'Notifikasi diblokir browser',
@@ -287,6 +293,38 @@ const CineI18n = (() => {
       'pwa.update_title':          'Update Tersedia!',
       'pwa.update_desc':           'Versi baru CineVerse sudah siap.',
       'pwa.update_btn':            'Perbarui',
+
+
+      // ── Modal
+      'modal.confirm':          'Konfirmasi',
+      'modal.delete_confirm':   'Apakah kamu yakin ingin menghapus item ini?',
+
+      // ── Watch Shortcuts
+      'watch.loading':          'Memuat film...',
+      'watch.shortcut_play':    'Putar / Jeda',
+      'watch.shortcut_mute':    'Bisu',
+      'watch.shortcut_full':    'Layar Penuh',
+      'watch.shortcut_back':    'Mundur 10 detik',
+      'watch.shortcut_fwd':     'Maju 10 detik',
+      'watch.shortcut_vol_up':  'Volume +10%',
+      'watch.shortcut_vol_dn':  'Volume -10%',
+      'watch.shortcut_jump':    'Loncat ke %',
+      'watch.shortcut_help':    'Pintasan ini',
+
+      // ── Auth extra
+      'auth.welcome_back':      'Selamat Datang Kembali',
+      'auth.join_now':          'Bergabung Sekarang',
+      'auth.create_account':    'Buat Akun',
+
+      // ── Landing
+      'landing.cta_register':    'Daftar Gratis Sekarang',
+      'landing.cta_explore':     'Jelajahi Sekarang',
+
+      // ── Footer
+      'footer.all_movies':      'Semua Film',
+      'footer.watchlist':       'Watchlist',
+      'footer.history':         'Riwayat',
+      'footer.search':          'Cari Film',
 
       // ── Footer
       'footer.tagline':            'Platform streaming & informasi film terbaik.',
@@ -528,6 +566,12 @@ const CineI18n = (() => {
       'settings.fav_genres':      'Favorite Genres',
 
       // ── Notifications
+
+      'notif.panel_title':       'Notifikasi',
+      'notif.mark_all':          'Tandai semua dibaca',
+      'notif.empty':             'Belum ada notifikasi',
+      'notif.clear_all':         'Hapus semua',
+      'notif.enable':            'Aktifkan Notifikasi',
       'notif.permission_default':  'Allow CineVerse notifications',
       'notif.permission_granted':  'Notifications are active',
       'notif.permission_denied':   'Notifications are blocked by browser',
@@ -563,6 +607,38 @@ const CineI18n = (() => {
       'pwa.update_title':          'Update Available!',
       'pwa.update_desc':           'A new version of CineVerse is ready.',
       'pwa.update_btn':            'Update',
+
+
+      // ── Modal
+      'modal.confirm':          'Confirm',
+      'modal.delete_confirm':   'Are you sure you want to delete this item?',
+
+      // ── Watch Shortcuts
+      'watch.loading':          'Loading movie...',
+      'watch.shortcut_play':    'Play / Pause',
+      'watch.shortcut_mute':    'Mute',
+      'watch.shortcut_full':    'Fullscreen',
+      'watch.shortcut_back':    'Rewind 10 seconds',
+      'watch.shortcut_fwd':     'Forward 10 seconds',
+      'watch.shortcut_vol_up':  'Volume +10%',
+      'watch.shortcut_vol_dn':  'Volume -10%',
+      'watch.shortcut_jump':    'Jump to %',
+      'watch.shortcut_help':    'These shortcuts',
+
+      // ── Auth extra
+      'auth.welcome_back':      'Welcome Back',
+      'auth.join_now':          'Join Now',
+      'auth.create_account':    'Create Account',
+
+      // ── Landing
+      'landing.cta_register':    'Sign Up Free Now',
+      'landing.cta_explore':     'Explore Now',
+
+            // ── Footer
+      'footer.all_movies':      'All Movies',
+      'footer.watchlist':       'Watchlist',
+      'footer.history':         'History',
+      'footer.search':          'Search Movies',
 
       // ── Footer
       'footer.tagline':            'The best movie streaming & information platform.',
@@ -677,6 +753,24 @@ const CineI18n = (() => {
     }
 
     applyAll();
+
+    // Update <html lang> attribute
+    document.documentElement.lang = lang;
+
+    // Re-render dynamic components that inject their own HTML
+    // 1. Re-init navbar auth (rebuilds guest/user menu with correct lang)
+    if (window.CineApp) {
+      setTimeout(() => {
+        CineApp.initNavbarAuth();
+        // Re-apply i18n to newly injected elements
+        applyAll();
+      }, 0);
+    }
+
+    // 2. Update notification panel texts if visible
+    if (window.CineNotif && typeof CineNotif.updateTexts === 'function') {
+      CineNotif.updateTexts();
+    }
 
     // Dispatch event so other modules can react
     window.dispatchEvent(new CustomEvent('cineverse:langchange', { detail: { lang } }));

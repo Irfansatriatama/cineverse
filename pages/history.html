@@ -50,10 +50,10 @@
         <span class="navbar__logo-text">CINE<span>VERSE</span></span>
       </a>
       <nav class="navbar__nav" aria-label="Main navigation">
-        <a href="../index.html" class="navbar__nav-link">Beranda</a>
-        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
-        <a href="genre.html" class="navbar__nav-link">Genre</a>
-        <a href="news.html" class="navbar__nav-link">Berita</a>
+        <a href="../index.html" class="navbar__nav-link" data-i18n="nav.home">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link" data-i18n="nav.explore">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link" data-i18n="nav.genre">Genre</a>
+        <a href="news.html" class="navbar__nav-link" data-i18n="nav.news">Berita</a>
       </nav>
       <div class="navbar__actions" id="navbar-actions"></div>
       <button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -61,10 +61,10 @@
       </button>
     </div>
     <nav class="navbar__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-      <a href="../index.html" class="navbar__nav-link">Beranda</a>
-      <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
-      <a href="genre.html" class="navbar__nav-link">Genre</a>
-      <a href="news.html" class="navbar__nav-link">Berita</a>
+      <a href="../index.html" class="navbar__nav-link" data-i18n="nav.home">Beranda</a>
+      <a href="dashboard.html" class="navbar__nav-link" data-i18n="nav.explore">Jelajahi</a>
+      <a href="genre.html" class="navbar__nav-link" data-i18n="nav.genre">Genre</a>
+      <a href="news.html" class="navbar__nav-link" data-i18n="nav.news">Berita</a>
     </nav>
   </header>
 
@@ -81,7 +81,7 @@
             </svg>
           </div>
           <div>
-            <h1 class="hs-header__title">Riwayat Tontonan</h1>
+            <h1 class="hs-header__title" data-i18n="history.title">Riwayat Tontonan</h1>
             <p class="hs-header__subtitle" id="hs-count-label">Memuat riwayat...</p>
           </div>
         </div>
@@ -92,7 +92,7 @@
             <option value="title">Judul A–Z</option>
             <option value="rating">Rating Tertinggi</option>
           </select>
-          <button class="btn btn--ghost btn--sm" id="hs-clear-all">
+          <button class="btn btn--ghost btn--sm" id="hs-clear-all" data-i18n="history.clear_all">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/>
               <path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/>

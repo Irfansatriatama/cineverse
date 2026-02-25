@@ -50,9 +50,9 @@
         <span class="navbar__logo-text">CINE<span>VERSE</span></span>
       </a>
       <nav class="navbar__nav" aria-label="Main navigation">
-        <a href="../index.html" class="navbar__nav-link">Beranda</a>
-        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
-        <a href="genre.html" class="navbar__nav-link">Genre</a>
+        <a href="../index.html" class="navbar__nav-link" data-i18n="nav.home">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link" data-i18n="nav.explore">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link" data-i18n="nav.genre">Genre</a>
         <a href="news.html" class="navbar__nav-link active">Berita</a>
       </nav>
       <div class="navbar__actions" id="navbar-actions"></div>
@@ -63,9 +63,9 @@
     <!-- Mobile Menu -->
     <div class="navbar__mobile-menu" id="mobile-menu" aria-hidden="true">
       <nav class="navbar__mobile-nav">
-        <a href="../index.html" class="navbar__mobile-link">Beranda</a>
-        <a href="dashboard.html" class="navbar__mobile-link">Jelajahi</a>
-        <a href="genre.html" class="navbar__mobile-link">Genre</a>
+        <a href="../index.html" class="navbar__mobile-link" data-i18n="nav.home">Beranda</a>
+        <a href="dashboard.html" class="navbar__mobile-link" data-i18n="nav.explore">Jelajahi</a>
+        <a href="genre.html" class="navbar__mobile-link" data-i18n="nav.genre">Genre</a>
         <a href="search.html" class="navbar__mobile-link">Cari Film</a>
         <a href="news.html" class="navbar__mobile-link active">Berita</a>
       </nav>
@@ -101,7 +101,7 @@
               type="search"
               id="news-search-input"
               class="news-search__input"
-              placeholder="Cari artikel..."
+              placeholder="Cari artikel..." data-i18n-placeholder="news.search_placeholder"
               autocomplete="off"
               aria-label="Cari artikel"
             />

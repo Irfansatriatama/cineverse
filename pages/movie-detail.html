@@ -50,10 +50,10 @@
         <span class="navbar__logo-text">CINE<span>VERSE</span></span>
       </a>
       <nav class="navbar__nav" aria-label="Main navigation">
-        <a href="../index.html" class="navbar__nav-link">Beranda</a>
-        <a href="dashboard.html" class="navbar__nav-link">Jelajahi</a>
-        <a href="genre.html" class="navbar__nav-link">Genre</a>
-        <a href="news.html" class="navbar__nav-link">Berita</a>
+        <a href="../index.html" class="navbar__nav-link" data-i18n="nav.home">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link" data-i18n="nav.explore">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link" data-i18n="nav.genre">Genre</a>
+        <a href="news.html" class="navbar__nav-link" data-i18n="nav.news">Berita</a>
       </nav>
       <div class="navbar__actions">
         <a href="search.html" class="navbar__icon-btn" aria-label="Cari Film">
@@ -87,10 +87,10 @@
     <!-- Mobile Nav -->
     <div class="navbar__mobile-menu" id="navbar-mobile-menu" aria-hidden="true">
       <nav class="navbar__mobile-nav">
-        <a href="../index.html" class="navbar__mobile-link">Beranda</a>
-        <a href="dashboard.html" class="navbar__mobile-link">Jelajahi</a>
-        <a href="genre.html" class="navbar__mobile-link">Genre</a>
-        <a href="news.html" class="navbar__mobile-link">Berita</a>
+        <a href="../index.html" class="navbar__mobile-link" data-i18n="nav.home">Beranda</a>
+        <a href="dashboard.html" class="navbar__mobile-link" data-i18n="nav.explore">Jelajahi</a>
+        <a href="genre.html" class="navbar__mobile-link" data-i18n="nav.genre">Genre</a>
+        <a href="news.html" class="navbar__mobile-link" data-i18n="nav.news">Berita</a>
         <a href="search.html" class="navbar__mobile-link">Cari Film</a>
         <a href="profile.html" class="navbar__mobile-link" id="mobile-profile-link">Profil</a>
         <button class="navbar__mobile-link navbar__mobile-logout" id="mobile-logout-btn" style="display:none;">Keluar</button>
@@ -111,7 +111,7 @@
 
       <!-- BREADCRUMB -->
       <nav class="md-breadcrumb reveal" aria-label="Breadcrumb">
-        <a href="dashboard.html" class="md-breadcrumb__link">Jelajahi</a>
+        <a href="dashboard.html" class="md-breadcrumb__link" data-i18n="nav.explore">Jelajahi</a>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         <span class="md-breadcrumb__current" id="md-breadcrumb-title">Detail Film</span>
       </nav>
@@ -145,19 +145,19 @@
           <!-- Quick Stats (mobile visible) -->
           <div class="md-quick-stats">
             <div class="md-quick-stat">
-              <span class="md-quick-stat__label">Rating IMDB</span>
+              <span class="md-quick-stat__label" data-i18n="detail.rating">Rating IMDB</span>
               <span class="md-quick-stat__value md-quick-stat__value--gold" id="md-stat-rating">—</span>
             </div>
             <div class="md-quick-stat">
-              <span class="md-quick-stat__label">Durasi</span>
+              <span class="md-quick-stat__label" data-i18n="detail.duration">Durasi</span>
               <span class="md-quick-stat__value" id="md-stat-duration">—</span>
             </div>
             <div class="md-quick-stat">
-              <span class="md-quick-stat__label">Tahun</span>
+              <span class="md-quick-stat__label" data-i18n="detail.release">Tahun</span>
               <span class="md-quick-stat__value" id="md-stat-year">—</span>
             </div>
             <div class="md-quick-stat">
-              <span class="md-quick-stat__label">Bahasa</span>
+              <span class="md-quick-stat__label" data-i18n="detail.genre">Bahasa</span>
               <span class="md-quick-stat__value" id="md-stat-language">—</span>
             </div>
           </div>
@@ -184,7 +184,7 @@
 
           <!-- Synopsis -->
           <div class="md-section reveal">
-            <h2 class="md-section__title">Sinopsis</h2>
+            <h2 class="md-section__title" data-i18n="detail.synopsis">Sinopsis</h2>
             <p class="md-synopsis" id="md-synopsis">—</p>
           </div>
 
@@ -192,11 +192,11 @@
           <div class="md-cta-row reveal">
             <a href="#" class="btn btn--primary btn--lg md-btn-watch" id="md-btn-watch">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
-              Tonton Sekarang
+              <span data-i18n="btn.watch_now">Tonton Sekarang</span>
             </a>
             <button class="btn btn--ghost btn--lg md-btn-trailer" id="md-btn-trailer">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-              Tonton Trailer
+              <span data-i18n="btn.trailer">Tonton Trailer</span>
             </button>
             <button class="btn btn--outline md-btn-watchlist" id="md-btn-watchlist">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="md-watchlist-icon"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
@@ -206,12 +206,12 @@
 
           <!-- Director & Cast -->
           <div class="md-section reveal">
-            <h2 class="md-section__title">Sutradara</h2>
+            <h2 class="md-section__title" data-i18n="detail.director">Sutradara</h2>
             <p class="md-director" id="md-director">—</p>
           </div>
 
           <div class="md-section reveal">
-            <h2 class="md-section__title">Pemeran</h2>
+            <h2 class="md-section__title" data-i18n="detail.cast">Pemeran</h2>
             <div class="md-cast-list" id="md-cast-list"></div>
           </div>
 
@@ -238,7 +238,7 @@
 
           <!-- Write Review (logged in only) -->
           <div class="md-review-form-wrap" id="md-review-form-wrap">
-            <h3 class="md-review-form__title" id="md-review-form-title">Tulis Ulasanmu</h3>
+            <h3 class="md-review-form__title" id="md-review-form-title" data-i18n="detail.write_review">Tulis Ulasanmu</h3>
             <div class="md-star-picker" id="md-star-picker" role="radiogroup" aria-label="Pilih rating">
               <button class="md-star-btn" data-rating="1" aria-label="1 bintang">★</button>
               <button class="md-star-btn" data-rating="2" aria-label="2 bintang">★</button>
@@ -246,14 +246,14 @@
               <button class="md-star-btn" data-rating="4" aria-label="4 bintang">★</button>
               <button class="md-star-btn" data-rating="5" aria-label="5 bintang">★</button>
             </div>
-            <textarea class="md-review-textarea" id="md-review-textarea" placeholder="Tulis ulasanmu tentang film ini..." maxlength="500" rows="3"></textarea>
+            <textarea class="md-review-textarea" id="md-review-textarea" placeholder="Tulis ulasanmu tentang film ini..." data-i18n-placeholder="detail.review_placeholder" maxlength="500" rows="3"></textarea>
             <div class="md-review-form__actions">
               <span class="md-review-textarea__counter"><span id="md-review-char-count">0</span>/500</span>
-              <button class="btn btn--primary btn--sm" id="md-submit-review">Kirim Ulasan</button>
+              <button class="btn btn--primary btn--sm" id="md-submit-review" data-i18n="btn.submit_review">Kirim Ulasan</button>
             </div>
             <div class="md-login-prompt" id="md-login-prompt" style="display:none;">
-              <p>Masuk untuk memberi ulasan dan menambah ke watchlist.</p>
-              <a href="auth/login.html" class="btn btn--primary btn--sm">Masuk Sekarang</a>
+              <p data-i18n="error.login_required">Masuk untuk memberi ulasan dan menambah ke watchlist.</p>
+              <a href="auth/login.html" class="btn btn--primary btn--sm" data-i18n="auth.login_btn">Masuk Sekarang</a>
             </div>
           </div>
         </div>
@@ -269,7 +269,7 @@
         <div class="md-related-header">
           <div class="md-related-header__left">
             <div class="md-related-header__accent"></div>
-            <h2 class="md-related-header__title">Film Serupa</h2>
+            <h2 class="md-related-header__title" data-i18n="detail.related">Film Serupa</h2>
             <span class="md-related-header__subtitle">Mungkin kamu suka</span>
           </div>
         </div>
@@ -281,9 +281,9 @@
       <!-- ─── 404 STATE ─── -->
       <div class="md-404" id="md-404" style="display:none;">
         <div class="md-404__icon">🎬</div>
-        <h2 class="md-404__title">Film Tidak Ditemukan</h2>
+        <h2 class="md-404__title" data-i18n="error.movie_not_found">Film Tidak Ditemukan</h2>
         <p class="md-404__desc">Film yang kamu cari tidak ada atau sudah dihapus.</p>
-        <a href="dashboard.html" class="btn btn--primary">Kembali ke Beranda</a>
+        <a href="dashboard.html" class="btn btn--primary" data-i18n="btn.back">Kembali ke Beranda</a>
       </div>
 
     </div><!-- /container -->
@@ -294,7 +294,7 @@
   <div class="md-trailer-modal" id="md-trailer-modal" role="dialog" aria-modal="true" aria-label="Trailer" style="display:none;">
     <div class="md-trailer-modal__backdrop" id="md-trailer-backdrop"></div>
     <div class="md-trailer-modal__container">
-      <button class="md-trailer-modal__close" id="md-trailer-close" aria-label="Tutup Trailer">
+      <button class="md-trailer-modal__close" id="md-trailer-close" aria-label="Tutup Trailer" data-i18n-aria="btn.close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       <div class="md-trailer-modal__player">

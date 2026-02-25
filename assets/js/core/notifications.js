@@ -310,20 +310,21 @@ const CineNotif = (() => {
     panelEl.id        = 'notif-panel';
     panelEl.className = 'notif-panel';
     panelEl.setAttribute('aria-hidden', 'true');
+    const t = (key, fb) => window.CineI18n ? CineI18n.t(key, fb) : fb;
     panelEl.innerHTML = `
       <div class="notif-panel__header">
-        <span class="notif-panel__title">Notifikasi</span>
-        <button class="notif-panel__mark-all" id="notif-mark-all">Tandai semua dibaca</button>
+        <span class="notif-panel__title" data-i18n="notif.panel_title">${t('notif.panel_title', 'Notifikasi')}</span>
+        <button class="notif-panel__mark-all" id="notif-mark-all" data-i18n="notif.mark_all">${t('notif.mark_all', 'Tandai semua dibaca')}</button>
       </div>
       <div class="notif-panel__body" id="notif-panel-body">
         <div class="notif-panel__empty">
           <span style="font-size:2rem;">🔔</span>
-          <p>Belum ada notifikasi</p>
+          <p data-i18n="notif.empty">${t('notif.empty', 'Belum ada notifikasi')}</p>
         </div>
       </div>
       <div class="notif-panel__footer">
-        <button class="notif-panel__clear" id="notif-clear-all">Hapus semua</button>
-        ${!isGranted() ? `<button class="notif-panel__enable" id="notif-enable-btn">Aktifkan Notifikasi</button>` : ''}
+        <button class="notif-panel__clear" id="notif-clear-all" data-i18n="notif.clear_all">${t('notif.clear_all', 'Hapus semua')}</button>
+        ${!isGranted() ? `<button class="notif-panel__enable" id="notif-enable-btn" data-i18n="notif.enable">${t('notif.enable', 'Aktifkan Notifikasi')}</button>` : ''}
       </div>
     `;
 
@@ -369,10 +370,11 @@ const CineNotif = (() => {
 
     const history = getHistory();
     if (!history.length) {
+      const t2 = (key, fb) => window.CineI18n ? CineI18n.t(key, fb) : fb;
       body.innerHTML = `
         <div class="notif-panel__empty">
           <span style="font-size:2rem;">🔔</span>
-          <p>Belum ada notifikasi</p>
+          <p data-i18n="notif.empty">${t2('notif.empty', 'Belum ada notifikasi')}</p>
         </div>
       `;
       return;
@@ -727,6 +729,24 @@ const CineNotif = (() => {
   }
 
   /* ─────────────────────────────────────────
+     UPDATE TEXTS (i18n)
+  ───────────────────────────────────────── */
+  function updateTexts() {
+    if (!panelEl) return;
+    const t = (key, fb) => window.CineI18n ? CineI18n.t(key, fb) : fb;
+    const titleEl = panelEl.querySelector('.notif-panel__title');
+    if (titleEl) titleEl.textContent = t('notif.panel_title', 'Notifikasi');
+    const markAllEl = panelEl.querySelector('.notif-panel__mark-all');
+    if (markAllEl) markAllEl.textContent = t('notif.mark_all', 'Tandai semua dibaca');
+    const clearAllEl = panelEl.querySelector('.notif-panel__clear');
+    if (clearAllEl) clearAllEl.textContent = t('notif.clear_all', 'Hapus semua');
+    const enableBtn = panelEl.querySelector('.notif-panel__enable');
+    if (enableBtn) enableBtn.textContent = t('notif.enable', 'Aktifkan Notifikasi');
+    // Re-render panel body to update any translatable content
+    renderPanel();
+  }
+
+  /* ─────────────────────────────────────────
      EXPORT
   ───────────────────────────────────────── */
   return {
@@ -748,6 +768,7 @@ const CineNotif = (() => {
     injectBell,
     openPanel,
     closePanel,
+    updateTexts,
   };
 })();
 

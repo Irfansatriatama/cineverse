@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3.4%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-2.0.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.5%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-2.1.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -254,8 +254,8 @@ FASE 5.3.1  ████████████████████  Auth P
 FASE 5.3.2  ████████████████████  Light Theme Overhaul        ✅ Selesai (v1.8.0)
 FASE 5.3.3  ████████████████████  Halaman Profil Fix          ✅ Selesai (v1.9.0)
 FASE 5.3.4  ████████████████████  Halaman Pengaturan Fix      ✅ Selesai (v2.0.0)
-FASE 5.3.5  ░░░░░░░░░░░░░░░░░░░░  i18n (Multi-Bahasa) Fix     🔜 Berikutnya
-FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     ⏳ Antrian
+FASE 5.3.5  ████████████████████  i18n (Multi-Bahasa) Fix     ✅ Selesai (v2.1.0)
+FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     🔜 Berikutnya
 FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) ⏳ Antrian
 ```
 
@@ -381,8 +381,8 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 | **5.3.2** | Light Theme (White Mode) | Banyak elemen tidak optimal di tema terang — kontras, warna card, navbar | ✅ **Selesai** (v1.8.0) |
 | **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ✅ **Selesai** (v1.9.0) |
 | **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ✅ **Selesai** (v2.0.0) |
-| **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | 🔜 **Berikutnya** |
-| **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | ⏳ Antrian |
+| **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ✅ **Selesai** (v2.1.0) |
+| **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | 🔜 **Berikutnya** |
 | **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | ⏳ Antrian |
 
 ### Detail Rencana Per Sub-fase
@@ -431,6 +431,58 @@ Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki
 ---
 
 ## 📝 Changelog
+
+### v2.1.0 — Phase 5.3.5: i18n (Multi-Bahasa) Fix *(terkini)*
+
+**5 bug & area diperbaiki:**
+
+**[BUG 1] HTML Pages — `data-i18n` missing di navbar nav links (Beranda, Jelajahi, Genre, Berita)**
+Link navigasi utama di semua halaman (`navbar__nav-link`, `navbar__mobile-link`) tidak memiliki atribut `data-i18n`, sehingga tidak berubah ketika user mengganti bahasa ke English. Ini adalah bug paling pervasif — muncul di seluruh 15 halaman.
+
+Solusi: Tambah `data-i18n="nav.home"`, `data-i18n="nav.explore"`, `data-i18n="nav.genre"`, `data-i18n="nav.news"` pada semua nav link di setiap halaman (pages/*.html, pages/auth/*.html, index.html).
+
+**[BUG 2] `app.js` — Guest menu & mobile menu menggunakan teks hardcoded**
+`buildGuestMenu()` menghasilkan tombol "Masuk" dan "Daftar Gratis" tanpa `data-i18n`. Mobile menu auth juga hardcoded "Profil Saya" dan "Keluar". Saat bahasa diganti ke English, elemen-elemen ini tetap dalam Bahasa Indonesia.
+
+Solusi: Refactor `buildGuestMenu()` untuk menggunakan `CineI18n.t()` sebagai nilai awal dan tambah `data-i18n` attributes. Mobile auth menu juga diupdate dengan cara yang sama.
+
+**[BUG 3] `notifications.js` — Notification panel dibuat dengan teks hardcoded, tidak punya `updateTexts()`**
+`createPanel()` menggunakan string "Notifikasi", "Tandai semua dibaca", "Hapus semua", "Aktifkan Notifikasi", dan "Belum ada notifikasi" yang hardcoded. Listener `cineverse:langchange` ada namun menggunakan conditional manual (`getLanguage() === 'en' ? ... : ...`) bukan `CineI18n.t()`.
+
+Solusi: Refactor `createPanel()` untuk menggunakan `CineI18n.t()` + `data-i18n` attributes. Tambah fungsi `updateTexts()` yang mengupdate semua teks panel menggunakan `CineI18n.t()` dan memanggil `renderPanel()` ulang. Export `updateTexts` untuk dipanggil oleh i18n module.
+
+**[BUG 4] `i18n.js` — `setLanguage()` tidak me-rebuild komponen dinamis**
+Saat `setLanguage('en')` dipanggil, hanya elemen DOM statis yang di-update via `applyAll()`. Komponen yang di-inject secara dinamis (navbar dropdown via `app.js`, notification panel via `notifications.js`) tidak di-rebuild sehingga tetap dalam bahasa lama.
+
+Solusi: Tambah logic di `setLanguage()` untuk memanggil `CineApp.initNavbarAuth()` (rebuild navbar) dan `CineNotif.updateTexts()` (update panel notifikasi) setelah `applyAll()`. Ini memastikan seluruh UI ter-update secara konsisten saat bahasa diganti.
+
+**[BUG 5] `movie-detail.html`, `watch.html`, auth pages — 0 `data-i18n` attributes**
+Beberapa halaman kunci sama sekali tidak memiliki `data-i18n` pada elemen statisnya, termasuk:
+- `movie-detail.html`: Sinopsis, Sutradara, Pemeran, Tonton Sekarang, Tonton Trailer, Kirim Ulasan, Film Serupa, dll (total 27 atribut ditambahkan)
+- `watch.html`: heading sidebar, keyboard shortcut labels, watchlist button (16 atribut)
+- `auth/login.html` + `auth/register.html`: semua label form, placeholder, tombol submit (13 + 10 atribut)
+- `watchlist.html`: header, sort options, empty state, clear button (22 atribut)
+
+Solusi: Audit menyeluruh dan penambahan `data-i18n` / `data-i18n-placeholder` / `data-i18n-aria` ke semua elemen statis yang memiliki teks yang seharusnya diterjemahkan. Kamus terjemahan diperluas dengan 25+ key baru: `modal.confirm`, `watch.loading`, `watch.shortcut_*`, `auth.welcome_back`, `notif.panel_title`, `notif.mark_all`, `notif.empty`, `notif.clear_all`, `notif.enable`, `landing.cta_register`, dan `footer.*`.
+
+**File yang diubah:**
+- `assets/js/core/i18n.js` — Tambah 25+ key baru ID+EN, enhance `setLanguage()` untuk rebuild komponen dinamis
+- `assets/js/core/app.js` — `buildGuestMenu()` dan mobile menu pakai `CineI18n.t()`
+- `assets/js/core/notifications.js` — `createPanel()` pakai i18n, tambah `updateTexts()`, refactor langchange handler
+- `pages/movie-detail.html` — +27 data-i18n attributes
+- `pages/watch.html` — +16 data-i18n attributes
+- `pages/watchlist.html` — +22 data-i18n attributes (dilengkapi dari 1)
+- `pages/history.html` — Tambah i18n ke h1 title dan clear button
+- `pages/auth/login.html` — +13 data-i18n attributes
+- `pages/auth/register.html` — +10 data-i18n attributes
+- `pages/news.html` — Tambah i18n ke search placeholder dan category chip "Semua"
+- `pages/search.html` — Tambah i18n ke search placeholder dan page title
+- `pages/stats.html` — Tambah i18n ke period filter buttons
+- `pages/dashboard.html` — Tambah i18n ke "Rekomendasi Untuk Kamu"
+- `index.html` — Tambah i18n ke semua nav links dan CTA buttons
+- Semua `pages/*.html` + `pages/auth/*.html` — Tambah `data-i18n` ke navbar nav links (Beranda, Jelajahi, Genre, Berita)
+
+---
 
 ### v2.0.0 — Phase 5.3.4: Halaman Pengaturan Fix *(terkini)*
 
