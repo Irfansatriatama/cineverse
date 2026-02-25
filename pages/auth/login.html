@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="stylesheet" href="../../assets/css/components.css" />
   <link rel="stylesheet" href="../../assets/css/animations.css" />
+  <link rel="stylesheet" href="../../assets/css/polish.css" />
   <link rel="stylesheet" href="../../assets/css/pages/auth.css" />
 </head>
 
@@ -31,10 +32,7 @@
     <aside class="auth-visual" aria-hidden="true">
       <div class="auth-visual__bg"></div>
       <div class="auth-visual__grid"></div>
-
-      <!-- Floating Posters (populated by JS) -->
       <div class="auth-visual__posters" id="auth-posters"></div>
-
       <div class="auth-visual__vignette"></div>
 
       <div class="auth-visual__content">
@@ -43,16 +41,15 @@
         <p class="auth-visual__quote">
           Setiap film adalah pintu menuju dunia yang belum pernah kamu masuki.
         </p>
-
         <span class="auth-visual__tagline">— Platform Film Terlengkap</span>
 
         <div class="auth-visual__stats">
           <div class="auth-stat">
-            <span class="auth-stat__number">100+</span>
+            <span class="auth-stat__number">120+</span>
             <span class="auth-stat__label">Film</span>
           </div>
           <div class="auth-stat">
-            <span class="auth-stat__number">14</span>
+            <span class="auth-stat__number">20</span>
             <span class="auth-stat__label">Genre</span>
           </div>
           <div class="auth-stat">
@@ -68,7 +65,7 @@
       <div class="auth-form-panel__inner">
 
         <a href="../../index.html" class="auth-back">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
           </svg>
           Kembali ke Beranda
@@ -77,7 +74,7 @@
         <header class="auth-header">
           <span class="auth-header__eyebrow">Selamat Datang Kembali</span>
           <h1 class="auth-header__title">Masuk ke Akun</h1>
-          <p class="auth-header__sub">Lanjutkan perjalanan film favoritmu dari mana saja.</p>
+          <p class="auth-header__sub">Lanjutkan perjalanan sinematik favoritmu.</p>
         </header>
 
         <!-- Alert area -->
@@ -113,10 +110,15 @@
 
           <!-- Password -->
           <div class="form-group">
-            <label class="form-label" for="password">
-              Password
-              <span class="required-dot" aria-hidden="true"></span>
-            </label>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-2);">
+              <label class="form-label" for="password" style="margin-bottom:0;">
+                Password
+                <span class="required-dot" aria-hidden="true"></span>
+              </label>
+              <span class="auth-forgot" style="margin-top:0;">
+                <a href="#" id="forgot-link">Lupa password?</a>
+              </span>
+            </div>
             <div class="form-input-wrapper form-input-wrapper--with-toggle">
               <input
                 type="password"
@@ -143,11 +145,6 @@
             </div>
           </div>
 
-          <!-- Forgot Password -->
-          <div class="auth-forgot">
-            <a href="#" id="forgot-link">Lupa password?</a>
-          </div>
-
           <!-- Remember Me -->
           <label class="form-check">
             <input type="checkbox" class="form-check__input" id="remember-me" name="remember" />
@@ -169,14 +166,14 @@
         <!-- Demo Account -->
         <div class="auth-demo">
           <div class="auth-demo__label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
-            Akun Demo
+            Demo
           </div>
           <div class="auth-demo__creds">
-            <span>Email: demo@cineverse.id</span>
-            <span>Password: Demo@1234</span>
+            <span>demo@cineverse.id</span>
+            <span>Demo@1234</span>
           </div>
           <button class="auth-demo__fill" id="fill-demo">Isi Otomatis</button>
         </div>
@@ -204,9 +201,9 @@
   <script src="../../assets/js/core/transitions.js"></script>
   <script src="../../assets/js/components/toast.js"></script>
   <script src="../../assets/js/pages/auth.js"></script>
-
   <script src="../../assets/js/core/i18n.js"></script>
   <script src="../../assets/js/core/notifications.js"></script>
+  <script src="../../assets/js/core/anime-polish.js"></script>
   <script src="../../assets/js/core/pwa.js"></script>
 </body>
 </html>

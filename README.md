@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.3%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.6.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.3.1%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.7.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -248,6 +248,15 @@ FASE 2  ████████████████████  Dashboard 
 FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
 FASE 4  ████████████████████  News & Fitur Sosial         ✅ Selesai (4.1 ✅ 4.2 ✅ 4.3 ✅)
 FASE 5  ████████████████████  PWA, Optimasi & Polish      ✅ Selesai (5.1 ✅ 5.2 ✅ 5.3 ✅)
+
+BUG FIX SERIES (Phase 5.3.x)
+FASE 5.3.1  ████████████████████  Auth Pages Redesign         ✅ Selesai (v1.7.0)
+FASE 5.3.2  ░░░░░░░░░░░░░░░░░░░░  Light Theme Overhaul        🔜 Berikutnya
+FASE 5.3.3  ░░░░░░░░░░░░░░░░░░░░  Halaman Profil Fix          ⏳ Antrian
+FASE 5.3.4  ░░░░░░░░░░░░░░░░░░░░  Halaman Pengaturan Fix      ⏳ Antrian
+FASE 5.3.5  ░░░░░░░░░░░░░░░░░░░░  i18n (Multi-Bahasa) Fix     ⏳ Antrian
+FASE 5.3.6  ░░░░░░░░░░░░░░░░░░░░  Statistik UI/UX Upgrade     ⏳ Antrian
+FASE 5.3.7  ░░░░░░░░░░░░░░░░░░░░  Penambahan Data Film (120+) ⏳ Antrian
 ```
 
 ### Fase 1 — Fondasi & Autentikasi ✅
@@ -357,7 +366,111 @@ FASE 5  ████████████████████  PWA, Optim
 
 ---
 
-### v1.6.0 — Phase 5.3: Polish & Animasi (Anime.js) *(terkini)*
+
+---
+
+## 🐛 Bug Fix Roadmap (Phase 5.3.x Series)
+
+Setelah Phase 5.3 selesai, ditemukan sejumlah bug dan area yang perlu diperbaiki/ditingkatkan. Bug fixing dibagi menjadi sub-fase agar beban kerja per iterasi tetap terfokus.
+
+### Daftar Bug & Peningkatan
+
+| Sub-fase | Area | Deskripsi | Status |
+|---|---|---|---|
+| **5.3.1** | Auth Pages (Login & Register) | Tampilan kurang rapi, layout perlu redesign, form tidak konsisten | ✅ **Selesai** (v1.7.0) |
+| **5.3.2** | Light Theme (White Mode) | Banyak elemen tidak optimal di tema terang — kontras, warna card, navbar | 🔜 **Berikutnya** |
+| **5.3.3** | Halaman Profil | UI/UX kurang optimal, tab navigasi tidak rapi, statistik profil perlu polish | ⏳ Antrian |
+| **5.3.4** | Halaman Pengaturan | Layout sidebar + main kurang rapi, toggle & select tidak konsisten | ⏳ Antrian |
+| **5.3.5** | Multi-Bahasa (i18n) | Banyak key `data-i18n` missing, language switch tidak konsisten di semua komponen | ⏳ Antrian |
+| **5.3.6** | Statistik (Stats Page) | UI/UX perlu dibuat lebih mewah, chart lebih visual, tambah insight teks otomatis | ⏳ Antrian |
+| **5.3.7** | Data Film | Hanya 52 film, perlu penambahan signifikan ke 120+ film lintas genre & region | ⏳ Antrian |
+
+### Detail Rencana Per Sub-fase
+
+**Phase 5.3.2 — Light Theme Overhaul** *(Berikutnya)*
+- Audit semua CSS variables untuk `[data-theme="light"]`
+- Fix warna teks, card background, navbar, modal, footer di light mode
+- Perbaikan kontras dan readability di semua halaman
+- Konsistensi visual di dashboard, search, genre, watchlist, history, stats, news
+
+**Phase 5.3.3 — Halaman Profil Fix**
+- Perbaikan layout avatar section (ukuran, posisi, upload UX)
+- Fix tab navigasi (Profil / Aktivitas) agar lebih smooth
+- Perbaikan statistik mini di profil (film ditonton, watchlist, dll)
+- Polish spacing, typography, dan card sections
+- Responsive mobile yang lebih baik
+
+**Phase 5.3.4 — Halaman Pengaturan Fix**
+- Redesign sidebar navigasi settings agar lebih clean
+- Fix toggle switch, select dropdown, dan chip interactions
+- Konsistensi spacing, divider, dan section headers
+- Section "Bahasa" lebih jelas dan intuitif dengan preview visual
+
+**Phase 5.3.5 — i18n Fix**
+- Audit manual seluruh halaman untuk atribut `data-i18n` yang missing
+- Lengkapi kamus terjemahan untuk key yang belum ada di EN/ID
+- Fix language switch agar apply ke komponen dinamis (modal, toast, notifikasi, navbar dropdown)
+- Format tanggal & angka konsisten mengikuti locale aktif
+
+**Phase 5.3.6 — Statistik UI/UX Upgrade**
+- Redesign hero stat cards lebih dramatis dan premium
+- Perbaikan semua chart (activity bar, donut, histogram) — lebih visual dan berwarna
+- Upgrade milestone badges dengan animasi unlock dan glow effect
+- Tambah insight teks otomatis ("Kamu paling sering nonton di hari Sabtu")
+- Layout lebih spacious dan modern
+
+**Phase 5.3.7 — Penambahan Data Film**
+- Tambah ~70 film baru → total 120+ film
+- Cakupan genre: Action, Horror, Romance, Komedi, Animasi, Dokumenter, Thriller, Fantasy
+- Tambah film Indonesia dan Asia (Korea, Jepang)
+- Pastikan semua film punya: poster TMDB, backdrop, trailerKey YouTube, metadata lengkap
+- Distribusi genre lebih merata untuk rekomendasi yang lebih variatif
+
+---
+
+## 📝 Changelog
+
+### v1.7.0 — Phase 5.3.1: Auth Pages Redesign *(terkini)*
+
+**Latar belakang:** Halaman login & register ditemukan memiliki tampilan yang kurang rapi — spacing tidak konsisten, forgot password dan label password diletakkan terpisah, demo account card terlalu besar, dan form pada register terasa terlalu padat. Phase ini melakukan redesign menyeluruh tanpa mengubah logika JavaScript sama sekali.
+
+**File diupdate:**
+
+- `assets/css/pages/auth.css` — Redesign total:
+  - **Layout grid:** Proporsi diubah dari `1fr 1fr` menjadi `1.1fr 0.9fr` agar panel visual lebih dominan dan form panel lebih compact
+  - **Visual panel:** Quote kini menggunakan vertical accent bar merah di sisi kiri (lebih elegan dari tanda kutip besar), tagline lebih compact, stats row spacing diperbaiki
+  - **Form panel:** Subtle radial gradient decoration di pojok kanan atas, entrance animation `authPanelIn` pada `.auth-form-panel__inner`
+  - **Back link:** Tambah animasi `translateX(-3px)` saat hover untuk feedback arah navigasi
+  - **Form label:** Diubah ke uppercase kecil (xs) dengan letter-spacing untuk kesan lebih premium
+  - **Input field:** Border dipertebal jadi `1.5px`, min-height `50px`, focus ring lebih halus
+  - **Password group (login):** Label Password dan link "Lupa password?" disatukan dalam satu baris (flex space-between) agar lebih rapi dan menghemat ruang vertikal
+  - **Submit button:** Tambah `text-transform: uppercase`, letter-spacing 0.06em, shimmer effect via `::after` pseudo-element
+  - **Demo card:** Redesign menjadi horizontal layout (flex row) dengan creds yang lebih compact, tombol fill terpisah di kanan
+  - **Benefits section** (register): Komponen baru `.auth-benefits` berisi 4 chip benefit kecil dengan checkmark hijau — menampilkan value prop sebelum user mengisi form
+  - **Staggered entrance:** Setiap `.form-group` mendapat `animation-delay` bertahap (0.15s → 0.3s) untuk efek reveal form yang smooth
+  - **Light theme:** Override lengkap untuk semua komponen auth di tema terang
+  - **Auth navbar (mobile):** Tambah `backdrop-filter: blur(12px)` dan `border-bottom` agar tidak tembus saat scroll
+
+- `pages/auth/login.html` — Restrukturisasi HTML:
+  - Label "Password" dan link "Lupa password?" digabung dalam satu row flex
+  - Hilangkan blok `.auth-forgot` terpisah (sekarang inline dengan label)
+  - Demo account card dirapikan (lebih compact)
+  - Tambah `<link>` ke `polish.css` dan `<script>` ke `anime-polish.js`
+  - Ikon SVG pada tombol back diperkecil (14px) dan stroke-width 2.5
+
+- `pages/auth/register.html` — Restrukturisasi HTML:
+  - Tambah blok `.auth-benefits` antara header dan alert area (4 benefit chip)
+  - Newsletter checkbox: default `checked` (opt-out lebih baik UX untuk platform streaming)
+  - Teks tombol submit diubah dari "Buat Akun Gratis" → "Buat Akun Sekarang" (lebih actionable)
+  - Tambah `<link>` ke `polish.css` dan `<script>` ke `anime-polish.js`
+
+**Tidak ada perubahan pada:**
+- `assets/js/pages/auth.js` — Logika login/register tidak diubah sama sekali
+- `assets/js/core/auth.js` — Auth core tidak diubah
+
+---
+
+### v1.6.0 — Phase 5.3: Polish & Animasi (Anime.js)
 
 **File baru:**
 

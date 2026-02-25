@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="stylesheet" href="../../assets/css/components.css" />
   <link rel="stylesheet" href="../../assets/css/animations.css" />
+  <link rel="stylesheet" href="../../assets/css/polish.css" />
   <link rel="stylesheet" href="../../assets/css/pages/auth.css" />
 </head>
 
@@ -31,10 +32,7 @@
     <aside class="auth-visual" aria-hidden="true">
       <div class="auth-visual__bg"></div>
       <div class="auth-visual__grid"></div>
-
-      <!-- Floating Posters (populated by JS) -->
       <div class="auth-visual__posters" id="auth-posters"></div>
-
       <div class="auth-visual__vignette"></div>
 
       <div class="auth-visual__content">
@@ -43,12 +41,11 @@
         <p class="auth-visual__quote">
           Bergabunglah dan mulai petualangan sinematik tak terbatasmu hari ini.
         </p>
-
         <span class="auth-visual__tagline">— Gratis Selamanya</span>
 
         <div class="auth-visual__stats">
           <div class="auth-stat">
-            <span class="auth-stat__number">100+</span>
+            <span class="auth-stat__number">120+</span>
             <span class="auth-stat__label">Film</span>
           </div>
           <div class="auth-stat">
@@ -68,7 +65,7 @@
       <div class="auth-form-panel__inner">
 
         <a href="../../index.html" class="auth-back">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
           </svg>
           Kembali ke Beranda
@@ -79,6 +76,26 @@
           <h1 class="auth-header__title">Buat Akun Gratis</h1>
           <p class="auth-header__sub">Selesai dalam 30 detik. Tidak perlu kartu kredit.</p>
         </header>
+
+        <!-- Quick benefits -->
+        <div class="auth-benefits">
+          <div class="auth-benefit">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Akses 120+ film
+          </div>
+          <div class="auth-benefit">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Simpan watchlist
+          </div>
+          <div class="auth-benefit">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Statistik personal
+          </div>
+          <div class="auth-benefit">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            100% gratis
+          </div>
+        </div>
 
         <!-- Alert area -->
         <div id="auth-alert" role="alert" style="display:none;" class="mb-4"></div>
@@ -103,7 +120,7 @@
                 aria-required="true"
               />
               <span class="form-input-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                   <circle cx="12" cy="7" r="4"/>
                 </svg>
@@ -129,7 +146,7 @@
                 aria-required="true"
               />
               <span class="form-input-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
@@ -156,7 +173,7 @@
                 aria-describedby="password-strength-label"
               />
               <span class="form-input-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                 </svg>
@@ -201,7 +218,7 @@
                 aria-required="true"
               />
               <span class="form-input-icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M9 12l2 2 4-4"/>
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -230,13 +247,13 @@
 
           <!-- Newsletter -->
           <label class="form-check">
-            <input type="checkbox" class="form-check__input" id="newsletter" name="newsletter" />
+            <input type="checkbox" class="form-check__input" id="newsletter" name="newsletter" checked />
             <span class="form-check__label">Kirim saya rekomendasi film terbaru via notifikasi.</span>
           </label>
 
           <!-- Submit -->
           <button type="submit" class="auth-submit" id="submit-btn">
-            <span class="btn-text">Buat Akun Gratis</span>
+            <span class="btn-text">Buat Akun Sekarang</span>
             <span class="btn-spinner" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
@@ -269,9 +286,9 @@
   <script src="../../assets/js/core/transitions.js"></script>
   <script src="../../assets/js/components/toast.js"></script>
   <script src="../../assets/js/pages/auth.js"></script>
-
   <script src="../../assets/js/core/i18n.js"></script>
   <script src="../../assets/js/core/notifications.js"></script>
+  <script src="../../assets/js/core/anime-polish.js"></script>
   <script src="../../assets/js/core/pwa.js"></script>
 </body>
 </html>
