@@ -121,16 +121,18 @@
     const banner = document.createElement('div');
     banner.id    = 'pwa-install-banner';
     banner.className = 'pwa-install-banner';
+
+    const t = (key, fallback) => window.CineI18n ? CineI18n.t(key, fallback) : fallback;
     banner.innerHTML = `
       <div class="pwa-install-banner__inner">
         <div class="pwa-install-banner__icon" aria-hidden="true">▶</div>
         <div class="pwa-install-banner__text">
-          <strong>Install CineVerse</strong>
-          <span>Akses lebih cepat langsung dari layar utama</span>
+          <strong>${t('pwa.install_title', 'Install CineVerse')}</strong>
+          <span>${t('pwa.install_desc', 'Akses lebih cepat langsung dari layar utama')}</span>
         </div>
         <div class="pwa-install-banner__actions">
-          <button class="pwa-install-banner__dismiss" id="pwa-dismiss-btn" aria-label="Tutup">Nanti</button>
-          <button class="pwa-install-banner__install" id="pwa-install-btn">Install</button>
+          <button class="pwa-install-banner__dismiss" id="pwa-dismiss-btn" aria-label="${t('btn.cancel', 'Nanti')}">${t('pwa.later_btn', 'Nanti')}</button>
+          <button class="pwa-install-banner__install" id="pwa-install-btn">${t('pwa.install_btn', 'Install')}</button>
         </div>
       </div>
     `;
@@ -170,7 +172,8 @@
         pill = document.createElement('div');
         pill.id = 'pwa-offline-pill';
         pill.className = 'pwa-offline-pill';
-        pill.textContent = '⚠ Offline — Mode Terbatas';
+        const msg = window.CineI18n ? CineI18n.t('notif.offline', '⚠ Offline — Mode Terbatas') : '⚠ Offline — Mode Terbatas';
+        pill.textContent = msg;
         document.body.appendChild(pill);
       }
       pill.classList.add('visible');
@@ -183,7 +186,8 @@
         setTimeout(() => pill.remove(), 300);
       }
       if (window.CineToast) {
-        CineToast.show('Koneksi internet kembali 🌐', 'success');
+        const msg = window.CineI18n ? CineI18n.t('notif.back_online', 'Koneksi internet kembali 🌐') : 'Koneksi internet kembali 🌐';
+        CineToast.show(msg, 'success');
       }
     }
 

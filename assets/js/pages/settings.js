@@ -252,7 +252,10 @@ const SettingsPage = (() => {
         options.forEach(o => o.querySelector('input').checked = false);
         radio.checked = true;
         saveSettings({ language: value });
-        showToast('info', `Bahasa diubah ke: ${value === 'id' ? 'Bahasa Indonesia' : 'English'}`);
+        // Apply i18n globally
+        if (window.CineI18n) CineI18n.setLanguage(value);
+        const langLabel = value === 'id' ? 'Bahasa Indonesia' : 'English';
+        showToast('info', `Bahasa diubah ke: ${langLabel}`);
       });
     });
   }
@@ -466,10 +469,14 @@ const SettingsPage = (() => {
     if (reqBtn) {
       reqBtn.addEventListener('click', async () => {
         try {
-          const result = await Notification.requestPermission();
+          const result = window.CineNotif
+            ? await CineNotif.requestPermission()
+            : await Notification.requestPermission();
           renderNotifPermissionBlock();
           if (result === 'granted') {
             showToast('success', 'Notifikasi berhasil diaktifkan! 🔔');
+            // Inject/update bell in navbar
+            if (window.CineNotif) CineNotif.injectBell();
           }
         } catch (e) {
           showToast('error', 'Gagal meminta izin notifikasi');

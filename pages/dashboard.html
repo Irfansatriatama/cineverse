@@ -48,10 +48,10 @@
 
       <!-- Desktop Nav -->
       <nav class="navbar__nav" aria-label="Main navigation">
-        <a href="../index.html" class="navbar__nav-link">Beranda</a>
-        <a href="dashboard.html" class="navbar__nav-link active">Jelajahi</a>
-        <a href="genre.html" class="navbar__nav-link">Genre</a>
-        <a href="news.html" class="navbar__nav-link">Berita</a>
+        <a href="../index.html" class="navbar__nav-link" data-i18n="nav.home">Beranda</a>
+        <a href="dashboard.html" class="navbar__nav-link active" data-i18n="nav.explore">Jelajahi</a>
+        <a href="genre.html" class="navbar__nav-link" data-i18n="nav.genre">Genre</a>
+        <a href="news.html" class="navbar__nav-link" data-i18n="nav.news">Berita</a>
       </nav>
 
       <!-- Actions — populated by app.js -->
@@ -121,7 +121,7 @@
             <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
             </svg>
-            Lanjutkan Menonton
+            <span data-i18n="dashboard.continue_watching">Lanjutkan Menonton</span>
           </h2>
           <a href="#" class="db-section__link" id="clear-history-btn">
             Hapus Semua
@@ -139,7 +139,7 @@
             <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M13.5 0.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/>
             </svg>
-            Trending Sekarang
+            <span data-i18n="dashboard.trending">Trending Sekarang</span>
           </h2>
           <a href="search.html?sort=trending" class="db-section__link">
             Lihat Semua
@@ -163,7 +163,7 @@
             <svg class="db-section__title-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
-            Top 10 Minggu Ini
+            <span data-i18n="dashboard.top10">Top 10 Minggu Ini</span>
           </h2>
           <a href="search.html?sort=rating" class="db-section__link">
             Lihat Semua
@@ -338,6 +338,8 @@
   <script src="../assets/js/pages/dashboard.js"></script>
 
   <script src="../assets/js/pages/surprise.js"></script>
+  <script src="../assets/js/core/i18n.js"></script>
+  <script src="../assets/js/core/notifications.js"></script>
   <script src="../assets/js/core/pwa.js"></script>
 </body>
 </html>

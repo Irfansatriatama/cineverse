@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%205.1%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.4.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.2%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.5.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -95,8 +95,8 @@ npx http-server cineverse-phase3 -p 8080
 | 🎲 Surprise Me | Rekomendasi film acak sesuai preferensi | 4 | ✅ |
 | 📊 Stats Pribadi | Total jam nonton, genre favorit, grafik aktivitas, milestone badges | 5 | ✅ |
 | 📱 PWA Ready | Install sebagai app di mobile, offline mode, service worker | 5 | ✅ |
-| 🔔 Notifikasi Lokal | Reminder film baru via browser notification | 5 |
-| 🌐 Multi-Bahasa | Support Bahasa Indonesia & English penuh | 5 |
+| 🔔 Notifikasi Lokal | Reminder film baru via browser notification | 5 | ✅ |
+| 🌐 Multi-Bahasa | Support Bahasa Indonesia & English penuh | 5 | ✅ |
 
 ---
 
@@ -207,7 +207,10 @@ cineverse-phase3/
 │   │   │   ├── app.js            # Global init, navbar auth, theme
 │   │   │   ├── auth.js           # Logika register/login
 │   │   │   ├── skeleton.js       # Skeleton loading
-│   │   │   └── transitions.js    # Animasi transisi halaman
+│   │   │   ├── transitions.js    # Animasi transisi halaman
+│   │   │   ├── i18n.js           # Multi-bahasa ID/EN ✨ Baru
+│   │   │   ├── notifications.js  # Notifikasi lokal browser ✨ Baru
+│   │   │   └── pwa.js            # PWA install prompt & SW registration
 │   │   ├── components/
 │   │   │   ├── navbar.js
 │   │   │   └── toast.js
@@ -244,7 +247,7 @@ FASE 1  ████████████████████  Fondasi & 
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
 FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
 FASE 4  ████████████████████  News & Fitur Sosial         ✅ Selesai (4.1 ✅ 4.2 ✅ 4.3 ✅)
-FASE 5  ███████░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔄 In Progress (5.1 ✅ 5.2 🔲 5.3 🔲)
+FASE 5  ██████████████░░░░░░  PWA, Optimasi & Polish      🔄 In Progress (5.1 ✅ 5.2 ✅ 5.3 🔲)
 ```
 
 ### Fase 1 — Fondasi & Autentikasi ✅
@@ -299,7 +302,19 @@ FASE 5  ███████░░░░░░░░░░░░░  PWA, Optim
 - PWA Manifest (`manifest.json`): install sebagai app, shortcuts watchlist & search
 - `pwa.js`: register SW, install prompt banner (A2HS), update toast, offline indicator
 
-**Phase 5.2 — Notifikasi Lokal & Multi-Bahasa** 🔲
+**Phase 5.2 — Notifikasi Lokal & Multi-Bahasa** ✅
+- Module `i18n.js` (`window.CineI18n`): kamus terjemahan 150+ key ID/EN, apply via `data-i18n` attributes, `CineI18n.t(key)` helper, format tanggal & angka locale-aware
+- Language switch di Settings langsung apply ke semua elemen tanpa reload halaman
+- `CineI18n.setLanguage('en'|'id')` disimpan ke localStorage + user settings, dispatch event `cineverse:langchange`
+- Module `notifications.js` (`window.CineNotif`): Browser Notification API wrapper penuh
+- Bell icon 🔔 di navbar (inject otomatis, hanya saat login) dengan badge counter merah
+- Notification panel dropdown: daftar notif, tandai dibaca, hapus semua, enable button jika permission belum diberikan
+- 3 tipe notifikasi: `notifyNewMovie()`, `notifyWatchlistReminder()`, `notifyNews()`
+- Scheduled check setiap 30 menit: watchlist reminder + new movie pick dari film belum ditonton
+- In-app notification history disimpan ke localStorage (max 50 entri), unread counter persisten
+- PWA banner & offline pill teks mengikuti bahasa aktif via `CineI18n.t()`
+- Semua `pages/*.html` & auth pages diupdate: tambah `<script>` i18n.js & notifications.js
+
 **Phase 5.3 — Polish & Animasi (Anime.js)** 🔲
 
 ---
@@ -340,7 +355,43 @@ FASE 5  ███████░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.4.0 — Phase 5.1: Stats Pribadi & PWA Ready *(terkini)*
+### v1.5.0 — Phase 5.2: Notifikasi Lokal & Multi-Bahasa *(terkini)*
+
+**File baru:**
+
+- `assets/js/core/i18n.js` — Module internasionalisasi penuh (`window.CineI18n`):
+  - Kamus terjemahan 150+ key untuk Bahasa Indonesia & English
+  - Kategorisasi: nav, btn, dashboard, search, detail, watch, watchlist, history, stats, news, genre, auth, profile, settings, notif, pwa, footer
+  - `CineI18n.t(key, fallback)` — ambil terjemahan, fallback ke ID jika key tidak ada di EN
+  - `CineI18n.apply(root?)` — scan DOM untuk `[data-i18n]`, `[data-i18n-placeholder]`, `[data-i18n-title]`, `[data-i18n-aria]` lalu apply terjemahan
+  - `CineI18n.setLanguage('id'|'en')` — ganti bahasa, simpan ke localStorage & user settings, dispatch `CustomEvent('cineverse:langchange')`
+  - `CineI18n.formatDate(date)` & `CineI18n.formatNumber(num)` — format locale-aware (id-ID / en-US)
+  - Auto-init: baca bahasa dari user settings → localStorage → default 'id'; apply on DOMContentLoaded
+
+- `assets/js/core/notifications.js` — Module notifikasi lokal (`window.CineNotif`):
+  - `requestPermission()` — async wrapper untuk `Notification.requestPermission()`
+  - `send(title, body, options)` — kirim browser notification + simpan ke in-app history
+  - `notifyNewMovie(movie)` — notif film baru tersedia, teks bilingual
+  - `notifyWatchlistReminder(movies)` — reminder watchlist, teks bilingual
+  - `notifyNews(article)` — notif berita baru, teks bilingual
+  - Bell 🔔 icon inject ke navbar (setelah user login) dengan badge counter merah
+  - Notification panel dropdown: list notif per item (icon, judul, body, waktu relatif), tandai dibaca, hapus semua, tombol "Aktifkan Notifikasi" jika permission belum diberikan
+  - In-app history: 50 entri terakhir, unread count persisten di localStorage
+  - Scheduled check setiap 30 menit (setelah 10 detik cooldown): watchlist reminder + new movie suggestion
+  - CSS diinject secara programmatic (zero markup di HTML)
+  - Bahasa panel mengikuti event `cineverse:langchange`
+
+**File diupdate:**
+
+- Semua `pages/*.html` & `pages/auth/*.html` & `index.html` — Tambah `<script src=".../i18n.js">` dan `<script src=".../notifications.js">` sebelum `pwa.js`
+- `assets/js/core/app.js` — Setelah inject navbar: call `CineI18n.apply()` + `CineNotif.injectBell()`; dropdown item labels dibungkus `<span data-i18n="...">` agar responsive terhadap language switch
+- `assets/js/core/pwa.js` — PWA install banner & offline pill teks menggunakan `CineI18n.t()` untuk bilingual
+- `assets/js/pages/settings.js` — Language change: tambah call `CineI18n.setLanguage(value)` agar apply langsung; notification permission: gunakan `CineNotif.requestPermission()` + `CineNotif.injectBell()` setelah granted
+- `pages/dashboard.html` — Tambah `data-i18n` pada nav links & section title spans
+
+---
+
+### v1.4.0 — Phase 5.1: Stats Pribadi & PWA Ready
 
 **File baru:**
 
