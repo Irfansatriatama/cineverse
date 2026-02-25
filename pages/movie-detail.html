@@ -216,23 +216,6 @@
         </div><!-- /md-info-col -->
       </div><!-- /md-layout -->
 
-      <!-- ─── TRAILER MODAL ─── -->
-      <div class="md-trailer-modal" id="md-trailer-modal" role="dialog" aria-modal="true" aria-label="Trailer" style="display:none;">
-        <div class="md-trailer-modal__backdrop" id="md-trailer-backdrop"></div>
-        <div class="md-trailer-modal__container">
-          <button class="md-trailer-modal__close" id="md-trailer-close" aria-label="Tutup Trailer">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-          <div class="md-trailer-modal__player">
-            <iframe id="md-trailer-iframe" src="" frameborder="0"
-              title="Trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-      </div>
-
       <!-- ─── RATING & REVIEW SECTION ─── -->
       <section class="md-reviews-section reveal" id="md-reviews-section">
         <h2 class="md-reviews-title">Rating & Ulasan</h2>
@@ -297,6 +280,24 @@
 
     </div><!-- /container -->
   </main>
+
+  <!-- ─── TRAILER MODAL ─── -->
+  <!-- Ditempatkan di luar <main> agar position:fixed tidak terpengaruh CSS transform dari .page-transition-ready -->
+  <div class="md-trailer-modal" id="md-trailer-modal" role="dialog" aria-modal="true" aria-label="Trailer" style="display:none;">
+    <div class="md-trailer-modal__backdrop" id="md-trailer-backdrop"></div>
+    <div class="md-trailer-modal__container">
+      <button class="md-trailer-modal__close" id="md-trailer-close" aria-label="Tutup Trailer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="md-trailer-modal__player">
+        <iframe id="md-trailer-iframe" src="" frameborder="0"
+          title="Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- ─── FOOTER ─── -->
   <footer class="footer" role="contentinfo">

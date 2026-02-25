@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3.7%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.7-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.8%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.8-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -241,7 +241,7 @@ cineverse-phase3/
 ```
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
-FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.7)
+FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
 FASE 4  ░░░░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔲 Belum Dimulai
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
@@ -289,7 +289,42 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.0.7 — Phase 3.3.7: Bug Fix — Trailer Autoplay & UI Card Film Serupa *(terkini)*
+### v1.0.8 — Phase 3.3.8: Bug Fix — Posisi Modal Trailer Terlalu di Bawah *(terkini)*
+
+**1 bug diperbaiki:**
+
+---
+
+**[BUG 1] `movie-detail.html` — Modal trailer muncul terlalu jauh ke bawah saat halaman di-scroll**
+
+Saat user scroll ke bawah halaman (misalnya membaca sinopsis, cast, atau review) lalu klik tombol "Tonton Trailer", modal video muncul di luar viewport — video tidak terlihat dan user harus scroll lagi ke atas untuk menemukannya.
+
+**Root cause — CSS Stacking Context & `transform` Containment:**
+
+`<main id="main-content" class="page-transition-ready">` mendapat animasi `pageContentReveal` saat halaman pertama kali load:
+
+```css
+@keyframes pageContentReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+```
+
+Sesuai spesifikasi CSS ([CSS Transforms spec](https://www.w3.org/TR/css-transforms-1/#transform-rendering)), **elemen yang memiliki CSS `transform` aktif menciptakan containing block baru untuk semua descendant dengan `position: fixed`**. Artinya, `position: fixed` tidak lagi relatif terhadap viewport (seperti yang diharapkan), melainkan relatif terhadap elemen `<main>` yang ber-transform.
+
+Meskipun animasi hanya berlangsung 0.5 detik, masalah ini tetap terjadi jika modal dibuka sesaat setelah halaman load ketika animasi masih berlangsung. Lebih parah: beberapa browser/engine menyimpan `will-change` atau layout context dari animated elements bahkan setelah animasi selesai — menyebabkan bug intermittent yang sulit direproduksi secara konsisten.
+
+**Dampak nyata:** Karena `<main>` memiliki ketinggian dokumen penuh (bukan hanya viewport), modal yang "fixed" relatif terhadap `<main>` akan tampil di posisi yang sama dengan posisi scroll saat ini dalam dokumen — bukan di tengah viewport. User yang sudah scroll 1000px ke bawah akan melihat modal di posisi 1000px dari atas `<main>`, yang sudah keluar dari viewport.
+
+**Solusi:** Pindahkan elemen `#md-trailer-modal` dari dalam `<main>` ke langsung di bawah `</main>`, sebelum `<footer>`. Dengan posisi ini, modal berada di luar hierarki elemen yang ber-transform, sehingga `position: fixed; inset: 0` kembali berfungsi normal — selalu menutupi seluruh viewport dan `align-items: center` memposisikan video tepat di tengah layar, regardless posisi scroll.
+
+Tidak ada perubahan pada CSS atau JavaScript — hanya perubahan posisi elemen di HTML. Semua `getElementById()` di JavaScript tetap berfungsi karena ID tidak bergantung pada posisi dalam DOM tree.
+
+**File yang diubah:** `pages/movie-detail.html`
+
+---
+
+
 
 **2 issue diselesaikan:**
 
