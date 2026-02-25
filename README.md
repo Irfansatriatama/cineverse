@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%204.1%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.1.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%204.2%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.2.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -91,7 +91,7 @@ npx http-server cineverse-phase3 -p 8080
 | Fitur | Deskripsi | Fase |
 |---|---|---|
 | 📰 News & Artikel | Halaman daftar berita, filter kategori, search artikel, featured hero | 4 | ✅ |
-| 📄 News Detail | Halaman detail artikel dengan body lengkap, related articles | 4 |
+| 📄 News Detail | Halaman detail artikel dengan body lengkap, related articles | 4 | ✅ |
 | 🎲 Surprise Me | Rekomendasi film acak sesuai preferensi | 4 |
 | 📊 Stats Pribadi | Total jam nonton, genre favorit, grafik aktivitas | 5 |
 | 📱 PWA Ready | Install sebagai app di mobile | 5 |
@@ -243,7 +243,7 @@ cineverse-phase3/
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
 FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
-FASE 4  ███░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔄 In Progress (4.1 ✅)
+FASE 4  ███████░░░░░░░░░░░░░  News & Fitur Sosial         🔄 In Progress (4.1 ✅ 4.2 ✅)
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
 
@@ -298,11 +298,17 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 - `news.json` diperluas: 12 artikel dengan field `body`, `featured`, kategori beragam
 - Keyboard shortcut Ctrl/Cmd+K untuk fokus search
 
-**Phase 4.2 — Halaman Detail Artikel** 🔲
-- Full article dengan body content, reading progress bar
-- Author info, tanggal, estimasi waktu baca
-- Related articles sidebar
-- Share ke clipboard
+**Phase 4.2 — Halaman Detail Artikel** ✅
+- Full article dengan body content, reading progress bar (top of page + sidebar widget)
+- Author info dengan avatar initial, tanggal, estimasi waktu baca
+- Hero image 16:9 dengan hover zoom effect
+- Tags artikel (hashtag chips)
+- Tombol Share: salin link ke clipboard dengan feedback animasi
+- Related articles sidebar: 4 artikel terkait diprioritaskan berdasarkan kategori sama
+- Responsive: sidebar pindah ke bawah di mobile, artikel terkait menjadi horizontal scroll
+- Breadcrumb navigasi kembali ke news.html
+- Error state untuk artikel tidak ditemukan / ID invalid
+- Parsing body cerdas: numbered list otomatis jadi `<ol>`, paragraf dipisah per baris
 
 **Phase 4.3 — Fitur Surprise Me** 🔲
 - Modal rekomendasi film acak berdasarkan preferensi genre user
@@ -312,7 +318,24 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.1.0 — Phase 4.1: Halaman Berita & Artikel *(terkini)*
+### v1.2.0 — Phase 4.2: Halaman Detail Artikel *(terkini)*
+
+**File baru:**
+
+- `pages/news-detail.html` — Halaman detail artikel: breadcrumb navigasi, layout dua kolom (artikel + sidebar sticky), skeleton loading, error state 404
+- `assets/css/pages/news-detail.css` — Reading progress bar merah-emas di atas halaman, hero image 16:9 dengan hover zoom, typography artikel elegan (first paragraph lebih besar), kategori badge color-coded, sidebar sticky dengan progress widget + related articles card
+- `assets/js/pages/news-detail.js` — Fetch `news.json`, cari artikel by `id` (dari query param `?id=`), render body dengan parser pintar (numbered list → `<ol>`, paragraf → `<p>`), reading progress bar real-time dari scroll position, share link ke clipboard dengan feedback animasi, related articles 4 card diprioritaskan by kategori sama
+
+**Fitur detail:**
+- **Reading Progress Bar:** Fixed di atas viewport (z-index tinggi, gradient crimson→gold), terupdate setiap scroll. Sidebar widget menampilkan persentase teks `0–100%` secara real-time
+- **Body Parser:** Teks `body` dari news.json diparse cerdas — baris diawali angka (`1. Title — desc`) dikonversi ke `<ol><li>` dengan bold otomatis pada title sebelum tanda `—`. Paragraf biasa jadi `<p>`. Paragraph pertama mendapat styling lebih besar otomatis via CSS `:first-child`
+- **Share to Clipboard:** `navigator.clipboard.writeText(URL)` dengan fallback `execCommand('copy')`. Tombol berubah warna hijau + ikon centang 2 detik lalu reset
+- **Related Articles:** Sort by: (1) kategori sama dahulu, (2) terbaru. Slice 4 artikel. Di mobile menjadi horizontal scroll card kompak
+- **Error State:** Ditampilkan jika `?id=` kosong, tidak ada di data, atau fetch gagal
+
+---
+
+### v1.1.0 — Phase 4.1: Halaman Berita & Artikel
 
 **File baru:**
 
