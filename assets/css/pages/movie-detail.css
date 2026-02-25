@@ -649,56 +649,96 @@
 /* ─── RELATED MOVIES ─── */
 .md-related-section {
   margin-bottom: var(--space-16);
+  padding-top: var(--space-2);
 }
 
-/* Section header styles (mirrors dashboard.css db-section__*) */
-.md-related-section .db-section__header {
+/* ── Elegant section header ── */
+.md-related-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
-.md-related-section .db-section__title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  letter-spacing: 0.03em;
-  color: var(--color-text-primary);
+.md-related-header__left {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
-.md-related-section .db-section__title-icon {
-  color: var(--color-crimson);
+.md-related-header__accent {
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--color-crimson), #ff6b6b);
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
+.md-related-header__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin: 0;
+}
+
+.md-related-header__subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+  align-self: flex-end;
+  padding-bottom: 1px;
+}
+
+/* ── Responsive grid ── */
 .md-related-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .md-related-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .md-related-grid {
     grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .md-related-grid {
-    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-3);
   }
 }
 
+@media (max-width: 767px) {
+  .md-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+  .md-related-header__title {
+    font-size: 1.25rem;
+  }
+  .md-related-header__subtitle {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .md-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+}
+
+/* ── Card overrides for better fit in grid ── */
 .md-related-grid .movie-card {
+  width: 100%;
+}
+
+.md-related-grid .movie-card__poster {
+  aspect-ratio: 2/3;
   width: 100%;
 }
 
@@ -706,6 +746,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.md-related-grid .movie-card__title {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.md-related-grid .movie-card__meta {
+  font-size: 0.72rem;
+}
+
+/* Remove old db-section classes (no longer needed) */
+.md-related-section .db-section__header,
+.md-related-section .db-section__title,
+.md-related-section .db-section__title-icon {
+  display: none;
 }
 
 /* ─── 404 STATE ─── */

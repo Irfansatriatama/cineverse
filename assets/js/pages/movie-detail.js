@@ -278,8 +278,14 @@ const MovieDetailPage = (() => {
     const row = document.getElementById('md-related-row');
     if (!row) return;
 
+    // Sort by genre match count (most matches first) for better relevance
     const related = allMovies
       .filter(m => m.id !== movie.id && m.genres?.some(g => movie.genres?.includes(g)))
+      .map(m => ({
+        ...m,
+        matchCount: m.genres?.filter(g => movie.genres?.includes(g)).length || 0
+      }))
+      .sort((a, b) => b.matchCount - a.matchCount)
       .slice(0, 8);
 
     if (!related.length) {

@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3.5%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.5-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.6%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.6-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -241,7 +241,7 @@ cineverse-phase3/
 ```
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
-FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.5)
+FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.6)
 FASE 4  ░░░░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔲 Belum Dimulai
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
@@ -289,7 +289,38 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.0.5 — Phase 3.3.5: Bug Fix — Trailer, Film Serupa & Progress Bar *(terkini)*
+### v1.0.6 — Phase 3.3.6: Bug Fix — Trailer & UI Enhancement Film Serupa *(terkini)*
+
+**2 issue diselesaikan:**
+
+---
+
+**[BUG 1] `movie-detail.html` — Trailer: video tidak tampil sama sekali saat klik "Tonton Trailer"**
+
+Meski CSS `padding-top: 56.25%` + `iframe { position: absolute; inset: 0 }` sudah benar, video tetap tidak ter-render secara visual.
+
+**Root cause:** Iframe di HTML memiliki HTML attribute `width="100%" height="100%"`. HTML attribute untuk `width` dan `height` di-parse browser sebagai **integer pixels**, bukan persentase. Nilai `"100%"` tidak valid sebagai pixel integer, sehingga browser **ignore attribute tersebut** dan jatuh ke default sizing behavior. Ini membuat browser mengalokasikan computed dimension untuk iframe berdasarkan HTML-level default (bukan CSS), yang conflict dengan teknik `position: absolute; inset: 0` yang sepenuhnya bergantung pada CSS. Akibatnya: frame video ada di DOM dan audio berjalan, tapi dimensi actual iframe tidak mengikuti container CSS — video tidak ter-render.
+
+**Solusi:** Hapus HTML attribute `width="100%"` dan `height="100%"` dari tag `<iframe>`. Sizing sepenuhnya diserahkan ke CSS (`position: absolute; top:0; left:0; width:100%; height:100%`) yang memang sudah benar dan sudah proven cross-browser. Tidak ada perubahan CSS diperlukan — hanya menghapus dua attribute HTML yang justru jadi penyebab konflik.
+
+**File yang diubah:** `pages/movie-detail.html`
+
+---
+
+**[ENHANCEMENT] `movie-detail.html` + `movie-detail.css` + `movie-detail.js` — Section "Film Serupa": UI/UX diperbarui**
+
+Section "Film Serupa" sebelumnya menggunakan class `db-section__*` dari `dashboard.css` dengan tampilan header yang tidak konsisten dan grid card yang tidak proporsional.
+
+**Perubahan:**
+1. **Header baru** — Desain header lebih elegan: accent bar merah vertikal (4px) di kiri judul sebagai visual anchor, judul dengan `font-display`, dan subtitle "Mungkin kamu suka" sebagai konteks. Tidak lagi bergantung pada class `db-section__*` dari file CSS lain.
+2. **Grid responsif** — Grid 4 kolom di desktop, 2 kolom di mobile (≤767px). Card memiliki `aspect-ratio: 2/3` eksplisit pada poster agar selalu proporsional portrait. Title card terpotong rapi dengan `text-overflow: ellipsis`.
+3. **Relevansi lebih baik** — `renderRelated()` di JS kini sort film berdasarkan jumlah genre yang cocok (most matches first) sebelum slice, sehingga film yang paling mirip genrenya tampil duluan.
+
+**File yang diubah:** `pages/movie-detail.html`, `assets/css/pages/movie-detail.css`, `assets/js/pages/movie-detail.js`
+
+---
+
+
 
 **3 bug diperbaiki:**
 
