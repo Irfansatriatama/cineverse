@@ -407,7 +407,7 @@ function onMetadata() {
 
   const inp   = DOM.progressInput();
   const total = DOM.timeTotal();
-  if (inp)   inp.max = video.duration;
+  // inp.max stays at 100 (percentage) — changing it to duration would break seek calculation
   if (total) total.textContent = formatTime(video.duration);
 }
 
@@ -541,14 +541,16 @@ function initControls() {
   // Progress seek
   const progInp = DOM.progressInput();
   if (progInp) {
-    progInp.addEventListener('input', e => {
+    function doSeek(e) {
       e.stopPropagation();
       const video = DOM.video();
       const pct = parseFloat(e.target.value) / 100;
       if (WatchState.duration) {
         video.currentTime = pct * WatchState.duration;
       }
-    });
+    }
+    progInp.addEventListener('input', doSeek);
+    progInp.addEventListener('change', doSeek); // handles click-to-seek
     progInp.addEventListener('click', e => e.stopPropagation());
   }
 

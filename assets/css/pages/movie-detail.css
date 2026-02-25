@@ -385,17 +385,17 @@
 .md-trailer-modal__player {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  /* Reliable 16:9 aspect ratio that works in all browsers */
+  padding-top: 56.25%;
   background: #000;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  /* Pastikan container memiliki computed height agar iframe bisa mengisi */
-  min-height: 0;
 }
 
 .md-trailer-modal__player iframe {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
@@ -651,15 +651,43 @@
   margin-bottom: var(--space-16);
 }
 
+/* Section header styles (mirrors dashboard.css db-section__*) */
+.md-related-section .db-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.md-related-section .db-section__title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.md-related-section .db-section__title-icon {
+  color: var(--color-crimson);
+}
+
 .md-related-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .md-related-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .md-related-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

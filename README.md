@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%203.3.4%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.0.4-orange)
+![Status](https://img.shields.io/badge/Status-Phase%203.3.5%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.0.5-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -241,7 +241,7 @@ cineverse-phase3/
 ```
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
-FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.3)
+FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.5)
 FASE 4  ░░░░░░░░░░░░░░░░░░░░  News & Fitur Sosial         🔲 Belum Dimulai
 FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
 ```
@@ -289,7 +289,51 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.0.4 — Phase 3.3.4: Bug Fix — Trailer Video Masih Tidak Tampil (Lanjutan) *(terkini)*
+### v1.0.5 — Phase 3.3.5: Bug Fix — Trailer, Film Serupa & Progress Bar *(terkini)*
+
+**3 bug diperbaiki:**
+
+**[BUG 1] `movie-detail.css` — Trailer: video masih tidak tampil meski audio berjalan**
+
+Setelah dua patch sebelumnya (v1.0.3, v1.0.4), root cause residual akhirnya teridentifikasi: `aspect-ratio: 16/9` pada `.md-trailer-modal__player` tidak menghasilkan computed height yang cukup konsisten di semua browser rendering engine, terutama ketika container berada di dalam flex overlay. YouTube player inisialisasi di saat height = 0 dari perspektif layout engine.
+
+**Root cause:** `aspect-ratio` bergantung pada width container yang sudah terkalkulasi. Dalam konteks modal yang baru muncul dengan `display: flex; align-items: center`, ada edge case di beberapa browser di mana width belum propagated saat paint pertama, sehingga `aspect-ratio` tidak ter-resolve menjadi height yang nyata. Akibatnya: iframe ada di DOM, audio berjalan via hidden YouTube player, tapi video frame tidak ter-paint.
+
+**Solusi:** Kembali ke teknik `padding-top: 56.25%` (the original CSS intrinsic ratio hack) yang sudah terbukti paling kompatibel lintas semua browser sejak era CSS2. Teknik ini tidak bergantung pada `aspect-ratio` computation — padding percentage selalu dihitung berdasarkan **width**, sehingga container selalu memiliki height eksplisit = `width × 9/16` tanpa perlu layout engine menyelesaikan `aspect-ratio`. Iframe tetap `position: absolute; top:0; left:0; width:100%; height:100%`.
+
+**File yang diubah:** `assets/css/pages/movie-detail.css`
+
+---
+
+**[BUG 2] `movie-detail.css` — Section "Film Serupa": header tampil seperti icon kecil tanpa styling**
+
+Section "Film Serupa" menggunakan class `db-section__header`, `db-section__title`, dan `db-section__title-icon` yang didefinisikan di `dashboard.css`. Namun `movie-detail.html` tidak mengimpor `dashboard.css`, sehingga class-class ini tidak memiliki styling — icon SVG muncul dengan ukuran default tanpa `display:flex` pada parent, dan teks "Film Serupa" jatuh ke baris baru terpisah dari icon.
+
+**Root cause:** Class `db-section__*` didefinisikan di `dashboard.css` tetapi tidak diimpor di `movie-detail.html`. Daripada menambahkan dependency tambahan (risiko conflict dengan style lain), solusinya adalah mendefinisikan ulang style yang dibutuhkan langsung di `movie-detail.css` dengan scoping `.md-related-section .db-section__*` agar tidak bentrok.
+
+**Tambahan:** Grid film serupa diubah dari `repeat(6, 1fr)` ke `repeat(4, 1fr)` di semua ukuran layar agar poster tidak terlalu kecil dan tetap readable.
+
+**File yang diubah:** `assets/css/pages/movie-detail.css`
+
+---
+
+**[BUG 3] `watch.js` — Progress bar tidak bisa di-klik/geser ke posisi tertentu**
+
+Saat video sudah mulai berjalan, progress bar tidak bisa di-klik untuk skip ke posisi manapun. Hanya bisa menunggu dari awal sampai selesai.
+
+**Root cause (2 sub-issue):**
+1. **`inp.max` override:** Di fungsi `onDurationChange()`, kode melakukan `inp.max = video.duration` — mengubah max range input dari `100` (nilai default di HTML) menjadi total detik video (misalnya 7200 untuk film 2 jam). Namun di seek handler (`input` event), kalkulasi menggunakan `value/100` sebagai persentase. Akibatnya seek calculation sepenuhnya salah: klik di posisi 50% menghasilkan `currentTime = value/100 = duration*0.5/100 = 0.5%` dari video. Secara visual progress bar juga tidak bergerak karena `inp.value = pct` (0-100) sementara `max = duration`, sehingga thumb selalu stuck di dekat 0.
+2. **Missing `change` event:** `input` event ter-fire saat drag, tapi klik langsung di sebuah posisi pada beberapa browser hanya memicu `change` event (bukan `input`). Tanpa listener `change`, klik langsung tidak menghasilkan seek.
+
+**Solusi:**
+1. Hapus `inp.max = video.duration` — biarkan max tetap `100` seperti yang didefinisikan di HTML
+2. Tambahkan event listener `change` di samping `input` agar klik langsung di progress bar juga berfungsi
+
+**File yang diubah:** `assets/js/pages/watch.js`
+
+---
+
+
 
 **1 bug diperbaiki:**
 
