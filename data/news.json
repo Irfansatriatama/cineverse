@@ -8,9 +8,11 @@
       "category": "Box Office",
       "author": "Redaksi CineVerse",
       "publishedAt": "2024-03-05",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
       "tags": ["dune", "box-office", "record"],
-      "readTime": 3
+      "readTime": 3,
+      "featured": true,
+      "body": "Dune: Part Two telah resmi menjadi salah satu pembukaan terbesar sepanjang tahun ini. Film besutan Denis Villeneuve yang dibintangi Timothée Chalamet dan Zendaya ini berhasil meraup pendapatan global sebesar Rp 1,4 triliun hanya dalam pekan pertama penayangannya.\n\nKeberhasilan ini tidak lepas dari antusiasme penonton yang sudah lama menantikan kelanjutan saga epik padang pasir ini. Sekuel langsung dari film pertama yang rilis pada 2021 ini berhasil melampaui ekspektasi para analis industri.\n\nDengan visual yang memukau dan narasi yang lebih dalam, Dune: Part Two berhasil membangun dunia Arrakis secara lebih komprehensif. Penampilan Austin Butler sebagai Feyd-Rautha Harkonnen turut mencuri perhatian kritikus dan penonton.\n\nFilm ini juga mendapat respons luar biasa dari para kritikus film, dengan skor 93% di Rotten Tomatoes. Banyak yang menyebutnya sebagai salah satu film sci-fi terbaik dekade ini."
     },
     {
       "id": "n002",
@@ -20,9 +22,11 @@
       "category": "Berita Film",
       "author": "Redaksi CineVerse",
       "publishedAt": "2024-02-20",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
       "tags": ["nolan", "upcoming", "director"],
-      "readTime": 4
+      "readTime": 4,
+      "featured": true,
+      "body": "Christopher Nolan, sutradara di balik karya-karya monumental seperti Inception, Interstellar, dan Oppenheimer, kini telah siap mengumumkan proyek filmnya yang berikutnya. Setelah kesuksesan besar Oppenheimer yang meraih 7 Piala Oscar, termasuk Film Terbaik, ekspektasi publik tentu sangat tinggi.\n\nDalam sebuah wawancara eksklusif dengan majalah film ternama, Nolan mengisyaratkan bahwa proyek barunya akan kembali mengeksplorasi tema-tema besar yang menjadi ciri khasnya — waktu, identitas, dan konsekuensi keputusan manusia. Namun kali ini, ia ingin mencoba pendekatan yang lebih personal.\n\nMeski belum mengungkap judul atau plot secara spesifik, Nolan menyebut bahwa film ini akan diproduksi di bawah naungan Universal Pictures dan dijadwalkan mulai syuting akhir 2024. Beberapa nama besar disebut-sebut sedang dalam pembicaraan untuk bergabung dalam cast.\n\nFans dan komunitas sinema di seluruh dunia sudah tidak sabar menantikan pengumuman resmi dari sang maestro."
     },
     {
       "id": "n003",
@@ -32,9 +36,11 @@
       "category": "Listicle",
       "author": "Kritikus Film",
       "publishedAt": "2024-01-15",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/eYjHXLBjRBGRSN0eSWNnEoQkpGO.jpg",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/eYjHXLBjRBGRSN0eSWNnEoQkpGO.jpg",
       "tags": ["indonesia", "best-of", "2023"],
-      "readTime": 6
+      "readTime": 6,
+      "featured": false,
+      "body": "Tahun 2023 menjadi tahun yang luar biasa bagi perfilman Indonesia. Dari drama keluarga yang menyentuh hingga thriller yang menegangkan, sineas-sineas tanah air terus membuktikan diri di kancah nasional maupun internasional.\n\nBerikut adalah 10 film Indonesia terbaik 2023 versi Dewan Kritikus Film Nasional:\n\n1. Budi Pekerti — Drama keluarga yang memotret dampak viral culture pada kehidupan nyata\n2. Siksa Kubur — Horror psikologis yang berhasil membangun atmosfer mencekam\n3. 13 Bom di Jakarta — Thriller aksi dengan skala produksi terbesar dalam sejarah film Indonesia\n4. Ipar Adalah Maut — Drama komedi yang berhasil meraup lebih dari 8 juta penonton\n5. Sewu Dino — Adaptasi webtoon yang sukses di layar lebar\n6. Dokumenter Tanah Moyangku — Kisah perjuangan masyarakat adat yang mengharukan\n7. Posesif 2 — Sekuel yang berhasil melampaui film pertamanya\n8. Penyalin Cahaya — Karya berani yang bicara soal kekerasan seksual di kampus\n9. Seperti Dendam, Rindu Harus Dibayar Tuntas — Adaptasi novel yang memukau\n10. Yuni — Potret perempuan muda dalam pusaran tradisi dan modernitas"
     },
     {
       "id": "n004",
@@ -44,9 +50,11 @@
       "category": "Review",
       "author": "Penulis Senior",
       "publishedAt": "2024-02-10",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXIf6Xv83ggftZE.jpg",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/kCGlIMHnOm8JPXIf6Xv83ggftZE.jpg",
       "tags": ["review", "poor-things", "emma-stone"],
-      "readTime": 5
+      "readTime": 5,
+      "featured": true,
+      "body": "Poor Things adalah sebuah pencapaian sinematik yang sulit ditandingi. Yorgos Lanthimos, sutradara yang dikenal dengan The Favourite dan The Lobster, kembali menghadirkan dunia yang unik — absurd namun penuh makna mendalam.\n\nFilm ini berkisah tentang Bella Baxter (Emma Stone), seorang wanita yang dibangkitkan oleh ilmuwan eksentrik Dr. Godwin Baxter (Willem Dafoe) setelah mati bunuh diri. Dengan otak bayi yang ditransplantasikan ke tubuh dewasanya, Bella harus belajar tentang dunia dari nol — dan dalam prosesnya, menemukan kebebasan yang sesungguhnya.\n\nVisual film ini adalah sebuah pesta mata. Sinematografi Robbie Ryan menggunakan wide-angle lens yang ekstrem dan palet warna yang berubah seiring perkembangan karakter Bella — dari hitam-putih steampunk menjadi warna-warni oversaturated yang meriah. Setiap frame terasa seperti lukisan yang hidup.\n\nEmma Stone memberikan performa yang berani dan tak tertandingi. Ia menavigasi arc karakternya dari ingenuitas murni hingga kesadaran penuh dengan kepekaan dan humor yang luar biasa. Tidak mengherankan jika ia meraih Oscar Aktris Terbaik untuk peran ini.\n\nRating: 5/5"
     },
     {
       "id": "n005",
@@ -56,9 +64,11 @@
       "category": "Berita Film",
       "author": "Redaksi CineVerse",
       "publishedAt": "2024-03-01",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
       "tags": ["marvel", "mcu", "upcoming"],
-      "readTime": 3
+      "readTime": 3,
+      "featured": false,
+      "body": "Marvel Studios resmi mengumumkan jadwal rilis enam film MCU untuk periode 2025 hingga 2026. Pengumuman ini datang langsung dari Kevin Feige dalam sebuah acara khusus yang disiarkan secara global.\n\nJadwal tersebut mencakup Thunderbolts (Mei 2025), The Fantastic Four: First Steps (Juli 2025), Blade (November 2025), Avengers: Doomsday (Mei 2026), Spider-Man 4 (Juli 2026), dan Avengers: Secret Wars (Mei 2027).\n\nFeige menegaskan bahwa Avengers: Doomsday akan menjadi titik klimaks dari Saga Multiverse yang sudah dibangun sejak Phase 4. Robert Downey Jr. yang akan memerankan Doctor Doom menjadi kejutan terbesar yang sudah bocor sebelumnya.\n\nFilm-film ini akan mulai produksi secara bertahap sepanjang 2024, dengan sebagian di antaranya sudah dalam tahap pasca-produksi."
     },
     {
       "id": "n006",
@@ -68,9 +78,95 @@
       "category": "Penghargaan",
       "author": "Redaksi CineVerse",
       "publishedAt": "2024-01-28",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/dHnceHPeA5g0HT1bK8gUEPFPGEZ.jpg",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/dHnceHPeA5g0HT1bK8gUEPFPGEZ.jpg",
       "tags": ["indonesia", "award", "young-director"],
-      "readTime": 4
+      "readTime": 4,
+      "featured": false,
+      "body": "Indonesia kembali mencatatkan prestasi membanggakan di panggung perfilman internasional. Tiga sineas muda tanah air berhasil meraih penghargaan bergengsi di berbagai festival film dunia sepanjang awal 2024.\n\nDi Festival Film Rotterdam, film pendek karya Andi Prasetyo berjudul Senja di Atas Kota meraih Tiger Award untuk kategori Short Film. Karya yang mengangkat kisah urbanisasi dan rindu kampung halaman ini berhasil menyisihkan lebih dari 200 entri dari seluruh dunia.\n\nSementara di Berlinale, sutradara Rania Hapsari memenangkan Special Mention untuk kategori Generation 14plus dengan film Akar dan Ranting — sebuah eksplorasi intim tentang hubungan nenek-cucu di tengah modernisasi desa.\n\nKeberhasilan ini semakin membuktikan bahwa ekosistem film Indonesia semakin matang, dengan dukungan berbagai program inkubasi dan festival film nasional yang menjadi batu loncatan para sineas muda."
+    },
+    {
+      "id": "n007",
+      "title": "Panduan Lengkap: Cara Menonton Film dengan Pengalaman Bioskop di Rumah",
+      "slug": "panduan-nonton-film-pengalaman-bioskop-di-rumah",
+      "excerpt": "Dari setup audio hingga pencahayaan ruangan, semua tips untuk membuat ruang tamu jadi bioskop pribadi.",
+      "category": "Tips",
+      "author": "Tim CineVerse",
+      "publishedAt": "2024-02-25",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/9cqNxx0GxF0bAY7qCBJA3jPoCl4.jpg",
+      "tags": ["tips", "home-theater", "setup"],
+      "readTime": 7,
+      "featured": false,
+      "body": "Menonton film di bioskop memang punya sensasi tersendiri — layar besar, suara menggelegar, kursi nyaman. Tapi dengan setup yang tepat, kamu bisa menciptakan pengalaman serupa di rumah sendiri.\n\nUntuk layar, ukuran adalah segalanya. Jika ruangan cukup besar, proyektor 4K bisa memberikan pengalaman layar besar yang memukau dengan harga yang semakin terjangkau. Untuk ruangan yang lebih compact, TV OLED 65 inci ke atas sudah mampu memberikan kualitas gambar yang luar biasa dengan hitam pekat yang sesungguhnya.\n\nJangan pernah anggap remeh audio. Sistem 5.1 surround sound minimal diperlukan untuk pengalaman sinematik. Jika budget terbatas, soundbar dengan Dolby Atmos support sudah mampu memberikan peningkatan signifikan dari speaker TV bawaan.\n\nBias lighting di belakang TV (LED strip warm white) terbukti secara ilmiah mengurangi kelelahan mata dan meningkatkan persepsi kontras. Matikan semua lampu utama dan gunakan tirai blackout jika menonton siang hari.\n\nPilih platform streaming yang mendukung HDR10+ atau Dolby Vision untuk kualitas gambar maksimal. Pastikan koneksi internet minimal 25 Mbps untuk streaming 4K HDR tanpa buffering."
+    },
+    {
+      "id": "n008",
+      "title": "Oppenheimer Menangkan 7 Oscar Termasuk Film dan Sutradara Terbaik",
+      "slug": "oppenheimer-7-oscar-film-sutradara-terbaik",
+      "excerpt": "Malam penganugerahan Oscar ke-96 didominasi oleh epos biografi Christopher Nolan yang bersejarah.",
+      "category": "Penghargaan",
+      "author": "Redaksi CineVerse",
+      "publishedAt": "2024-03-11",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "tags": ["oscar", "oppenheimer", "nolan", "award"],
+      "readTime": 4,
+      "featured": true,
+      "body": "Oppenheimer menjadi raja malam Oscar ke-96 yang diselenggarakan di Dolby Theatre, Los Angeles. Film biopik Christopher Nolan tentang Bapak Bom Atom ini meraih tujuh penghargaan bergengsi, termasuk Film Terbaik, Sutradara Terbaik untuk Christopher Nolan, dan Aktor Terbaik untuk Cillian Murphy.\n\nIni merupakan kali pertama Christopher Nolan meraih Oscar Sutradara Terbaik sepanjang karier gilangnya. Dalam pidato penerimaan yang mengharukan, Nolan berterima kasih kepada seluruh kru dan terutama kepada istrinya Emma Thomas yang juga menjadi produser film ini.\n\nCillian Murphy, yang selama ini lebih dikenal lewat serial Peaky Blinders, akhirnya meraih penghargaan tertinggi akting atas perannya sebagai J. Robert Oppenheimer yang kompleks dan berlapis.\n\nFilm ini juga meraih penghargaan untuk Aktor Pendukung Terbaik (Robert Downey Jr.), Sinematografi Terbaik, Penyuntingan Terbaik, dan Tata Musik Terbaik."
+    },
+    {
+      "id": "n009",
+      "title": "5 Film Animasi Terbaik untuk Ditonton Bersama Keluarga Akhir Pekan Ini",
+      "slug": "5-film-animasi-terbaik-keluarga-akhir-pekan",
+      "excerpt": "Rekomendasi pilihan film animasi yang cocok untuk semua usia dan dijamin menghibur.",
+      "category": "Rekomendasi",
+      "author": "Tim CineVerse",
+      "publishedAt": "2024-02-16",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/sXkCMnfBl1djHwAJZM5gTfm6QVm.jpg",
+      "tags": ["animasi", "keluarga", "rekomendasi"],
+      "readTime": 3,
+      "featured": false,
+      "body": "Akhir pekan adalah waktu terbaik untuk quality time bersama keluarga. Dan tidak ada yang lebih menyatukan keluarga selain nonton film animasi bersama-sama.\n\nSpider-Man: Across the Spider-Verse (2023) adalah mahakarya animasi yang mendefinisikan ulang batasan visual medium ini. Setiap universe Spider-Man memiliki gaya animasi yang berbeda — sungguh sebuah pencapaian artistik yang luar biasa.\n\nElemental (2023) dari Pixar menghadirkan kisah cinta lintas elemen yang secara metafor berbicara tentang pengalaman imigran dengan visual api yang menakjubkan.\n\nThe Boy and the Heron (2023) adalah karya penutup Hayao Miyazaki yang penuh dengan fantasi surealis dan kedalaman emosional khas Studio Ghibli.\n\nPuss in Boots: The Last Wish (2022) hadir dengan visual terinspirasi anime dan tema dewasa tentang kematian yang dikemas dengan humor yang cerdas.\n\nEncanto (2021) dari Disney merayakan budaya Kolombia dengan musik catchy dari Lin-Manuel Miranda dan pesan kuat tentang keluarga dan identitas."
+    },
+    {
+      "id": "n010",
+      "title": "Fenomena Barbenheimer: Ketika Dua Film Besar Rilis Bersamaan dan Saling Menguatkan",
+      "slug": "fenomena-barbenheimer-analisis",
+      "excerpt": "Bagaimana dua film dengan genre berbeda yang rilis di hari yang sama justru menciptakan sinergi budaya pop yang luar biasa.",
+      "category": "Analisis",
+      "author": "Editor Senior",
+      "publishedAt": "2024-01-20",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/iuFNMS8vlbixutnqObx8dKBQg2.jpg",
+      "tags": ["barbie", "oppenheimer", "fenomena", "analisis"],
+      "readTime": 8,
+      "featured": false,
+      "body": "Pada 21 Juli 2023, sesuatu yang belum pernah terjadi sebelumnya dalam sejarah Hollywood terjadi: dua film besar dengan anggaran produksi total lebih dari Rp 6 triliun dirilis di hari yang sama dan keduanya meraih kesuksesan komersial yang luar biasa.\n\nBarbie garapan Greta Gerwig dan Oppenheimer karya Christopher Nolan adalah dua film yang tidak bisa lebih berbeda satu sama lain. Yang satu adalah komedi satir berwarna merah muda tentang boneka ikonik yang mempertanyakan eksistensi; yang lain adalah drama biografi berat tentang penciptaan senjata paling destruktif dalam sejarah manusia.\n\nNamun justru kontras inilah yang menciptakan fenomena Barbenheimer — tren di mana penonton memutuskan untuk menonton keduanya dalam satu hari. Fenomena ini viral di media sosial dan akhirnya membantu kedua film meraih total pendapatan lebih dari Rp 30 triliun secara global.\n\nApa yang bisa kita pelajari dari fenomena ini? Bahwa penonton film hari ini adalah konsumen yang lebih sofistikated dari yang kita bayangkan. Mereka tidak hanya menonton satu genre — mereka menikmati keberagaman pengalaman sinematik. Dan ketika dua film berseberangan ini dirilis bersamaan, bukan kompetisi yang terjadi, melainkan amplifikasi satu sama lain."
+    },
+    {
+      "id": "n011",
+      "title": "Trailer Resmi 'Kingdom of the Planet of the Apes' Dirilis, Penonton Antusias",
+      "slug": "trailer-kingdom-of-planet-of-apes",
+      "excerpt": "Generasi baru kera cerdas siap mengambil alih. Franchise ikonik ini kembali dengan trilogi baru yang menjanjikan.",
+      "category": "Trailer",
+      "author": "Redaksi CineVerse",
+      "publishedAt": "2024-02-08",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
+      "tags": ["planet-of-apes", "trailer", "sci-fi"],
+      "readTime": 2,
+      "featured": false,
+      "body": "20th Century Studios resmi merilis trailer perdana Kingdom of the Planet of the Apes, dan respons penonton sangat antusias. Dalam 24 jam pertama, trailer ini sudah ditonton lebih dari 20 juta kali di seluruh platform.\n\nFilm yang dijadwalkan rilis 10 Mei 2024 ini berlatar di masa jauh setelah kisah Caesar berakhir. Manusia kini hidup dalam kondisi seperti binatang, sementara kera-kera cerdas mendominasi bumi dan membangun peradaban baru.\n\nTrailer memperlihatkan protagonist baru, Noa (Owen Teague), seekor kera muda yang harus bergulat dengan ideologi berbeda tentang bagaimana kera seharusnya berhubungan dengan manusia.\n\nSutradaranya, Wes Ball (kreator trilogi Maze Runner), berjanji akan membawa franchise ini ke arah yang lebih epik dan emosional."
+    },
+    {
+      "id": "n012",
+      "title": "Mengapa Film Horor Indonesia Semakin Diakui Dunia?",
+      "slug": "film-horor-indonesia-diakui-dunia",
+      "excerpt": "Dari KKN di Desa Penari hingga Siksa Kubur, horor Indonesia menemukan formula yang tepat.",
+      "category": "Analisis",
+      "author": "Kritikus Film",
+      "publishedAt": "2024-03-08",
+      "imageUrl": "https://image.tmdb.org/t/p/w780/eYjHXLBjRBGRSN0eSWNnEoQkpGO.jpg",
+      "tags": ["horor", "indonesia", "analisis", "industri"],
+      "readTime": 6,
+      "featured": false,
+      "body": "Film horor Indonesia sedang berada di puncak kejayaannya. KKN di Desa Penari menjadi film dengan penonton terbanyak dalam sejarah perfilman Indonesia. Pengabdi Setan dan sekuelnya mendapat pengakuan internasional. Dan kini, Siksa Kubur hadir sebagai film horor artistik yang menggugat nilai-nilai modern.\n\nAda beberapa faktor yang membuat horor Indonesia begitu kuat. Pertama, akar budaya yang kaya — mitologi lokal memiliki kedalaman narasi yang tidak bisa ditiru sembarangan oleh sineas asing. Penonton Indonesia merasakan koneksi kultural yang autentik.\n\nKedua, semakin matangnya teknik bercerita. Sutradara-sutradara seperti Joko Anwar menolak untuk hanya mengandalkan jump scare murahan. Mereka membangun atmosfer, mengembangkan karakter, dan menggunakan horor sebagai medium untuk membicarakan isu sosial yang lebih dalam.\n\nKetiga, ekosistem industri yang mendukung. Dengan lebih banyak bioskop di seluruh Indonesia dan platform streaming yang kian kuat, film-film ini lebih mudah menjangkau audiens nasional maupun internasional.\n\nHoror Indonesia hari ini tidak hanya membuat penonton berteriak — tapi juga berpikir."
     }
   ]
 }
