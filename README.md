@@ -2,8 +2,8 @@
 
 > Platform streaming & informasi film modern, responsif, dan berjalan penuh secara lokal tanpa database server.
 
-![Status](https://img.shields.io/badge/Status-Phase%204.3%20Selesai-green)
-![Version](https://img.shields.io/badge/Version-1.3.0-orange)
+![Status](https://img.shields.io/badge/Status-Phase%205.1%20Selesai-green)
+![Version](https://img.shields.io/badge/Version-1.4.0-orange)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
 ---
@@ -93,8 +93,8 @@ npx http-server cineverse-phase3 -p 8080
 | 📰 News & Artikel | Halaman daftar berita, filter kategori, search artikel, featured hero | 4 | ✅ |
 | 📄 News Detail | Halaman detail artikel dengan body lengkap, related articles | 4 | ✅ |
 | 🎲 Surprise Me | Rekomendasi film acak sesuai preferensi | 4 | ✅ |
-| 📊 Stats Pribadi | Total jam nonton, genre favorit, grafik aktivitas | 5 |
-| 📱 PWA Ready | Install sebagai app di mobile | 5 |
+| 📊 Stats Pribadi | Total jam nonton, genre favorit, grafik aktivitas, milestone badges | 5 | ✅ |
+| 📱 PWA Ready | Install sebagai app di mobile, offline mode, service worker | 5 | ✅ |
 | 🔔 Notifikasi Lokal | Reminder film baru via browser notification | 5 |
 | 🌐 Multi-Bahasa | Support Bahasa Indonesia & English penuh | 5 |
 
@@ -243,8 +243,8 @@ cineverse-phase3/
 FASE 1  ████████████████████  Fondasi & Auth              ✅ Selesai
 FASE 2  ████████████████████  Dashboard & Profil          ✅ Selesai
 FASE 3  ████████████████████  Konten Film & Player        ✅ Selesai (v1.0.8)
-FASE 4  ██████████░░░░░░░░░░  News & Fitur Sosial         🔄 In Progress (4.1 ✅ 4.2 ✅ 4.3 ✅)
-FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔲 Belum Dimulai
+FASE 4  ████████████████████  News & Fitur Sosial         ✅ Selesai (4.1 ✅ 4.2 ✅ 4.3 ✅)
+FASE 5  ███████░░░░░░░░░░░░░  PWA, Optimasi & Polish      🔄 In Progress (5.1 ✅ 5.2 🔲 5.3 🔲)
 ```
 
 ### Fase 1 — Fondasi & Autentikasi ✅
@@ -284,7 +284,25 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 - Dashboard: section "Rekomendasi Untuk Kamu" berbasis genre preferensi user
 - Navbar: watchlist icon dengan badge merah, link watchlist & history di dropdown
 
-### Fase 4 — News & Fitur Sosial 🔄
+### Fase 5 — PWA, Stats & Polish 🔄
+
+**Phase 5.1 — Stats Pribadi & PWA Ready** ✅
+- Halaman statistik personal (`stats.html`) dengan canvas chart murni (tanpa library)
+- 4 Hero stat cards: total film, total jam, genre unik, rata-rata rating
+- Activity bar chart dinamis (per hari/minggu/bulan/semua waktu)
+- Genre breakdown bars animasi + donut chart canvas
+- Rating distribution histogram, top 5 sutradara favorit
+- Top-5 film tertinggi rating yang ditonton, link ke movie-detail
+- 8 milestone badges (Pemula → Legenda), unlocked otomatis
+- Period filter: Semua Waktu, 1 Tahun, 30 Hari, 7 Hari
+- Service Worker (`/sw.js`): Cache First untuk assets, Network First untuk data JSON
+- PWA Manifest (`manifest.json`): install sebagai app, shortcuts watchlist & search
+- `pwa.js`: register SW, install prompt banner (A2HS), update toast, offline indicator
+
+**Phase 5.2 — Notifikasi Lokal & Multi-Bahasa** 🔲
+**Phase 5.3 — Polish & Animasi (Anime.js)** 🔲
+
+---
 
 **Phase 4.1 — Halaman Daftar Berita** ✅
 - Halaman `news.html` dengan featured article hero (artikel unggulan ditampilkan besar di atas)
@@ -322,7 +340,39 @@ FASE 5  ░░░░░░░░░░░░░░░░░░░░  PWA, Optim
 
 ---
 
-### v1.3.0 — Phase 4.3: Fitur Surprise Me *(terkini)*
+### v1.4.0 — Phase 5.1: Stats Pribadi & PWA Ready *(terkini)*
+
+**File baru:**
+
+- `pages/stats.html` — Halaman statistik personal: hero cards, activity chart, genre bars, donut chart, rating distribution, top directors, top movies, milestone badges; period filter 4 opsi; responsive 2-kolom layout
+- `assets/css/pages/stats.css` — Desain lengkap: hero grid cards dengan accent top-border berwarna, canvas chart wrapper, genre bar animasi, donut chart + legend, rating histogram, director rows, movie rows, badge grid 2-kolom, responsive breakpoints
+- `assets/js/pages/stats.js` — Semua logika statistik + chart rendering:
+  - **Hero Cards:** count-up animation dengan `requestAnimationFrame`
+  - **Activity Chart:** Canvas 2D bar chart murni, responsive, gradient fill merah; bucket per hari/minggu/bulan tergantung period
+  - **Genre Bars:** Sorted descending, animasi width transition
+  - **Donut Chart:** Canvas 2D, 6 warna, cutout inner circle, legend dinamis
+  - **Rating Distribution:** Bucket 5 range rating, bar animasi
+  - **Top Directors:** Sorted by film count, avatar initial, rank gold/silver/bronze
+  - **Top Movies:** Sorted by rating, poster, link ke movie-detail, bintang visualisasi
+  - **Milestone Badges:** 8 badge (Pemula, Penikmat, Cinephile, Kritikus, Maestro, Legenda, Penjelajah, Fan Berat) — unlocked berdasarkan total film/genre/sutradara
+  - **Period Filter:** Tombol 4 opsi filter data waktu
+- `manifest.json` — PWA Web App Manifest: standalone display, shortcuts (Cari Film, Watchlist), theme color, icons
+- `sw.js` — Service Worker: pre-cache 40+ asset, Cache First untuk CSS/JS/gambar, Network First untuk JSON, offline fallback HTML, update detection
+- `assets/js/core/pwa.js` — PWA module:
+  - Register service worker
+  - `beforeinstallprompt` → install banner slide-up dengan tombol "Install" / "Nanti"
+  - Update toast saat versi baru tersedia
+  - Online/Offline pill indicator
+  - Seluruh UI diinject via JS (zero markup di HTML)
+- `assets/images/icon-192.png` & `icon-512.png` — App icon SVG (film strip + play button)
+
+**File diupdate:**
+
+- Semua `pages/*.html` & `pages/auth/*.html` & `index.html` — Tambah `<link rel="manifest">`, `<meta name="theme-color">`, `<link rel="apple-touch-icon">`, dan `<script src="pwa.js">` di setiap halaman
+
+---
+
+### v1.3.0 — Phase 4.3: Fitur Surprise Me
 
 **File baru:**
 
